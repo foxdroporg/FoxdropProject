@@ -228,7 +228,7 @@ header .nav-login a {
 .column {
   float: left;
   width: 25%;
-  padding-left: 75px;
+  padding-left: 140px;
   padding-top: 50px;
 }
 
@@ -278,4 +278,28 @@ header .nav-login a {
 
 .signup-form button: hover {
     background-color: #111;
+}
+
+/* Contact */
+.form-wrapperContact {
+  background-image:  url("images/cartoonish.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position:fixed
+}
+
+.fatnicetext {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+/* About */
+
+/* White box class for box */
+.whitebox {
+    height: 500px;
+    width: 1000px;
+    background-color: white;
+    padding: 10px;
 }

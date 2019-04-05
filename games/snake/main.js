@@ -177,6 +177,6 @@ $(document).ready(function(){
 		else if (playerIsDead == false) {
 			drawPlayer();
 		}
-	}, 140-10*playerLength);
+	}, 140-(10*playerLength));
 
 });

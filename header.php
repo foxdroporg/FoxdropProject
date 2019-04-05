@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!–– Not entierly sure what these three next lines does right now––>
 		<meta charset="utf-8">
 		<meta name="description" content="This is an example of a meta description">
 		<meta name=viewport content="width=device-width, initial-scale=1">

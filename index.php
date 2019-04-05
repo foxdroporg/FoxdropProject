@@ -10,7 +10,6 @@
 					echo '<span style="color:#FFFFFF;">You are logged in!</span>';
 				}
 			?>
-
 	</div>
 </section>
 
