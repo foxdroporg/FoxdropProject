@@ -19,12 +19,12 @@ $(document).ready(function(){
 	let pointPosX = Math.floor(Math.random() * 19) + 0;
 	let pointPosY = Math.floor(Math.random() * 19) + 0;
 	let pointPos = {
-		"posX": pontPosX,
+		"posX": pointPosX,
 		"posY": pointPosY
 	};
 
 
-	let framCount = 0;
+	let frameCount = 0;
 
 	let gameScore = 0;
 	
@@ -121,7 +121,7 @@ $(document).ready(function(){
 		}
 		
 		let calcPlayerTailPos = frameCount - playerLength;
-		let getPlayerTailPos = $(".framecount" + getPlayerTailPos);
+		let getPlayerTailPos = $(".framecount" + calcPlayerTailPos);
 		getPlayerTailPos.removeClass("draw-player framecount" + calcPlayerTailPos);
 	}
 
@@ -163,7 +163,7 @@ $(document).ready(function(){
 			playerIsDead = true;
 		}
 		// Death by eating self
-		else if ($(".tr" + checkedNextPlayerPosX + "td" + checkedNextPlayerPosY).hasClass("draw-player")) {
+		else if ($(".tr" + checkNextPlayerPosX + "td" + checkNextPlayerPosY).hasClass("draw-player")) {
 			deathHandler();
 			playerIsDead = true;
 		}
