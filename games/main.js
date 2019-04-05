@@ -78,13 +78,13 @@ $(document).ready(function(){
 
 	document.addEventListener("keydown", function(event) {
 		console.log(event);    
-		if (event.which == 38) {
+		if (event.which == 38 && currentPlayerDir != playerDir["down"]) {
 			currentPlayerDir = playerDir["up"];
-		} else if (event.which == 39) {
+		} else if (event.which == 39 && currentPlayerDir != playerDir["left"]) {
 			currentPlayerDir = playerDir["right"];
-		} else if (event.which == 40) {
+		} else if (event.which == 40 && currentPlayerDir != playerDir["up"]) {
 			currentPlayerDir = playerDir["down"];
-		} else if (event.which == 37) {
+		} else if (event.which == 37 && currentPlayerDir != playerDir["right"]) {
 			currentPlayerDir = playerDir["left"];
 		}
 	});
@@ -177,6 +177,6 @@ $(document).ready(function(){
 		else if (playerIsDead == false) {
 			drawPlayer();
 		}
-	}, 500);
+	}, 140-10*playerLength);
 
 });
