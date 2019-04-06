@@ -113,7 +113,6 @@ class Pong {
 			if (ball.vel.len < (this._canvas.width*1.5)) {
 				ball.vel.len = len * 1.05;
 			}
-			console.log(ball.vel.len);
 		}
 	}
 
