@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<div class="column">
-		    <a href="">
+		    <a href="games/pong/index.html">
 		    <img src="images/pong.png" alt="4thGame" style="width:95%; height:95%; border: #000000 6px outset">
 			</a>
 		</div>
