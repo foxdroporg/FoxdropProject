@@ -1,20 +1,22 @@
 td {
 	border: 2px solid #333;
-	height: 100px;
-	width: 100px;
+	border-color: white;
+	height: 200px;
+	width: 200px;
 	text-align: center;
 	vertical-align: middle;
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	font-size: 70px;
+	font-size: 120px;
 	cursor: pointer;
 }
 
 table {
 	border-collapse: collapse;
 	position: absolute;
-	left: 50%
-	margin-left: -155px;
-	top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	top: 200px;
+	left: 200px;
 }
 
 

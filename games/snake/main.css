@@ -1,28 +1,42 @@
+/*body {
+    line-height:1;
+    background: url('../../images/birdSil.jpg') no-repeat;
+    background-size: cover;
+    font-family: Arial;
+}*/
+
 #game-area {
+	float: center;
 	width: 300px;
 	height: 300px;
-	background-color: rgb(36,36,36);
+	background-color: #043304;
 }
 
 #game-area, td {
-	border: 1px solid rgb(187,187,187);
+	border: 1px solid #000000;
 	border-collapse: collapse;
 }
 
 .draw-player {
-	background-color: #fff !important;
+	background-color: #22ff00 !important;
 }
 
 .draw-point {
-	background-color: rgb(245, 62, 62);
+	background-color: #ffffff;
 }
 
 #game-status {
+	align-content: center;
 	font-family: arial;
+	font-weight: 200;
+	color: white;
 	font-size: 20px;
 }
 
 .game-score {
+	align-content: center;
 	font-family: arial;
+	font-weight: 200;
+	color: white;
 	font-size: 20px;
 }
