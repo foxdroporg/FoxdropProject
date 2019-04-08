@@ -3,6 +3,7 @@
 ?>
 
 <section class="main-container">
+	
 	<div class="main-wrapperportfolio">
 			<h2 style="color:#FFFFFF">Portfolio</h2>
 			<form class="portfolio-collection" action="games/snake/index.html" method="POST">

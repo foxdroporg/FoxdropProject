@@ -11,6 +11,7 @@
 		
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="shortcut icon" type="image/png" href="images/firefoxLogo.PNG">
 	</head>
 
 	<header>
