@@ -11,21 +11,22 @@
 		
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="shortcut icon" type="image/png" href="images/firefoxLogo.PNG">
+		<link class="img-test" rel="shortcut icon" type="image/png" href="images/firefoxLogo.PNG">
 	</head>
 
 	<header>
 		<nav>
 			<div class="main-wrapper">
 				<ul>
-					<li><a href="index.php">
-						<img src="images/firefoxLogo.png" alt="HTML5 Icon" style="padding: 5px; float:left; width:50px; height:50px;">
-					</a>
+					<li>
+						<a href="index.php">
+						<img class="img-test" src="images/firefoxLogo.png" alt="HTML5 Icon" style="padding: 5px; float:left; width:50px; height:50px;">
+						</a>
 					</li>
-					<li><a href="index.php">HOME</a></li>
-					<li><a href="portfolio.php">PORTFOLIO</a></li>
-					<li><a href="about.php">ABOUT</a></li>
-					<li><a href="contact.php">CONTACT</a></li>
+					<li><a class="button-test" href="index.php">HOME</a></li>
+					<li><a class="button-test" href="portfolio.php">PORTFOLIO</a></li>
+					<li><a class="button-test" href="about.php">ABOUT</a></li>
+					<li><a class="button-test" href="contact.php">CONTACT</a></li>
 				</ul>
 				<div class="nav-login">
 					<?php
@@ -37,9 +38,9 @@
 							echo '<form action="includes/login.inc.php" method="POST">
 							<input type="text" name="uid" placeholder="Username/e-mail">
 							<input type="password" name="pwd" placeholder="Password">
-							<button type="submit" name="submit">Login</button>
+							<button class="button-test" type="submit" name="submit">Login</button>
 							</form>
-							<a href="signup.php">Sign up</a>';
+							<form> <button class="button-test" href="signup.php">Sign up</button> </form>';
 						}
 					?>
 				</div>

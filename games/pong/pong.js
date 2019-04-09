@@ -174,6 +174,7 @@ class Pong {
 		}
 
 		// AI DIFFICULTY 
+		// Ball far away from AI puck
 		if (this.ball.pos.x > (this._canvas.width/6) && this.ball.pos.x < (this._canvas.width*0.583)) {
 			if (this.players[1].pos.y < this.ball.pos.y - this._canvas.width*0.0166) {
 				this.players[1].pos.y += (this._canvas.height)*0.0066;
@@ -182,12 +183,14 @@ class Pong {
 				this.players[1].pos.y -= (this._canvas.height)*0.0066;
 			}
 		} 
+		// Ball very close to AI puck
 		else if (this.ball.pos.x > (this._canvas.width*0.583)) {
 			if (this.players[1].pos.y < this.ball.pos.y - this._canvas.width*0.0033) {
 				this.players[1].pos.y += (this._canvas.height)*0.025;
 			}
 			else if (this.players[1].pos.y > this.ball.pos.y + this._canvas.width*0.0033) {
-				this.players[1].pos.y -= (this._canvas.height)*0.025;
+				// Give AI 10% chance to be invincable a short duration. 
+				Math.floor(Math.random() * 10) == 0 ? this.players[1].pos.y -= (this._canvas.height)*0.075 : this.players[1].pos.y -= (this._canvas.height)*0.025;
 			}
 		}
 

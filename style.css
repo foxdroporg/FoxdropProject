@@ -217,15 +217,31 @@ header .nav-login a {
 }
 
 .img-test {
-    width: 500px;
-    height: 500px;
-    background-color: #202020;
-    background-repeat: no-repeat;
+    transition: all 2s ease-in 0.5s;
+    -webkit-transition: all 2s ease-in 0.5s;
+    -moz-transition: all 2s ease-in 0.5s;
+    -o-transition: all 2s ease-in 0.5s;
+    background-position: 2px 2px;
+}
 
-    transition-property: all;
-    transition-duration: 2s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 2s;
+.img-test:hover {
+    background-image: url("images/firefoxLogoHover.png");
+    background-size: 55px 55px;
+    background-repeat: no-repeat;
+}
+
+.button-test {
+    transition: all 0.1s ease-in 0.1s;
+    -webkit-transition: all 0.1s ease-in 0.1s;
+    -moz-transition: all 0.1s ease-in 0.1s;
+    -o-transition: all 0.1s ease-in 0.1s;
+    background-size: 55px 55px;
+    background-position: 2px 2px;
+}
+
+.button-test:hover {
+    background-color: #e2e2e2;
+    background-repeat: no-repeat;
 }
 
 /*portfolio.php*/

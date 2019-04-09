@@ -7,8 +7,8 @@
 
 #game-area {
 	float: center;
-	width: 300px;
-	height: 300px;
+	width: 600px;
+	height: 600px;
 	background-color: #043304;
 }
 
@@ -30,7 +30,7 @@
 	font-family: arial;
 	font-weight: 200;
 	color: white;
-	font-size: 20px;
+	font-size: 40px;
 }
 
 .game-score {
@@ -38,5 +38,5 @@
 	font-family: arial;
 	font-weight: 200;
 	color: white;
-	font-size: 20px;
+	font-size: 40px;
 }

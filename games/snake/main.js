@@ -5,8 +5,8 @@ $(document).ready(function(){
 
 	let playerLength = 4;
 	let playerPos = {
-		"tr": 9,
-		"td": 9
+		"tr": 18,
+		"td": 0
 	};
 	let playerDir = {
 		"up": 1,
@@ -75,7 +75,7 @@ $(document).ready(function(){
 		playerLength += 1;
 	}
 
-
+	
 	document.addEventListener("keydown", function(event) {
 		console.log(event);    
 		if (event.which == 38 && currentPlayerDir != playerDir["down"]) {
@@ -88,7 +88,7 @@ $(document).ready(function(){
 			currentPlayerDir = playerDir["left"];
 		}
 	});
-
+	
 
 	function drawPlayer() {
 		frameCount += 1;
@@ -177,6 +177,6 @@ $(document).ready(function(){
 		else if (playerIsDead == false) {
 			drawPlayer();
 		}
-	}, 140-(10*playerLength));
+	}, 70);
 
 });
