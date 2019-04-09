@@ -329,7 +329,7 @@ header .nav-login a {
 }
 
 .grid div:nth-child(even) {
-    background-color: white;
+    background-color: lightgrey;
 }
 
 .grid div:nth-child(odd) {
@@ -341,22 +341,39 @@ header .nav-login a {
     font-size: 32px;
     font-weight: bold;
     font-family: Arial;
+    justify-self: center;
 }
 
 .header {
     grid-area: header;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial;
+    display:block;
+    justify-self: center;
 }
 
 .sidebar {
     grid-area: sidebar;
+    justify-self: center;
 }
 
 .content {
     grid-area: content;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial;
+    display:block;
+    justify-self: center;
 }
 
 .footer {
     grid-area: footer;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial;
+    display:block;
+    justify-self: center;
 }
 
 @media screen and (min-width: 736px) {

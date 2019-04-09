@@ -4,7 +4,7 @@
 
 <section class="main-container">
 	<div class="main-wrapper">
-			<h2 style="color:#FFFFFF">Home</h2>
+			<h2 style="color:#FFFFFF">Welcome to Foxdrop</h2>
 			<?php
 				if (isset($_SESSION['u_id'])) {
 					echo '<span style="color:#FFFFFF;">You are logged in!</span>';
