@@ -345,11 +345,11 @@ header .nav-login a {
 }
 
 .grid div:nth-child(even) {
-    background-color: lightgrey;
+    background-color: #fafafa;
 }
 
 .grid div:nth-child(odd) {
-    background-color: grey;
+    background-color: #fafafa;
 }
 
 .title {

@@ -1,7 +1,10 @@
+
 $(document).ready(function(){
 
 	let gameArea = $("#game-area");
 	let maxGameArea = 20;
+	var hasPressed = false;
+
 
 	let playerLength = 4;
 	let playerPos = {
@@ -77,15 +80,19 @@ $(document).ready(function(){
 
 	
 	document.addEventListener("keydown", function(event) {
-		console.log(event);    
-		if (event.which == 38 && currentPlayerDir != playerDir["down"]) {
+		//console.log(event); 
+		if (event.which == 38 && currentPlayerDir != playerDir["down"] && !hasPressed) {
 			currentPlayerDir = playerDir["up"];
-		} else if (event.which == 39 && currentPlayerDir != playerDir["left"]) {
+			hasPressed = true;
+		} else if (event.which == 39 && currentPlayerDir != playerDir["left"] && !hasPressed) {
 			currentPlayerDir = playerDir["right"];
-		} else if (event.which == 40 && currentPlayerDir != playerDir["up"]) {
+			hasPressed = true;
+		} else if (event.which == 40 && currentPlayerDir != playerDir["up"] && !hasPressed) {
 			currentPlayerDir = playerDir["down"];
-		} else if (event.which == 37 && currentPlayerDir != playerDir["right"]) {
+			hasPressed = true;
+		} else if (event.which == 37 && currentPlayerDir != playerDir["right"] && !hasPressed) {
 			currentPlayerDir = playerDir["left"];
+			hasPressed = true;
 		}
 	});
 	
@@ -93,7 +100,7 @@ $(document).ready(function(){
 	function drawPlayer() {
 		frameCount += 1;
 		let getPlayerPos;
-		
+
 		switch (currentPlayerDir) {
 			case 1:
 				playerPos["tr"] -= 1;
@@ -119,7 +126,6 @@ $(document).ready(function(){
 				alert("Error drawing player!");
 				break;
 		}
-		
 		let calcPlayerTailPos = frameCount - playerLength;
 		let getPlayerTailPos = $(".framecount" + calcPlayerTailPos);
 		getPlayerTailPos.removeClass("draw-player framecount" + calcPlayerTailPos);
@@ -170,11 +176,15 @@ $(document).ready(function(){
 		//Gain point
 		else if (playerPos["tr"] == pointPos["posX"] && playerPos["td"] == pointPos["posY"] && playerIsDead == false) {
 			playerEatsPoint();
+			// Let the player do input again.
+			hasPressed = false;
 			drawPlayer();
 			scoreHandler();
 		} 
 		//Draw player
 		else if (playerIsDead == false) {
+			// Let the player do input again.
+			hasPressed = false;
 			drawPlayer();
 		}
 	}, 70);
