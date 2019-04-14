@@ -3,39 +3,39 @@ class Vec {
 		this.x = x;
 		this.y = y;
 	}
-	get len() {
+	get length() {
 		return Math.sqrt(this.x * this.x + this.y * this.y);
 	}
-	set len(value) {
-		const fact = value / this.len;
+	set length(value) {
+		const fact = value / this.length;
 		this.x *= fact;
 		this.y *= fact;
 	}
 }
 
 class Rect {
-	constructor(w, h) {
-		this.pos = new Vec;
-		this.size = new Vec(w, h);
+	constructor(width, height) {
+		this.position = new Vec;
+		this.size = new Vec(width, height);
 	}
 	get left() {
-		return this.pos.x - this.size.x / 2;
+		return this.position.x - this.size.x / 2;
 	}
 	get right() {
-		return this.pos.x + this.size.x / 2;
+		return this.position.x + this.size.x / 2;
 	}
 	get top() {
-		return this.pos.y - this.size.y / 2;
+		return this.position.y - this.size.y / 2;
 	}
 	get bottom() {
-		return this.pos.y + this.size.y / 2;
+		return this.position.y + this.size.y / 2;
 	}
 }
 
 class Ball extends Rect {
 	constructor() {
 		super(10, 10);
-		this.vel = new Vec;
+		this.velocity = new Vec;
 	}
 }
 
@@ -45,6 +45,14 @@ class Player extends Rect {
 		this.score = 0;
 	}
 }
+
+// hasNotBounced and timerId enforce a 0.5 second delay for collision-detection.
+var hasNotBounced = true;
+let timerId = setInterval(() => hasNotBounced=true, 300);
+var playerTurn = 0;
+
+var bounceTimer = true;
+let timer2Id = setInterval(() => bounceTimer=true, 300);
 
 class Pong {
 	constructor(canvas) {
@@ -58,18 +66,18 @@ class Pong {
 			new Player,
 		];
 
-		this.players[0].pos.x = 40;
-		this.players[1].pos.x = this._canvas.width - 40;
+		this.players[0].position.x = 40;
+		this.players[1].position.x = this._canvas.width - 40;
 		this.players.forEach(player => {
-			player.pos.y = this._canvas.height / 2;
+			player.position.y = this._canvas.height / 2;
 		});
 
 		let lastTime;
-		const callback = (millis) => {
+		const callback = (milliseconds) => {
 			if (lastTime) {
-				this.update((millis - lastTime) / 1000);
+				this.update((milliseconds - lastTime) / 1000);
 			}
-			lastTime = millis;
+			lastTime = milliseconds;
 			requestAnimationFrame(callback);
 		};
 		callback();
@@ -106,14 +114,26 @@ class Pong {
 	}
 
 	collide(player, ball) {
-		if (player.left < ball.right && player.right > ball.left && player.top < ball.bottom && player.bottom > ball.top) {
-			const len = ball.vel.len;
-			ball.vel.x = -ball.vel.x;
-			ball.vel.y += 300 * (Math.random() - .5);
-			if (ball.vel.len < (this._canvas.width*1.5)) {
-				ball.vel.len = len * 1.05;
+		var i = playerTurn % 2;
+		if (player.left < ball.right && player.right > ball.left && player.top < ball.bottom && player.bottom > ball.top && hasNotBounced) {
+			hasNotBounced = false;
+			const length = ball.velocity.length;
+			ball.velocity.x = -ball.velocity.x;
+			if (this.ball.position.y > this.players[i].position.y && ball.velocity.y < 100) {
+				ball.velocity.y += 400 * ((ball.position.y - this.players[i].position.y) / 50);
+			}
+			else if (this.ball.position.y < this.players[i].position.y && ball.velocity.y > -100) {
+				ball.velocity.y += 400 * ((ball.position.y - this.players[i].position.y) / 50);
+			}
+			else {
+				ball.velocity.y += 300 * (Math.random() - .5);
+			}
+
+			if (ball.velocity.length < (this._canvas.width*1.60)) {
+				ball.velocity.length = length * 1.07;
 			}
 		}
+		playerTurn++;
 	}
 
 	draw() {
@@ -138,62 +158,76 @@ class Pong {
 		this.players.forEach((player, index) => {
 			const chars = player.score.toString().split('');
 			const offset = align * (index + 1) - (CHAR_W * chars.length / 2) + this.CHAR_PIXEL / 2;
-			chars.forEach((char, pos) => {
+			chars.forEach((char, position) => {
 				this._context.drawImage(this.CHARS[char|0], 
-					offset + pos * CHAR_W, 20);
+					offset + position * CHAR_W, 20);
 			});
 		});
 	}
 
 	reset() {
-		this.ball.pos.x = this._canvas.width / 2;
-		this.ball.pos.y = this._canvas.height / 2;
-		this.ball.vel.x = 0;
-		this.ball.vel.y = 0;
+		this.ball.position.x = this._canvas.width / 2;
+		this.ball.position.y = this._canvas.height / 2;
+		this.ball.velocity.x = 0;
+		this.ball.velocity.y = 0;
 	}
 
 	start() {
-		if (this.ball.vel.x === 0 && this.ball.vel.y === 0) {
-			this.ball.vel.x = 400 * (Math.random() > .5 ? 1 : -1);
-			this.ball.vel.y = 400 * (Math.random() * 2 - 1);
-			this.ball.vel.len = 550;
+		if (this.ball.velocity.x === 0 && this.ball.velocity.y === 0) {
+			this.ball.velocity.x = 400 * (Math.random() > .5 ? 1 : -1);
+			this.ball.velocity.y = 400 * (Math.random() * 2 - 1);
+			this.ball.velocity.length = 450;
 		}
 	}
 
 	update(dt) {
-		this.ball.pos.x += this.ball.vel.x * dt;
-		this.ball.pos.y += this.ball.vel.y * dt;
+		this.ball.position.x += this.ball.velocity.x * dt;
+		this.ball.position.y += this.ball.velocity.y * dt;
 
 		if (this.ball.left < 0 || this.ball.right > this._canvas.width) {
-			const playerId = this.ball.vel.x < 0 | 0;
+			const playerId = this.ball.velocity.x < 0 | 0;
 			this.players[playerId].score++;
 			this.reset();
 		}
-		if (this.ball.top < 0 || this.ball.bottom > this._canvas.width) {
-			this.ball.vel.y = -this.ball.vel.y;
+		if (this.ball.top < 0 || this.ball.bottom > this._canvas.width && bounceTimer) {
+			this.ball.velocity.y = -this.ball.velocity.y;
+			bounceTimer = false;
 		}
 
-		// AI DIFFICULTY 
+		// AI DIFFICULTY. Math function is used to give randomness.
 		// Ball far away from AI puck
-		if (this.ball.pos.x > (this._canvas.width/6) && this.ball.pos.x < (this._canvas.width*0.583)) {
-			if (this.players[1].pos.y < this.ball.pos.y - this._canvas.width*0.0166) {
-				this.players[1].pos.y += (this._canvas.height)*0.0066;
+		if (this.ball.position.x > (this._canvas.width/6) && this.ball.position.x < (this._canvas.width*0.583)) {
+
+			if (this.players[1].position.y < this.ball.position.y - this._canvas.width*0.0166) {
+				this.players[1].position.y += (this._canvas.height)*0.0066;
 			}
-			else if (this.players[1].pos.y > this.ball.pos.y + this._canvas.width*0.0166) {
-				this.players[1].pos.y -= (this._canvas.height)*0.0066;
+			else if (this.players[1].position.y > this.ball.position.y + this._canvas.width*0.0166) {
+				this.players[1].position.y -= (this._canvas.height)*0.0066;
 			}
+
 		} 
 		// Ball very close to AI puck
-		else if (this.ball.pos.x > (this._canvas.width*0.583)) {
-			if (this.players[1].pos.y < this.ball.pos.y - this._canvas.width*0.0033) {
-				this.players[1].pos.y += (this._canvas.height)*0.025;
-			}
-			else if (this.players[1].pos.y > this.ball.pos.y + this._canvas.width*0.0033) {
-				// Give AI 10% chance to be invincable a short duration. 
-				Math.floor(Math.random() * 10) == 0 ? this.players[1].pos.y -= (this._canvas.height)*0.075 : this.players[1].pos.y -= (this._canvas.height)*0.025;
-			}
-		}
+		else if (this.ball.position.x > (this._canvas.width*0.583)) {
 
+			if (this.players[1].position.y < this.ball.position.y - this._canvas.width*0.07) {
+				Math.floor(Math.random() * 10) == 0 ? this.players[1].position.y += (this._canvas.height)*0.055 : this.players[1].position.y += (this._canvas.height)*0.025;
+				//this.players[1].position.y += (this._canvas.height)*0.04;
+			}
+			else if (this.players[1].position.y > this.ball.position.y + this._canvas.width*0.07) {
+				//this.players[1].position.y -= (this._canvas.height)*0.04;
+				Math.floor(Math.random() * 10) == 0 ? this.players[1].position.y -= (this._canvas.height)*0.055 : this.players[1].position.y -= (this._canvas.height)*0.025;
+			}
+
+			/*
+			else if (this.players[1].position.y < this.ball.position.y) {
+				this.players[1].position.y -= (this._canvas.height)*0.001;
+			}
+			else if (this.players[1].position.y > this.ball.position.y) {
+				this.players[1].position.y += (this._canvas.height)*0.001;
+			}
+			*/
+
+		}
 
 		this.players.forEach(player => this.collide(player, this.ball));
 
@@ -208,7 +242,7 @@ const pong = new Pong(canvas);
 
 canvas.addEventListener('mousemove', event => {
 	const scale = event.offsetY / event.target.getBoundingClientRect().height;
-	pong.players[0].pos.y = canvas.height * scale;
+	pong.players[0].position.y = canvas.height * scale;
 });
 
 canvas.addEventListener('click', event => {
