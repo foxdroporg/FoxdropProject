@@ -13,6 +13,9 @@
 				<input type="password" name="pwd" placeholder="Password">
 				<button type="submit" name="submit">Sign up</button>
 			</form>
+			<form class="signup-form" action="reset-password.php">
+				<button type="submit" name="submit">Forgot your password?</button>
+			</form>
 
 			<?php
 			if (isset($_GET["newpwd"])) {
@@ -21,7 +24,7 @@
 				}
 			}
 			?>
-			<a href="reset-password.php">Forget your password?</a>
+			
 
 	</div>
 </section>
