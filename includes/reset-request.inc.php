@@ -45,8 +45,8 @@ if (isset($_POST["reset-request-submit"])) {
 	$message .= '<p>Here is your password reset link: </br>';
 	$message .= '<a href="' . $url . '">' . $url . '</a></p>';
 
-	$headers = "From: Foxdrop <kristopher.werlinder@telia.com>\r\n";
-	$headers .= "Reply-To: <kristopher.werlinder@telia.com>\r\n";
+	$headers = "From: Foxdrop <first.last@gmail.com>\r\n";
+	$headers .= "Reply-To: <first.last@gmail.com>\r\n";
 	$headers .= "Content-type: text/html\r\n";
 
 	//
@@ -58,9 +58,9 @@ if (isset($_POST["reset-request-submit"])) {
 	$mail->Host = 'smtp.gmail.com';
 	$mail->Port = '465';
 	$mail->isHTML();
-	$mail->Username = 'kristopher.werlind@gmail.com';
-	$mail->Password = 'Werlinder99';
-	$mail->SetFrom($headers); //Original: $mail->SetFrom('no-reply@howcode.org');
+	$mail->Username = 'foxdrop.no.reply@gmail.com';	// foxdrop.no.reply@gmail.com
+	$mail->Password = 'KrisErik';	// KrisErik
+	$mail->SetFrom('no-reply@howcode.org'); //Original: $mail->SetFrom('no-reply@howcode.org');  // $headers
 	$mail->Subject = $subject;
 	$mail->Body = $message;
 	$mail->AddAddress($to);
