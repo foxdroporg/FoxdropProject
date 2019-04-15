@@ -13,6 +13,16 @@
 				<input type="password" name="pwd" placeholder="Password">
 				<button type="submit" name="submit">Sign up</button>
 			</form>
+
+			<?php
+			if (isset($_GET["newpwd"])) {
+				if ($_GET["newpwd"] == "passwordupdated") {
+					echo '<p class"signupsuccess">Your password has been reset!</p>';
+				}
+			}
+			?>
+			<a href="reset-password.php">Forget your password?</a>
+
 	</div>
 </section>
 

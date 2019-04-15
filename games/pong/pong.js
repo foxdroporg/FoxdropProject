@@ -39,9 +39,10 @@ class Ball extends Rect {
 	}
 }
 
+var padelHeight = 100;
 class Player extends Rect {
 	constructor() {
-		super(20, 100);
+		super(20, padelHeight);
 		this.score = 0;
 	}
 }
@@ -119,18 +120,19 @@ class Pong {
 			hasNotBounced = false;
 			const length = ball.velocity.length;
 			ball.velocity.x = -ball.velocity.x;
-			if (this.ball.position.y > this.players[i].position.y && ball.velocity.y < 100) {
-				ball.velocity.y += 400 * ((ball.position.y - this.players[i].position.y) / 50);
+			if (this.ball.position.y > this.players[i].position.y && ball.velocity.y < 400) {
+				ball.velocity.y += 400 * ((ball.position.y - this.players[i].position.y) / (padelHeight/2));
 			}
-			else if (this.ball.position.y < this.players[i].position.y && ball.velocity.y > -100) {
-				ball.velocity.y += 400 * ((ball.position.y - this.players[i].position.y) / 50);
+			else if (this.ball.position.y < this.players[i].position.y && ball.velocity.y > -400) {
+				ball.velocity.y += 400 * ((ball.position.y - this.players[i].position.y) / (padelHeight/2));
 			}
 			else {
-				ball.velocity.y += 300 * (Math.random() - .5);
+				ball.velocity.y = ball.velocity.y + 300*(Math.random() - .5);
+				//ball.velocity.y += 300 * (Math.random() - .5);
 			}
 
-			if (ball.velocity.length < (this._canvas.width*1.60)) {
-				ball.velocity.length = length * 1.07;
+			if (ball.velocity.length < (this._canvas.width*1.70)) {
+				ball.velocity.length = length * 1.08;
 			}
 		}
 		playerTurn++;
@@ -209,23 +211,18 @@ class Pong {
 		// Ball very close to AI puck
 		else if (this.ball.position.x > (this._canvas.width*0.583)) {
 
-			if (this.players[1].position.y < this.ball.position.y - this._canvas.width*0.07) {
-				Math.floor(Math.random() * 10) == 0 ? this.players[1].position.y += (this._canvas.height)*0.055 : this.players[1].position.y += (this._canvas.height)*0.025;
-				//this.players[1].position.y += (this._canvas.height)*0.04;
+			if (this.players[1].position.y < this.ball.position.y - (padelHeight*0.4)) {
+				this.players[1].position.y += (this._canvas.height)*0.03;
 			}
-			else if (this.players[1].position.y > this.ball.position.y + this._canvas.width*0.07) {
-				//this.players[1].position.y -= (this._canvas.height)*0.04;
-				Math.floor(Math.random() * 10) == 0 ? this.players[1].position.y -= (this._canvas.height)*0.055 : this.players[1].position.y -= (this._canvas.height)*0.025;
+			else if (this.players[1].position.y > this.ball.position.y + (padelHeight*0.4)) {
+				this.players[1].position.y -= (this._canvas.height)*0.03;
 			}
-
-			/*
-			else if (this.players[1].position.y < this.ball.position.y) {
-				this.players[1].position.y -= (this._canvas.height)*0.001;
+			else {
+				this.players[1].position.y += 0.5*(this.ball.position.y - this.players[1].position.y);
 			}
-			else if (this.players[1].position.y > this.ball.position.y) {
-				this.players[1].position.y += (this._canvas.height)*0.001;
-			}
-			*/
+			
+			
+			
 
 		}
 
