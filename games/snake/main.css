@@ -5,6 +5,26 @@
     font-family: Arial;
 }*/
 
+.color-class {
+	color: red;
+}
+
+.color-class2 {
+	color: lightgreen;
+}
+
+.color-class3 {
+	color: yellow;
+}
+
+.color-class4 {
+	color: orange;
+}
+
+.color-class5 {
+	color: red;
+}
+
 #game-area {
 	float: center;
 	width: 600px;
