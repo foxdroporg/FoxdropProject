@@ -212,10 +212,10 @@ class Pong {
 		else if (this.ball.position.x > (this._canvas.width*0.583)) {
 
 			if (this.players[1].position.y < this.ball.position.y - (padelHeight*0.4)) {
-				this.players[1].position.y += (this._canvas.height)*0.03;
+				this.players[1].position.y += (this._canvas.height)*0.025;
 			}
 			else if (this.players[1].position.y > this.ball.position.y + (padelHeight*0.4)) {
-				this.players[1].position.y -= (this._canvas.height)*0.03;
+				this.players[1].position.y -= (this._canvas.height)*0.025;
 			}
 			else {
 				this.players[1].position.y += 0.5*(this.ball.position.y - this.players[1].position.y);
@@ -229,6 +229,13 @@ class Pong {
 		this.players.forEach(player => this.collide(player, this.ball));
 
 		this.draw();
+
+		if (this.players[0].score >= 10) {
+			alert("YOU WON!");
+		} 
+		else if (this.players[1].score >= 10) {
+			alert("YOU LOST!");
+		}
 	}
 }
 

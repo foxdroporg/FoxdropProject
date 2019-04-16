@@ -19,13 +19,10 @@ $(document).ready(function(){
 	let maxGameArea = 20;
 	var hasPressed = false;
 	
-	var easyDifficulty = 1;
-	var mediumDifficulty = 25;
-	var hardDifficulty = 50;
-	var maxedDifficulty = 75;
-
-	var notAllowedSpawnsX = [];
-	var notAllowedSpawnsY = [];
+	var easyDifficulty = 10;
+	var mediumDifficulty = 20;
+	var hardDifficulty = 30;
+	var maxedDifficulty = 40;
 
 	var rectangleList = [];
 
@@ -49,7 +46,6 @@ $(document).ready(function(){
 		"posX": pointPosX,
 		"posY": pointPosY
 	};
-
 
 	let frameCount = 0;
 
@@ -83,11 +79,93 @@ $(document).ready(function(){
 	function playerEatsPoint() {
 		let setPointPos = $(".tr" + pointPos["posY"] + "td" + pointPos["posX"]);
 		
+		//Remove point that was eaten.
 		setPointPos.removeClass("draw-point");
 
-		rectangleList.push(new Rectangle(5, 9, 5, 6), new Rectangle(15, 16, 10, 14));
-		//rectangleList.push(new Rectangle(2, 15, 5, 6), new Rectangle(1, 19, 10, 19));
+		gameScore += 1;
 
+		// Add walls for each difficulty level.
+		if (gameScore == easyDifficulty) {	//10
+			playerPos = {
+				"tr": 18,
+				"td": 0
+			};
+			currentPlayerDir = playerDir["right"];
+			document.getElementById("game-status").innerHTML = "";
+			document.getElementById("game-status").innerHTML = "<span class='color-class2'>" + "Easy...";
+
+			rectangleList.push(new Rectangle(5, 9, 5, 6), new Rectangle(15, 16, 10, 14));			
+
+			for(let i = 0; i < rectangleList.length; i++) {
+				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
+					}		
+				}
+			}
+		}
+
+		if (gameScore == mediumDifficulty) {	//25
+			playerPos = {
+				"tr": 18,
+				"td": 0
+			};
+			currentPlayerDir = playerDir["right"];
+			document.getElementById("game-status").innerHTML = "";
+			document.getElementById("game-status").innerHTML = "<span class='color-class3'>" + "Not bad. <br>Difficulty: Medium";
+
+			rectangleList.push(new Rectangle(2, 8, 11, 11), new Rectangle(4, 11, 16, 16), new Rectangle(14, 16, 3, 5));
+
+			for(let i = 0; i < rectangleList.length; i++) {
+				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
+					}		
+				}
+			}
+		}
+
+		if (gameScore == hardDifficulty) {	//50
+			playerPos = {
+				"tr": 18,
+				"td": 0
+			};
+			currentPlayerDir = playerDir["right"];
+			document.getElementById("game-status").innerHTML = "";
+			document.getElementById("game-status").innerHTML = "<span class='color-class4'>" + "Impressive! <br>Difficulty: Hard";
+		
+			rectangleList.push(new Rectangle(5, 5, 0, 0), new Rectangle(5, 5, 3, 5), new Rectangle(0, 0, 6, 6), new Rectangle(3, 4, 6, 6));
+
+			for(let i = 0; i < rectangleList.length; i++) {
+				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
+					}		
+				}
+			}
+		}
+		
+		if (gameScore == maxedDifficulty) { //75
+			playerPos = {
+				"tr": 18,
+				"td": 0
+			};
+			currentPlayerDir = playerDir["right"];
+			document.getElementById("game-status").innerHTML = "";
+			document.getElementById("game-status").innerHTML = "<span class='color-class5'>" + "Legendary!! <br>Difficulty: Maxed Out";
+
+			rectangleList.push(new Rectangle(6, 6, 9, 10), new Rectangle(3, 3, 12, 13), new Rectangle(16, 16, 17, 17), new Rectangle(12, 12, 8, 8), new Rectangle(18, 18, 1, 1), new Rectangle(17, 17, 13, 13));
+
+			for(let i = 0; i < rectangleList.length; i++) {
+				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
+					}		
+				}
+			}
+		}
+
+		// Add a point on a free spot!
 		let newSpawn = false;
 		do {
 			newSpawn = false;
@@ -110,48 +188,9 @@ $(document).ready(function(){
 
 		setPointPos.addClass("draw-point");
 
-		gameScore += 1;
-
 		playerLength += 1;
 
 
-		if (gameScore == easyDifficulty) {	//10
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class2'>" + "Easy...";			
-
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
-					}		
-				}
-			}
-		}
-
-		if (gameScore == mediumDifficulty) {	//25
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class3'>" + "Not bad. <br>Difficulty: Medium";
-		}
-
-		if (gameScore == hardDifficulty) {	//50
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class4'>" + "Impressive! <br>Difficulty: Hard";
-		}
-		
-		if (gameScore == maxedDifficulty) { //75
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class5'>" + "Legendary!! <br>Difficulty: Maxed Out";
-		}
 	}
 
 	
@@ -290,6 +329,6 @@ $(document).ready(function(){
 			hasPressed = false;
 			drawPlayer();
 		}
-	}, 70);
+	}, 80);
 
 });

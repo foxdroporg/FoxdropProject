@@ -95,9 +95,11 @@ function minimax(newBoard, player) {
 
 	if (checkWin(newBoard, player)) {
 		return {score: -10};
-	} else if (checkWin(newBoard, aiPlayer)) {
+	} 
+	else if (checkWin(newBoard, aiPlayer)) {
 		return {score: 20};
-	} else if (availSpots.length === 0){
+	} 
+	else if (availSpots.length === 0){
 		return {score: 0};
 	}
 	var moves = [];
@@ -109,7 +111,8 @@ function minimax(newBoard, player) {
 		if (player == aiPlayer) {
 			var result = minimax(newBoard, huPlayer);
 			move.score = result.score;
-		} else {
+		} 
+		else {
 			var result = minimax(newBoard, aiPlayer);
 			move.score = result.score;
 		}
@@ -120,17 +123,18 @@ function minimax(newBoard, player) {
 	}
 
 	var bestMove;
-	if(player === aiPlayer) {
+	if (player === aiPlayer) {
 		var bestScore = -10000;
-		for(var i = 0; i < moves.length; i++) {
+		for (var i = 0; i < moves.length; i++) {
 			if (moves[i].score > bestScore) {
 				bestScore = moves[i].score;
 				bestMove = i;
 			}
 		}
-	} else {
+	} 
+	else {
 		var bestScore = 10000;
-		for(var i = 0; i < moves.length; i++) {
+		for (var i = 0; i < moves.length; i++) {
 			if (moves[i].score < bestScore) {
 				bestScore = moves[i].score;
 				bestMove = i;
