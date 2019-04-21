@@ -19,7 +19,7 @@
 			<div class="main-wrapper">
 				<ul>
 					<li>
-						<a href="index.php">
+						<a href="foxdropLogo.php">
 						<img class="img-test" src="images/firefoxLogo.png" alt="HTML5 Icon" style="padding: 5px; float:left; width:50px; height:50px;">
 						</a>
 					</li>

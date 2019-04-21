@@ -256,7 +256,7 @@ $(document).ready(function(){
 
 	function deathHandler() {
 		var i = 0; 
-		var txt = "GAME OVER! Refresh the website to play again.";
+		var txt = "GAME OVER! Refresh page to play again.";
 		if (hasBeenPrinted == false) {
 			document.getElementById("game-status").innerHTML = "";
 			setInterval(typeWriter, 100);
