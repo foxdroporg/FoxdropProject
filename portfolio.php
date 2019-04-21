@@ -27,6 +27,11 @@
 		    <img src="images/snake.jpg" alt="3rdGame" style="width:75%; height:75%; border: #000000 6px outset">
 			</a>
 		</div>
+		<div class="column">
+			<a href="games/maze/index.html">
+		    <img src="images/maze.jpg" alt="4thGame" style="width:70%; height:50%; border: #000000 6px outset">
+			</a>
+		</div>
 	</div>
 
 

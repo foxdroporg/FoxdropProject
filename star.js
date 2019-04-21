@@ -3,7 +3,7 @@ function StarSpawn() {
   this.x = random(-width, width);
   this.y = random(-height, height);
   this.z = random(width);
-  this.tempz = this.z;
+  this.previousZ = this.z;
 
   this.update = function() {
     this.z = this.z - starSpeed;
@@ -11,7 +11,13 @@ function StarSpawn() {
       this.z = width;
       this.x = random(-width, width);
       this.y = random(-height, height);
-      this.tempz = this.z;
+      this.previousZ = this.z;
+    }
+    else if (this.z > 4500) {
+      this.z = windowWidth;
+      this.x = random(-windowWidth, windowWidth);
+      this.y = random(-windowHeight, windowHeight);
+      this.previousZ = this.z;
     }
   }
 
@@ -19,19 +25,25 @@ function StarSpawn() {
     fill(255);
     noStroke();
 
-    var tempx = map(this.x / this.z, 0, 1, 0, width);
-    var tempy = map(this.y / this.z, 0, 1, 0, height);
+    var sx = map(this.x / this.z, 0, 1, 0, width);
+    var sy = map(this.y / this.z, 0, 1, 0, height);
 
-    var r = map(this.z, 0, width, 16, 0);
-    ellipse(tempx, tempy, r, r);
+    if (this.z > 1 && this.z < 2500) {
+      var r = map(this.z, 0, width, 20, 0);
+      ellipse(sx, sy, r, r);
+    }
+    if (this.z > 2500 && this.z < 4500) {
+      var r = map(this.z, 0, width, 20, 0);
+      ellipse(0, 0, 0, 0);
+    }
 
-    var px = map(this.x / this.tempz, 0, 1, 0, width);
-    var py = map(this.y / this.tempz, 0, 1, 0, height);
+    var px = map(this.x / this.previousZ, 0, 1, 0, width);
+    var py = map(this.y / this.previousZ, 0, 1, 0, height);
 
-    this.tempz = this.z;
+    this.previousZ = this.z;
 
     stroke(255);
-    line(px, py, tempx, tempy);
+    line(px, py, sx, sy);
 
   }
   
