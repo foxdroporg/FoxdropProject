@@ -170,7 +170,7 @@ $(document).ready(function(){
 		do {
 			newSpawn = false;
 			pointPosX = Math.floor(Math.random() * 19) + 0;
-			pointPosY = Math.floor(Math.random() * 19) + 0;
+			pointPosY = Math.floor(Math.random() * 17) + 0;
 			for(let i = 0; i < rectangleList.length; i++) {
 				if(rectangleList[i].collisionDetection(pointPosX, pointPosY)) {
 					newSpawn = true;
