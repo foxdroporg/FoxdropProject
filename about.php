@@ -4,6 +4,7 @@
 
 <section class="main-container">
 	<div class="main-wrapper">
+
 			<main>
 				<!DOCTYPE html>
 					<html>
@@ -14,19 +15,23 @@
 						</head>
 
 						<body>
-							<div class="grid">
-								<div class="title">About</div>
+							<h2 style="color:#FFFFFF">About</h2>
+								<br>
+								<br>
 
-								<div class="header"> Foxdrop is a platform for Computer Science students at KTH and employers to get in touch with each other. 
+								<div class="header" style="color:white;"> Foxdrop is a platform for Computer Science students at KTH and employers to get in touch with each other. 
 
 								Home will show you coding portfolios and statistics. At portfolio you can find mini-games for having fun with family and friends. Contact is for getting in touch with us.
 								</div>
 								
-								<div class="sidebar"> <img src="images/krisEmoji.png" alt="HTML5 Icon" style="padding: 5px 30%; float:left; width:100px; height:100px;"> 
-								  <img src="images/erikEmoji.png" alt="HTML5 Icon" style="padding: 5px 30%; float:right; width:100px; height:100px;"> 
-								</div>
 								
-								<div class="content">
+								<div class="content" style="color:white;">
+								<br>
+								<br>
+								<img src="images/krisEmoji.png" alt="HTML5 Icon" style="margin: 35px, 70px; float:left; width:100px; height:100px;"> 
+									<br>
+									<br>
+
 									<p>
 									Kristopher W: <br>
 									is super creative.
@@ -34,21 +39,24 @@
 									<br>
 									<br>
 									<br>
+									<img src="images/erikEmoji.png" alt="HTML5 Icon" style="margin: 35px, 70px; float:left; width:100px; height:100px;"> 
+									<br>
 									<br>
 									<br>
 									Erik H: <br>
 									is a great friend.  
 									</p>
+									<br>
+									<br>
+									<br>
 
 								</div>
-								<div class="footer">About You: </div>
 							</div>
 							<div class="main-wrapper">
-								<video>
-									<source src="videos/vid.mp4" type="videos/mp4">
+								<video width="600" controls>
+									<source src="videos/vid.mp4" type="video/mp4">
 										Your browser does not support mp3 videos!
 								</video>
-							</div>
 						</body>
 					</html>
 			</main>

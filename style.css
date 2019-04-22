@@ -29,7 +29,7 @@ body {
     /*Added for background picture */
     background: url('images/birdSil.jpg') no-repeat;
     background-size: cover;
-    font-family: Arial;
+    font-family: Serif;
 }
 
 article,aside,details,figcaption,figure,
@@ -108,9 +108,32 @@ input, select {
 
 /* My code */
 
+.header-wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    background-color: #fff;
+}
+
 .main-wrapper {
     margin: 0 auto;
     width: 1000px;
+    background-color: #000;
+    border: 30px solid transparent;
+    padding: 15px;
+    border-image: url(images/border.png) 50 round;
+}
+
+.main-wrapper h2 {
+    font-family: Serif;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+}
+
+#borderimg { 
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image: url(images/border.png) 30 round;
 }
 
 .main-wrapperportfolio {
@@ -124,7 +147,7 @@ a {
 }
 
 body {
-    background-color: #ccc;
+    background-color: #000;
 }
 
 header nav {
@@ -144,7 +167,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    font-family: arial;
+    font-family: Serif;
     font-size: 16px;
     color: #111;
     line-height: 63px;
@@ -169,7 +192,7 @@ header .nav-login form input {
     margin-right: 10px;
     border: none;
     background-color: #ccc;
-    font-family: arial;
+    font-family: Serif;
     font-size: 14px;
     color: #111;
     line-height: 30px;
@@ -183,7 +206,7 @@ header .nav-login form button {
     margin-right: 10px;
     border: none;
     background-color: #f3f3f3;
-    font-family: arial;
+    font-family: Serif;
     font-size: 14px;
     color: #111;
     cursor: pointer;
@@ -200,7 +223,7 @@ header .nav-login a {
     border: none;
     background-color: #fff;
     float: left;
-    font-family: arial;
+    font-family: Serif;
     font-size: 16px;
     color: #111;
     line-height: 63px;
@@ -213,7 +236,7 @@ header .nav-login a {
 
 
 .main-container h2 {
-    font-family: arial;
+    font-family: Serif;
     font-size: 40px;
     color: #111;
     line-height: 50px;
@@ -247,6 +270,7 @@ header .nav-login a {
 .button-test:hover {
     background-color: #e2e2e2;
     background-repeat: no-repeat;
+    font-weight: bold;
 }
 
 /*portfolio.php*/
@@ -289,7 +313,7 @@ header .nav-login a {
     margin-bottom: 4px;
     border: none;
     background-color: #fff;
-    font-family: arial;
+    font-family: Serif;
     font-size: 16px;
     color: #111;
     line-height: 40px;
@@ -303,7 +327,7 @@ header .nav-login a {
     height: 40px;
     border: none;
     background-color: #222;
-    font-family: arial;
+    font-family: Serif;
     font-size: 16px;
     color: #fff;
     cursor: pointer;
@@ -324,7 +348,7 @@ header .nav-login a {
 .fatnicetext {
     font-size: 32px;
     font-weight: bold;
-    font-family: Arial;
+    font-family: Serif;
 }
 
 /* About */
@@ -361,7 +385,7 @@ header .nav-login a {
     grid-area: title;
     font-size: 32px;
     font-weight: bold;
-    font-family: Arial;
+    font-family: Serif;
     justify-self: center;
 }
 
@@ -369,7 +393,7 @@ header .nav-login a {
     grid-area: header;
     font-size: 20px;
     font-weight: bold;
-    font-family: Arial;
+    font-family: Serif;
     display:block;
     justify-self: center;
 }
@@ -383,7 +407,7 @@ header .nav-login a {
     grid-area: content;
     font-size: 20px;
     font-weight: bold;
-    font-family: Arial;
+    font-family: Serif;
     display:block;
     justify-self: center;
 }
@@ -392,7 +416,7 @@ header .nav-login a {
     grid-area: footer;
     font-size: 20px;
     font-weight: bold;
-    font-family: Arial;
+    font-family: Serif;
     display:block;
     justify-self: center;
 }

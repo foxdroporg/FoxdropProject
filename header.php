@@ -16,7 +16,7 @@
 
 	<header>
 		<nav>
-			<div class="main-wrapper">
+			<div class="header-wrapper">
 				<ul>
 					<li>
 						<a href="foxdropLogo.php">
