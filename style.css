@@ -137,6 +137,7 @@ input, select {
 }
 
 .main-wrapperportfolio {
+    padding: 15px;
     margin: 0 auto;
     width: 1000px;
 }
