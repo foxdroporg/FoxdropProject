@@ -1,3 +1,12 @@
+/* Global Variables: 
+  columns, rows    //divides grid into parts
+  scl              //name is not to be changed - is a p5.js keyword for scale
+  w                //name is not to be changed - is a p5.js keyword for width 
+  h                //name is not to be changed - is a p5.js keyword for height 
+  birdPerspecive   //affects the grid's movementspeed 
+  mountainTerrain  //holds information about positioning of verticies on polygons.
+  canvas           //canvas is the whole window for the animation.
+*/
 var columns, rows;
 var scl = 20;
 var w = 1000;
@@ -7,20 +16,23 @@ var birdPerspective = 0;
 
 var mountainTerrain = [];
 
-var cnv;
+var canvas;
 
+/* Position of canvas on the webpage */
 function centerCanvas() {
   var cnvPosX = (windowWidth - width) / 2;
   var cnvPosY = (windowHeight - height) / 4;
-  cnv.position(cnvPosX, cnvPosY);
+  canvas.position(cnvPosX, cnvPosY);
 }
 
+/* Makes sure position stays the same regardless of window resizing */
 function windowResized() {
   centerCanvas();
 }
 
+/* Creates canvas and two dimensional array */
 function setup() {
-  cnv = createCanvas(600, 400, WEBGL); // For fullscreen make (windowWidth, windowHeight-65)
+  canvas = createCanvas(600, 400, WEBGL);           // For fullscreen make (windowWidth, windowHeight-65)
  centerCanvas();
   columns = w / scl;
   rows = h/ scl;
@@ -28,11 +40,12 @@ function setup() {
   for (var x = 0; x < columns; x++) {
     mountainTerrain[x] = [];
     for (var y = 0; y < rows; y++) {
-      mountainTerrain[x][y] = 0; //specify a default value for now
+      mountainTerrain[x][y] = 0;                    //specify a default value for now
     }
   }
 }
 
+/* Draws the animation of mountainTerrain. "noise" is built in p5.js and smooths out neighboring verticies. "beginShape" creates the polygons*/
 function draw() {
   birdPerspective -= 0.05;
   var yoffset = birdPerspective;
@@ -44,7 +57,6 @@ function draw() {
     }
     yoffset += 0.2;
   }
-
 
   background(color(47, 9, 50));
   translate(0, 50);

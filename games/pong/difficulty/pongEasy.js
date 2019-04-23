@@ -1,3 +1,4 @@
+/* Vector class determines the diriction of the ball*/
 class Vec {
 	constructor(x = 0, y = 0) {
 		this.x = x;
@@ -13,6 +14,7 @@ class Vec {
 	}
 }
 
+/* Rect is the class used to create ball and padels */
 class Rect {
 	constructor(width, height) {
 		this.position = new Vec;
@@ -55,6 +57,7 @@ var playerTurn = 0;
 var bounceTimer = true;
 let timer2Id = setInterval(() => bounceTimer=true, 300);
 
+/* Pong creates canvas, sets the padels at their positions and initialises game score visualisation */
 class Pong {
 	constructor(canvas) {
 		this._canvas = canvas;
@@ -114,6 +117,7 @@ class Pong {
 		this.reset();
 	}
 
+	/* Collide is responsible for ball bounce on roof, floor and padels */
 	collide(player, ball) {
 		var i = playerTurn % 2;
 		if (player.left < ball.right && player.right > ball.left && player.top < ball.bottom && player.bottom > ball.top && hasNotBounced) {

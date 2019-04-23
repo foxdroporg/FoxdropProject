@@ -1,4 +1,7 @@
-var cols, rows;
+/* GLOBAL VARIABLES: 
+w, is a built in name for width and is not to be changed. Since it is p5.js API.
+*/
+var columns, rows;
 var w = 75;
 var grid = [];
 
@@ -6,14 +9,15 @@ var current;
 
 var stack = [];
 
+/* Creates canvas and grid of cells */
 function setup() {
   createCanvas(windowWidth, windowHeight-65);
-  cols = floor(width/w);
+  columns = floor(width/w);
   rows = floor(height/w);
   
 
   for (var   j = 0; j < rows; j++) {
-    for (var i = 0; i < cols; i++) {
+    for (var i = 0; i < columns; i++) {
       var cell = new Cell(i, j);
       grid.push(cell);
     }
@@ -24,6 +28,7 @@ function setup() {
 
 }
 
+/* Draws the random action that the "player-cell" is taking in frameRate(...) speed */
 function draw() {
   frameRate(30);
   background(51);
@@ -53,13 +58,13 @@ function draw() {
 }
 
 function index(i, j) {
-  if (i < 0 || j < 0 || i > cols-1 || j > rows-1) {
+  if (i < 0 || j < 0 || i > columns-1 || j > rows-1) {
     return -1;
   }
-  return i + j * cols;
+  return i + j * columns;
 }
 
-
+/* Remove walls between last cell visited and current cell visited, when "player-cell" makes a move */
 function removeWalls(a, b) {
   var x = a.i - b.i;
   if (x === 1) {

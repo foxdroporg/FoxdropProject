@@ -1,3 +1,4 @@
+/* StarSpawn determines where on the canvas a star should spawn */
 function StarSpawn() {
 
   this.x = random(-width, width);
@@ -21,6 +22,7 @@ function StarSpawn() {
     }
   }
 
+/* Draws the ellipses and speed dashes */
   this.show = function() {
     fill(255);
     noStroke();

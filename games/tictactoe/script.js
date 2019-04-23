@@ -1,3 +1,9 @@
+/* GLOBAL VARIABLES: 
+origBoard, the playfield
+huPlayer, user always plays as X
+aiPlayer, AI-opponent always plays as O
+winCombos, keeps track of the winner.
+*/
 var origBoard;
 const huPlayer = 'X';
 const aiPlayer = 'O';
@@ -15,6 +21,7 @@ const winCombos = [
 const cells = document.querySelectorAll('.cell');
 startGame();
 
+/* Starts game by pressing left-click, takes away background color from endgame screen */
 function startGame() {
 	document.querySelector(".endgame").style.display = "none";
 	origBoard = Array.from(Array(9).keys());
@@ -25,6 +32,7 @@ function startGame() {
 	}
 }
 
+/* Turn is done by left clicking on the mouse. */
 function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, huPlayer)
@@ -90,6 +98,7 @@ function checkTie() {
 	return false;
 }
 
+/* Algorithm to create a smart AI opponent that tries to do the optimal move */
 function minimax(newBoard, player) {
 	var availSpots = emptySquares(newBoard);
 

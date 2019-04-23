@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+/* class Rectangle is used to create walls that spawn onto the snake-map. CollisionDetection returns true if collision between wall and snake is detected*/
 	class Rectangle {
 		constructor(x1, x2, y1, y2) {
 			this.x1 = x1;
@@ -19,13 +20,16 @@ $(document).ready(function(){
 	let maxGameArea = 20;
 	var hasPressed = false;
 	
+	/* Controls the amount of points needed before walls will spawn onto the map */
 	var easyDifficulty = 10;
 	var mediumDifficulty = 20;
 	var hardDifficulty = 30;
 	var maxedDifficulty = 40;
 
+	/* Array stores all the rectangles that have been spawned */
 	var rectangleList = [];
 
+	/* Sets the player to length 4, position at 18rows down and 0columns to the right, sets the direction of the snake to the right*/
 	let playerLength = 4;
 	let playerPos = {
 		"tr": 18,
@@ -39,7 +43,7 @@ $(document).ready(function(){
 	};
 	let currentPlayerDir = playerDir["right"];
 
-	// First point 
+	/* First point is spawned randomly accross the whole playfield */ 
 	let pointPosX = Math.floor(Math.random() * 19) + 0;
 	let pointPosY = Math.floor(Math.random() * 19) + 0;
 	let pointPos = {
@@ -76,6 +80,7 @@ $(document).ready(function(){
 
 	drawPoint();
 
+	/* Removes eaten point and respawns a new point on the playfield with regards to available positions (eg. walls are not available) */ 
 	function playerEatsPoint() {
 		let setPointPos = $(".tr" + pointPos["posY"] + "td" + pointPos["posX"]);
 		
@@ -84,86 +89,7 @@ $(document).ready(function(){
 
 		gameScore += 1;
 
-		// Add walls for each difficulty level.
-		if (gameScore == easyDifficulty) {	//10
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class2'>" + "Easy...";
-
-			rectangleList.push(new Rectangle(5, 9, 5, 6), new Rectangle(15, 16, 10, 14));			
-
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
-					}		
-				}
-			}
-		}
-
-		if (gameScore == mediumDifficulty) {	
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class3'>" + "Not bad. <br>Difficulty: Medium";
-
-			rectangleList.push(new Rectangle(2, 8, 11, 11), new Rectangle(4, 11, 16, 16), new Rectangle(14, 16, 3, 5));
-
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
-					}		
-				}
-			}
-		}
-
-		if (gameScore == hardDifficulty) {	
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class4'>" + "Impressive! <br>Difficulty: Hard";
-		
-			rectangleList.push(new Rectangle(5, 5, 0, 0), new Rectangle(5, 5, 3, 5), new Rectangle(0, 0, 6, 6), new Rectangle(3, 4, 6, 6));
-
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
-					}		
-				}
-			}
-		}
-		
-		if (gameScore == maxedDifficulty) { 
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class5'>" + "Legendary!! <br>Difficulty: Maxed Out";
-
-			rectangleList.push(new Rectangle(6, 6, 9, 10), new Rectangle(3, 3, 12, 13), new Rectangle(16, 16, 17, 17), new Rectangle(12, 12, 8, 8), new Rectangle(18, 18, 1, 1), new Rectangle(17, 17, 13, 13));
-
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
-					}		
-				}
-			}
-		}
+		checkForWallSpawn();
 
 		// Add a point on a free spot!
 		let newSpawn = false;
@@ -191,7 +117,88 @@ $(document).ready(function(){
 		playerLength += 1;
 	}
 
-	
+	/* Spawns walls onto playfield when certain gameScore is reached. Respawns worm to bottom left corner */ 
+	function checkForWallSpawn () {
+	// Add walls for each difficulty level.
+		if (gameScore == easyDifficulty) {	//10
+			playerPos = {
+				"tr": 18,
+				"td": 0
+			};
+			currentPlayerDir = playerDir["right"];
+			document.getElementById("game-status").innerHTML = "";
+			document.getElementById("game-status").innerHTML = "<span class='color-class2'>" + "Easy...";
+
+			rectangleList.push(new Rectangle(5, 9, 5, 6), new Rectangle(15, 16, 10, 14));			
+
+			for(let i = 0; i < rectangleList.length; i++) {
+				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
+					}		
+				}
+			}
+		}
+		if (gameScore == mediumDifficulty) {	
+			playerPos = {
+				"tr": 18,
+				"td": 0
+			};
+			currentPlayerDir = playerDir["right"];
+			document.getElementById("game-status").innerHTML = "";
+			document.getElementById("game-status").innerHTML = "<span class='color-class3'>" + "Not bad. <br>Difficulty: Medium";
+
+			rectangleList.push(new Rectangle(2, 8, 11, 11), new Rectangle(4, 11, 16, 16), new Rectangle(14, 16, 3, 5));
+
+			for(let i = 0; i < rectangleList.length; i++) {
+				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
+					}		
+				}
+			}
+		}
+		if (gameScore == hardDifficulty) {	
+			playerPos = {
+				"tr": 18,
+				"td": 0
+			};
+			currentPlayerDir = playerDir["right"];
+			document.getElementById("game-status").innerHTML = "";
+			document.getElementById("game-status").innerHTML = "<span class='color-class4'>" + "Impressive! <br>Difficulty: Hard";
+		
+			rectangleList.push(new Rectangle(5, 5, 0, 0), new Rectangle(5, 5, 3, 5), new Rectangle(0, 0, 6, 6), new Rectangle(3, 4, 6, 6));
+
+			for(let i = 0; i < rectangleList.length; i++) {
+				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
+					}		
+				}
+			}
+		}
+		if (gameScore == maxedDifficulty) { 
+			playerPos = {
+				"tr": 18,
+				"td": 0
+			};
+			currentPlayerDir = playerDir["right"];
+			document.getElementById("game-status").innerHTML = "";
+			document.getElementById("game-status").innerHTML = "<span class='color-class5'>" + "Legendary!! <br>Difficulty: Maxed Out";
+
+			rectangleList.push(new Rectangle(6, 6, 9, 10), new Rectangle(3, 3, 12, 13), new Rectangle(16, 16, 17, 17), new Rectangle(12, 12, 8, 8), new Rectangle(18, 18, 1, 1), new Rectangle(17, 17, 13, 13));
+
+			for(let i = 0; i < rectangleList.length; i++) {
+				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";		
+					}		
+				}
+			}
+		}
+	}
+
+	/* Listens in real time to keypads being pressed or not. */
 	document.addEventListener("keydown", function(event) {
 		//console.log(event); 
 		if (event.which == 38 && currentPlayerDir != playerDir["down"] && !hasPressed) {
@@ -209,7 +216,7 @@ $(document).ready(function(){
 		}
 	});
 	
-
+	/* Draws player with regards to the snakes current direction */
 	function drawPlayer() {
 		frameCount += 1;
 		let getPlayerPos;
@@ -261,6 +268,7 @@ $(document).ready(function(){
 			typeWriter();
 		}
 
+		/* Writes endgame message successively */
 		function typeWriter() {
 			if (i < txt.length) {
 				document.getElementById("game-status").innerHTML += "<span class='color-class'>" + txt.charAt(i);

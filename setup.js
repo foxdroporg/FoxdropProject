@@ -1,4 +1,4 @@
-
+/* Setup manages the creation of canvas and the animation adaptation to mouse position */
 var starArray = [];
 var starSpeed;
 
