@@ -5,6 +5,7 @@ aiPlayer, AI-opponent always plays as O
 winCombos, keeps track of the winner.
 */
 var origBoard;
+var iter = 0;
 const huPlayer = 'X';
 const aiPlayer = 'O';
 const winCombos = [
@@ -18,13 +19,16 @@ const winCombos = [
 	[6,4,2]
 ]
 
+var gameWon = false;
+
 const cells = document.querySelectorAll('.cell');
 startGame();
 
 /* Starts game by pressing left-click, takes away background color from endgame screen */
 function startGame() {
-	document.querySelector(".endgame").style.display = "none";
+	document.querySelector('.endgame').style.display = "none";
 	origBoard = Array.from(Array(9).keys());
+	gameWon = false;
 	for (var i = 0; i < cells.length; i++) {
 		cells[i].innerText = '';
 		cells[i].style.removeProperty('background-color');
@@ -36,8 +40,11 @@ function startGame() {
 function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, huPlayer)
-		if (!checkTie()) {
-			turn(bestSpot(), aiPlayer);
+
+		if (!gameWon) {	
+			if (!checkTie()) {
+				turn(bestSpot(), aiPlayer);
+			}
 		} 
 	}
 }
@@ -52,10 +59,13 @@ function turn(squareId, player) {
 function checkWin(board, player) {
 	let plays = board.reduce((a, e, i) =>
 		(e === player) ? a.concat(i) : a, []);
+
 	let gameWon = null;
+	
 	for(let [index, win] of winCombos.entries()) {
 		if(win.every(elem => plays.indexOf(elem) > -1)) {
-			gameWon = {index: index, player: player};
+			// Player has won
+			gameWon = {index, player, player: player};
 			break;
 		}
 	}
@@ -74,6 +84,8 @@ function gameOver(gameWon) {
 }
 
 function declareWinner(who) {
+	gameWon = true;
+	console.log(who);
 	document.querySelector(".endgame").style.display = "block";
 	document.querySelector(".endgame .text").innerText = who;
 }
@@ -100,9 +112,11 @@ function checkTie() {
 
 /* Algorithm to create a smart AI opponent that tries to do the optimal move */
 function minimax(newBoard, player) {
+	iter++;
 	var availSpots = emptySquares(newBoard);
 
-	if (checkWin(newBoard, player)) {
+	// Bugg found here! Previously it said player instead of huPlayer. Made AI beatable.
+	if (checkWin(newBoard, huPlayer)) {	
 		return {score: -10};
 	} 
 	else if (checkWin(newBoard, aiPlayer)) {
@@ -111,6 +125,7 @@ function minimax(newBoard, player) {
 	else if (availSpots.length === 0){
 		return {score: 0};
 	}
+
 	var moves = [];
 	for (var i = 0; i < availSpots.length; i++) {
 		var move = {};

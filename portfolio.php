@@ -19,7 +19,7 @@
 			</a>
 		</div>
 		<div class="column">
-			<a href="games/tictactoe/tictactoe.html" style="border:5px solid #ccc;">
+			<a href="games/tictactoe/difficulty.html" style="border:5px solid #ccc;">
 		    <img src="images/TicTacToe.png" alt="2ndGame" style="width:80%; height:85%; border: #000000 6px outset">
 			</a>
 		</div>
