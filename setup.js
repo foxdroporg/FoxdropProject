@@ -18,3 +18,5 @@ function draw() {
     starArray[i].show();
   }
 }
+
+// Spread out workload some how.
