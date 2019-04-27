@@ -68,7 +68,7 @@ function draw() {
   var vol = amp.getLevel();
 
   fill(255,0,0);
-  ellipse(width/2, height/2, 1500*vol, 1500*vol);
+  ellipse(width/2, height/2, 1250*vol, 1250*vol);
 
   song.pan(sliderPan.value());
   song.rate(sliderRate.value());

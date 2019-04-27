@@ -1,85 +1,163 @@
-/* GLOBAL VARIABLES: 
-w, is a built in name for width and is not to be changed. Since it is p5.js API.
-*/
 var columns, rows;
-var w = 75;
+var scl = 40;
 var grid = [];
-
-var current;
-
 var stack = [];
 
-/* Creates canvas and grid of cells */
-function setup() {
-  createCanvas(windowWidth, windowHeight-65);
-  columns = floor(width/w);
-  rows = floor(height/w);
-  
+var current;
+var player;
+var finish;
 
-  for (var   j = 0; j < rows; j++) {
+var highlightShow = true;
+
+var counter = 0;
+var timeleft = 30;
+var nrOfLevels = 0;
+var t;
+
+var ding;
+function preload() {
+  ding = loadSound("ding.mp3");
+}
+
+function setup() {
+  createCanvas(600, 600); //createCanvas(windowWidth/3, windowHeight/1.3-65);
+  columns = floor(width/scl);
+  rows = floor(height/scl);
+  
+  for (var j = 0; j < rows; j++) {
     for (var i = 0; i < columns; i++) {
-      var cell = new Cell(i, j);
+      var cell = new Cell(i,j);
       grid.push(cell);
     }
   }
-
   current = grid[0];
+  player = grid[0];  
+  finish = grid[index(1,0)];
 
+  var timer = select('#timer');
+  var interval = setInterval(timeIt, 1000);
+  
+  function timeIt() {
+    counter++;
+    t = timeleft - counter;
+    timer.html(timeleft - counter).size(100, 100);;
 
-}
-
-/* Draws the random action that the "player-cell" is taking in frameRate(...) speed */
-function draw() {
-  frameRate(30);
-  background(51);
-  for (var i = 0; i < grid.length; i++) {
-    grid[i].show();
-  }
-
-  current.visited = true;
-  current.highlight();
-  // STEP 1
-  var next = current.checkNeighbors();
-  if (next) {
-    next.visited = true;
-
-    // STEP 2
-    stack.push(current);
-
-    // STEP 3
-    removeWalls(current, next);
-
-    // STEP 4
-    current = next;
-  } else if (stack.length > 0) {
-    current = stack.pop();
+    if (timeleft - counter <= 0) {
+      ding.play();
+      clearInterval(interval);
+      alert('TIMEOUT! Game over.');
+      timeleft = 0;
+      counter = 0;
+      noLoop();
+    }
   }
 
 }
 
 function index(i, j) {
-  if (i < 0 || j < 0 || i > columns-1 || j > rows-1) {
+  if (i < 0 || j < 0 || i > columns-1 || j > rows -1) {
     return -1;
   }
   return i + j * columns;
 }
 
-/* Remove walls between last cell visited and current cell visited, when "player-cell" makes a move */
-function removeWalls(a, b) {
-  var x = a.i - b.i;
-  if (x === 1) {
-    a.walls[3] = false;
-    b.walls[1] = false;
-  } else if (x === -1) {
-    a.walls[1] = false;
-    b.walls[3] = false;
+function draw() {
+  frameRate(60);
+  for (var i = 0; i < grid.length; i++) {
+    grid[i].show();
   }
-  var y = a.j - b.j;
-  if (y === 1) {
-    a.walls[0] = false;
-    b.walls[2] = false;
-  } else if (y === -1) {
-    a.walls[2] = false;
-    b.walls[0] = false;
+  
+  player.visible();
+  finish.visible();
+  
+  current.visited = true;
+  current.highlight();
+  var next = current.checkNeighbors();
+  
+  if (next) {
+    next.visited = true;
+    removeLine(current,next);
+    current = next;
+    stack.push(current);
   }
+}
+
+back = function() {
+  if (!allChecked()) {
+    stack.pop();
+    current = stack[stack.length-1];
+  }else{
+    highlightShow = false;
+  }
+}
+
+allChecked = function() {
+  var finished = true;
+  for (var i = 0; i < grid.length-1; i++) {
+    if (!grid[i].visited) {
+      finished = false;
+    }
+  }
+  if (finished) {
+    return true;
+  }
+  else {
+
+    counter = 0;
+    return false;
+  }
+}
+
+removeLine = function(a, b) {
+    var x = a.i - b.i;
+    var y = a.j - b.j;
+    if (y === 1) {a.walls[0] = false; b.walls[2] = false;} // top
+    else if (x === -1 ) {a.walls[1] = false; b.walls[3] = false;} // right
+    else if (y === -1 ) {a.walls[2] = false; b.walls[0] = false;} // bottom
+    else if (x === 1) {a.walls[3] = false; b.walls[1] = false;}     // left
+}
+
+document.addEventListener("keydown", function(event) {
+    //console.log(event); 
+    if (event.which == 38 && !player.walls[0] || event.which == 87 && !player.walls[0]) {
+      player = grid[index(player.i, player.j-1)];
+    } 
+    else if (event.which == 39 && !player.walls[1] || event.which == 68 && !player.walls[1]) {
+      player = grid[index(player.i+1, player.j)];
+    } 
+    else if (event.which == 40 && !player.walls[2] || event.which == 83 && !player.walls[2]) {
+      player = grid[index(player.i, player.j+1)];
+    } 
+    else if (event.which == 37 && !player.walls[3] || event.which == 65 && !player.walls[3]) {
+      player = grid[index(player.i-1, player.j)];
+    }
+
+    if (player === finish) {
+      reset();
+    }
+  });
+
+reset = function() {
+  counter = 0;
+  grid = []
+  fill(31, 150, 33, 100);
+  
+  for (var j = 0; j < rows; j++) {
+    for (var i = 0; i < columns; i++) {
+      var cell = new Cell(i,j);
+      grid.push(cell);
+    }
+  }
+                    
+  current = grid[0];
+  player = grid[0];
+
+  var randomSpawnX = floor(random(columns/2, columns));
+  var randomSpawnY = floor(random(rows/2, rows));  
+  console.log("New point spawned at:", randomSpawnX, ",",randomSpawnY);
+
+  finish = grid[index(randomSpawnX, randomSpawnY)];
+
+  
+
 }
