@@ -10,9 +10,8 @@ var finish;
 var highlightShow = true;
 
 var counter = 0;
-var timeleft = 30;
+var timeleft = 60;
 var nrOfLevels = 0;
-var t;
 
 var ding;
 function preload() {
@@ -35,12 +34,13 @@ function setup() {
   finish = grid[index(1,0)];
 
   var timer = select('#timer');
+  var points = select('#points');
   var interval = setInterval(timeIt, 1000);
   
   function timeIt() {
     counter++;
-    t = timeleft - counter;
-    timer.html(timeleft - counter).size(100, 100);;
+    timer.html(timeleft - counter).size(100, 100);
+    points.html(nrOfLevels).size(100,100);
 
     if (timeleft - counter <= 0) {
       ding.play();
@@ -102,7 +102,6 @@ allChecked = function() {
     return true;
   }
   else {
-
     counter = 0;
     return false;
   }
@@ -139,6 +138,7 @@ document.addEventListener("keydown", function(event) {
 
 reset = function() {
   counter = 0;
+  nrOfLevels++;
   grid = []
   fill(31, 150, 33, 100);
   
