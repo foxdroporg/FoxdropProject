@@ -54,8 +54,8 @@
 				</a>
 			</div>
 			<div class="column">
-				<a href="" style="border:5px solid #ccc;">
-			    <img src="images/transformingCube.png" alt="3rdGame" style="width:65%; height:65%; ">
+				<a href="transformingCube.php" style="border:5px solid #ccc;">
+			    <img src="images/transformingCube.png" alt="3rdGame" style="width:90%; height:90%; ">
 				</a>
 			</div>
 			<div class="column">

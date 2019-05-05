@@ -4,13 +4,28 @@
 
 
 
-   <head>
-    <meta charset="UTF-8">
-     <title>...</title>
+<section class="main-container">
+  <div class="main-wrapper">
 
-    
-    
-  </head>
+    <head>
+      <meta charset="utf-8">
+      <meta name=viewport content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+      <h2 style="color:#FFFFFF">Contact</h2>
+        <br>
+        <br>
+      <div class="header" style="color:white;"> 
+        You can reach us at: <br> foxdrop.contact@gmail.com
+
+
+      </div>
+
+    </body>
+  </div>
+</section>
   
 
 
