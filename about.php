@@ -52,15 +52,9 @@
 
 								</div>
 							</div>
-							<div class="main-wrapper">
-								<video width="600" controls>
-									<source src="videos/vid.mp4" type="video/mp4">
-										Your browser does not support mp3 videos!
-								</video>
 						</body>
 					</html>
 			</main>
-	</div>
 </section>
 
 <?php
