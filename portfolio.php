@@ -70,6 +70,36 @@
 
 <section class="main-container">
 	<section class="main-wrapper">
+		<h2 style="color:#FFFFFF">Soothing Sounds</h2>
+		
+		<div class="row">
+			<div class="column">
+			    <a href="lava.php" style="border:5px solid #ccc;">
+				<img src="images/lavaFlow.png" alt="4thGame" style="width:80%; height:85%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="cave.php" style="border:5px solid #ccc;">
+			    <img src="images/caveLife.png" alt="2ndGame" style="width:85%; height:85%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="rain.php" style="border:5px solid #ccc;">
+			    <img src="images/rain.png" alt="3rdGame" style="width:100%; height:100%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="beach.php" style="border:5px solid #ccc;">
+			    <img src="images/beach.png" alt="4thGame" style="width:95%; height:95%; ">
+				</a>
+			</div>
+		</div>
+		
+	</section>
+</section>
+
+<section class="main-container">
+	<section class="main-wrapper">
 		<h2 style="color:#FFFFFF">Videos</h2>
 		<br>
 		<br>

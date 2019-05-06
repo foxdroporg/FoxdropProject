@@ -16,13 +16,21 @@ var birdPerspective = 0;
 
 var mountainTerrain = [];
 
+var song;
+var buttonToggle;
+
 var canvas;
+
+function preload() {
+  song = loadSound("soundeffects/birdFlyByMountainView.mp3", loaded);
+}
 
 /* Position of canvas on the webpage */
 function centerCanvas() {
   var cnvPosX = (windowWidth - width) / 2;
   var cnvPosY = (windowHeight - height) / 4;
   canvas.position(cnvPosX, cnvPosY);
+  buttonToggle.position(cnvPosX + 10, cnvPosY + 10);
 }
 
 /* Makes sure position stays the same regardless of window resizing */
@@ -33,7 +41,10 @@ function windowResized() {
 /* Creates canvas and two dimensional array */
 function setup() {
   canvas = createCanvas(600, 400, WEBGL);           // For fullscreen make (windowWidth, windowHeight-65)
- centerCanvas();
+  song.setVolume(0.5);
+  buttonToggle = createButton("Unmute");
+  buttonToggle.mousePressed(togglePlaying);
+  centerCanvas();
   columns = w / scl;
   rows = h/ scl;
 
@@ -47,7 +58,7 @@ function setup() {
 
 /* Draws the animation of mountainTerrain. "noise" is built in p5.js and smooths out neighboring verticies. "beginShape" creates the polygons*/
 function draw() {
-  birdPerspective -= 0.05;
+  birdPerspective -= 0.1;
   var yoffset = birdPerspective;
   for (var y = 0; y < rows; y++) {
     var xoffset = 0;
@@ -71,4 +82,18 @@ function draw() {
     }
     endShape();
   }
+}
+
+function togglePlaying() {
+  if (!song.isPlaying()) {
+    song.play();
+    buttonToggle.html("Mute");
+  } else {
+    song.pause();
+    buttonToggle.html("Unmute");
+  }
+}
+
+function loaded() {
+  console.log("Song finished loading, ready to play!");
 }

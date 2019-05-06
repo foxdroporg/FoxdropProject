@@ -57,7 +57,6 @@ function resetPlaying() {
 
 function loaded() {
   console.log("Song finished loading, ready to play!");
-
 }
 
 function draw() {

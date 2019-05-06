@@ -1,3 +1,8 @@
+//var hitSound;
+//function setup() {
+//	hitSound = loadSound('pongHit2.mp3');
+//}
+
 /* Vector class determines the diriction of the ball*/
 class Vec {
 	constructor(x = 0, y = 0) {
@@ -56,6 +61,8 @@ var playerTurn = 0;
 
 var bounceTimer = true;
 let timer2Id = setInterval(() => bounceTimer=true, 300);
+
+
 
 /* Pong creates canvas, sets the padels at their positions and initialises game score visualisation */
 class Pong {
@@ -124,6 +131,8 @@ class Pong {
 			hasNotBounced = false;
 			const length = ball.velocity.length;
 			ball.velocity.x = -ball.velocity.x;
+
+			//hitSound.play();
 			if (this.ball.position.y > this.players[i].position.y && ball.velocity.y < 400) {
 				ball.velocity.y += 400 * ((ball.position.y - this.players[i].position.y) / (padelHeight/2));
 			}

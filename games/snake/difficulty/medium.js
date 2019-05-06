@@ -201,16 +201,19 @@ $(document).ready(function(){
 	/* Listens in real time to keypads being pressed or not. */
 	document.addEventListener("keydown", function(event) {
 		//console.log(event); 
-		if (event.which == 38 && currentPlayerDir != playerDir["down"] && !hasPressed) {
+		if ((event.which == 38 || event.which == 87) && currentPlayerDir != playerDir["down"] && !hasPressed) {
 			currentPlayerDir = playerDir["up"];
 			hasPressed = true;
-		} else if (event.which == 39 && currentPlayerDir != playerDir["left"] && !hasPressed) {
+		} 
+		else if ((event.which == 39 || event.which == 68) && currentPlayerDir != playerDir["left"] && !hasPressed) {
 			currentPlayerDir = playerDir["right"];
 			hasPressed = true;
-		} else if (event.which == 40 && currentPlayerDir != playerDir["up"] && !hasPressed) {
+		} 
+		else if ((event.which == 40 || event.which == 83) && currentPlayerDir != playerDir["up"] && !hasPressed) {
 			currentPlayerDir = playerDir["down"];
 			hasPressed = true;
-		} else if (event.which == 37 && currentPlayerDir != playerDir["right"] && !hasPressed) {
+		} 
+		else if ((event.which == 37 || event.which == 65) && currentPlayerDir != playerDir["right"] && !hasPressed) {
 			currentPlayerDir = playerDir["left"];
 			hasPressed = true;
 		}

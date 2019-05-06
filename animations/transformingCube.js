@@ -2,26 +2,38 @@ let angle = 0;
 let w = 25;
 let ma;
 let maxD;
+var song;
+var buttonToggle;
 
 var canvas;
+
+function preload() {
+	song = loadSound("soundeffects/transformingCube.mp3", loaded);
+}
+
+function setup() {
+	canvas = createCanvas(500, 500, WEBGL);
+	// song = loadSound("soundeffects/transformingCube.mp3", loaded); // To avoid lag before animation apears, remove preload.
+	song.setVolume(0.5);
+	buttonToggle = createButton("Unmute");
+  	buttonToggle.mousePressed(togglePlaying);
+	centerCanvas();
+	ma = atan(1 / sqrt(2));
+	maxD = dist(0, 0, 200, 200);
+}
+
 
 /* Position of canvas on the webpage */
 function centerCanvas() {
   var cnvPosX = (windowWidth - width) / 2;
   var cnvPosY = (windowHeight - height) / 4;
   canvas.position(cnvPosX, cnvPosY);
+  buttonToggle.position(cnvPosX + 10, cnvPosY + 10);
 }
 
 /* Makes sure position stays the same regardless of window resizing */
 function windowResized() {
   centerCanvas();
-}
-
-function setup() {
-	canvas = createCanvas(500, 500, WEBGL);
-	centerCanvas();
-	ma = atan(1 / sqrt(2));
-	maxD = dist(0, 0, 200, 200);
 }
 
 function draw() {
@@ -44,5 +56,19 @@ function draw() {
 		}
 	}
 	angle -= 0.05;
-	
+}
+
+
+function togglePlaying() {
+	if (!song.isPlaying()) {
+		song.play();
+		buttonToggle.html("Mute");
+	} else {
+		song.pause();
+		buttonToggle.html("Unmute");
+	}
+}
+
+function loaded() {
+  console.log("Song finished loading, ready to play!");
 }
