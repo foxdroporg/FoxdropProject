@@ -1,16 +1,16 @@
 /* Global Variables: 
   columns, rows    //divides grid into parts
-  scl              //name is not to be changed - is a p5.js keyword for scale
-  w                //name is not to be changed - is a p5.js keyword for width 
-  h                //name is not to be changed - is a p5.js keyword for height 
+  scl              //variable name is not to be changed - is a p5.js keyword for scale
+  w                //variable name is not to be changed - is a p5.js keyword for width 
+  h                //variable name is not to be changed - is a p5.js keyword for height 
   birdPerspecive   //affects the grid's movementspeed 
   mountainTerrain  //holds information about positioning of verticies on polygons.
   canvas           //canvas is the whole window for the animation.
 */
 var columns, rows;
 var scl = 20;
-var w = 1000;
-var h = 500;
+var w = 1250;
+var h = 850;
 
 var birdPerspective = 0;
 
@@ -52,12 +52,12 @@ function draw() {
   for (var y = 0; y < rows; y++) {
     var xoffset = 0;
     for (var x = 0; x < columns; x++) {
-      mountainTerrain[x][y] = map(noise(xoffset, yoffset), 0, 1, -80, 80);
+      mountainTerrain[x][y] = map(noise(xoffset, yoffset), 0, 1, -100, 125);
       xoffset += 0.2;
     }
     yoffset += 0.2;
   }
-
+  //normalMaterial(); //You could have this to get rid of Grid lines.
   background(color(47, 9, 50));
   translate(0, 50);
   rotateX(5*PI/12);

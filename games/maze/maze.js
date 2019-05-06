@@ -10,7 +10,7 @@ var finish;
 var highlightShow = true;
 
 var counter = 0;
-var timeleft = 60;
+var timeleft = 45;
 var nrOfLevels = 0;
 
 var ding;
@@ -19,7 +19,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 600); //createCanvas(windowWidth/3, windowHeight/1.3-65);
+  createCanvas(700, 700); //createCanvas(windowWidth/3, windowHeight/1.3-65);
   columns = floor(width/scl);
   rows = floor(height/scl);
   
@@ -157,7 +157,4 @@ reset = function() {
   console.log("New point spawned at:", randomSpawnX, ",",randomSpawnY);
 
   finish = grid[index(randomSpawnX, randomSpawnY)];
-
-  
-
 }
