@@ -1,5 +1,6 @@
 var columns, rows;
-var scl = 40;
+var nrOfLevels = 0;
+var scl = 35;
 var grid = [];
 var stack = [];
 
@@ -11,7 +12,6 @@ var highlightShow = true;
 
 var counter = 0;
 var timeleft = 45;
-var nrOfLevels = 0;
 
 var ding;
 function preload() {
@@ -19,7 +19,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(700, 700); //createCanvas(windowWidth/3, windowHeight/1.3-65);
+  createCanvas(900, 700); //createCanvas(windowWidth/3, windowHeight/1.3-65);
   columns = floor(width/scl);
   rows = floor(height/scl);
   
@@ -31,13 +31,16 @@ function setup() {
   }
   current = grid[0];
   player = grid[0];  
-  finish = grid[index(1,0)];
+  var randomSpawnX = floor(random(columns/2, columns));
+  var randomSpawnY = floor(random(rows/2, rows));  
+  finish = grid[index(randomSpawnX, randomSpawnY)];
 
   var timer = select('#timer');
   var points = select('#points');
   var interval = setInterval(timeIt, 1000);
   
   function timeIt() {
+    timeleft = (45 - 3*nrOfLevels);
     counter++;
     timer.html(timeleft - counter).size(100, 100);
     points.html(nrOfLevels).size(100,100);
@@ -70,15 +73,21 @@ function draw() {
   player.visible();
   finish.visible();
   
-  current.visited = true;
-  current.highlight();
-  var next = current.checkNeighbors();
-  
-  if (next) {
-    next.visited = true;
-    removeLine(current,next);
-    current = next;
-    stack.push(current);
+  let n = 50;
+  for (var i = 0; i < n; i++) {
+    current.visited = true;
+
+    if (i == n - 1) {
+      current.highlight();
+    }
+    var next = current.checkNeighbors();
+    
+    if (next) {
+      next.visited = true;
+      removeLine(current,next);
+      current = next;
+      stack.push(current);
+    }
   }
 }
 
@@ -141,7 +150,7 @@ reset = function() {
   nrOfLevels++;
   grid = []
   fill(31, 150, 33, 100);
-  
+
   for (var j = 0; j < rows; j++) {
     for (var i = 0; i < columns; i++) {
       var cell = new Cell(i,j);

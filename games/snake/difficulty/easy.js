@@ -121,6 +121,7 @@ $(document).ready(function(){
 	function checkForWallSpawn () {
 	// Add walls for each difficulty level.
 		if (gameScore == easyDifficulty) {	//10
+			setTimeout(drawPlayer(), 3000); 
 			playerPos = {
 				"tr": 18,
 				"td": 0
