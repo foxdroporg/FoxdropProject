@@ -15,3 +15,10 @@ function setup() {
 function loaded() {
   console.log("Song finished loading, ready to play!");
 }
+
+function noscroll() {
+  window.scrollTo( 0, 0 );
+}
+
+// add listener to disable scroll
+window.addEventListener('scroll', noscroll);

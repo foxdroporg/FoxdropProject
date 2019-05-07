@@ -41,6 +41,7 @@ function windowResized() {
 /* Creates canvas and two dimensional array */
 function setup() {
   canvas = createCanvas(600, 400, WEBGL);           // For fullscreen make (windowWidth, windowHeight-65)
+  //song = loadSound("soundeffects/birdFlyByMountainView.mp3", loaded);
   song.setVolume(0.5);
   buttonToggle = createButton("Unmute");
   buttonToggle.mousePressed(togglePlaying);
@@ -68,7 +69,10 @@ function draw() {
     }
     yoffset += 0.2;
   }
-  //normalMaterial(); //You could have this to get rid of Grid lines.
+
+  ambientMaterial(70, 130, 230); //You could have this to get rid of Grid lines.
+ 
+
   background(color(47, 9, 50));
   translate(0, 50);
   rotateX(5*PI/12);
@@ -77,6 +81,7 @@ function draw() {
   for (var y = 0; y < rows-1; y++) {
     beginShape(TRIANGLE_STRIP);
     for (var x = 0; x < columns; x++) {
+      // texture(); // Something with texture is needed!
       vertex(x*scl, y*scl, mountainTerrain[x][y]);
       vertex(x*scl, (y+1)*scl, mountainTerrain[x][y+1]);
     }

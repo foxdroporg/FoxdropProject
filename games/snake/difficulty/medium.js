@@ -89,6 +89,9 @@ $(document).ready(function(){
 
 		gameScore += 1;
 
+		var eatPointSound = new Audio("../../../soundeffects/eatPoint.mp3");
+      	eatPointSound.play();
+
 		checkForWallSpawn();
 
 		// Add a point on a free spot!
@@ -121,6 +124,9 @@ $(document).ready(function(){
 	function checkForWallSpawn () {
 	// Add walls for each difficulty level.
 		if (gameScore == easyDifficulty) {	//10
+			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
+      		levelCompleteSound.play();
+
 			playerPos = {
 				"tr": 18,
 				"td": 0
@@ -140,6 +146,9 @@ $(document).ready(function(){
 			}
 		}
 		if (gameScore == mediumDifficulty) {	
+			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
+      		levelCompleteSound.play();
+
 			playerPos = {
 				"tr": 18,
 				"td": 0
@@ -159,6 +168,9 @@ $(document).ready(function(){
 			}
 		}
 		if (gameScore == hardDifficulty) {	
+			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
+      		levelCompleteSound.play();
+
 			playerPos = {
 				"tr": 18,
 				"td": 0
@@ -178,6 +190,9 @@ $(document).ready(function(){
 			}
 		}
 		if (gameScore == maxedDifficulty) { 
+			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
+      		levelCompleteSound.play();
+      		
 			playerPos = {
 				"tr": 18,
 				"td": 0
@@ -317,11 +332,19 @@ $(document).ready(function(){
 		// Death by wall touch
 		if (playerPos["tr"] == 20 || playerPos["td"] == 20 || playerPos["tr"] == -1 || playerPos["td"] == -1) {
 			deathHandler();
+			if (!playerIsDead) {
+				var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
+	      		gameOverSound.play();
+			}
 			playerIsDead = true;
 		}
 		// Death by eating self
 		else if ($(".tr" + checkNextPlayerPosX + "td" + checkNextPlayerPosY).hasClass("draw-player")) {
 			deathHandler();
+			if (!playerIsDead) {
+				var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
+	      		gameOverSound.play();
+			}
 			playerIsDead = true;
 		}
 		//Gain point

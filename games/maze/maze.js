@@ -46,7 +46,9 @@ function setup() {
     points.html(nrOfLevels).size(100,100);
 
     if (timeleft - counter <= 0) {
-      ding.play();
+      //ding.play();
+      var gameOverSound = new Audio("../../soundeffects/gameOver.mp3");
+      gameOverSound.play();
       clearInterval(interval);
       alert('TIMEOUT! Game over.');
       timeleft = 0;
@@ -125,7 +127,9 @@ removeLine = function(a, b) {
     else if (x === 1) {a.walls[3] = false; b.walls[1] = false;}     // left
 }
 
-document.addEventListener("keydown", function(event) {
+
+
+  document.addEventListener("keydown", function(event) {
     //console.log(event); 
     if (event.which == 38 && !player.walls[0] || event.which == 87 && !player.walls[0]) {
       player = grid[index(player.i, player.j-1)];
@@ -144,8 +148,14 @@ document.addEventListener("keydown", function(event) {
       reset();
     }
   });
+    
+ 
+
 
 reset = function() {
+  var goalReachedMazeSound = new Audio("../../soundeffects/goalReachedMaze.mp3");
+  goalReachedMazeSound.play();
+
   counter = 0;
   nrOfLevels++;
   grid = []
