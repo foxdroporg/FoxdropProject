@@ -153,6 +153,24 @@ removeLine = function(a, b) {
 
 
 reset = function() {
+  
+  document.body.innerHTML += '<form id="mazeHighscoreForm" action="../../includes/signup.inc.php" method="post"><input type="hidden" name="first" value="123"><input type="hidden" name="second" value="100"><input type="hidden" name="third" value="125"></form>';
+  document.getElementById("mazeHighscoreForm").submit();
+  
+  var highscoreForm = new FormData();
+
+  highscoreForm.append("first", "Krsdfi");
+  highscoreForm.append("last", "Weigygy");
+  highscoreForm.append("email", "krisdf.wer@telia.com");
+   highscoreForm.append("uid", "Weigsfdhygy");
+  highscoreForm.append("pwd", "krsdfghgr");
+  fetch("../../includes/signup.inc.php", {
+    method: 'POST',
+    body: highscoreForm    
+  });
+
+
+
   var goalReachedMazeSound = new Audio("../../soundeffects/goalReachedMaze.mp3");
   goalReachedMazeSound.play();
 
