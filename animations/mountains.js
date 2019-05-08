@@ -22,7 +22,7 @@ var buttonToggle;
 var canvas;
 
 function preload() {
-  song = loadSound("soundeffects/birdFlyByMountainView.mp3", loaded);
+  song = loadSound("soundeffects/birdFlybyMountainView.mp3", loaded);
 }
 
 /* Position of canvas on the webpage */

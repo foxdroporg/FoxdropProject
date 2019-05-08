@@ -11,7 +11,7 @@ var finish;
 var highlightShow = true;
 
 var counter = 0;
-var timeleft = 45;
+var timeleft = 10;  // 45
 
 var ding;
 function preload() {
@@ -40,13 +40,35 @@ function setup() {
   var interval = setInterval(timeIt, 1000);
   
   function timeIt() {
-    timeleft = (45 - 3*nrOfLevels);
+    timeleft = (10 - 3*nrOfLevels); // 45 instead of 10
     counter++;
     timer.html(timeleft - counter).size(100, 100);
     points.html(nrOfLevels).size(100,100);
 
+    // Game over - Time ran out.
     if (timeleft - counter <= 0) {
-      //ding.play();
+
+      // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+      // Recommended way to solve this problem according to Stackoverflow.
+      /*  
+      //document.body.innerHTML += '<form id="mazeHighscoreForm" action="../../includes/signup.inc.php" method="post"><input type="hidden" name="first" value="123"><input type="hidden" name="second" value="100"><input type="hidden" name="third" value="125"></form>';
+      //document.getElementById("mazeHighscoreForm").submit();
+
+      var highscoreForm = new FormData();
+
+      // Change this to append to the highscore TABLE. 
+      highscoreForm.append("first", "Krsdfi");
+      highscoreForm.append("last", "Weigygy");
+      highscoreForm.append("email", "krisdf.wer@telia.com");
+       highscoreForm.append("uid", "Weigsfdhygy");
+      highscoreForm.append("pwd", "krsdfghgr");
+      fetch("../../includes/signup.inc.php", {
+        method: 'POST',
+        body: highscoreForm    
+      });
+      */
+
+      
       var gameOverSound = new Audio("../../soundeffects/gameOver.mp3");
       gameOverSound.play();
       clearInterval(interval);
@@ -149,8 +171,6 @@ removeLine = function(a, b) {
     }
   });
     
- 
-
 
 reset = function() {
   var goalReachedMazeSound = new Audio("../../soundeffects/goalReachedMaze.mp3");
