@@ -64,7 +64,6 @@ function setup() {
         body: highscoreForm    
       });
       */
-
       
       var gameOverSound = new Audio("../../soundeffects/gameOver.mp3");
       gameOverSound.play();

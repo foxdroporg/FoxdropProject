@@ -31,9 +31,14 @@
 				<div class="nav-login">
 					<?php
 						if (isset($_SESSION['u_id'])) {
+
+							echo '<form><p style="margin: 7.5px 20px 10px 10px "><b>' . $_SESSION["u_uid"] . '    ' . '</b></p></form>';
+						
+
 							echo '<form action="includes/logout.inc.php" method="POST">
 								<button type="submit" name="submit">Logout</button>
 							</form>';
+
 						} else {
 							echo '<form action="includes/login.inc.php" method="POST">
 							<input type="text" name="uid" placeholder="Username/e-mail">
