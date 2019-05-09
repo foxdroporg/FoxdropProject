@@ -42,8 +42,8 @@ function setup() {
   function timeIt() {
     timeleft = (10 - 3*nrOfLevels); // 45 instead of 10
     counter++;
-    timer.html(timeleft - counter).size(100, 100);
-    points.html(nrOfLevels).size(100,100);
+    timer.html(timeleft - counter);
+    points.html(nrOfLevels);  
 
     // Game over - Time ran out.
     if (timeleft - counter <= 0) {
@@ -64,6 +64,8 @@ function setup() {
         body: highscoreForm    
       });
       */
+
+      document.getElementById("highscoreTable").innerHTML = "Insert highscore div box here some how!?";
       
       var gameOverSound = new Audio("../../soundeffects/gameOver.mp3");
       gameOverSound.play();
