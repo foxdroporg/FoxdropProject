@@ -9,24 +9,16 @@ $username = mysqli_real_escape_string($conn, $_POST['username']);
 $user_score = (int) mysqli_real_escape_string($conn, $_POST['user_score']);
 $game = mysqli_real_escape_string($conn, $_POST['game']);
 
-//boolean qualifies = ;
-
 // Insert the user into the database
-//if () {
 	$sql = "INSERT INTO scores (username, user_score, game) VALUES ('$username', '$user_score', '$game');";
 	mysqli_query($conn, $sql);
-//}
 
-
-// UTKAST: Write out the highscores table
-	/*	
-	$sql = "SELECT * FROM highscores;";
+	$sql = "SELECT * FROM scores WHERE game = '$game' ORDER BY user_score DESC LIMIT 10";
 	$result = mysqli_query($conn, $sql);
-	$resultCheck = mysqli_num_rows($result);
 
-	if ($resultCheck > 0) {
-		while ($row = mysqli_fetch_assoc($result)) {
-			echo $row['user_uid'] . "<br>";		// Column access
-		}
+	$data = array();
+	while ($row = mysqli_fetch_row($result)) {
+		$data[] = $row;
 	}
-	*/
+
+	echo json_encode($data, JSON_NUMERIC_CHECK);

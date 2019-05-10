@@ -41,8 +41,7 @@
 		    <br>
 		    <p style="color:white; text-align:center; position: absolute; right: 40%; bottom: -10%; font-size: 125px" id="points"> </p>
 
-		    <div style="color:white" id="highscoreTable"></div>
+		    <div style="color:white; text-align: center; padding: 5%; font-size: 25px" id="highscoreTable"></div>
 		</body>
 
 	</html>
-

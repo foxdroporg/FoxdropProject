@@ -14,7 +14,7 @@
 				<div class="column">
 				    <a href="games/pong/index.html" style="border:5px solid #ccc;">
 					<img src="images/pong.png" alt="1stGame" style="width:95%; height:95%; ">
-					
+
 					</a>
 				</div>
 				<div class="column">
@@ -28,7 +28,7 @@
 					</a>
 				</div>
 				<div class="column">
-					<a href="games/maze/index.html" style="border:5px solid #ccc;">
+					<a href="games/maze/index.php" style="border:5px solid #ccc;">
 				    <img src="images/maze.jpg" alt="4thGame" style="width:70%; height:100%; ">
 					</a>
 				</div>
@@ -41,7 +41,7 @@
 <section class="main-container">
 	<section class="main-wrapper">
 		<h2 style="color:#FFFFFF">Animations</h2>
-		
+
 		<div class="row">
 			<div class="column">
 			    <a href="mountain.php" style="border:5px solid #ccc;">
@@ -64,14 +64,14 @@
 				</a>
 			</div>
 		</div>
-		
+
 	</section>
 </section>
 
 <section class="main-container">
 	<section class="main-wrapper">
 		<h2 style="color:#FFFFFF">Soothing Sounds</h2>
-		
+
 		<div class="row">
 			<div class="column">
 			    <a href="lava.php" style="border:5px solid #ccc;">
@@ -94,7 +94,7 @@
 				</a>
 			</div>
 		</div>
-		
+
 	</section>
 </section>
 
@@ -108,7 +108,7 @@
 				<source src="videos/vid.mp4" type="video/mp4">
 					Your browser does not support mp3 videos!
 			</video>
-		
+
 	</section>
 </section>
 
