@@ -11,7 +11,8 @@ var finish;
 var highlightShow = true;
 
 var counter = 0;
-var timeleft = 10;  // 45
+var timeleft = 3;  // 45
+
 
 var ding;
 function preload() {
@@ -40,7 +41,7 @@ function setup() {
   var interval = setInterval(timeIt, 1000);
   
   function timeIt() {
-    timeleft = (10 - 3*nrOfLevels); // 45 instead of 10
+    timeleft = (3 - 3*nrOfLevels); // 45 instead of 10
     counter++;
     timer.html(timeleft - counter);
     points.html(nrOfLevels);  
@@ -50,22 +51,32 @@ function setup() {
 
       // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
 
-      /*  
+      
       //document.body.innerHTML += '<form id="mazeHighscoreForm" action="../../includes/signup.inc.php" method="post"><input type="hidden" name="first" value="123"><input type="hidden" name="second" value="100"><input type="hidden" name="third" value="125"></form>';
       //document.getElementById("mazeHighscoreForm").submit();
 
+    
+
       var highscoreForm = new FormData();
 
-      highscoreForm.append("user_id", "1");
+      highscoreForm.append("username", U_UID);
       highscoreForm.append("user_score", nrOfLevels);
       highscoreForm.append("game", "maze");
+
       fetch("../../includes/highscores.inc.php", {
         method: 'POST',
         body: highscoreForm    
+      }).then(function (response) {
+        return response.text();
+      })
+      .then(function(body) {
+        console.log(body);
+      }).catch(function(error) {
+        console.error(error);
       });
-      */
+      
 
-      document.getElementById("highscoreTable").innerHTML = "Insert highscore div box here some how!?";
+      document.getElementById("highscoreTable").innerHTML = "";
       
       var gameOverSound = new Audio("../../soundeffects/gameOver.mp3");
       gameOverSound.play();

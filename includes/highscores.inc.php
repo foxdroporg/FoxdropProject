@@ -5,18 +5,17 @@ session_start();
 
 include_once 'dbh.inc.php';
 
-$user_id = mysqli_real_escape_int($conn, $_POST['id']);
-$user_score = mysqli_real_escape_int($conn, $_POST['score']);
+$username = mysqli_real_escape_string($conn, $_POST['username']);
+$user_score = (int) mysqli_real_escape_string($conn, $_POST['user_score']);
 $game = mysqli_real_escape_string($conn, $_POST['game']);
 
+//boolean qualifies = ;
+
 // Insert the user into the database
-$sql = "INSERT INTO highscores (user_id, user_score, game) VALUES ('$user_id', '$user_score', '$game');";
-mysqli_query($conn, $sql);
-
-
-
-
-
+//if () {
+	$sql = "INSERT INTO highscores (username, user_score, game) VALUES ('$username', '$user_score', '$game');";
+	mysqli_query($conn, $sql);
+//}
 
 
 // UTKAST: Write out the highscores table

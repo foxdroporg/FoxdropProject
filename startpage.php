@@ -6,6 +6,8 @@
 	<div class="main-wrapper">
 			<h2 style="color:#FFFFFF">Latest News</h2>
 
+			
+
 	</div>
 </section>
 
