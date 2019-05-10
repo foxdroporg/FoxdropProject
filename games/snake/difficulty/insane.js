@@ -370,36 +370,43 @@ $(document).ready(function(){
 
 	function highscores() {
 		// HIGHSCORE TABLE SHOWN
+		if(typeof U_UID !== 'undefined') {
 			var highscoreForm = new FormData();
 
-      highscoreForm.append("username", U_UID);
-      highscoreForm.append("user_score", gameScore);
-      highscoreForm.append("game", "snake");
+	      	highscoreForm.append("username", U_UID);
+		    highscoreForm.append("user_score", gameScore);
+		    highscoreForm.append("game", "snake");
 
-      fetch("../../../includes/scores.inc.php", {
-        method: 'POST',
-        body: highscoreForm
-      }).then(function (response) {
-        return response.json();
-      })
-      .then(function(scores) {
-        console.log(scores)
+		    fetch("../../../includes/scores.inc.php", {
+		      method: 'POST',
+		      body: highscoreForm
+		    }).then(function (response) {
+		      return response.json();
+		    })
+		    .then(function(scores) {
+		      console.log(scores)
 
-        var highscores = '';
+		      var highscores = '';
 				var distinctUsernameArr = [];
 				var i = 0;
-        scores.forEach(function(score) {
+		      scores.forEach(function(score) {
 					if(!distinctUsernameArr.includes(score[0])) {
 						highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
+						console.log(distinctUsernameArr);
 					}
+
 					distinctUsernameArr[i] = score[0];
-					i++;
+						i++;
 				})
 
-        document.getElementById("highscoreTable").innerHTML = "Highscores: <br>" + highscores;
-      }).catch(function(error) {
-        console.error(error);
-      });
+		      document.getElementById("highscoreTable").innerHTML = "Highscores: <br>" + highscores;
+		    }).catch(function(error) {
+		      console.error(error);
+		    });
+		}
+		else {
+			document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
+		}
 	}
 
 });

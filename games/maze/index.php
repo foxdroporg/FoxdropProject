@@ -1,47 +1,41 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-	<html>
-		<head>
-			<meta charset="utf-8" />
-			<meta http-equiv="X-UA-Compatible"
-			content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		    <title>Maze</title>
-
-		    <style>
-		    	body {
-		    		align-content: center;
-		    		background: #202020;
-		    		display: flex;
-		    		margin: 0;
-		    	}
-		    	canvas {
-		    		border: solid 1px #fff;
-		    		border-left: none;
-		    		border-right: none;
-		    		image-rendering: pixelated;
-		    		height: 100%;
-		    		margin: 0 auto;
-		    	}
-		    </style>
-		    <script>
-		    	var U_UID = "<?php echo $_SESSION['u_uid']; ?>";
-		    </script>
-		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
-		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
-		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
-
-		    <script type="text/javascript" src="maze.js"></script>
-		    <script type="text/javascript" src="cell.js"></script>
-
-		</head>
-
-		<body>
-		    <p style="color:white; text-align:center; position: absolute; right: 60%; bottom: -10%; font-size: 125px" id="timer"> <font size="+150">Hurry up!</font></p>
-		    <br>
-		    <p style="color:white; text-align:center; position: absolute; right: 40%; bottom: -10%; font-size: 125px" id="points"> </p>
-
-		    <div style="color:white; text-align: center; padding: 5%; font-size: 25px" id="highscoreTable"></div>
-		</body>
-
-	</html>
+<link rel="shortcut icon" type="image/png" href="../../images/firefoxLogo.png">
+<section class="main-container">
+	<div class="main-wrapper">
+		<!DOCTYPE html>
+			<html>
+				<head>
+					<meta charset="utf-8" />
+					<meta http-equiv="X-UA-Compatible"
+					content="IE=edge">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<link rel="stylesheet" type="text/css" media="screen" href="main.css"/>
+				    <title>Maze</title>
+				    
+				    <style>
+				    	body {
+				    		display: flex;
+				    		align-items: center;
+				    		justify-content: center;
+				    		background: #202020;
+				    	}
+				    </style>
+				</head>
+			
+			<h1 style="color:#FFFFFF">Difficulty</h1>
+			
+					<body>
+						<form class="signup-form" action="difficulty/easy.php">
+							<button type="submit" name="submit">Easy</button>
+						</form>
+						<form class="difficulty-form" action="difficulty/medium.php">
+							<button type="submit" name="submit">Medium</button>
+						</form>
+						<form class="difficulty-form" action="difficulty/insane.php">
+							<button type="submit" name="submit">Insane</button>
+						</form>
+					</body>
+					<div style="color: white; position: absolute; left:5%; bottom:5%"><b>Instructions:</b> Move with ARROW KEYS or W-A-S-D KEYS or both. <br> There is a time limit to reach the golden treasure. Reach the golden treasure and your time is reset. <br> <b>Note:</b> Sound effects are included.</div>
+				
+			</html>
+	</div>
+</section>

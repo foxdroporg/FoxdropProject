@@ -1,3 +1,4 @@
+<link rel="shortcut icon" type="image/png" href="../../../images/firefoxLogo.png">
 <?php session_start(); ?>
 
 <section class="main-container">

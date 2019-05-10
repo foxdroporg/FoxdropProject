@@ -11,13 +11,7 @@ var finish;
 var highlightShow = true;
 
 var counter = 0;
-var timeleft = 45;  // 45
-
-
-var ding;
-function preload() {
-  ding = loadSound("ding.mp3");
-}
+var timeleft = 5;  // 45
 
 function setup() {
   createCanvas(900, 700); //createCanvas(windowWidth/3, windowHeight/1.3-65);
@@ -49,39 +43,44 @@ function setup() {
     // Game over - Time ran out.
     if (timeleft - counter <= 0) {
 
-      var highscoreForm = new FormData();
+      if(typeof U_UID !== 'undefined') {
+        var highscoreForm = new FormData();
 
-      highscoreForm.append("username", U_UID);
-      highscoreForm.append("user_score", nrOfLevels);
-      highscoreForm.append("game", "maze");
+        highscoreForm.append("username", U_UID);
+        highscoreForm.append("user_score", nrOfLevels);
+        highscoreForm.append("game", "maze");
 
-      fetch("../../includes/scores.inc.php", {
-        method: 'POST',
-        body: highscoreForm
-      }).then(function (response) {
-        return response.json();
-      })
-      .then(function(scores) {
-        console.log(scores)
+        fetch("../../../includes/scores.inc.php", {
+          method: 'POST',
+          body: highscoreForm
+        }).then(function (response) {
+          return response.json();
+        })
+        .then(function(scores) {
+          console.log(scores)
 
-        var highscores = '';
-				var distinctUsernameArr = [];
-				var i = 0;
-        scores.forEach(function(score) {
-					if(!distinctUsernameArr.includes(score[0])) {
-						highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
-					}
-					distinctUsernameArr[i] = score[0];
-					i++;
-				})
+          var highscores = '';
+  				var distinctUsernameArr = [];
+  				var i = 0;
+          scores.forEach(function(score) {
+  					if(!distinctUsernameArr.includes(score[0])) {
+  						highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
+  					}
+  					distinctUsernameArr[i] = score[0];
+  					i++;
+  				})
 
-        document.getElementById("highscoreTable").innerHTML = "Highscores: <br>" + highscores;
-      }).catch(function(error) {
-        console.error(error);
-      });
+          document.getElementById("highscoreTable").innerHTML = "Highscores: <br>" + highscores;
+        }).catch(function(error) {
+          console.error(error);
+        });
+      }
+      else {
+        document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
+      }
 
 
-      var gameOverSound = new Audio("../../soundeffects/gameOver.mp3");
+      var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
       gameOverSound.play();
       clearInterval(interval);
       alert('TIMEOUT! Game over.');
@@ -186,7 +185,7 @@ removeLine = function(a, b) {
 
 reset = function() {
 
-  var goalReachedMazeSound = new Audio("../../soundeffects/goalReachedMaze.mp3");
+  var goalReachedMazeSound = new Audio("../../../soundeffects/goalReachedMaze.mp3");
   goalReachedMazeSound.play();
 
   counter = 0;
