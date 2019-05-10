@@ -55,7 +55,6 @@ function setup() {
       //document.body.innerHTML += '<form id="mazeHighscoreForm" action="../../includes/signup.inc.php" method="post"><input type="hidden" name="first" value="123"><input type="hidden" name="second" value="100"><input type="hidden" name="third" value="125"></form>';
       //document.getElementById("mazeHighscoreForm").submit();
 
-    
 
       var highscoreForm = new FormData();
 
@@ -63,7 +62,7 @@ function setup() {
       highscoreForm.append("user_score", nrOfLevels);
       highscoreForm.append("game", "maze");
 
-      fetch("../../includes/highscores.inc.php", {
+      fetch("../../includes/scores.inc.php", {
         method: 'POST',
         body: highscoreForm    
       }).then(function (response) {

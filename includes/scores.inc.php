@@ -13,7 +13,7 @@ $game = mysqli_real_escape_string($conn, $_POST['game']);
 
 // Insert the user into the database
 //if () {
-	$sql = "INSERT INTO highscores (username, user_score, game) VALUES ('$username', '$user_score', '$game');";
+	$sql = "INSERT INTO scores (username, user_score, game) VALUES ('$username', '$user_score', '$game');";
 	mysqli_query($conn, $sql);
 //}
 
