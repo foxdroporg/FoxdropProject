@@ -12,14 +12,23 @@ $game = mysqli_real_escape_string($conn, $_POST['game']);
 //boolean qualifies = ;
 
 // Insert the user into the database
-//if () {
-	$sql = "INSERT INTO highscores (username, user_score, game) VALUES ('$username', '$user_score', '$game');";
+	$sql = "INSERT INTO scores (username, user_score, game) VALUES ('$username', '$user_score', '$game');";
 	mysqli_query($conn, $sql);
-//}
+
+	$sql = "SELECT * FROM scores WHERE game = '$game' ORDER BY user_score DESC LIMIT 10";
+	$result = mysqli_query($conn, $sql);
+
+	$data = array();
+	while ($row = mysqli_fetch_row($result)) {
+		$data[] = $row;
+	}
+
+	echo json_encode($data, JSON_NUMERIC_CHECK);
+
 
 
 // UTKAST: Write out the highscores table
-	/*	
+	/*
 	$sql = "SELECT * FROM highscores;";
 	$result = mysqli_query($conn, $sql);
 	$resultCheck = mysqli_num_rows($result);

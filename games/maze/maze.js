@@ -11,7 +11,7 @@ var finish;
 var highlightShow = true;
 
 var counter = 0;
-var timeleft = 3;  // 45
+var timeleft = 45;  // 45
 
 
 var ding;
@@ -23,7 +23,7 @@ function setup() {
   createCanvas(900, 700); //createCanvas(windowWidth/3, windowHeight/1.3-65);
   columns = floor(width/scl);
   rows = floor(height/scl);
-  
+
   for (var j = 0; j < rows; j++) {
     for (var i = 0; i < columns; i++) {
       var cell = new Cell(i,j);
@@ -31,31 +31,23 @@ function setup() {
     }
   }
   current = grid[0];
-  player = grid[0];  
+  player = grid[0];
   var randomSpawnX = floor(random(columns/2, columns));
-  var randomSpawnY = floor(random(rows/2, rows));  
+  var randomSpawnY = floor(random(rows/2, rows));
   finish = grid[index(randomSpawnX, randomSpawnY)];
 
   var timer = select('#timer');
   var points = select('#points');
   var interval = setInterval(timeIt, 1000);
-  
+
   function timeIt() {
-    timeleft = (3 - 3*nrOfLevels); // 45 instead of 10
+    timeleft = (timeleft - 3*nrOfLevels); // 45 instead of 10
     counter++;
     timer.html(timeleft - counter);
-    points.html(nrOfLevels);  
+    points.html(nrOfLevels);
 
     // Game over - Time ran out.
     if (timeleft - counter <= 0) {
-
-      // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
-
-      
-      //document.body.innerHTML += '<form id="mazeHighscoreForm" action="../../includes/signup.inc.php" method="post"><input type="hidden" name="first" value="123"><input type="hidden" name="second" value="100"><input type="hidden" name="third" value="125"></form>';
-      //document.getElementById("mazeHighscoreForm").submit();
-
-    
 
       var highscoreForm = new FormData();
 
@@ -63,21 +55,32 @@ function setup() {
       highscoreForm.append("user_score", nrOfLevels);
       highscoreForm.append("game", "maze");
 
-      fetch("../../includes/highscores.inc.php", {
+      fetch("../../includes/scores.inc.php", {
         method: 'POST',
-        body: highscoreForm    
+        body: highscoreForm
       }).then(function (response) {
-        return response.text();
+        return response.json();
       })
-      .then(function(body) {
-        console.log(body);
+      .then(function(scores) {
+        console.log(scores)
+
+        var highscores = '';
+				var distinctUsernameArr = [];
+				var i = 0;
+        scores.forEach(function(score) {
+					if(!distinctUsernameArr.includes(score[0])) {
+						highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
+					}
+					distinctUsernameArr[i] = score[0];
+					i++;
+				})
+
+        document.getElementById("highscoreTable").innerHTML = "Highscores: <br>" + highscores;
       }).catch(function(error) {
         console.error(error);
       });
-      
 
-      document.getElementById("highscoreTable").innerHTML = "";
-      
+
       var gameOverSound = new Audio("../../soundeffects/gameOver.mp3");
       gameOverSound.play();
       clearInterval(interval);
@@ -102,10 +105,10 @@ function draw() {
   for (var i = 0; i < grid.length; i++) {
     grid[i].show();
   }
-  
+
   player.visible();
   finish.visible();
-  
+
   let n = 50;
   for (var i = 0; i < n; i++) {
     current.visited = true;
@@ -114,7 +117,7 @@ function draw() {
       current.highlight();
     }
     var next = current.checkNeighbors();
-    
+
     if (next) {
       next.visited = true;
       removeLine(current,next);
@@ -161,16 +164,16 @@ removeLine = function(a, b) {
 
 
   document.addEventListener("keydown", function(event) {
-    //console.log(event); 
+    //console.log(event);
     if (event.which == 38 && !player.walls[0] || event.which == 87 && !player.walls[0]) {
       player = grid[index(player.i, player.j-1)];
-    } 
+    }
     else if (event.which == 39 && !player.walls[1] || event.which == 68 && !player.walls[1]) {
       player = grid[index(player.i+1, player.j)];
-    } 
+    }
     else if (event.which == 40 && !player.walls[2] || event.which == 83 && !player.walls[2]) {
       player = grid[index(player.i, player.j+1)];
-    } 
+    }
     else if (event.which == 37 && !player.walls[3] || event.which == 65 && !player.walls[3]) {
       player = grid[index(player.i-1, player.j)];
     }
@@ -179,10 +182,10 @@ removeLine = function(a, b) {
       reset();
     }
   });
-    
+
 
 reset = function() {
- 
+
   var goalReachedMazeSound = new Audio("../../soundeffects/goalReachedMaze.mp3");
   goalReachedMazeSound.play();
 
@@ -197,12 +200,12 @@ reset = function() {
       grid.push(cell);
     }
   }
-                    
+
   current = grid[0];
   player = grid[0];
 
   var randomSpawnX = floor(random(columns/2, columns));
-  var randomSpawnY = floor(random(rows/2, rows));  
+  var randomSpawnY = floor(random(rows/2, rows));
   console.log("New point spawned at:", randomSpawnX, ",",randomSpawnY);
 
   finish = grid[index(randomSpawnX, randomSpawnY)];
