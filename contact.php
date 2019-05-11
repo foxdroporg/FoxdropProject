@@ -17,12 +17,13 @@
       <h2 style="color:#FFFFFF">Contact</h2>
         <br>
         <br>
-      <div class="header" style="color:white;"> 
+      <div style="color:white; position: relative;"> 
+        <div class="header" style="color:white; position: absolute; left: 10px bottom: 20px"> 
         You can reach us at: <br> foxdrop.contact@gmail.com
-
-
-      </div>
-
+        </div>
+      <br>
+      <br>
+      <br>
     </body>
   </div>
 </section>

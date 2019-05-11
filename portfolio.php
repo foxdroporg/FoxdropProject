@@ -70,7 +70,7 @@
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF">Soothing Sounds</h2>
+		<h2 style="color:#FFFFFF">Relax</h2>
 
 		<div class="row">
 			<div class="column">
@@ -100,7 +100,7 @@
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF">Videos</h2>
+		<h2 style="color:#FFFFFF">Music Video</h2>
 		<br>
 		<br>
 		<br>
