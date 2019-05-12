@@ -38,6 +38,8 @@ function startGame() {
 /* Turn is done by left clicking on the mouse. */
 function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
+		var clickSound = new Audio("../../soundeffects/tictactoe.mp3");
+	    clickSound.play();
 		turn(square.target.id, huPlayer)
 
 		if (!gameWon) {	

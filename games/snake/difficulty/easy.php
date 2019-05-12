@@ -23,7 +23,7 @@
 				    </style>
 
 					<script>
-				    	var U_UID = "<?php echo $_SESSION['u_uid']; ?>";
+				    	var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
 				    </script>
 
 				    <script

@@ -26,13 +26,13 @@
 		    	}
 		    </style>
 		    <script>
-		    	var U_UID = "<?php echo $_SESSION['u_uid']; ?>";
-		    </script>
+				var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";		
+			</script>
 		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
 		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
 		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
 
-		    <script type="text/javascript" src="maze.js"></script>
+		    <script type="text/javascript" src="easy.js"></script>
 		    <script type="text/javascript" src="cell.js"></script>
 
 		</head>

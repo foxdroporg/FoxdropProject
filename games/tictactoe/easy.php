@@ -1,7 +1,6 @@
 <link rel="shortcut icon" type="image/png" href="../../../images/firefoxLogo.png">
 <?php session_start(); ?>
 
-
 <section class="main-container">
 	<div class="main-wrapper">
 		<!DOCTYPE html>
@@ -23,8 +22,8 @@
 				    	}
 				    </style>
 
-						<script>
-				    	var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
+					<script>
+				    	var U_UID = "<?php $loggedIn; if(isset($_SESSION['u_uid'])) $loggedIn = "true"; else $loggedIn = "false"; echo $loggedIn; ?>";
 				    </script>
 
 				    <script
@@ -32,7 +31,7 @@
 					  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
 					  crossorigin="anonymous"></script>
 
-					<script src="insane.js"></script>
+					<script src="easy.js"></script>
 				</head>
 
 				<body bgcolor="#202020">
@@ -42,7 +41,7 @@
 					<p id="game-status" align="center"> <font color="green">Good luck!</font></p>
 					<p class="game-score" align="center"> <font color="green">Your score is:</font> <span id="game-score" style="color: lightgreen"></span></p>
 
-					<div style="color:white; text-align: center; padding: 5%; font-size: 25px" id="highscoreTable"></div>
+					<div style="color:white; text-align: center; padding: 5%; font-size: 25px;" id="highscoreTable"></div>
 
 				</body>
 			</html>

@@ -23,7 +23,7 @@
 					</a>
 				</div>
 				<div class="column">
-					<a href="games/snake/index.html" style="border:5px solid #ccc;">
+					<a href="games/snake/index.php" style="border:5px solid #ccc;">
 				    <img src="images/snake.jpg" alt="3rdGame" style="width:75%; height:75%; ">
 					</a>
 				</div>
@@ -94,7 +94,6 @@
 				</a>
 			</div>
 		</div>
-
 	</section>
 </section>
 

@@ -1,6 +1,6 @@
 var columns, rows;
 var nrOfLevels = 0;
-var scl = 35;
+var scl = 50;
 var grid = [];
 var stack = [];
 
@@ -11,7 +11,7 @@ var finish;
 var highlightShow = true;
 
 var counter = 0;
-var timeleft = 5;  // 45
+var timeleft = 35;  // 45
 
 function setup() {
   createCanvas(900, 700); //createCanvas(windowWidth/3, windowHeight/1.3-65);
@@ -35,7 +35,7 @@ function setup() {
   var interval = setInterval(timeIt, 1000);
 
   function timeIt() {
-    timeleft = (timeleft - 3*nrOfLevels); // 45 instead of 10
+    timeleft = (35 - 2*nrOfLevels); // 45 instead of 10
     counter++;
     timer.html(timeleft - counter);
     points.html(nrOfLevels);
@@ -43,7 +43,11 @@ function setup() {
     // Game over - Time ran out.
     if (timeleft - counter <= 0) {
 
-      if(typeof U_UID !== 'undefined') {
+      console.log("User logged in? " + U_UID);
+      if(U_UID == "false") {
+        document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
+      }
+      else {
         var highscoreForm = new FormData();
 
         highscoreForm.append("username", U_UID);
@@ -60,23 +64,20 @@ function setup() {
           console.log(scores)
 
           var highscores = '';
-  				var distinctUsernameArr = [];
-  				var i = 0;
+          var distinctUsernameArr = [];
+          var i = 0;
           scores.forEach(function(score) {
-  					if(!distinctUsernameArr.includes(score[0])) {
-  						highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
-  					}
-  					distinctUsernameArr[i] = score[0];
-  					i++;
-  				})
+            if(!distinctUsernameArr.includes(score[0])) {
+              highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
+            }
+            distinctUsernameArr[i] = score[0];
+            i++;
+          })
 
           document.getElementById("highscoreTable").innerHTML = "Highscores: <br>" + highscores;
         }).catch(function(error) {
           console.error(error);
         });
-      }
-      else {
-        document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
       }
 
 

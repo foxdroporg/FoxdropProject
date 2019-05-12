@@ -124,6 +124,7 @@ $(document).ready(function(){
 	function checkForWallSpawn () {
 	// Add walls for each difficulty level.
 		if (gameScore == easyDifficulty) {	//10
+			//setTimeout(drawPlayer(), 3000);
 			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
       		levelCompleteSound.play();
 
@@ -278,6 +279,7 @@ $(document).ready(function(){
 	var hasBeenPrinted = false;
 
 	function deathHandler() {
+
 		var i = 0;
 		var txt = "GAME OVER! Refresh page to play again.";
 		if (hasBeenPrinted == false) {
@@ -285,6 +287,8 @@ $(document).ready(function(){
 			setInterval(typeWriter, 100);
 			typeWriter();
 		}
+
+
 
 		/* Writes endgame message successively */
 		function typeWriter() {
@@ -340,7 +344,7 @@ $(document).ready(function(){
 			if (!playerIsDead) {
 				var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
 	      		gameOverSound.play();
-						highscores();
+				highscores();
 			}
 			playerIsDead = true;
 		}
@@ -368,15 +372,12 @@ $(document).ready(function(){
 			hasPressed = false;
 			drawPlayer();
 		}
-	}, 80);
+	}, 100);
 
 	function highscores() {
 		// HIGHSCORE TABLE SHOWN
 		console.log("User logged in? " + U_UID);
-		if(U_UID == "false") {
-			document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
-		}
-		else {
+		if(U_UID === "true") {
 			var highscoreForm = new FormData();
 
 	      	highscoreForm.append("username", U_UID);
@@ -390,7 +391,7 @@ $(document).ready(function(){
 		      return response.json();
 		    })
 		    .then(function(scores) {
-		      //console.log(scores)
+		      console.log(scores)
 
 		      var highscores = '';
 				var distinctUsernameArr = [];
@@ -398,7 +399,7 @@ $(document).ready(function(){
 		      scores.forEach(function(score) {
 					if(!distinctUsernameArr.includes(score[0])) {
 						highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
-						//console.log(distinctUsernameArr);
+						console.log(distinctUsernameArr);
 					}
 
 					distinctUsernameArr[i] = score[0];
@@ -409,6 +410,9 @@ $(document).ready(function(){
 		    }).catch(function(error) {
 		      console.error(error);
 		    });
+		}
+		else {
+			document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
 		}
 	}
 

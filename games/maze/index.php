@@ -33,6 +33,30 @@
 						<form class="difficulty-form" action="difficulty/insane.php">
 							<button type="submit" name="submit">Insane</button>
 						</form>
+
+						<?php 
+						session_start();
+						include_once '../../includes/dbh.inc.php';
+
+						$sql = "SELECT * FROM scores WHERE game = 'maze' ORDER BY user_score DESC LIMIT 10";
+						$result = mysqli_query($conn, $sql);
+
+						$data = array();
+						while ($row = mysqli_fetch_row($result)) {
+							$data[] = $row;
+						}
+
+						echo '<span style="color:#FFF;text-align:center;">LEADERBOARD for Maze: <br></span>';
+						$distinctUsernameArr = array();
+						foreach ($data as &$value) {
+							if (!in_array($value[0], $distinctUsernameArr)) {
+								echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' points</span>';
+								echo "<br>";
+								$distinctUsernameArr[] = $value[0];
+							}
+						}
+						?>
+
 					</body>
 					<div style="color: white; position: absolute; left:5%; bottom:5%"><b>Instructions:</b> Move with ARROW KEYS or W-A-S-D KEYS or both. <br> There is a time limit to reach the golden treasure. Reach the golden treasure and your time is reset. <br> <b>Note:</b> Sound effects are included.</div>
 				
