@@ -42,7 +42,7 @@
 						<button type="submit" name="submit">Insane</button>
 					</form>
 
-					<?php 
+					<?php
 						session_start();
 						include_once '../../includes/dbh.inc.php';
 
@@ -55,13 +55,13 @@
 						}
 
 						echo '<span style="color:#FFF;text-align:center;">LEADERBOARD for Snake: <br></span>';
-						$distinctUsernameArr = array();
+				//		$distinctUsernameArr = array();
 						foreach ($data as &$value) {
-							if (!in_array($value[0], $distinctUsernameArr)) {
+					//		if (!in_array($value[0], $distinctUsernameArr)) {
 								echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' points</span>';
 								echo "<br>";
-								$distinctUsernameArr[] = $value[0];
-							}
+					//			$distinctUsernameArr[] = $value[0];
+					//		}
 						}
 					?>
 

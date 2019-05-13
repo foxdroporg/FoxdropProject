@@ -64,13 +64,13 @@ function setup() {
           console.log(scores)
 
           var highscores = '';
-          var distinctUsernameArr = [];
+      //    var distinctUsernameArr = [];
           var i = 0;
           scores.forEach(function(score) {
-            if(!distinctUsernameArr.includes(score[0])) {
+      //      if(!distinctUsernameArr.includes(score[0])) {
               highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
-            }
-            distinctUsernameArr[i] = score[0];
+      //      }
+      //      distinctUsernameArr[i] = score[0];
             i++;
           })
 
