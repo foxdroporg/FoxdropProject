@@ -14,7 +14,7 @@ function preload() {
 function setup() {
 	canvas = createCanvas(500, 500, WEBGL);
 	// song = loadSound("soundeffects/transformingCube.mp3", loaded); // To avoid lag before animation apears, remove preload.
-	song.setVolume(0.5);
+	song.setVolume(0.6);
 	buttonToggle = createButton("Unmute");
   	buttonToggle.mousePressed(togglePlaying);
 	centerCanvas();
@@ -61,7 +61,7 @@ function draw() {
 
 function togglePlaying() {
 	if (!song.isPlaying()) {
-		song.play();
+		song.loop();
 		buttonToggle.html("Mute");
 	} else {
 		song.pause();

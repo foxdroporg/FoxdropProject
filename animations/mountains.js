@@ -42,7 +42,7 @@ function windowResized() {
 function setup() {
   canvas = createCanvas(600, 400, WEBGL);           // For fullscreen make (windowWidth, windowHeight-65)
   //song = loadSound("soundeffects/birdFlyByMountainView.mp3", loaded);
-  song.setVolume(0.5);
+  song.setVolume(0.6);
   buttonToggle = createButton("Unmute");
   buttonToggle.mousePressed(togglePlaying);
   centerCanvas();
@@ -91,7 +91,7 @@ function draw() {
 
 function togglePlaying() {
   if (!song.isPlaying()) {
-    song.play();
+    song.loop();
     buttonToggle.html("Mute");
   } else {
     song.pause();

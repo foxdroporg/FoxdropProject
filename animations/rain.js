@@ -8,8 +8,8 @@ function preload() {
 }
 
 function setup() {
-  song.setVolume(0.5);
-  song.play();
+  song.setVolume(0.8);
+  song.loop();
 }
 
 function loaded() {
