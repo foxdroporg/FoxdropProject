@@ -11,6 +11,7 @@
 				<input type="text" name="email" placeholder="E-mail">
 				<input type="text" name="uid" placeholder="Username">
 				<input type="password" name="pwd" placeholder="Password">
+				<br>
 				<button type="submit" name="submit">Sign up</button>
 			</form>
 			<form class="signup-form" action="reset-password.php">

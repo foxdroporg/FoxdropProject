@@ -1,3 +1,4 @@
+/* Vector class determines the diriction of the ball*/
 class Vec {
 	constructor(x = 0, y = 0) {
 		this.x = x;
@@ -13,6 +14,7 @@ class Vec {
 	}
 }
 
+/* Rect is the class used to create ball and padels */
 class Rect {
 	constructor(width, height) {
 		this.position = new Vec;
@@ -55,6 +57,9 @@ var playerTurn = 0;
 var bounceTimer = true;
 let timer2Id = setInterval(() => bounceTimer=true, 300);
 
+
+
+/* Pong creates canvas, sets the padels at their positions and initialises game score visualisation */
 class Pong {
 	constructor(canvas) {
 		this._canvas = canvas;
@@ -114,12 +119,23 @@ class Pong {
 		this.reset();
 	}
 
+	/* Collide is responsible for ball bounce on roof, floor and padels */
 	collide(player, ball) {
 		var i = playerTurn % 2;
 		if (player.left < ball.right && player.right > ball.left && player.top < ball.bottom && player.bottom > ball.top && hasNotBounced) {
 			hasNotBounced = false;
 			const length = ball.velocity.length;
 			ball.velocity.x = -ball.velocity.x;
+
+			var bounceSound;
+			if (i == 1) {
+				bounceSound = new Audio("../../../soundeffects/pongHit2.mp3");
+			}
+			else {
+				bounceSound = new Audio("../../../soundeffects/pongHit3.mp3");
+			}
+			bounceSound.play();
+
 			if (this.ball.position.y > this.players[i].position.y && ball.velocity.y < 400) {
 				ball.velocity.y += 400 * ((ball.position.y - this.players[i].position.y) / (padelHeight/2));
 			}
@@ -186,9 +202,18 @@ class Pong {
 		this.ball.position.x += this.ball.velocity.x * dt;
 		this.ball.position.y += this.ball.velocity.y * dt;
 
-		if (this.ball.left < 0 || this.ball.right > this._canvas.width) {
+		if (this.ball.left < 0) {
 			const playerId = this.ball.velocity.x < 0 | 0;
 			this.players[playerId].score++;
+			var loseSound = new Audio("../../../soundeffects/loseOnPong.mp3");
+			loseSound.play();
+			this.reset();
+		}
+		else if (this.ball.right > this._canvas.width) {
+			const playerId = this.ball.velocity.x < 0 | 0;
+			this.players[playerId].score++;
+			var winSound = new Audio("../../../soundeffects/winOnPong.mp3");
+			winSound.play();
 			this.reset();
 		}
 		if (this.ball.top < 0 || this.ball.bottom > this._canvas.width && bounceTimer) {
@@ -228,9 +253,13 @@ class Pong {
 		this.draw();
 
 		if (this.players[0].score >= 10) {
+			var victorySound = new Audio("../../../soundeffects/victory.mp3");
+			victorySound.play();
 			alert("YOU WON!");
 		} 
 		else if (this.players[1].score >= 10) {
+			var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
+			gameOverSound.play();
 			alert("YOU LOST!");
 		}
 	}

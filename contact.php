@@ -1,21 +1,32 @@
 <?php
     include_once 'header.php';
 ?>
-    
 
 
-   <head>
-    <meta charset="UTF-8">
-     <title>Moutain View</title>
 
-    <div style="width:1000px color:white">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
-        <script type="text/javascript" src="mountains.js"></script>
-    </div>
-    
-  </head>
+<section class="main-container">
+  <div class="main-wrapper">
+
+    <head>
+      <meta charset="utf-8">
+      <meta name=viewport content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+      <h2 style="color:#FFFFFF">Contact</h2>
+        <br>
+        <br>
+      <div style="color:white; position: relative;"> 
+        <div class="header" style="color:white; position: absolute; left: 10px bottom: 20px"> 
+        You can reach us at: <br> foxdrop.contact@gmail.com
+        </div>
+      <br>
+      <br>
+      <br>
+    </body>
+  </div>
+</section>
   
 
 
