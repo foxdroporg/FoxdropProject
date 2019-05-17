@@ -1,4 +1,6 @@
 # Foxdrop
+Link to website: 
+http://foxdrop.000webhostapp.com/
 
 ## Project Description
 Website implementing games and a database collecting user information. Users may register, play games. Their high scores in the games will be stored in the database along with user name and password.
@@ -30,44 +32,61 @@ articles/ten-usability-heuristics/
 ### Features:
 
 #### Website
-![](assets/README-89edb556.PNG)
-
-<br>
-<br>
 
 #### Database
-Registration <br>
-Login <br>
-Collection of high scores <br>
+Registration:
+![](assets/README-89edb556.PNG)
 
 
-Forgotten password functionality on website, see below picture:
+Login: <br>
+![](assets/README-79218f64.PNG)
+
+Logged in: <br>
+![](assets/README-759211cd.png)
+
+Collection of high scores: <br>
+![](assets/README-217e2d5a.PNG)
+
+
+Forgotten password functionality via mail server:
 ![](assets/README-dca6d69b.PNG)
 
 <br>
-<br>
 
 #### Games featured on website:
-Maze Solver <br>
-![](assets/README-0eb79ebc.jpg)
+Maze Solver <br>![](assets/README-a23915d8.jpg)
 
 Tic Tac Toe <br>
 ![](assets/README-2413b152.png)
 
 Snake <br>
-![](assets/README-d5a9772d.jpg)
+![](assets/README-1a481945.jpg)
 
 Pong <br>
 ![](assets/README-e1c635d6.png)
 
+<br>
+<br>
+<br>
 
-#### Web Animation:
-Press the Foxdrop icon [top-left corner]. Lightspeed transport through space (with mouse manipulation).
+#### Web Animations:
+Space Lightspeed Travel:
 ![](assets/README-d9c65a14.PNG)
 
-Bird Flyby on Terrain (bird's perspective on the mountains).
+Eagle's perspective on mountain:
 ![](assets/README-1136a290.PNG)
 
+Cube with endless harmonic motion:
+![](assets/README-c0c6689c.png)
+
+Audio visualisation (amplitude of volume):
+![](assets/README-11f84947.png)
+
+
+<br>
+<br>
+Relaxing nature sound effects:
+![](assets/README-03f95955.png)
 
 <br>
 <br>
