@@ -3,13 +3,14 @@ Link to website:
 http://foxdrop.000webhostapp.com/
 
 ## Project Description
-Website implementing games, animations together with a database collecting user information such as username, e-mail and password. Users may register to get highscores and see exclusive League of Legends API.
+On Foxdrop there are games to play and animations to watch. A database is used to store user information, highscores and to reset passwords. Users may sign up to get access to game leaderboards and to view a leaderboard accessed from the League of Legends REST API.
 
 ## Project Goals
-Website should function as a place for people to visit and enjoy some animations and games. If they want, they can attempt to beat their own or other peoples high scores in the games for fun or competition.
+Website should function as a place for people to visit and enjoy some animations and games. If they want, they can attempt to beat their own or other peoples' high scores in the games for fun or competition.
 
-The website should follow these 10 heuristics as specified by Nielsen:
+The website should follow these <b>10 heuristics as specified by Jakob Nielsen:
 
+<b>
 Visibility of system status <br>
 Match between system and the real world <br>
 User control and freedom <br>
@@ -22,15 +23,13 @@ Help users recognize, diagnose, and recover from errors <br>
 Help and documentation <br>
 <br>
 
-How well the usability has been made will be evaluated through a think aloud test session with an end user and a few questions prepared for each of the heuristics. <br>
-
 More information about these heuristics: <br>
 https://www.nngroup.com/articles/ten-usability-heuristics/
 
 <h1> Features:
 
 
-<h2> Database functionalities
+<h2> Database functionalities <br> <br>
 
 Registration:
 ![](assets/README-89edb556.PNG)
@@ -49,6 +48,8 @@ Collection of high scores: <br>
 Forgotten password, tokens, mail server:
 ![](assets/README-dca6d69b.PNG)
 
+<br>
+<br>
 <br>
 
 <h2> Games featured on website:
