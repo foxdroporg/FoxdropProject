@@ -52,7 +52,7 @@ Forgotten password, tokens, mail server:
 <br>
 <br>
 
-<h2> Games featured on website:
+<h2> Games: <br>
 
 Maze Solver <br>![](assets/README-a23915d8.jpg)
 
@@ -69,15 +69,15 @@ Pong <br>
 <br>
 <br>
 
-<h2> Web Animations:
+<h2> Web Animations: <br>
 
 Space Lightspeed Travel:
 ![](assets/README-d9c65a14.PNG)
 
-Eagle's perspective on mountain:
+Eagle's perspective while flying above mountains:
 ![](assets/README-1136a290.PNG)
 
-Cube with endless harmonic motion:
+Cube with an endless harmonic motion:
 ![](assets/README-c0c6689c.png)
 
 Audio visualisation (amplitude of volume):
