@@ -85,11 +85,11 @@ Audio visualisation (amplitude of volume):
 
 <br>
 <br>
-Relaxing nature sound effects: <br>
-![](assets/README-03f95955.png)
+Relaxing nature sound effects:
+![](assets/README-66871832.png)
+
 
 <br>
-.
 <br>
 <br>
 <br>
