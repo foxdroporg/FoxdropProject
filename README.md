@@ -82,11 +82,8 @@ Cube with endless harmonic motion:
 Audio visualisation (amplitude of volume):
 ![](assets/README-11f84947.png)
 
-
-<br>
-<br>
 Relaxing nature sound effects:
-![](assets/README-66871832.png)
+![](assets/README-b594489d.png)
 
 
 <br>
