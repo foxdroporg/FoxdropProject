@@ -89,13 +89,14 @@ Relaxing nature sound effects: <br>
 ![](assets/README-03f95955.png)
 
 <br>
+.
 <br>
 <br>
 <br>
 <br>
 <br>
 
-### NOTES (Remove these before presentation)
+### NOTE: Reminder on how to work with branching
 
 commands
 create branch using     git checkout -b branchname
