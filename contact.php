@@ -10,6 +10,7 @@
     <head>
       <meta charset="utf-8">
       <meta name=viewport content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700">
       <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
@@ -24,6 +25,23 @@
       <br>
       <br>
       <br>
+      <br>
+      <br>
+
+      
+      <p style="color:orange"><b>SEND E-MAIL<b></p>
+        <br>
+      <form class="contact-form" action="contactform.php" method="post">
+        <input type="text" name="name" placeholder="Fullname">
+        <input type="text" name="mail" placeholder="Your e-mail">
+        <input type="text" name="subject" placeholder="Subject">
+        <textarea name="mesage" placeholder="Message"></textarea>
+        <button type="submit" name="submit">SEND MAIL</button>
+        
+        
+      </form>
+      
+    
     </body>
   </div>
 </section>

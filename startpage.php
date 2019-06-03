@@ -16,6 +16,19 @@
 		<div class="main-wrapper">
 				<h2 style="color:#FFFFFF">Latest News</h2>
 		</div>
+
+		<?php
+			// Fix GitHub API
+		$repositoryTest1 = file_get_contents("https://api.github.com/repos/ehenri/Project-Repository");
+		$repositoryTest2 = file_get_contents("https://api.github.com/user/starred/kriwer/Project-Repository");
+		$repositoryNews = file_get_contents("https://api.github.com/repos/ehenri/Project-Repository/issues?state=closed");	// ?query1=value1&query2=value2 // query parameters
+
+		$getAllkriwerRepos = file_get_contents("https://api.github.com/users/Christofferos/repos?sort=pushed");
+
+		?>
+
+
+
 	</section>
 
 
