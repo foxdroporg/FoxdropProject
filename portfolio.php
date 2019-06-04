@@ -59,8 +59,8 @@
 				</a>
 			</div>
 			<div class="column">
-				<a href="musicDJ.php" style="border:5px solid #ccc;">
-			    <img src="images/musicDJ.png" alt="4thAnimation" style="width:60%; height:60%; ">
+				<a href="issLocation.php" style="border:5px solid #ccc;">
+			    <img src="images/ISS.png" alt="4thAnimation" style="width:95%; height:95%; ">
 				</a>
 			</div>
 		</div>
@@ -94,19 +94,36 @@
 				</a>
 			</div>
 		</div>
+
 	</section>
 </section>
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF">Music Video</h2>
-		<br>
-		<br>
-		<br>
-			<video width="200" controls>
-				<source src="videos/vid.mp4" type="video/mp4">
-					Your browser does not support mp3 videos!
-			</video>
+		<h2 style="color:#FFFFFF">Music/Video</h2>
+
+		<div class="row">
+			<div class="column">
+			    <a href="musicDJ.php" style="border:5px solid #ccc;">
+				<img src="images/musicDJ.png" alt="1stSound" style="width:55%; height:55%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="videoChris.php" style="border:5px solid #ccc;">
+			    <img src="images/Chris.png" alt="2ndSound" style="width:105%; height:105%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="" style="border:5px solid #ccc;">
+			    <img src="images/website.jpg" alt="3rdSound" style="width:200%; height:80%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="" style="border:5px solid #ccc;">
+			    <img src="images/website.jpg" alt="4thSound" style="width:200%; height:200%; ">
+				</a>
+			</div>
+		</div>
 
 	</section>
 </section>

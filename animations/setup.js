@@ -2,11 +2,20 @@
 var starArray = [];
 var starSpeed;
 
+function preload() {
+  songTheme = loadSound("soundeffects/starWars.mp3", loaded);
+  //songTemple = loadSound("soundeffects/templeMarch.mp3", loaded);
+}
+
 function setup() {
+  // Spread out workload better would be optimal.
   createCanvas(windowWidth, windowHeight-65);
   for (var i = 0; i < 1000; i++) {
     starArray[i] = new StarSpawn();
   }
+
+  songTheme.setVolume(0.8);
+  songTheme.loop();
 }
 
 function draw() {
@@ -19,4 +28,8 @@ function draw() {
   }
 }
 
-// Spread out workload some how.
+
+function loaded() {
+  console.log("Song finished loading, ready to play!");
+}
+
