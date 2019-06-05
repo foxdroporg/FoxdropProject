@@ -1,5 +1,8 @@
 test
+<<<<<<< HEAD
 tust
+=======
+>>>>>>> 0cfe513071fe67a54da42fc5022c80ff49e96803
 
 # Foxdrop
 Link to website:
