@@ -19,9 +19,11 @@
         <br>
         <br>
       <div style="color:white; position: relative;"> 
+        
         <div class="header" style="color:white; position: absolute; left: 10px bottom: 20px"> 
-        You can reach us at: <br> foxdrop.contact@gmail.com
+        You can reach us at: <br> <p style="color:orange">foxdrop.contact@gmail.com</p>
         </div>
+
       <br>
       <br>
       <br>
@@ -29,7 +31,7 @@
       <br>
 
       
-      <p style="color:orange"><b>SEND E-MAIL<b></p>
+      <p style="color:white"><b>SEND E-MAIL<b></p>
         <br>
       <form class="contact-form" action="contactform.php" method="post">
         <input type="text" name="name" placeholder="Fullname">
@@ -40,6 +42,10 @@
         
         
       </form>
+
+      
+  
+        
       
     
     </body>
