@@ -14,7 +14,7 @@
 
 	<section class="main-container">
 		<div class="main-wrapper">
-				<h2 style="color:#FFFFFF">Latest News</h2>
+				<h2 style="color:#FFFFFF; font-size: 50px">Latest News</h2>
 		</div>
 		
 

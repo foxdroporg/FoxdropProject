@@ -5,10 +5,7 @@
 <section class="main-container">
 	<section class="main-wrapper">
 		<div class="main-wrapperportfolio">
-				<h2 style="color:#FFFFFF">Games</h2>
-				<form class="portfolio-collection" action="games/snake/index.html" method="POST">
-					<input type="text" placeholder="Search for game">
-				</form>
+				<h2 style="color:#FFFFFF; font-size: 50px">Games</h2>
 
 			<div class="row">
 				<div class="column">
@@ -40,7 +37,7 @@
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF">Animations</h2>
+		<h2 style="color:#FFFFFF; font-size: 50px">Animations</h2>
 
 		<div class="row">
 			<div class="column">
@@ -70,7 +67,7 @@
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF">Relax</h2>
+		<h2 style="color:#FFFFFF; font-size: 50px">Relax</h2>
 
 		<div class="row">
 			<div class="column">
@@ -100,12 +97,12 @@
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF">Music/Video</h2>
+		<h2 style="color:#FFFFFF; font-size: 50px">Music/Video</h2>
 
 		<div class="row">
 			<div class="column">
 			    <a href="musicDJ.php" style="border:5px solid #ccc;">
-				<img src="images/musicDJ.png" alt="1stSound" style="width:100%; height:100%; ">
+				<img src="images/musicDJ.png" alt="1stSound" style="width:50%; height:50%; ">
 				</a>
 			</div>
 			<div class="column">

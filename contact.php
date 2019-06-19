@@ -15,7 +15,7 @@
     </head>
 
     <body>
-      <h2 style="color:#FFFFFF">Contact</h2>
+      <h2 style="color:#FFFFFF; font-size: 50px">Contact</h2>
         <br>
         <br>
       <div style="color:white; position: relative;"> 

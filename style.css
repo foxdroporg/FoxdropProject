@@ -28,7 +28,7 @@ body {
     line-height:1;
     /*Added for background picture */
     background: url('images/birdSil.jpg') no-repeat;
-    background-size: cover;
+    background-attachment: fixed;
     font-family: Serif;
 }
 
@@ -286,8 +286,9 @@ header .nav-login a {
  /* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
   float: left;
-  width: 25%;
-  padding-left: 140px;
+  width: 40%;
+  padding-left: 5%;
+  padding-right: 5%;
   padding-top: 50px;
 }
 
@@ -354,6 +355,19 @@ header .nav-login a {
 }
 
 /* About */
+
+.paragraph {
+    grid-area: header;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Serif;
+    display:block;
+    justify-self: center;
+    color:white; 
+    padding-left: 10%; 
+    padding-right: 10%;
+    padding-bottom: 3%;
+}
 
 /* White box class for box */
 .whitebox {
