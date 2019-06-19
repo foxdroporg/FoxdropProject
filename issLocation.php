@@ -11,6 +11,11 @@
 			<meta name="viewport" content="width=\, initial-scale=1.0" />
 			<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script>
+		    <script type="text/javascript" src="animations/iss.js"></script>
+
 			<link
 		      rel="stylesheet"
 		      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"

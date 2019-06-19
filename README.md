@@ -1,5 +1,3 @@
-test
-
 # Foxdrop
 Link to website:
 http://foxdrop.000webhostapp.com/
@@ -82,28 +80,11 @@ Eagle's perspective while flying above mountains:
 Cube with an endless harmonic motion:
 ![](assets/README-c0c6689c.png)
 
+International Space Station API real time location:
+![](assets/README-38673331.png)
+
 Audio visualisation (amplitude of volume):
 ![](assets/README-11f84947.png)
 
 Relaxing nature sound effects:
 ![](assets/README-b594489d.png)
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### NOTE: Reminder on how to work with branching
-
-commands
-create branch using     git checkout -b branchname
-
-pull to local files     git pull
-
-merge to master         git merge master      merges LOCALLY to solve conflict  
-actual merges are done by chosing accept online
-
-Open pull requests whenever you feel ready to present what you have created.

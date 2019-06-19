@@ -18,13 +18,13 @@
 						<br>
 
 						<div class="header" style="color:white;"> 
-							Foxdrop started as a group project between two KTH students in Sweden. We continued to develop Foxdrop on our spare time, and today it is a fully functional online platform to play games and watch animations on. We have created all this content for you the reader and we wish that you find great joy in playing our games and watching our animations. We encourage you to share these experiences with your friends and family.  
+							Foxdrop started as a group project between two KTH students, but then transitioned into a fully functional website as a result of our continued development on our spare time. We love to share the things we work with and this is a perfect way to do just that. Hopefully, you find great joy in interacting with our website and we want to encourage you to share these experiences with your friends and family.  
 						<br>
 						<br>
 							Do not hesitate to ask any questions or make requests about functionality that you'd like us to add. Go to "Contact" for more information about how to get in touch with us. 
 						<br>
 						<br>
-							We are very thankful for the time you took to visit our website!
+							We are grateful for your time on our website!
 						</div>
 						
 						
@@ -52,6 +52,13 @@
 							<br>
 							<br>
 							<br>
+
+							  <br><br><br>
+						      <div class="header" style="color:white; position: absolute; left: 10px bottom: 20px"> 
+						        Want to know more about us? <br> <a style="color:orange" href="https://github.com/foxdroporg/FoxdropProject">https://github.com/foxdroporg/FoxdropProject</a> 
+						      </div>
+						      <br><br><br>
+
 
 						</div>
 				</div>

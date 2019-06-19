@@ -16,9 +16,11 @@
 		<div class="main-wrapper">
 				<h2 style="color:#FFFFFF">Latest News</h2>
 		</div>
-		<br><br><br>
+		
 
 		<p style="text-align: center">
+			<span style="color:white; text-align:center; font-size: 30px"></span><br><br><br>
+
 			<span id="com0" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
 			<span id="com1" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
 			<span id="com2" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
@@ -29,7 +31,7 @@
 		<script type="text/javascript">
 
 			async function getGithubCommits() {
-		    		const response = await fetch('https://api.github.com/repos/Christofferos/hello-world/commits');	
+		    		const response = await fetch('https://api.github.com/repos/ErikChHenriksson/FoxdropProject/commits');	
 		    		const data = await response.json();
 		    		
 		    		// The 5 latest commit messages from a repository.
@@ -39,6 +41,7 @@
 		    		data[3] !== undefined ? document.getElementById('com3').textContent = data[3].commit.message : document.getElementById('com3').textContent = "";
 		    		data[4] !== undefined ? document.getElementById('com4').textContent = data[4].commit.message : document.getElementById('com4').textContent = "";
 		    	}
+
 
 		    	getGithubCommits()
 		    	.then(response => {
