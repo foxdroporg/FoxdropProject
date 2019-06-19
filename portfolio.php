@@ -105,7 +105,7 @@
 		<div class="row">
 			<div class="column">
 			    <a href="musicDJ.php" style="border:5px solid #ccc;">
-				<img src="images/musicDJ.png" alt="1stSound" style="width:55%; height:55%; ">
+				<img src="images/musicDJ.png" alt="1stSound" style="width:100%; height:100%; ">
 				</a>
 			</div>
 			<div class="column">
@@ -115,12 +115,12 @@
 			</div>
 			<div class="column">
 				<a href="" style="border:5px solid #ccc;">
-			    <img src="images/website.jpg" alt="3rdSound" style="width:200%; height:80%; ">
+			    <img src="images/website.jpg" alt="3rdSound" style="width:100%; height:100%; ">
 				</a>
 			</div>
 			<div class="column">
 				<a href="" style="border:5px solid #ccc;">
-			    <img src="images/website.jpg" alt="4thSound" style="width:200%; height:200%; ">
+			    <img src="images/website.jpg" alt="4thSound" style="width:100%; height:100%; ">
 				</a>
 			</div>
 		</div>
