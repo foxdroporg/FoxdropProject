@@ -11,6 +11,35 @@ if (isset($_POST['submit'])) {
 	$txt = "You have recieved an e-mail from " .$name. ".\n\n".$message;
 
 	// mail() function does not work with gmail according to the internet. So, a hosting service e-mail will be needed which then can forward the mail to gmail.
+	// local server 
 	mail($mailTo, $subject, $txt, $headers);
+
+	//online server, not yet working. Read through reset-request.inc.php to understand how to fix this.
+	/*
+	require 'PHPMailer/PHPMailerAutoload.php';
+	$mail = new PHPMailer; 
+	$mail->Host = 'smtp.gmail.com';
+	$mail->Port = 587; 
+	$mail->SMTPAuth = true;
+	$mail->SMTPSecure = 'tls'; 
+
+	$mail->Username = 'foxdrop.no.reply@gmail.com';
+	$mail->Password = 'KrisErik';
+
+	$mail->setfrom('foxdrop.no.reply@gmail.com'); // $mailFrom
+	$mail->addAddress('foxdrop.contact@gmail.com'); 
+
+	$mail->isHTML(true); 
+	$mail->Subject = $subject;
+	$mail->Body = $message;
+	
+	if(!$mail->send()){
+		echo "Message could not be sent!";	
+	}
+	else {
+		//echo "Message has been sent!"; // Looks ugly but is good to show the user it was a success. 
+	}
+	*/
+
 	header("Location: contact.php?mailWasSent");
 }
