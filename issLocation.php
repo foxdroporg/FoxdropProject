@@ -41,11 +41,20 @@
 
 	<body>
 		<br><br><br>
-		<h1 style="color:white; font-size: 20px; text-align: center">Where is the International Space Station Right Now?</h1>	<br>
+		<h1 style="color:white; font-size: 20px; text-align: center">Where is the International Space Station Right Now?</h1>
+		<br>
 
-		<p style="color:white; font-size: 15px; text-align: center">latitude: <span id="lat"></span>° <br>
-			longitude: <span id="lon"></span>°
-		</p>	<br>
+		<p style="color:white; font-size: 15px; text-align: center">
+			Latitude: <span id="lat"></span>° 
+		<br>
+			Longitude: <span id="lon"></span>°
+		<br>
+			Velocity: <span id="vel"></span>km/h
+		<br>
+			Altitude: <span id="alt"></span>km
+		</p>	
+
+		<br>
 
 		<div id="issMap"></div>
 
@@ -72,7 +81,7 @@
 			async function getISS() {
 				const response = await fetch(apiUrl);
 				const data = await response.json();
-				const { latitude, longitude } = data;
+				const { latitude, longitude, velocity, altitude } = data;
 
 				marker.setLatLng([latitude, longitude]);
 		        if (firstTime) {
@@ -82,6 +91,8 @@
 
 				document.getElementById('lat').textContent = latitude.toFixed(2);
 				document.getElementById('lon').textContent = longitude.toFixed(2);
+				document.getElementById('vel').textContent = velocity.toFixed(2);
+				document.getElementById('alt').textContent = altitude.toFixed(2);
 			}
 			getISS();
 

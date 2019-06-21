@@ -16,6 +16,11 @@ if (isset($_POST['submit'])) {
 
 	//online server, not yet working. Read through reset-request.inc.php to understand how to fix this.
 	/*
+	require '../vendor/autoload.php';
+	$dotenv = Dotenv\Dotenv::create(__DIR__);
+	$dotenv->load();
+	$PASSWORD = $_ENV['NO_REPLY_PASS'];
+
 	require 'PHPMailer/PHPMailerAutoload.php';
 	$mail = new PHPMailer; 
 	$mail->Host = 'smtp.gmail.com';
@@ -24,7 +29,7 @@ if (isset($_POST['submit'])) {
 	$mail->SMTPSecure = 'tls'; 
 
 	$mail->Username = 'foxdrop.no.reply@gmail.com';
-	$mail->Password = 'KrisErik';
+	$mail->Password = $PASSWORD;
 
 	$mail->setfrom('foxdrop.no.reply@gmail.com'); // $mailFrom
 	$mail->addAddress('foxdrop.contact@gmail.com'); 
