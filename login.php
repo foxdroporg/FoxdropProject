@@ -44,7 +44,7 @@
 		$APIKEY = $_ENV['LOL_API_KEY'];
 		
 		/* <pre> tags creates text with a more readable format*/
-		echo '<pre>';
+		//echo '<pre>';
 		
 		// Challenger ladder 3v3
 		$challengerLadder = file_get_contents("https://euw1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_FLEX_TT?api_key=" .$APIKEY );

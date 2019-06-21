@@ -1,9 +1,10 @@
 <?php
 require '../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
 $dotenv->load();
 
 // Local
+
 $dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
 $dbUsername = $_ENV['DB_LOCAL_USERNAME'];
 $dbPassword = $_ENV['DB_LOCAL_PASSWORD'];

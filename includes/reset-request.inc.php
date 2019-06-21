@@ -56,7 +56,7 @@ if (isset($_POST["reset-request-submit"])) {
 	$headers .= "Content-type: text/html\r\n";
 
 	require '../vendor/autoload.php';
-	$dotenv = Dotenv\Dotenv::create(__DIR__);
+	$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));	// dirname(__DIR__) To go back one.
 	$dotenv->load();
 	$PASSWORD = $_ENV['NO_REPLY_PASS'];
 
