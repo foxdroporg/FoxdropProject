@@ -268,14 +268,14 @@ class Pong {
 
 const canvas = document.getElementById('pong');
 const pong = new Pong(canvas);
+const eventTarget = document.getElementById('pongEventTarget');
 
-
-canvas.addEventListener('mousemove', event => {
+eventTarget.addEventListener('mousemove', event => {
 	const scale = event.offsetY / event.target.getBoundingClientRect().height;
 	pong.players[0].position.y = canvas.height * scale;
 });
 
-canvas.addEventListener('click', event => {
+eventTarget.addEventListener('click', event => {
 	pong.start()
 });
 

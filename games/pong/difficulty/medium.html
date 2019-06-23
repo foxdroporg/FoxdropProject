@@ -29,7 +29,11 @@
 		</head>
 
 		<body>
-		    <canvas id="pong" width="800" height="800"></canvas> 
+		    <canvas id="pong" width="800" height="800" 
+			   style="position: absolute; left: 25%; right:25%; top:0%; z-index: 0;"></canvas>
+			 <canvas id="pongEventTarget" width="1400" height="600" 
+			   style="position: absolute; left: 0%; right:0%; top: 0%; z-index: 1;"></canvas>
+		    
 		    <script src="pongMedium.js"></script>
 		</body>
 
