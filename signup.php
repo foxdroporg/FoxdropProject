@@ -24,6 +24,14 @@
 					echo '<p class"signupsuccess" style="color:green; font-size:20px; text-align: center; padding-top: 3%">Your password has been reset!</p>';
 				}
 			}
+			if (isset($_GET["signup"])) {
+				if ($_GET["signup"] !== "success") {
+					echo '<p class"signupsuccess" style="color:red; font-size:20px; text-align: center; padding-top: 3%">Sign up failed.</p>';
+				}
+				else {
+					echo '<p class"signupsuccess" style="color:green; font-size:20px; text-align: center; padding-top: 3%">Sign up was successful!</p>';
+				}
+			}
 			?>
 			
 

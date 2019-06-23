@@ -33,27 +33,27 @@
       
       <p style="color:white"><b>SEND E-MAIL<b></p>
         <br>
-      <form class="contact-form" action="contactform.php" method="post">
+      <form class="contact-form" action="includes/contact.inc.php" method="post">
         <input type="text" name="name" placeholder="Fullname">
         <input type="text" name="mail" placeholder="Your e-mail">
         <input type="text" name="subject" placeholder="Subject">
-        <textarea name="mesage" placeholder="Message"></textarea>
+        <textarea name="message" placeholder="Message"></textarea>
         <button type="submit" name="submit">SEND MAIL</button>
-        
-        
       </form>
 
-      
-  
-        
-      
-    
+      <?php
+        if (isset($_GET["contact"])) {
+          if ($_GET["contact"] == "mailWasSent") {
+            echo '<p class"signupsuccess" style="color:green; font-size:20px; text-align: center; padding-top: 3%">Mail has been sent!</p>';
+          } 
+          else if ($_GET["contact"] !== "mailWasSent") {
+            echo '<p class"signupsuccess" style="color:red; font-size:20px; text-align: center; padding-top: 3%">Mail has not been sent. <br> No empty fields or invalid e-mails are allowed!</p>';
+          }
+        }
+      ?>
     </body>
   </div>
 </section>
-  
-
-
 
 
 <?php
