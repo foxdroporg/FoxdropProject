@@ -9,7 +9,6 @@ $dbUsername = $_ENV['DB_LOCAL_USERNAME'];
 $dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
 $dbName = $_ENV['DB_LOCAL_NAME'];
 
-
 // Public
 /*
 $dbServername = $_ENV['DB_SERV_NAME']; 

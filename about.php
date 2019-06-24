@@ -26,16 +26,78 @@ include_once 'header.php';
 				"Contact" for more information about how to get in touch with us.
 			</div>
 			<div class="paragraph">
-				The site has currently amassed a database of ___ scores in ___ games by ___ users. We welcome all student web designers and developers to join us in helping grow this site.
+				The site has currently amassed a database of 
+				<?php
+					/* dbh.inc.php has a path to autoload.php that does not work from this directory... This is why we have re-written the code from (dbh.inc.php) file here. */ 
+						include 'vendor/autoload.php';
+						$dotenv = Dotenv\Dotenv::create(__DIR__);
+						$dotenv->load();
+						// Local
+						/*
+						$dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
+						$dbUsername = $_ENV['DB_LOCAL_USERNAME'];
+						$dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
+						$dbName = $_ENV['DB_LOCAL_NAME'];
+						*/
+						// Online 
+						
+						$dbServername = $_ENV['DB_SERV_NAME']; 
+						$dbUsername = $_ENV['DB_USERNAME'];
+						$dbPassword = $_ENV['DB_PASSWORD'];
+						$dbName = $_ENV['DB_NAME'];
+						
+						$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+
+					$sqlQuery = "SELECT COUNT(*) FROM scores";
+					$result = mysqli_query($conn, $sqlQuery);
+					$data = array();
+					while ($row = mysqli_fetch_row($result)) {
+						$data[] = $row;
+					}
+					foreach ($data as &$value) {
+						echo '<span style="color:gold;text-align:center;">' . $value[0] . ' </span>';
+					}
+				?>
+				scores in 
+				<?php
+					$sql = "SELECT game FROM scores";
+					$result = mysqli_query($conn, $sql);
+					$data = array();
+					while ($row = mysqli_fetch_row($result)) {
+						$data[] = $row;
+					}
+					$uniqueGames = 0;
+					$uniqueArray = array();
+					foreach ($data as &$value) {
+						if(!in_array($value[0], $uniqueArray)) {
+							$uniqueGames++;
+							$uniqueArray[] = $value[0];
+						}
+					}
+					echo '<span style="color:gold;text-align:center;">' . $uniqueGames . ' </span>';
+				?>
+				games by 
+				<?php
+					$sql = "SELECT COUNT(*) FROM users";
+					$result = mysqli_query($conn, $sql);
+					$data = array();
+					while ($row = mysqli_fetch_row($result)) {
+						$data[] = $row;
+					}
+					foreach ($data as &$value) {
+						echo '<span style="color:gold;text-align:center;">' . $value[0] . ' </span>';
+					}
+				?>
+				users. We welcome all student web designers and developers to join us in helping grow this site.
 			</div>
 
+
 			<div class="row" style="padding-bottom: 5%; padding-left: 10%; padding-right: 10%;">
-				<h2 style="color:white; font-size: 25px; padding-top: 2%; ">Administrators:</h2>
 				<div class="column" style="text-align: center; font-size: 20px">
 					<p style="color:orange">Kristopher W <p style="color:white">- Role: Co-Founder <br>- Qualities: SQL, MySQL, NodeJS, jQuery, Java, PHP, Python.</p></p>
 				</div>
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Erik H <p style="color:white">- Role: Co-Founder <br>- Qualities: HTML, Javascript, jQuery, CSS, React, Redux, Angular. </p></p>
+					<p style="color:orange">Erik H <p style="color:white">- Role: Co-Founder <br>- Qualities: HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>
 				</div>
 
 			</div>
