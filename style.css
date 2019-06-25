@@ -207,7 +207,7 @@ header .nav-login form button {
     padding: 0px 10px;
     margin-right: 10px;
     border: none;
-    background-color: #f3f3f3;
+    background-color: white; /* #f3f3f3 */
     font-family: Serif;
     font-size: 14px;
     color: #111;

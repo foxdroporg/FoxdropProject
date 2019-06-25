@@ -94,10 +94,10 @@ include_once 'header.php';
 
 			<div class="row" style="padding-bottom: 5%; padding-left: 10%; padding-right: 10%;">
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Kristopher W <p style="color:white">- Role: Co-Founder <br>- Qualities: SQL, MySQL, NodeJS, jQuery, Java, PHP, Python.</p></p>
+					<p style="color:orange">Kristopher Werlinder <p style="color:white">Role: Co-Founder <br>Proficiencies: SQL, MySQL, NodeJS, jQuery, Java, PHP, Python.</p></p>
 				</div>
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Erik H <p style="color:white">- Role: Co-Founder <br>- Qualities: HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>
+					<p style="color:orange">Erik Henriksson <p style="color:white">Role: Co-Founder <br>Proficiencies: HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>
 				</div>
 
 			</div>

@@ -33,11 +33,11 @@
 					<?php
 						if (isset($_SESSION['u_id'])) {
 
-							echo '<form><p style="margin: 7.5px 20px 10px 10px "><b>' . $_SESSION["u_uid"] . '    ' . '</b></p></form>';
+							echo '<form action="profilePage.php" method="POST""><button class="button-test" type="submit" name="submit" style="width: auto; outline:none;"><p><b>' . $_SESSION["u_uid"] . '    ' . '</b></p></button></form>';
 						
 
 							echo '<form action="includes/logout.inc.php" method="POST">
-								<button type="submit" name="submit">Logout</button>
+								<button class="button-test" type="submit" name="submit">Logout</button>
 							</form>';
 
 						} else {
