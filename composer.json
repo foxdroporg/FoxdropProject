@@ -1,5 +1,6 @@
 {
     "require": {
-        "vlucas/phpdotenv": "^3.4"
+        "vlucas/phpdotenv": "^3.4",
+        "mashape/unirest-php": "^3.0"
     }
 }
