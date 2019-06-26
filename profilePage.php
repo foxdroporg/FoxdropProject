@@ -115,30 +115,31 @@
 					<br>
 					Random facts of the day: <br>
 					<?php
+						$API_KEY = $_ENV['RAPID_API_KEY'];
 						// NUMBERS API - Random facts about certain numbers
 						$response1 = Unirest\Request::get("https://numbersapi.p.rapidapi.com/2/5/date",
 						  array(
 						    "X-RapidAPI-Host" => "numbersapi.p.rapidapi.com",
-						    "X-RapidAPI-Key" => "b9334583cemsh670233cf6f39e65p11ad14jsn75c6538b3a72"
+						    "X-RapidAPI-Key" => $API_KEY
 						  )
 						);
 						$response2 = Unirest\Request::get("https://numbersapi.p.rapidapi.com/10/17/date",
 						  array(
 						    "X-RapidAPI-Host" => "numbersapi.p.rapidapi.com",
-						    "X-RapidAPI-Key" => "b9334583cemsh670233cf6f39e65p11ad14jsn75c6538b3a72"
+						    "X-RapidAPI-Key" => $API_KEY
 						  )
 						);
 						$response3 = Unirest\Request::get("https://numbersapi.p.rapidapi.com/random/trivia?max=30&min=10",
 						  array(
 						    "X-RapidAPI-Host" => "numbersapi.p.rapidapi.com",
-						    "X-RapidAPI-Key" => "b9334583cemsh670233cf6f39e65p11ad14jsn75c6538b3a72"
+						    "X-RapidAPI-Key" => $API_KEY
 						  )
 						);
 						$year = date("Y");
 						$response4 = Unirest\Request::get("https://numbersapi.p.rapidapi.com/".$year."/year",
 						  array(
 						    "X-RapidAPI-Host" => "numbersapi.p.rapidapi.com",
-						    "X-RapidAPI-Key" => "b9334583cemsh670233cf6f39e65p11ad14jsn75c6538b3a72"
+						    "X-RapidAPI-Key" => $API_KEY
 						  )
 						);
 						$responseBody1 = $response1->body;
@@ -154,7 +155,7 @@
 						$response5 = Unirest\Request::post("https://NasaAPIdimasV1.p.rapidapi.com/getEPICEarthImagery",
 						  array(
 						    "X-RapidAPI-Host" => "NasaAPIdimasV1.p.rapidapi.com",
-						    "X-RapidAPI-Key" => "b9334583cemsh670233cf6f39e65p11ad14jsn75c6538b3a72",
+						    "X-RapidAPI-Key" => $API_KEY,
 						    "Content-Type" => "application/x-www-form-urlencoded"
 						  )
 						);
