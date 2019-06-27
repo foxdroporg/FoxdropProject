@@ -555,3 +555,9 @@ Insert into startpage.php when ready:
 .contact-form button[type=submit]:hover {
   background-color: #ff3300;
 }
+
+#over img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

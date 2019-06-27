@@ -103,24 +103,24 @@ include_once 'header.php';
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF; font-size: 50px">Discover Smart Applications</h2>
+		<h2 style="color:#FFFFFF; font-size: 50px">Other</h2>
 
 		<div class="row">
 			<div class="column">
 				<a href="musicDJ.php" style="border:5px solid #ccc;">
-					<img src="images/musicDJ.png" alt="1stSound" style="width:50%; height:50%; ">
+					<img src="images/musicDJ.png" alt="1stSound" style="width:100%; height:100%; ">
 				</a>
 			</div>
 			<div class="column">
-				<a href="videoChris.php" style="border:5px solid #ccc;">
-					<img src="images/Chris.png" alt="2ndSound" style="width:105%; height:105%; ">
+				<a href="nasaImage.php" style="border:5px solid #ccc;">
+					<img src="images/nasaImage.png" alt="2ndSound" style="width:60%; height:70%; ">
 				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
-				<a href="geolocation.html" style="border:5px solid #ccc;">
-			    <img src="images/searchPos.png" alt="3rd" style="width:100%; height:100%; ">
+				<a href="geolocation.php" style="border:5px solid #ccc;">
+			    <img src="images/geolocation.png" alt="3rd" style="width:100%; height:100%; ">
 				</a>
 			</div>
 			<div class="column">

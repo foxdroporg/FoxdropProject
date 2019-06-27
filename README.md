@@ -1,6 +1,6 @@
 # Foxdrop
 Link to website:
-http://foxdrop.000webhostapp.com/
+https://foxdrop.000webhostapp.com/
 
 ## Project Description
 On Foxdrop there are games to play and animations to watch. A database is used to store user information, highscores and to reset passwords. Users may sign up to get access to game leaderboards and to view a leaderboard accessed from the League of Legends REST API.

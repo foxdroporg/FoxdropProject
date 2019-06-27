@@ -113,9 +113,9 @@ include_once 'header.php';
 				    ✓ Contact form for suggestions and questions <br>
 				    ✓ Github Rest API to see latest changes on site<br>
 				    ✓ OpenSource avaliable on Github<br>
+				    ✓ Profile page with daily information <br>
+				    ✓ Geolocation application for local weather forecasts<br>
 				    ✖ MovieMinded a quiz game on movies of your choice <br>
-				    ✖ Profile page with daily information <br>
-				    ✖ Geolocation application for local weather forecasts<br>
 				    ✖ Search bar for finding things fast <br>
 				    ✖ Trivia Game using jService Rest API <br>
 

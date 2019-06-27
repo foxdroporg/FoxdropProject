@@ -5,6 +5,13 @@
 <body>
   <h2 style="color:white; text-align:center; font-size:30px; padding-top: 5%">Search For A Summonername To Find LoL Player Account</h2>
 
+  <p style="text-align:center; padding-top:3%; padding-bottom:3%">
+		<input id="vegetable" style="text-align:center" />
+		<button id="submit" style="text-align:center">Submit</button>
+		<br>
+		<label for="vegetable" style="color:white">Enter summonername</label>
+	</p>
+
 
 	<script type="text/javascript">
 		require('dotenv').config();
@@ -35,11 +42,34 @@
 
 			var oReq = new XMLHttpRequest();
 			oReq.addEventListener("load", reqListener());
-			oReq.open("GET", 'fetch_summoner.php?summoner=${summonerName}');
+			oReq.open("GET", `fetch_summoner.php?summoner=${summonerName}`);
 			oReq.send();
 		}
 		*/
+
+		/* Second button */
+		const button = document.getElementById('submit');
+    
+	    button.addEventListener('click', async event => {
+	    	const vegetable = document.getElementById('vegetable').value;
+			const data = { lat, lon, vegetable };
+			
+			const options = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			}
+			const response = await fetch('/api', options);
+			/* RESPONSE IS EMPTY right now. I cannot find why.. Help! */ 
+			console.log(response);
+			const dataJson = await response.json();
+			console.log(dataJson);
+		});
 	</script>
+
+
 
 	<br><br>
 	<form style="text-align:center" action="" method="POST">
