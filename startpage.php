@@ -52,6 +52,29 @@ include_once 'header.php';
 	</script>
 
 </section>
+
+<section class="main-container">
+	<div class="main-wrapper">
+		<?php
+			require 'vendor/autoload.php';
+			$dotenv = Dotenv\Dotenv::create(__DIR__);
+			$dotenv->load();
+			$API_KEY = $_ENV['RAPID_API_KEY'];
+
+			$month = date("m");
+			$day = date("d");
+			$response4 = Unirest\Request::get("https://numbersapi.p.rapidapi.com/".$month."/".$day."/date",
+			  array(
+			    "X-RapidAPI-Host" => "numbersapi.p.rapidapi.com",
+			    "X-RapidAPI-Key" => $API_KEY
+			  )
+			);
+			$responseBody4 = $response4->body;
+			echo '<h2 style="color:white;font-size:30px">Today\'s date in history</h2><br><br>';
+			echo '<p style="text-align: center"><span style="color:gold;text-align:center;font-size:20px">' . $responseBody4 . '<br><br></span></p>';
+		?>
+	</div>
+</section>
 </html>
 
 

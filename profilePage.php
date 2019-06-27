@@ -113,10 +113,11 @@
 					?> 
 					<br>
 					<br>
-					Random facts of the day: <br>
+					Interesting trivia fact: <br>
 					<?php
 						$API_KEY = $_ENV['RAPID_API_KEY'];
 						// NUMBERS API - Random facts about certain numbers
+						/*
 						$response1 = Unirest\Request::get("https://numbersapi.p.rapidapi.com/2/5/date",
 						  array(
 						    "X-RapidAPI-Host" => "numbersapi.p.rapidapi.com",
@@ -129,41 +130,49 @@
 						    "X-RapidAPI-Key" => $API_KEY
 						  )
 						);
+						*/
 						$response3 = Unirest\Request::get("https://numbersapi.p.rapidapi.com/random/trivia?max=30&min=10",
 						  array(
 						    "X-RapidAPI-Host" => "numbersapi.p.rapidapi.com",
 						    "X-RapidAPI-Key" => $API_KEY
 						  )
 						);
+						/*
 						$year = date("Y");
 						$response4 = Unirest\Request::get("https://numbersapi.p.rapidapi.com/".$year."/year",
 						  array(
 						    "X-RapidAPI-Host" => "numbersapi.p.rapidapi.com",
 						    "X-RapidAPI-Key" => $API_KEY
 						  )
-						);
-						$responseBody1 = $response1->body;
-						$responseBody2 = $response2->body;
-						$responseBody3 = $response3->body;
-						$responseBody4 = $response4->body;
-						echo '<span style="color:gold;text-align:center;">' . $responseBody1 . '<br><br></span>';
-						echo '<span style="color:gold;text-align:center;">' . $responseBody2 . '<br><br></span>';
-						echo '<span style="color:gold;text-align:center;">' . $responseBody3 . '<br><br></span>';
-						echo '<span style="color:gold;text-align:center;">' . $responseBody4 . '<br><br></span>';
+						);*/
 						
-
-						$response5 = Unirest\Request::post("https://NasaAPIdimasV1.p.rapidapi.com/getEPICEarthImagery",
+						//$responseBody1 = $response1->body;
+						//$responseBody2 = $response2->body;
+						$responseBody3 = $response3->body;
+						//$responseBody4 = $response4->body;
+						//echo '<span style="color:gold;text-align:center;">' . $responseBody1 . '<br><br></span>';
+						//echo '<span style="color:gold;text-align:center;">' . $responseBody2 . '<br><br></span>';
+						echo '<span style="color:gold;text-align:center;">' . $responseBody3 . '<br><br></span>';
+						//echo '<span style="color:gold;text-align:center;">' . $responseBody4 . '<br><br></span>';
+						
+						/*
+						$response5 = Unirest\Request::post("https://NasaAPIdimasV1.p.rapidapi.com/getPictureOfTheDay",
 						  array(
 						    "X-RapidAPI-Host" => "NasaAPIdimasV1.p.rapidapi.com",
 						    "X-RapidAPI-Key" => $API_KEY,
 						    "Content-Type" => "application/x-www-form-urlencoded"
 						  )
 						);
-						$responseBody5 = $response5->body;
-						var_dump($responseBody5);
-						//echo '<span style="color:gold;text-align:center;">' . $responseBody5{{["to"]}} . '<br><br></span>';
 						
-					?>
+						$responseBody5 = $response5->body;
+						$responseBody5Res = $responseBody5->{'contextWrites'}->{'to'}->{'explanation'};
+						echo '<span style="color:gold;text-align:center;">' . $responseBody5Res . '<br><br></span>';
+						
+						$image = "https://apod.nasa.gov/apod/image/1906/solargraphBelgrado_1024.jpg";
+						$imageData = base64_encode(file_get_contents("$image"));
+						echo '<img src="data:image/jpeg;base64,'.$imageData.'">';
+						*/
+						?>
 					
 					<p style="text-align: center">
 						<span style="color:white; text-align:center; font-size: 30px"></span><br><br><br>

@@ -32,13 +32,6 @@ include_once 'header.php';
 					</a>
 				</div>
 			</div>
-			<div class="row">
-				<div class="column">
-					<a href="https://movieminded.netlify.com/" style="border:5px solid #ccc;">
-						<img src="images/movieminded.png" alt="5thGame" style="width:75%; height:75%; ">
-					</a>
-				</div>
-			</div>
 
 		</div>
 	</section>
@@ -114,36 +107,18 @@ include_once 'header.php';
 
 		<div class="row">
 			<div class="column">
-<<<<<<< HEAD
 				<a href="musicDJ.php" style="border:5px solid #ccc;">
 					<img src="images/musicDJ.png" alt="1stSound" style="width:50%; height:50%; ">
-=======
-			    <a href="musicDJ.php" style="border:5px solid #ccc;">
-				<img src="images/musicDJ.png" alt="1st" style="width:50%; height:50%; ">
->>>>>>> 1f1a1952f063ce21bbc6182d2f710dc1dc302fab
 				</a>
 			</div>
 			<div class="column">
 				<a href="videoChris.php" style="border:5px solid #ccc;">
-<<<<<<< HEAD
 					<img src="images/Chris.png" alt="2ndSound" style="width:105%; height:105%; ">
-=======
-			    <img src="images/Chris.png" alt="2nd" style="width:105%; height:105%; ">
->>>>>>> 1f1a1952f063ce21bbc6182d2f710dc1dc302fab
 				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
-<<<<<<< HEAD
-				<a href="" style="border:5px solid #ccc;">
-					<img src="images/website.jpg" alt="3rdSound" style="width:100%; height:100%; ">
-				</a>
-			</div>
-			<div class="column">
-				<a href="" style="border:5px solid #ccc;">
-					<img src="images/website.jpg" alt="4thSound" style="width:100%; height:100%; ">
-=======
 				<a href="geolocation.html" style="border:5px solid #ccc;">
 			    <img src="images/searchPos.png" alt="3rd" style="width:100%; height:100%; ">
 				</a>
@@ -151,7 +126,6 @@ include_once 'header.php';
 			<div class="column">
 				<a href="leagueSearch.php" style="border:5px solid #ccc;">
 			    <img src="images/leagueSearch.png" alt="4th" style="width:100%; height:100%; ">
->>>>>>> 1f1a1952f063ce21bbc6182d2f710dc1dc302fab
 				</a>
 			</div>
 		</div>
