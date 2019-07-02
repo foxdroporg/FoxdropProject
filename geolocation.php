@@ -29,7 +29,7 @@
 		<br>
 			Speed: <span id="speed"></span>m/s
 		<br><br>
-			Start Google Maps, then Copy and Paste the following output there: <span style="color:gold" id="lat2"></span>, <span style="color:gold" id="lon2"></span>
+			Start Google Maps, then Copy and Paste the following output there: <br><br><span style="color:gold" id="lat2"></span>, <span style="color:gold" id="lon2"></span>
 	</p>
 
 	 <h2 style="color:white; text-align:center; font-size:60px; padding-top: 4%">Weather Forecast<br></h2>
@@ -75,7 +75,7 @@
 	    "X-RapidAPI-Key" => $API_KEY
 	  )
 	);
-	echo '<p style="text-align: center"><span style="color:white;text-align:center;font-size:20px">In Stockholm weather forecast looks like following:<br><br></span></p>';
+	echo '<p style="text-align: center"><span style="color:white;text-align:center;font-size:20px">Weather forecasts in Stockholm are:<br><br></span></p>';
 	$responseBody = $response->body;
 
 	$responseBodyRes1 = $responseBody->{'list'};
@@ -86,19 +86,19 @@
 	$responseBodyRes1 = $responseBodyRes1->{'weather'};
 	$responseBodyRes1 = $responseBodyRes1[0];
 	$responseBodyRes1 = $responseBodyRes1->{'description'};
-	echo '<p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">Tomorrow: ' . $responseBodyRes1 . '<br><br></span></p>';
+	echo '<p style="text-align: center"><span style="color:white;text-align:center;font-size:30px">Tomorrow: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes1 . '</p><br><br></span></p>';
 
 	$responseBodyRes2 = $responseBodyRes2[1];
 	$responseBodyRes2 = $responseBodyRes2->{'weather'};
 	$responseBodyRes2 = $responseBodyRes2[0];
 	$responseBodyRes2 = $responseBodyRes2->{'description'};
-	echo '<p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">The day after tomorrow: ' . $responseBodyRes2 . '<br><br></span></p>';
+	echo '<p style="text-align: center"><span style="color:white;text-align:center;font-size:30px">The day after tomorrow: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes2 . '</p><br><br></span></p>';
 
 	$responseBodyRes3 = $responseBodyRes3[2];
 	$responseBodyRes3 = $responseBodyRes3->{'weather'};
 	$responseBodyRes3 = $responseBodyRes3[0];
 	$responseBodyRes3 = $responseBodyRes3->{'description'};
-	echo '<p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">In three days: ' . $responseBodyRes3 . '<br><br></span></p>';
+	echo '<p style="text-align: center"><span style="color:white;text-align:center;font-size:30px">In three days: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes3 . '</p><br><br></span></p>';
 
   ?>
 	

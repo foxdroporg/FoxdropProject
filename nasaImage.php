@@ -22,10 +22,6 @@
 			    "X-RapidAPI-Host" => "NasaAPIdimasV1.p.rapidapi.com",
 			    "X-RapidAPI-Key" => $API_KEY,
 			    "Content-Type" => "application/x-www-form-urlencoded"
-			  ),
-			  array(
-			    "apiKey" => $NASA_API_KEY,
-			    "highResolution" => "true"
 			  )
 			);
 			

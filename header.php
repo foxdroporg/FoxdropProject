@@ -29,6 +29,7 @@
 					<li><a class="button-test" href="about.php">ABOUT</a></li>
 					<li><a class="button-test" href="contact.php">CONTACT</a></li>
 				</ul>
+
 				<div class="nav-login">
 					<?php
 						if (isset($_SESSION['u_id'])) {

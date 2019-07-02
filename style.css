@@ -106,6 +106,18 @@ input, select {
 }
 
 
+
+
+/* Make Mobile Responsive -> 475px Causing Issues*/
+@media screen and (max-width: 475px) {
+    
+}
+@media screen and (min-width: 800px) {
+    
+}
+
+
+
 /* My code */
 
 .header-wrapper {
