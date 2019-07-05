@@ -3,6 +3,7 @@ var sliderRate;
 var sliderPan;
 var buttonToggle;
 var buttonReset;
+var slider;
 var amp;
 var canvas;
 
@@ -11,11 +12,15 @@ function setup() {
   song = loadSound("videos/song.mp3", loaded);
   song.setVolume(0.5);
 
+  // hue, saturation, and brightness
+  colorMode(HSB, 255);
+
   buttonToggle = createButton("Play");
   buttonToggle.mousePressed(togglePlaying);
   buttonReset = createButton("Reset");
   buttonReset.mousePressed(resetPlaying);
 
+  slider = createSlider(0, 255, 127);
   sliderRate = createSlider(0.85, 1.15, 1, 0.01);
   sliderPan = createSlider(-1, 1, 0, 0.01);
 
@@ -32,13 +37,13 @@ function centerCanvas() {
   buttonReset.position(cnvPosX + 380, cnvPosY + 10);
   sliderRate.position(cnvPosX + 140, cnvPosY + 420);
   sliderPan.position(cnvPosX + 140, cnvPosY + 10);
+  slider.position(cnvPosX + 140, cnvPosY + 480);
 }
 
 /* Makes sure position stays the same regardless of window resizing */
 function windowResized() {
   centerCanvas();
 }
-
 
 function togglePlaying() {
 	if (!song.isPlaying()) {
@@ -66,7 +71,9 @@ function draw() {
 
   var vol = amp.getLevel();
 
-  fill(255,0,0);
+  strokeWeight(25);
+  stroke(slider.value(), 255, 255);
+  fill(slider.value(), 255, 255, 127);
   ellipse(width/2, height/2, 1250*vol, 1250*vol);
 
   song.pan(sliderPan.value());

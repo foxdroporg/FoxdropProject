@@ -58,6 +58,11 @@
 
 		<div id="issMap"></div>
 
+		<br>
+		<h2 style="color:white; font-size: 20px; text-align: center; padding: 1% 20% 0% 20%">
+		The International Space Station (ISS) is a space station, or a habitable artificial satellite, in low Earth orbit. The ISS programme is a joint project between five participating space agencies: NASA (United States), Roscosmos (Russia), JAXA (Japan), ESA (Europe), and CSA (Canada). The ISS serves as a microgravity and space environment research laboratory in which crew members conduct experiments in biology, human biology, physics, astronomy, meteorology, and other fields.<br> [Wikipedia, "International Space Station"].
+		</h2>
+
 		<script>
 			// Making a map and tiles
       		const mymap = L.map('issMap');

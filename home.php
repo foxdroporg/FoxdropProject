@@ -40,7 +40,6 @@ include_once 'header.php';
 			data[4] !== undefined ? document.getElementById('com4').textContent = data[4].commit.message : document.getElementById('com4').textContent = "";
 		}
 
-
 		getGithubCommits()
 			.then(response => {
 				console.log('Fetch successful!');

@@ -3,7 +3,7 @@
 ?>
 
 <body>
-  <h2 style="color:white; text-align:center; font-size:30px; padding-top: 5%">Search For A Summonername To Find LoL Player Account</h2>
+  <h2 style="color:white; text-align:center; font-size:30px; padding-top: 5%">Search By Summoner Name <br>To Find League of Legends Game Account</h2>
 
   <p style="text-align:center; padding-top:3%; padding-bottom:3%">
 		<input id="vegetable" style="text-align:center" />
@@ -49,11 +49,11 @@
 
 		/* Second button */
 		const button = document.getElementById('submit');
-    
+
 	    button.addEventListener('click', async event => {
 	    	const vegetable = document.getElementById('vegetable').value;
 			const data = { lat, lon, vegetable };
-			
+
 			const options = {
 				method: 'POST',
 				headers: {
@@ -62,7 +62,7 @@
 				body: JSON.stringify(data)
 			}
 			const response = await fetch('/api', options);
-			/* RESPONSE IS EMPTY right now. I cannot find why.. Help! */ 
+			/* RESPONSE IS EMPTY right now. I cannot find why.. Help! */
 			console.log(response);
 			const dataJson = await response.json();
 			console.log(dataJson);
@@ -85,10 +85,10 @@
 		$dotenv = Dotenv\Dotenv::create(__DIR__);
 		$dotenv->load();
 		$APIKEY = $_ENV['LOL_API_KEY'];
-		
+
 		/* <pre> tags creates text with a more readable format*/
 		echo '<pre>';
-		
+
 		// Challenger ladder 3v3
 		$challengerLadder = file_get_contents("https://euw1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_FLEX_TT?api_key=" .$APIKEY );
 

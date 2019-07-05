@@ -71,6 +71,50 @@ include_once 'header.php';
 
 <section class="main-container">
 	<section class="main-wrapper">
+		<h2 style="color:#FFFFFF; font-size: 50px">Other Applications</h2>
+
+		<div class="row">
+			<div class="column">
+				<a href="MDBWebsite/index.html" style="border:5px solid #ccc;">
+					<img src="images/IMDB.jpg" alt="1stSound" style="width:100%; height:100%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="nasaImage.php" style="border:5px solid #ccc;">
+					<img src="images/nasaImage.png" alt="2ndSound" style="width:60%; height:70%; ">
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<a href="geolocation.php" style="border:5px solid #ccc;">
+			    <img src="images/geolocation.png" alt="3rd" style="width:100%; height:100%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="leagueSearch.php" style="border:5px solid #ccc;">
+			    <img src="images/leagueSearch.png" alt="4th" style="width:100%; height:100%; ">
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<a href="YoutubeWebsite/index.html" style="border:5px solid #ccc;">
+					<img src="images/Youtube.png" alt="1stSound" style="width:100%; height:100%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="musicDJ.php" style="border:5px solid #ccc;">
+					<img src="images/musicRepresentation.jpg" alt="2ndSound" style="width:120%; height:70%; ">
+				</a>
+			</div>
+		</div>
+
+	</section>
+</section>
+
+<section class="main-container">
+	<section class="main-wrapper">
 		<h2 style="color:#FFFFFF; font-size: 50px">Relax</h2>
 
 		<div class="row">
@@ -101,37 +145,7 @@ include_once 'header.php';
 	</section>
 </section>
 
-<section class="main-container">
-	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF; font-size: 50px">Other</h2>
 
-		<div class="row">
-			<div class="column">
-				<a href="musicDJ.php" style="border:5px solid #ccc;">
-					<img src="images/musicDJ.png" alt="1stSound" style="width:100%; height:100%; ">
-				</a>
-			</div>
-			<div class="column">
-				<a href="nasaImage.php" style="border:5px solid #ccc;">
-					<img src="images/nasaImage.png" alt="2ndSound" style="width:60%; height:70%; ">
-				</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="column">
-				<a href="geolocation.php" style="border:5px solid #ccc;">
-			    <img src="images/geolocation.png" alt="3rd" style="width:100%; height:100%; ">
-				</a>
-			</div>
-			<div class="column">
-				<a href="leagueSearch.php" style="border:5px solid #ccc;">
-			    <img src="images/leagueSearch.png" alt="4th" style="width:100%; height:100%; ">
-				</a>
-			</div>
-		</div>
-
-	</section>
-</section>
 
 
 <?php

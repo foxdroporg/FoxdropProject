@@ -20,11 +20,11 @@
 			<div class="header-wrapper">
 				<ul>
 					<li>
-						<a href="startpage.php">
+						<a href="home.php">
 						<img class="img-test" src="images/firefoxLogo.png" alt="HTML5 Icon" style="padding: 5px; float:left; width:50px; height:50px;">
 						</a>
 					</li>
-					<li><a class="button-test" href="startpage.php">HOME</a></li>
+					<li><a class="button-test" href="home.php">HOME</a></li>
 					<li><a class="button-test" href="portfolio.php">PORTFOLIO</a></li>
 					<li><a class="button-test" href="about.php">ABOUT</a></li>
 					<li><a class="button-test" href="contact.php">CONTACT</a></li>
