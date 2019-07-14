@@ -12,7 +12,7 @@
 		<link class="img-test" rel="shortcut icon" type="image/png" href="images/firefoxLogo.png">
 		
 		<title></title>
-		
+
 	</head>
 
 	<header>
@@ -35,7 +35,7 @@
 						if (isset($_SESSION['u_id'])) {
 
 							echo '<form action="profilePage.php" method="POST""><button class="button-test" type="submit" name="submit" style="width: auto; outline:none;"><p><b>' . $_SESSION["u_uid"] . '    ' . '</b></p></button></form>';
-						
+
 
 							echo '<form action="includes/logout.inc.php" method="POST">
 								<button class="button-test" type="submit" name="submit">Logout</button>

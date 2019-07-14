@@ -35,9 +35,9 @@ function centerCanvas() {
   canvas.position(cnvPosX, cnvPosY);
   buttonToggle.position(cnvPosX + 10, cnvPosY + 10);
   buttonReset.position(cnvPosX + 380, cnvPosY + 10);
-  sliderRate.position(cnvPosX + 140, cnvPosY + 420);
+  sliderRate.position(cnvPosX + 20, cnvPosY + 420);
   sliderPan.position(cnvPosX + 140, cnvPosY + 10);
-  slider.position(cnvPosX + 140, cnvPosY + 480);
+  slider.position(cnvPosX + 260, cnvPosY + 420);
 }
 
 /* Makes sure position stays the same regardless of window resizing */
