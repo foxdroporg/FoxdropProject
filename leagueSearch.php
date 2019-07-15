@@ -12,7 +12,6 @@
 		<label for="vegetable" style="color:white">Enter summonername</label>
 	</p>
 
-
 	<script type="text/javascript">
 		require('dotenv').config();
 		const api_url = process.env.LOL_API_KEY;

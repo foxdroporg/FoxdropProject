@@ -120,12 +120,21 @@ $(document).ready(function(){
 		playerLength += 1;
 	}
 
+	function continueUpdate() {
+		currentPlayerDir = playerDir["right"];
+		setInterval(update, 80);
+	}
+
+	const timeout = 750;
 	/* Spawns walls onto playfield when certain gameScore is reached. Respawns worm to bottom left corner */
 	function checkForWallSpawn () {
 	// Add walls for each difficulty level.
 		if (gameScore == easyDifficulty) {	//10
 			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
       		levelCompleteSound.play();
+      		erasePlayer();
+      		clearInterval(startUpdate);
+      		setTimeout(continueUpdate,timeout);
 
 			playerPos = {
 				"tr": 18,
@@ -148,6 +157,9 @@ $(document).ready(function(){
 		if (gameScore == mediumDifficulty) {
 			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
       		levelCompleteSound.play();
+      		erasePlayer();
+      		clearInterval(startUpdate);
+      		setTimeout(continueUpdate,timeout);
 
 			playerPos = {
 				"tr": 18,
@@ -170,6 +182,9 @@ $(document).ready(function(){
 		if (gameScore == hardDifficulty) {
 			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
       		levelCompleteSound.play();
+      		erasePlayer();
+      		clearInterval(startUpdate);
+      		setTimeout(continueUpdate,timeout);
 
 			playerPos = {
 				"tr": 18,
@@ -192,6 +207,9 @@ $(document).ready(function(){
 		if (gameScore == maxedDifficulty) {
 			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
       		levelCompleteSound.play();
+      		erasePlayer();
+      		clearInterval(startUpdate);
+      		setTimeout(continueUpdate,timeout);
 
 			playerPos = {
 				"tr": 18,
@@ -269,6 +287,14 @@ $(document).ready(function(){
 		getPlayerTailPos.removeClass("draw-player framecount" + calcPlayerTailPos);
 	}
 
+	function erasePlayer() {
+		let calcPlayerTailPos = frameCount - playerLength;
+		for (var i=0; i<=playerLength; i++) {
+			let getPlayerTailPos = $(".framecount" + (calcPlayerTailPos+i));
+			getPlayerTailPos.removeClass("draw-player framecount" + (calcPlayerTailPos+i));
+		}
+	}
+
 	function scoreHandler() {
 		document.getElementById("game-score").innerHTML = gameScore;
 	}
@@ -299,7 +325,7 @@ $(document).ready(function(){
 		hasBeenPrinted = true;
 	}
 
-	let update = setInterval(function(){
+	function update() {
 		let checkNextPlayerPosX = playerPos["tr"];
 		let checkNextPlayerPosY = playerPos["td"];
 
@@ -368,7 +394,8 @@ $(document).ready(function(){
 			hasPressed = false;
 			drawPlayer();
 		}
-	}, 80);
+	}
+	var startUpdate = setInterval(update, 80);
 
 	function highscores() {
 		// HIGHSCORE TABLE SHOWN
