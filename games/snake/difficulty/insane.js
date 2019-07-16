@@ -120,11 +120,6 @@ $(document).ready(function(){
 		playerLength += 1;
 	}
 
-	function continueUpdate() {
-		currentPlayerDir = playerDir["right"];
-		setInterval(update, 60);
-	}
-
 	const timeout = 500;
 	/* Spawns walls onto playfield when certain gameScore is reached. Respawns worm to bottom left corner */
 	function checkForWallSpawn () {
@@ -396,6 +391,11 @@ $(document).ready(function(){
 		}
 	}
 	var startUpdate = setInterval(update, 60);
+
+	function continueUpdate() {
+		currentPlayerDir = playerDir["right"];
+		startUpdate = setInterval(update, 60);
+	}
 
 	function highscores() {
 		// HIGHSCORE TABLE SHOWN

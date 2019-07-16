@@ -121,11 +121,6 @@ $(document).ready(function(){
 		playerLength += 1;
 	}
 
-	function continueUpdate() {
-		currentPlayerDir = playerDir["right"];
-		setInterval(update, 100);
-	}
-
 	const timeout = 1000;
 	/* Spawns walls onto playfield when certain gameScore is reached. Respawns worm to bottom left corner */
 	function checkForWallSpawn () {
@@ -136,7 +131,7 @@ $(document).ready(function(){
       		levelCompleteSound.play();
       		erasePlayer();
       		clearInterval(startUpdate);
-      		setTimeout(continueUpdate,timeout);
+      		setTimeout(continueUpdate, timeout);
 
 			playerPos = {
 				"tr": 18,
@@ -316,8 +311,6 @@ $(document).ready(function(){
 			typeWriter();
 		}
 
-
-
 		/* Writes endgame message successively */
 		function typeWriter() {
 			if (i < txt.length) {
@@ -382,7 +375,7 @@ $(document).ready(function(){
 			if (!playerIsDead) {
 				var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
 	      		gameOverSound.play();
-						highscores();
+				highscores();
 			}
 			playerIsDead = true;
 		}
@@ -402,6 +395,11 @@ $(document).ready(function(){
 		}
 	}
 	var startUpdate = setInterval(update, 100);
+
+	function continueUpdate() {
+		currentPlayerDir = playerDir["right"];
+		startUpdate = setInterval(update, 100);
+	}
 
 
 	function highscores() {
