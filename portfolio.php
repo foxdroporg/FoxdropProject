@@ -32,6 +32,18 @@ include_once 'header.php';
 					</a>
 				</div>
 			</div>
+			<div class="row">
+				<div class="column">
+					<a href="games/typetosurvive/index.php" style="border:5px solid #ccc;">
+						<img src="images/typeToSurvive.jpg" alt="1stSound" style="width:85%; height:85%; ">
+					</a>
+				</div>
+				<div class="column">
+					<a href="portfolio.php" style="border:5px solid #ccc;">
+						<img src="images/website.jpg" alt="2ndSound" style="width:100%; height:100%; ">
+					</a>
+				</div>
+			</div>
 
 		</div>
 	</section>
@@ -71,8 +83,8 @@ include_once 'header.php';
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<h2 style="color:#FFFFFF; font-size: 50px">Other Applications</h2>
-
+		<h2 style="color:#FFFFFF; font-size: 50px">Web-Applications</h2>
+		
 		<div class="row">
 			<div class="column">
 				<a href="MDBWebsite/index.html" style="border:5px solid #ccc;">
@@ -93,14 +105,14 @@ include_once 'header.php';
 			</div>
 			<div class="column">
 				<a href="leagueSearch.php" style="border:5px solid #ccc;">
-			    <img src="images/leagueSearch.png" alt="4th" style="width:100%; height:100%; ">
+			    <img src="images/leagueSearch.png" alt="4th" style="width:150%; height:150%; ">
 				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
 				<a href="YoutubeWebsite/index.html" style="border:5px solid #ccc;">
-					<img src="images/Youtube.png" alt="1stSound" style="width:100%; height:100%; ">
+					<img src="images/Youtube.png" alt="1stSound" style="width:85%; height:85%; ">
 				</a>
 			</div>
 			<div class="column">

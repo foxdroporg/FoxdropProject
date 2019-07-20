@@ -21,13 +21,12 @@ include_once 'header.php';
       line-height:1.8em;
       color:#666;
     }
-        .pimg1, .pimg2, .pimg3{
+    .pimg1, .pimg2, .pimg3, .pimg4{
       position:relative;
       opacity:1.00;
       background-position:center;
       background-size:cover;
       background-repeat:no-repeat;
-
       /*
         fixed = parallax
         scroll = normal
@@ -42,12 +41,17 @@ include_once 'header.php';
 
     .pimg2{
       background-image:url('images/image2.jpg');
-      min-height:400px;
+      min-height:60%;
     }
 
     .pimg3{
       background-image:url('images/image3.jpg');
-      min-height:400px;
+      min-height:60%;
+    }
+
+    .pimg4{
+      background-image:url('images/image5.jpg');
+      min-height:100%;
     }
 
     .section{
@@ -56,12 +60,12 @@ include_once 'header.php';
     }
 
     .section-light{
-      background-color:#f4f4f4;
-      color:#666;
+      background-color:#01050e;
+      color:#ddd;
     }
 
     .section-dark{
-      background-color:#282e34;
+      background-color:#01050e;
       color:#ddd;
     }
 
@@ -77,7 +81,6 @@ include_once 'header.php';
     }
 
     .ptext .border{
-      background-color:#111;
       color:#fff;
       padding:20px;
     }
@@ -87,7 +90,7 @@ include_once 'header.php';
     }
 
     @media(max-width:568px){
-      .pimg1, .pimg2, .pimg3{
+      .pimg1, .pimg2, .pimg3, .pimg4{
         background-attachment:scroll;
       }
     }
@@ -97,8 +100,9 @@ include_once 'header.php';
 			height: 4px;
 			margin-left: auto;
 			margin-right: auto;
-			background-color:#FFFFFF;
-			border: 0 none;
+			background-color: #051125; <!-- #FFFFFF -->
+      color: #26012c;
+      border: 0; border-top: 1px solid #26012c;
 			margin-top: 100px;
 			margin-bottom: 0px;
 		}
@@ -217,7 +221,7 @@ include_once 'header.php';
     </p>
   </section>
 
-  <div class="pimg1">
+  <div class="pimg4">
     <div class="ptext">
       <span class="border">
         Foxdrop
