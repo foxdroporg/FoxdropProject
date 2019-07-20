@@ -1,5 +1,4 @@
 <link rel="shortcut icon" type="image/png" href="../../images/firefoxLogo.png">
-<?php session_start(); ?>
 
 <section class="main-container">
 	<div class="main-wrapper">
@@ -23,9 +22,6 @@
 				    		background: #202020;
                         }
 				    </style>
-				    <script>
-				    	var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
-				    </script>
 
 				    <script
 					  src="https://code.jquery.com/jquery-3.3.1.slim.js"
@@ -70,9 +66,39 @@
                         </div>
                     </div>
 
-                    <div style="color:white; text-align: center; padding: 5%; font-size: 25px;" id="highscoreTable"></div>
+                    <!-- Highscores -->
+                    <div class="row mt-1">
+                        <div class="col-md-12">
+                            <div class="card card-body bg-dark text-white">
+                            <h5 style="text-align:center">Highscores</h5>
+	                            <p style="text-align:center"> 
+		                            <?php
+										include '../../vendor/autoload.php';
+										$dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
+										$dotenv->load();
+										// Online 
+										$dbServername = $_ENV['DB_SERV_NAME']; 
+										$dbUsername = $_ENV['DB_USERNAME'];
+										$dbPassword = $_ENV['DB_PASSWORD'];
+										$dbName = $_ENV['DB_NAME'];
+										$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-
+										$sql = "SELECT * FROM scores WHERE game = 'typetosurvive' ORDER BY user_score DESC LIMIT 10";
+										$result = mysqli_query($conn, $sql);
+										$data = array();
+										while ($row = mysqli_fetch_row($result)) {
+											$data[] = $row;
+										}
+										foreach ($data as &$value) {
+											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' points</span>';
+											echo "<br>";
+										}
+									?>
+								</p>
+                            </div>
+                        </div>
+                    </div>
+                    
 				</body>
 			</html>
 	</div>

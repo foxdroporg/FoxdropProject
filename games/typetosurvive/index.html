@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
   <meta charset="UTF-8">
@@ -58,7 +59,9 @@
     </div>
   </div>
 
-  
+  <script>
+    var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
+  </script>
   <script src="js/main.js"></script>
   <script type="text/javascript">
     function GetURLParameter(sParam) {
@@ -77,6 +80,7 @@
     //MYLIBRARY.helloWorld();
   </script>
 
+<div style="color:white; text-align: center; padding: 5%; font-size: 25px;" id="highscoreTable"></div>
 
 </body>
 

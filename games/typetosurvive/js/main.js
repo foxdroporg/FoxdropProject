@@ -139,6 +139,7 @@ function countdown() {
     isPlaying = false;
     var gameOverSound = new Audio("../../soundeffects/gameOver.mp3");
 	  gameOverSound.play();
+    highscores();
   }
   // Show time
   timeDisplay.innerHTML = time;
@@ -158,7 +159,6 @@ function checkStatus() {
     wordInput.blur();
     wordInput.value = "";
     clearInterval(countdownInterval);
-    highscores();
     setTimeout(() => {
       time = currentLevel;
       timeDisplay.innerHTML = currentLevel;
@@ -178,7 +178,6 @@ function highscores() {
     highscoreForm.append("user_score", score);
     highscoreForm.append("game", "typetosurvive");
 
-    /*
     fetch("../../../includes/scores.inc.php", {
       method: 'POST',
       body: highscoreForm
@@ -196,7 +195,6 @@ function highscores() {
     }).catch(function(error) {
       console.error(error);
     });
-    */
   }
 }
 
