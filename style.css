@@ -32,9 +32,10 @@ body {
     font-family: Serif;
 }
 
-img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
-        display: none!important;
+img[alt="000webhost logo"]{
+    display: none!important;
 }
+
 
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section { 
@@ -109,6 +110,10 @@ input, select {
     vertical-align:middle;
 }
 
+#serverName select {
+    width: 20px;
+}
+
 
 
 
@@ -128,6 +133,11 @@ input, select {
     margin: 0 auto;
     width: 1000px;
     background-color: #fff;
+}
+
+.mobile-wrapper {
+    margin: 0 auto;
+    width: 475px;
 }
 
 .main-wrapper {
@@ -190,6 +200,7 @@ header nav ul li a {
     color: #111;
     line-height: 63px;
 }
+
 
 
 header .nav-login {

@@ -21,6 +21,14 @@ include_once 'header.php';
       line-height:1.8em;
       color:#666;
     }
+
+    .link
+    {
+       color:white;
+       text-decoration: none; 
+       background-color: none;
+    }
+
     .pimg1, .pimg2, .pimg3, .pimg4{
       position:relative;
       opacity:1.00;
@@ -178,8 +186,11 @@ include_once 'header.php';
 <div class="pimg1">
     <div class="ptext">
       <span class="border">
-        1. Sign Up
-
+        <a href="https://foxdrop.000webhostapp.com/signup.php">
+          <div class="link">
+            1. Sign Up
+          </div>
+        </a>
       </span>
     </div>
   </div>
@@ -194,7 +205,11 @@ include_once 'header.php';
   <div class="pimg2">
     <div class="ptext">
       <span class="border trans">
-        2. Navigate To Portfolio
+        <a href="https://foxdrop.000webhostapp.com/portfolio.php">
+          <div class="link">
+            2. Navigate To Portfolio
+          </div>
+      </a>
       </span>
     </div>
   </div>
@@ -217,14 +232,18 @@ include_once 'header.php';
   <section class="section section-dark">
     <h2>What Else Needs To Be Said:</h2>
     <p>
-      The two games Snake and Maze are incorporated with a highscore system that remembers your scores forever. Go and explore, we have come a long way now. There is too much material created to see it all in one sitting, so click on what looks exciting and have fun! Like this website on Facebook if you are comfortable with doing so. 
+      The three games Snake, Maze and TTS are incorporated with a highscore system that remembers your scores forever. We have come a long way with this website now, go and explore. There is too much material created to see it all in one sitting, so click on what looks exciting and have fun! Like this website on Facebook if you are comfortable with doing so. 
     </p>
   </section>
 
   <div class="pimg4">
     <div class="ptext">
       <span class="border">
-        Foxdrop
+        <a href="https://foxdrop.000webhostapp.com/home.php">
+          <div class="link">
+            Foxdrop
+          </div>
+        </a>
       </span>
     </div>
   </div>
