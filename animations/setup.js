@@ -3,7 +3,7 @@ var starArray = [];
 var starSpeed;
 
 function preload() {
-  songTheme = loadSound("soundeffects/starWars.mp3", loaded);
+  songTheme = loadSound("../soundeffects/starWars.mp3", loaded);
   //songTemple = loadSound("soundeffects/templeMarch.mp3", loaded);
 }
 

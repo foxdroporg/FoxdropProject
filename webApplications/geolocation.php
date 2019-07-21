@@ -17,6 +17,7 @@
 
 <body>
   <h2 style="color:white; text-align:center; font-size:60px; padding-top: 5%">Geolocation<br></h2>
+  <p style="color:white; font-size: 14px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here</a>.</p> 
 
   <p style="color:white; font-size: 25px; text-align: center">
 			Latitude: <span id="lat"></span>° 
@@ -64,8 +65,8 @@
   </script>
 
   <?php
-  	require 'vendor/autoload.php';
-	$dotenv = Dotenv\Dotenv::create(__DIR__);
+  	require '../vendor/autoload.php';
+	$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
 	$dotenv->load();
 	$API_KEY = $_ENV['RAPID_API_KEY'];
 

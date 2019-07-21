@@ -14,7 +14,7 @@
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
 		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
 		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script>
-		    <script type="text/javascript" src="animations/iss.js"></script>
+		    <script type="text/javascript" src="iss.js"></script>
 
 			<link
 		      rel="stylesheet"
@@ -75,7 +75,7 @@
 
 	      	// Making a marker with a custom icon
 		    const issIcon = L.icon({
-		        iconUrl: 'images/iss200.png',
+		        iconUrl: '../images/iss200.png',
 		        iconSize: [50, 32],
 		        iconAnchor: [25, 16]
 		    });

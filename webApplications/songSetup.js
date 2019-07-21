@@ -9,7 +9,7 @@ var canvas;
 
 function setup() {
   canvas = createCanvas(450, 450);
-  song = loadSound("videos/song.mp3", loaded);
+  song = loadSound("../soundeffects/song.mp3", loaded);
   song.setVolume(0.5);
 
   // hue, saturation, and brightness

@@ -1,0 +1,590 @@
+/* 
+html5doctor.com Reset Stylesheet
+Inspired by Richard Clark - http://richclarkdesign.com 
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+    /*Added for background picture */
+    background: url('../images/birdSil.jpg') no-repeat;
+    background-attachment: fixed;
+    font-family: Serif;
+}
+
+img[alt="000webhost logo"]{
+    display: none!important;
+}
+
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+#serverName select {
+    width: 20px;
+}
+
+
+
+
+/* Make Mobile Responsive -> 475px Causing Issues*/
+@media screen and (max-width: 475px) {
+    
+}
+@media screen and (min-width: 800px) {
+    
+}
+
+
+
+/* My code */
+
+.header-wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    background-color: #fff;
+}
+
+.mobile-wrapper {
+    margin: 0 auto;
+    width: 475px;
+}
+
+.main-wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    background-color: #000;
+    border: 30px solid transparent;
+    padding: 15px;
+    border-image: url(../images/border.png) 50 round;
+}
+
+.main-wrapper h2 {
+    font-family: Serif;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+}
+
+#borderimg { 
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image: url(../images/border.png) 30 round;
+}
+
+.main-wrapperportfolio {
+    padding: 15px;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #000;
+}
+
+header nav {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+}
+
+header nav ul {
+    float: left;
+}
+
+header nav ul li {
+    float: left;
+    list-style: none;
+    padding-right: 20px;
+}
+
+header nav ul li a {
+    font-family: Serif;
+    font-size: 16px;
+    color: #111;
+    line-height: 63px;
+}
+
+
+
+header .nav-login {
+    float: right;
+}
+
+header .nav-login form {
+    float: left;
+    padding-top: 15px;
+}
+
+
+header .nav-login form input {
+    float: left;
+    width: 140px;
+    height: 30px;
+    padding: 0px 10px;
+    margin-right: 10px;
+    border: none;
+    background-color: #ccc;
+    font-family: Serif;
+    font-size: 14px;
+    color: #111;
+    line-height: 30px;
+}
+
+header .nav-login form button {
+    float: left;
+    width: 60px;
+    height: 30px;
+    padding: 0px 10px;
+    margin-right: 10px;
+    border: none;
+    background-color: white; /* #f3f3f3 */
+    font-family: Serif;
+    font-size: 14px;
+    color: #111;
+    cursor: pointer;
+}
+
+header .nav-login form button: hover {
+    background-color: #ccc;
+}
+
+header .nav-login a {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border: none;
+    background-color: #fff;
+    float: left;
+    font-family: Serif;
+    font-size: 16px;
+    color: #111;
+    line-height: 63px;
+    cursor: pointer;
+}
+
+.main-container {
+    padding-top: 40px;
+}
+
+
+.main-container h2 {
+    font-family: Serif;
+    font-size: 40px;
+    color: #111;
+    line-height: 50px;
+    text-align: center;
+}
+
+
+.img-test {
+    transition: all 2s ease-in 0.5s;
+    -webkit-transition: all 2s ease-in 0.5s;
+    -moz-transition: all 2s ease-in 0.5s;
+    -o-transition: all 2s ease-in 0.5s;
+    background-position: 2px 2px;
+}
+
+.img-test:hover {
+    background-image: url("../images/firefoxLogoHover.png");
+    background-size: 55px 55px;
+    background-repeat: no-repeat;
+}
+
+.button-test {
+    transition: all 0.1s ease-in 0.1s;
+    -webkit-transition: all 0.1s ease-in 0.1s;
+    -moz-transition: all 0.1s ease-in 0.1s;
+    -o-transition: all 0.1s ease-in 0.1s;
+    background-size: 55px 55px;
+    background-position: 2px 2px;
+}
+
+.button-test:hover {
+    background-color: #e2e2e2;
+    background-repeat: no-repeat;
+    font-weight: bold;
+}
+
+/*portfolio.php*/
+.portfolio-collection {
+    width: 800px;
+    margin: 0 auto;
+    padding-left: 30px;
+}
+
+
+ /* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 40%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 50px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+
+
+/*signup.php*/
+
+.signup-form {
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+
+.signup-form input {
+    width: 90%;
+    height: 40px;
+    padding: 0px 5%;
+    margin-bottom: 4px;
+    border: none;
+    background-color: #fff;
+    font-family: Serif;
+    font-size: 16px;
+    color: #111;
+    line-height: 40px;
+}
+
+
+.signup-form button {
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    height: 40px;
+    border: none;
+    background-color: #222;
+    font-family: Serif;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.signup-form button: hover {
+    background-color: #111;
+}
+
+/* Contact */
+.form-wrapperContact {
+  background-image:  url("../images/cartoonish.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position:fixed
+}
+
+.fatnicetext {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Serif;
+}
+
+/* About */
+
+.paragraph {
+    grid-area: header;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Serif;
+    display:block;
+    justify-self: center;
+    color:white; 
+    padding-left: 10%; 
+    padding-right: 10%;
+    padding-bottom: 3%;
+}
+
+/* White box class for box */
+.whitebox {
+    height: 500px;
+    width: 1000px;
+    background-color: white;
+    padding: 10px;
+}
+
+.grid { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "title title"
+    "header header"
+    "sidebar content"
+    "footer footer";
+    grid-gap: 10px;
+}
+
+.grid div:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.grid div:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+.title {
+    grid-area: title;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Serif;
+    justify-self: center;
+}
+
+.header {
+    grid-area: header;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Serif;
+    display:block;
+    justify-self: center;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    justify-self: center;
+}
+
+.content {
+    grid-area: content;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Serif;
+    display:block;
+    justify-self: center;
+}
+
+.footer {
+    grid-area: footer;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Serif;
+    display:block;
+    justify-self: center;
+}
+
+@media screen and (min-width: 736px) {
+    .grid {
+    display: grid;
+    grid-template-columns: 1fr 500px 500px 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". title title ."
+    ". header header ."
+    ". sidebar content ."
+    ". footer footer .";
+    }
+}
+
+video {
+    width: 100%;
+}
+
+
+/* PARALLEX SCROLLING 
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-family: "Luna";
+}
+
+header {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 30vw 0 5vw;
+    position: relative;
+    transform-style: inherit;
+    width: 100vw;
+}
+
+header h1  {
+    margin-top: -100px;
+}
+
+header, header:before {
+    background:50% 50% / cover;
+}
+
+header::before {
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    background-image: url(   );
+    background-size: cover;
+    transform-origin: center center 0;
+    transform: translateZ(-1px) scale(2);
+    z-index: -1;
+    min-height: 100vh;
+}
+
+header *  {
+    font-weight: normal;
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin: 0;
+    padding: 1em 0;
+}
+
+
+Insert into startpage.php when ready:
+
+<body class="startPage">
+    <header class="startPage">
+        <h1 class="startPage">Parallex Effect</h1>
+        <p>Pure CSS // No JS</p>
+    </header>
+
+</body>
+
+*/
+
+/* CONTACT FORM */ 
+    /* Style inputs with type="text", select elements and textareas */
+.contact-form input[type=text], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+.contact-form button[type=submit] {
+  background-color: #ff6600;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+.contact-form button[type=submit]:hover {
+  background-color: #ff3300;
+}
+
+#over img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

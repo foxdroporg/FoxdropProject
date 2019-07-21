@@ -4,7 +4,7 @@ var buttonToggle;
 var canvas;
 
 function preload() {
-  song = loadSound("soundeffects/caveLife.mp3", loaded);
+  song = loadSound("../soundeffects/rain.mp3", loaded);
 }
 
 function setup() {

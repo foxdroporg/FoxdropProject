@@ -1,6 +1,6 @@
 <?php 
-require 'vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::create(__DIR__);
+require '../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
 $dotenv->load();
 $APIKEY = $_ENV['LOL_API_KEY'];
 

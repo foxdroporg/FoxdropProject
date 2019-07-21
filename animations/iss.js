@@ -2,7 +2,7 @@ var song;
 var buttonToggle;
 
 function preload() {
-  song = loadSound("soundeffects/satellite.mp3", loaded);
+  song = loadSound("../soundeffects/satellite.mp3", loaded);
 }
 
 function setup() {

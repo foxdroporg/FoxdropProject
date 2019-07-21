@@ -55,24 +55,24 @@ include_once 'header.php';
 
 		<div class="row">
 			<div class="column">
-				<a href="mountain.php" style="border:5px solid #ccc;">
+				<a href="animations/mountain.php" style="border:5px solid #ccc;">
 					<img src="images/mountain.png" alt="1stAnimation" style="width:70%; height:65%; ">
 				</a>
 			</div>
 			<div class="column">
-				<a href="stars.php" style="border:5px solid #ccc;">
+				<a href="animations/stars.php" style="border:5px solid #ccc;">
 					<img src="images/stars.png" alt="2ndAnimation" style="width:70%; height:70%; ">
 				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
-				<a href="transformingCube.php" style="border:5px solid #ccc;">
+				<a href="animations/transformingCube.php" style="border:5px solid #ccc;">
 					<img src="images/transformingCube.png" alt="3rdAnimation" style="width:90%; height:90%; ">
 				</a>
 			</div>
 			<div class="column">
-				<a href="issLocation.php" style="border:5px solid #ccc;">
+				<a href="animations/issLocation.php" style="border:5px solid #ccc;">
 					<img src="images/ISS.png" alt="4thAnimation" style="width:95%; height:95%; ">
 				</a>
 			</div>
@@ -87,36 +87,36 @@ include_once 'header.php';
 		
 		<div class="row">
 			<div class="column">
-				<a href="MDBWebsite/index.html" style="border:5px solid #ccc;">
+				<a href="webApplications/MDBWebsite/index.html" style="border:5px solid #ccc;">
 					<img src="images/IMDB.jpg" alt="1stSound" style="width:100%; height:100%; ">
 				</a>
 			</div>
 			<div class="column">
-				<a href="nasaImage.php" style="border:5px solid #ccc;">
+				<a href="webApplications/nasaImage.php" style="border:5px solid #ccc;">
 					<img src="images/nasaImage.png" alt="2ndSound" style="width:60%; height:70%; ">
 				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
-				<a href="geolocation.php" style="border:5px solid #ccc;">
+				<a href="webApplications/geolocation.php" style="border:5px solid #ccc;">
 			    <img src="images/geolocation.png" alt="3rd" style="width:100%; height:100%; ">
 				</a>
 			</div>
 			<div class="column">
-				<a href="leagueSearch.php" style="border:5px solid #ccc;">
+				<a href="webApplications/leagueSearch.php" style="border:5px solid #ccc;">
 			    <img src="images/leagueSearch.png" alt="4th" style="width:150%; height:150%; ">
 				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
-				<a href="YoutubeWebsite/index.html" style="border:5px solid #ccc;">
+				<a href="webApplications/YoutubeWebsite/index.html" style="border:5px solid #ccc;">
 					<img src="images/Youtube.png" alt="1stSound" style="width:85%; height:85%; ">
 				</a>
 			</div>
 			<div class="column">
-				<a href="musicDJ.php" style="border:5px solid #ccc;">
+				<a href="webApplications/musicDJ.php" style="border:5px solid #ccc;">
 					<img src="images/musicRepresentation.jpg" alt="2ndSound" style="width:120%; height:70%; ">
 				</a>
 			</div>
@@ -131,24 +131,24 @@ include_once 'header.php';
 
 		<div class="row">
 			<div class="column">
-				<a href="lava.php" style="border:5px solid #ccc;">
+				<a href="relax/lava.php" style="border:5px solid #ccc;">
 					<img src="images/lavaFlow.png" alt="1stSound" style="width:80%; height:85%; ">
 				</a>
 			</div>
 			<div class="column">
-				<a href="cave.php" style="border:5px solid #ccc;">
+				<a href="relax/cave.php" style="border:5px solid #ccc;">
 					<img src="images/caveLife.png" alt="2ndSound" style="width:85%; height:85%; ">
 				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
-				<a href="rain.php" style="border:5px solid #ccc;">
+				<a href="relax/rain.php" style="border:5px solid #ccc;">
 					<img src="images/rain.png" alt="3rdSound" style="width:100%; height:100%; ">
 				</a>
 			</div>
 			<div class="column">
-				<a href="beach.php" style="border:5px solid #ccc;">
+				<a href="relax/beach.php" style="border:5px solid #ccc;">
 					<img src="images/beach.png" alt="4thSound" style="width:95%; height:95%; ">
 				</a>
 			</div>

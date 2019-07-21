@@ -10,7 +10,6 @@
 		    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 		    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 		crossorigin="anonymous">
-			<!––<link rel="stylesheet" type="text/css" media="screen" href="main.css"/>
 		    <title>Summoner Search</title>
 		    <script
 			  src="https://code.jquery.com/jquery-3.3.1.slim.js"
@@ -49,8 +48,8 @@
 
 	<?php
 		/*
-		require 'vendor/autoload.php';
-		$dotenv = Dotenv\Dotenv::create(__DIR__);
+		require '../vendor/autoload.php';
+		$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
 		$dotenv->load();
 		$APIKEY = $_ENV['LOL_API_KEY'];
 

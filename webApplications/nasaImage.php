@@ -1,7 +1,7 @@
 <?php
     include_once 'header.php';
-    require 'vendor/autoload.php';
-	$dotenv = Dotenv\Dotenv::create(__DIR__);
+    require '../vendor/autoload.php';
+	$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
 	$dotenv->load();
 ?>
 <head>

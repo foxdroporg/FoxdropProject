@@ -8,7 +8,7 @@ var buttonToggle;
 var canvas;
 
 function preload() {
-	song = loadSound("soundeffects/transformingCube.mp3", loaded);
+	song = loadSound("../soundeffects/transformingCube.mp3", loaded);
 }
 
 function setup() {
