@@ -47,7 +47,7 @@
 							<input type="password" name="pwd" placeholder="Password">
 							<button class="button-test" type="submit" name="submit">Login</button>
 							</form>
-							<form action="signup.php" method="POST"> <button class="button-test">Sign up</button> </form>';
+							<form action="signup.php" method="POST"> <button class="button-test" style="">Sign up</button> </form>';
 						}
 					?>
 				</div>

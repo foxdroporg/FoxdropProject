@@ -1,25 +1,21 @@
 <?php
     include_once 'header.php';
     require 'vendor/autoload.php';
-		$dotenv = Dotenv\Dotenv::create(__DIR__);
-		$dotenv->load();
-
-		// Local
-		/*
-		$dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
-		$dbUsername = $_ENV['DB_LOCAL_USERNAME'];
-		$dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
-		$dbName = $_ENV['DB_LOCAL_NAME'];
-		*/
-		// Public
-		
-		$dbServername = $_ENV['DB_SERV_NAME']; 
-		$dbUsername = $_ENV['DB_USERNAME'];
-		$dbPassword = $_ENV['DB_PASSWORD'];
-		$dbName = $_ENV['DB_NAME'];
-		
-
-		$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+	$dotenv = Dotenv\Dotenv::create(__DIR__);
+	$dotenv->load();
+	// Local
+	/*
+	$dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
+	$dbUsername = $_ENV['DB_LOCAL_USERNAME'];
+	$dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
+	$dbName = $_ENV['DB_LOCAL_NAME'];
+	*/
+	// Public
+	$dbServername = $_ENV['DB_SERV_NAME']; 
+	$dbUsername = $_ENV['DB_USERNAME'];
+	$dbPassword = $_ENV['DB_PASSWORD'];
+	$dbName = $_ENV['DB_NAME'];
+	$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 ?>
 
 <!DOCTYPE html>
@@ -179,6 +175,8 @@
 
 						<span id="numbers0" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
 					</p>
+
+					
 				
 
 					<script type="text/javascript">

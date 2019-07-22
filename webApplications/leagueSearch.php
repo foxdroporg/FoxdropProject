@@ -15,9 +15,12 @@
 			  src="https://code.jquery.com/jquery-3.3.1.slim.js"
 			  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
 			  crossorigin="anonymous"></script>
+			<link rel="stylesheet" type="text/css" href="style.css">
 		</head>
 
-		<body>
+		<body bgcolor="">
+
+
 			<section class="mobile-wrapper">
 				<div class="jumbotron mt-5 text-black">
 					<h2 class="font-weight-bold text-capitalize" style=" text-align:center; font-size:30px; padding-top: 3%">Find summoner <br>on League of Legends</h2>
@@ -42,6 +45,7 @@
 					</div>
 				</div>
 			</section>
+			
 		</body>
 
 

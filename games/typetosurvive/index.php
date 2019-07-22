@@ -1,5 +1,4 @@
 <link rel="shortcut icon" type="image/png" href="../../images/firefoxLogo.png">
-
 <section class="main-container">
 	<div class="main-wrapper">
 		<!DOCTYPE html>
@@ -27,8 +26,6 @@
 					  src="https://code.jquery.com/jquery-3.3.1.slim.js"
 					  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
 					  crossorigin="anonymous"></script>
-
-					<!–– <script src="main.js"></script>  
 				</head>
                                 
 				<body bgcolor="#202020">
@@ -38,15 +35,15 @@
 					
 					<h1 style="color:#FFFFFF; text-align:center">Difficulty</h1>
 					<br>
-                    <div style="text-align:center">
-                        <form class="signup-form" action="index.html">
-                            <button type="submit" class="btn-success btn-lg" name="difficulty" value="easy">Easy</button>
+                    <div style="text-align:center; width: 10em; margin:0px auto;">
+                        <form class="difficulty-form" action="index.html">
+                            <button type="submit" class="btn-success btn-lg btn-block" name="difficulty" value="easy">Easy</button>
                         </form>
                         <form class="difficulty-form" action="index.html">
-                            <button type="submit" class="btn-warning btn-lg" name="difficulty" value="medium" style="color:white">Medium</button>
+                            <button type="submit" class="btn-warning btn-lg btn-block" name="difficulty" value="medium" style="color:white">Medium</button>
                         </form>
                         <form class="difficulty-form" action="index.html">
-                            <button type="submit" class="btn-danger btn-lg" name="difficulty" value="insane">Insane</button>
+                            <button type="submit" class="btn-danger btn-lg btn-block" name="difficulty" value="insane">Insane</button>
                         </form>
                     </div>
 

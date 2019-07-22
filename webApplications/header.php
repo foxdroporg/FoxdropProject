@@ -9,10 +9,8 @@
 		<meta name="description" content="This is an example of a meta description">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<link class="img-test" rel="shortcut icon" type="image/png" href="../images/firefoxLogo.png">
-		
+		<link class="imgA-test" rel="shortcut icon" type="image/png" href="../images/firefoxLogo.png">
 		<title></title>
-
 	</head>
 
 	<header>
@@ -21,7 +19,7 @@
 				<ul>
 					<li>
 						<a href="../home.php">
-						<img class="img-test" src="../images/firefoxLogo.png" alt="HTML5 Icon" style="padding: 5px; float:left; width:50px; height:50px;">
+							<img class="imgA-test" src="../images/firefoxLogo.png" alt="HTML5 Icon" style="padding: 5px; float:left; width:3.5em; height:3.5em;">
 						</a>
 					</li>
 					<li><a class="button-test" href="../home.php">HOME</a></li>

@@ -67,6 +67,11 @@ a {
     justify-content: center;
 }
 
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
 /* change colours to suit your needs */
 ins {
     background-color:#ff9;
@@ -115,18 +120,6 @@ input, select {
 }
 
 
-
-
-/* Make Mobile Responsive -> 475px Causing Issues*/
-@media screen and (max-width: 475px) {
-    
-}
-@media screen and (min-width: 800px) {
-    
-}
-
-
-
 /* My code */
 
 .header-wrapper {
@@ -135,9 +128,16 @@ input, select {
     background-color: #fff;
 }
 
-.mobile-wrapper {
-    margin: 0 auto;
-    width: 475px;
+.main-container {
+    padding-top: 40px;
+}
+
+.main-container h2 {
+    font-family: Serif;
+    font-size: 40px;
+    color: #111;
+    line-height: 50px;
+    text-align: center;
 }
 
 .main-wrapper {
@@ -156,17 +156,17 @@ input, select {
     text-align: center;
 }
 
+.mobile-wrapper {
+    margin: 0 auto;
+    width: 400px;
+}
+
 #borderimg { 
     border: 10px solid transparent;
     padding: 15px;
-    border-image: url(../images/border.png) 30 round;
+    border-image: url(../images/border.png) 30 round; /* vh */
 }
 
-.main-wrapperportfolio {
-    padding: 15px;
-    margin: 0 auto;
-    width: 1000px;
-}
 
 
 
@@ -258,20 +258,6 @@ header .nav-login a {
     line-height: 63px;
     cursor: pointer;
 }
-
-.main-container {
-    padding-top: 40px;
-}
-
-
-.main-container h2 {
-    font-family: Serif;
-    font-size: 40px;
-    color: #111;
-    line-height: 50px;
-    text-align: center;
-}
-
 
 .img-test {
     transition: all 2s ease-in 0.5s;
@@ -464,96 +450,11 @@ header .nav-login a {
     justify-self: center;
 }
 
-@media screen and (min-width: 736px) {
-    .grid {
-    display: grid;
-    grid-template-columns: 1fr 500px 500px 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-areas: 
-    ". title title ."
-    ". header header ."
-    ". sidebar content ."
-    ". footer footer .";
-    }
-}
 
+/* For videos in the future */
 video {
     width: 100%;
 }
-
-
-/* PARALLEX SCROLLING 
-
-html {
-    height: 100%;
-    overflow: hidden;
-}
-
-body {
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    perspective: 1px;
-    transform-style: preserve-3d;
-    height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    font-family: "Luna";
-}
-
-header {
-    box-sizing: border-box;
-    min-height: 100vh;
-    padding: 30vw 0 5vw;
-    position: relative;
-    transform-style: inherit;
-    width: 100vw;
-}
-
-header h1  {
-    margin-top: -100px;
-}
-
-header, header:before {
-    background:50% 50% / cover;
-}
-
-header::before {
-    bottom: 0;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    display: block;
-    background-image: url(   );
-    background-size: cover;
-    transform-origin: center center 0;
-    transform: translateZ(-1px) scale(2);
-    z-index: -1;
-    min-height: 100vh;
-}
-
-header *  {
-    font-weight: normal;
-    letter-spacing: 0.2em;
-    text-align: center;
-    margin: 0;
-    padding: 1em 0;
-}
-
-
-Insert into startpage.php when ready:
-
-<body class="startPage">
-    <header class="startPage">
-        <h1 class="startPage">Parallex Effect</h1>
-        <p>Pure CSS // No JS</p>
-    </header>
-
-</body>
-
-*/
 
 /* CONTACT FORM */ 
     /* Style inputs with type="text", select elements and textareas */
@@ -587,4 +488,156 @@ Insert into startpage.php when ready:
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+
+
+/* 
+!
+!
+MEDIA QUERIES 
+!
+!
+*/
+
+
+
+
+
+/* Order: Large to smaller. Required tag: max-width AND NOT min-width.*/
+
+
+@media only screen and (max-width: 1000px) {  
+    .header-wrapper {
+        margin: 0 auto;
+        background-color: yellow; /* #fff */
+    }
+
+    .main-wrapper {
+        width: 600px;
+    }
+    .main-wrapper form {
+        width: 600px;
+    }
+
+    header .nav-login {
+        float: left;
+        margin: 0rem 2rem 0rem 1rem;
+    }
+
+    header nav ul li {
+        float: left;
+        list-style: none;
+        padding-right: 12px;
+    }
+
+    header .nav-login form input {
+        float: left;
+        width: 5rem;
+        height: 2rem;
+        border: none;
+        background-color: #ccc;
+        font-family: Serif;
+        font-size: 0.9rem;
+        color: #111;
+    }
+}
+
+@media only screen and (max-width: 700px) {  
+    .main-container {
+        padding-top: 5em;
+    }
+    .main-wrapper {
+        width: 275px;
+    }
+    .main-wrapper form {
+        width: 275px;
+    }
+    .header-wrapper {
+        margin: 0 auto;
+        width: 45rem;
+        height: 7em;
+        background-color: white; /* #fff */
+    }
+
+    header nav ul {
+        float: left;
+        list-style: none;
+        padding-left: 0.8rem;
+        margin: 0 auto;
+    }
+
+    header nav ul li a img{
+        display: block;
+    }
+
+    header nav ul li {
+        float: left;
+        list-style: none;
+        padding-right: 0.6rem;
+        margin: 0 auto;
+    }
+
+    header .nav-login {
+        float: left;
+        margin: 0rem 2rem 0rem 1rem;
+    }
+
+    header .nav-login form {
+        float: left;
+        padding: 0rem 0rem 0rem 0.3rem;
+        margin: 0rem 2rem 0rem 0.1rem;
+    }
+
+    header .nav-login form input {
+        float: left;
+        width: 5rem;
+        height: 2rem;
+        border: none;
+        background-color: #ccc;
+        font-family: Serif;
+        font-size: 0.9rem;
+        color: #111;
+        line-height: 30px;
+    }
+
+    header .nav-login form button {
+        float: left;
+        width: 50px;
+        height: 2rem;
+        margin: 0rem 0rem 0rem 0rem;
+        border: none;
+        background-color: white;
+        font-family: Serif;
+        font-size: 14px;
+        color: #111;
+        cursor: pointer;
+    }
+}
+
+/* Galaxy S9 */
+@media only screen and (max-width: 360px) {  
+    .header-wrapper {
+        margin: 0 auto;
+        width: 25.5rem; 
+        height: 7em;
+        background-color: #fff;
+    }
+
+    header nav ul li a img{
+        display: none;
+    }
+
+    header nav ul {
+        float: left;
+        list-style: none;
+        padding-left: 0.5rem;
+        margin: 0 auto;
+    }
+
+    header .nav-login {
+        float: left;
+        margin: 0rem 0rem 0rem 0.3rem;
+    }
+
 }

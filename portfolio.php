@@ -4,7 +4,6 @@ include_once 'header.php';
 
 <section class="main-container">
 	<section class="main-wrapper">
-		<div class="main-wrapperportfolio">
 			<h2 style="color:#FFFFFF; font-size: 50px">Games</h2>
 
 			<div class="row">
@@ -44,8 +43,6 @@ include_once 'header.php';
 					</a>
 				</div>
 			</div>
-
-		</div>
 	</section>
 </section>
 
@@ -118,6 +115,18 @@ include_once 'header.php';
 			<div class="column">
 				<a href="webApplications/musicDJ.php" style="border:5px solid #ccc;">
 					<img src="images/musicRepresentation.jpg" alt="2ndSound" style="width:120%; height:70%; ">
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<a href="webApplications/recipe.php" style="border:5px solid #ccc;">
+					<img src="images/pancakes.jpg" alt="1stSound" style="width:100%; height:100%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="portfolio.php" style="border:5px solid #ccc;">
+					<img src="images/website.jpg" alt="2ndSound" style="width:120%; height:70%; ">
 				</a>
 			</div>
 		</div>

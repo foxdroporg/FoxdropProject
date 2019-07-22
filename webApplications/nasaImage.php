@@ -30,7 +30,7 @@
 			$image = $responseBody->{'contextWrites'}->{'to'}->{'url'};
 			$imageData = base64_encode(file_get_contents("$image"));
 			echo '<img src="data:image/jpeg;base64,'.$imageData.'"><br><br>';
-			echo '<span style="color:white;text-align:center;font-size:25px;">' . $explanation . '<br><br></span>';
+			echo '<span style="color:white;text-align:center;font-size:20px;">"' . $explanation . '"<br><br></span>';
 		?>
 		</div>
 

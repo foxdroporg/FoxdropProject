@@ -9,6 +9,7 @@ $serverName = $_GET["serverName"];
 $rawAccountData = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/summoner/v4/summoners/by-name/".$summonerName."?api_key=".$APIKEY); // EDIT THIS TO PERMANENT KEY LATER
 $decodedData = json_decode($rawAccountData, true);
 
+$profileIconId = $decodedData['profileIconId'];
 $name = $decodedData['name'];
 $puuid = $decodedData['puuid'];
 $summonerLevel = $decodedData['summonerLevel'];
@@ -35,13 +36,18 @@ function getLeagueData($serverName, $id, $APIKEY) {
 }
 function getMatchlistData($serverName, $accountId, $APIKEY) {
 	// Only extracting one game from match history since default is 100 games. Unnecessary overload!
-	$rawMatchlistData = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matchlists/by-account/".$accountId."?api_key=".$APIKEY); // Before APIKEY you could write: endIndex=1&beginIndex=0& 
+	$rawMatchlistData = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matchlists/by-account/".$accountId."?endIndex=1&beginIndex=0&api_key=".$APIKEY); // Before APIKEY you could write: endIndex=1&beginIndex=0& 
 	$decodedData = json_decode($rawMatchlistData, true);
 	return $decodedData;
 }
 function getChampionData() {
 	$rawChampionListData = @file_get_contents("https://ddragon.leagueoflegends.com/cdn/9.14.1/data/en_US/champion.json");
 	$decodedData = json_decode($rawChampionListData, true);
+	return $decodedData;
+}
+function getChampionMastery($serverName, $id, $APIKEY) {
+	$rawChampionMasteryData = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/".$id."?api_key=".$APIKEY);
+	$decodedData = json_decode($rawChampionMasteryData, true);
 	return $decodedData;
 }
 ?>
@@ -94,14 +100,21 @@ function getChampionData() {
 						}
 					</script> 
 				</p>
-				<h2 class="font-weight-bold text-capitalize" style=" text-align:center; font-size:30px; "> <?php echo "<p style=color:black;text-align:center>", $name; ?> </h2>
-		 		
+				<h2 class="font-weight-bold text-capitalize" style="text-align:center; font-size:30px;"> 
+					<?php 
+						$image = "http://ddragon.leagueoflegends.com/cdn/9.14.1/img/profileicon/".$profileIconId.".png";
+						echo '<img src="'.$image.'" style="width:7em;height:7em;"/>';
+					?>
+					<?php 
+						echo "<p style=color:black;text-align:center>", $name; 
+					?> 
+				</h2>
 		 		<div class="row mt-1 ">
 		 			<div class="col">
 						<div class="w-100 mt-2"></div>
 							<?php
-								echo "<p style=color:black;text-align:center><br>Last seen online on League of Legends: ", date("d-m-Y", $seconds), ".</p>";
-								echo "<p style=color:black;text-align:center><br>Level: ", $summonerLevel, ".</p>";
+								echo "<p style=color:black;text-align:center><br>Last seen online: ", date("d-m-Y", $seconds), ".</p>";
+								echo "<p style=color:black;text-align:center><br>Account level: ", $summonerLevel, ".</p>";
 								//echo $id;
 								
 								$matchlistObject = getMatchlistData($serverName, $accountId, $APIKEY);
@@ -136,6 +149,46 @@ function getChampionData() {
 								}
 
 								echo "<p style=color:black;text-align:center><br>Has played a total of: ".$totalGames." games.(Bugged)<br><br><b>Most recent game played</b><br>Date: ".date("d-m-Y", ($latestGame['timestamp']/1000))."<br>Mode: ".$mode."<br>Champion ID: ".$latestGame['champion'].", ".$nameOfChampion.".</p>";
+
+
+								$championListMasteryObject = getChampionMastery($serverName, $id, $APIKEY);
+								$firstScore = 0;
+								$firstChampionId = 0;
+								$secondScore = 0;
+								$secondChampionId = 0;
+								$thirdScore = 0;
+								$thirdChampionId = 0;
+								if (isset($championListMasteryObject[0])) {
+									$firstScore = $championListMasteryObject[0]['championPoints'];
+									$firstChampionId = $championListMasteryObject[0]['championId'];
+								}
+								if (isset($championListMasteryObject[1])) {
+									$secondScore = $championListMasteryObject[1]['championPoints'];
+									$secondChampionId = $championListMasteryObject[1]['championId'];
+								}
+								if (isset($championListMasteryObject[2])) {
+									$thirdScore = $championListMasteryObject[2]['championPoints'];
+									$thirdChampionId = $championListMasteryObject[2]['championId'];
+								}
+
+								$firstChampion = '';
+								$secondChampion = '';
+								$thirdChampion = '';
+								foreach($listOfChampions as $row) {
+								    if ($row['key'] == $firstChampionId) {
+								    	$firstChampion = $row['name'];
+								    } 
+								    else if ($row['key'] == $secondChampionId) {
+								    	$secondChampion = $row['name'];
+								    } 
+								    else if ($row['key'] == $thirdChampionId) {
+								    	$thirdChampion = $row['name'];
+								    } 
+								}
+					
+								echo "<p style=color:black;text-align:center><br><b>Champion Mastery</b><br>".$firstChampion." - ".$firstScore." points<br>".$secondChampion." - ".$secondScore." points<br>".$thirdChampion." - ".$thirdScore." points</p>";
+
+
 							?>
 						<div class="w-100 mt-2"></div>
 							<?php
@@ -209,7 +262,7 @@ function getChampionData() {
 									}
 								} else {
 									// Faliure
-									echo "<p style=color:black;text-align:center><br><br><b>Is not in-game.</b></p>";
+									echo "<p style=color:black;text-align:center><br><br><b>Is not in-game right now.</b></p>";
 								}
 							?>
 					</div>
@@ -226,7 +279,7 @@ function getChampionData() {
 						$store = $statusObject['services'][1];
 						$website = $statusObject['services'][2];
 						$client = $statusObject['services'][3];
-						echo "<p style=color:black;text-align:center>", $statusObject['name'], "</p>"; 
+						echo "<p style=color:black;text-align:center>", $statusObject['name'], " - Service Status</p>"; 
 					?> 
 				</h2>
 
@@ -238,25 +291,25 @@ function getChampionData() {
 								if($game['status'] == 'online') {
 									echo "<p style=color:green;text-align:center><span class=dotGreen></span> ".$game['name']." is " .$game['status']. "</p>";
 								} else {
-									echo "<p style=color:green;text-align:center><span class=dotRed></span>".$game['name']." is " .$game['status']. "</p>";
+									echo "<p style=color:red;text-align:center><span class=dotRed></span> ".$game['name']." is not " .$game['status']. "</p>";
 								}
 								// Store status
 								if($store['status'] == 'online') {
 									echo "<p style=color:green;text-align:center><span class=dotGreen></span> ".$store['name']." is " .$store['status']. "</p>";
 								} else {
-									echo "<p style=color:green;text-align:center><span class=dotRed></span>".$store['name']." is " .$store['status']. "</p>";
+									echo "<p style=color:red;text-align:center><span class=dotRed></span> ".$store['name']." is not " .$store['status']. "</p>";
 								}
 								// Website status
 								if($website['status'] == 'online') {
 									echo "<p style=color:green;text-align:center><span class=dotGreen></span> ".$website['name']." is " .$website['status']. "</p>";
 								} else {
-									echo "<p style=color:green;text-align:center><span class=dotRed></span>".$website['name']." is " .$website['status']. "</p>";
+									echo "<p style=color:red;text-align:center><span class=dotRed></span> ".$website['name']." is not " .$website['status']. "</p>";
 								}
 								// Client status
 								if($client['status'] == 'online') {
 									echo "<p style=color:green;text-align:center><span class=dotGreen></span> ".$client['name']." is " .$client['status']. "</p>";
 								} else {
-									echo "<p style=color:green;text-align:center><span class=dotRed></span>".$client['name']." is " .$client['status']. "</p>";
+									echo "<p style=color:red;text-align:center><span class=dotRed></span> ".$client['name']." is not " .$client['status']. "</p>";
 								}
 
 
