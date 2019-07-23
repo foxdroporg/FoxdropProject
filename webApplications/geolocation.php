@@ -24,7 +24,7 @@
 
 <body bgcolor="">
 	<section class="mobile-wrapper">
-		<div class="jumbotron mt-5 text-black">
+		<div style="background:black" class="jumbotron mt-5 text-white border">
 		  <h2 style="text-align:center; font-size:60px; padding-top: 5%">Geolocation<br></h2>
 		  <p style="font-size: 14px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here</a>.</p> 
 
@@ -45,7 +45,7 @@
 			 <h2 style="text-align:center; font-size:60px; padding-top: 4%">Weather Forecast<br></h2>
 
 		  <script>
-		  	let lat, lon, lat2, lon2, altitude, heading, speed, weather, air;   	
+		  	let lat, lon, lat2, lon2, altitude, heading, speed, weather, air;  
 		  	// Geolocation is avaliable as soon as website is deployed on a (https) hosting service.
 		  	if('geolocation' in navigator) {
 		  		console.log('geolocation avaliable');
@@ -57,6 +57,9 @@
 		  			altitude = position.coords.altitude;
 		  			heading = position.coords.heading;
 		  			speed = position.coords.speed;
+		  			altitude == undefined ? altitude='Mobile Only - ' : '';
+		  			heading == undefined ? heading='Bugged - ' : '';
+		  			speed == undefined ? speed='Bugged - ' : '';
 		  			document.getElementById('lat').textContent = lat;
 		  			document.getElementById('lon').textContent = lon;
 		  			document.getElementById('lat2').textContent = lat2;

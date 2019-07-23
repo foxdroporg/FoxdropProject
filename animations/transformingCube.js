@@ -26,9 +26,9 @@ function setup() {
 /* Position of canvas on the webpage */
 function centerCanvas() {
   var cnvPosX = (windowWidth - width) / 2;
-  var cnvPosY = (windowHeight - height) / 4;
+  var cnvPosY = (windowHeight - height) / 1.8;
   canvas.position(cnvPosX, cnvPosY);
-  buttonToggle.position(cnvPosX + 10, cnvPosY + 10);
+  buttonToggle.position(cnvPosX + 50, cnvPosY + 10);
 }
 
 /* Makes sure position stays the same regardless of window resizing */

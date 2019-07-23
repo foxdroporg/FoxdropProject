@@ -8,6 +8,7 @@
 			<meta http-equiv="X-UA-Compatible"
 			content="IE=edge">
 		    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 		    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 		crossorigin="anonymous">
 		    <title>Summoner Search</title>
@@ -22,24 +23,28 @@
 
 
 			<section class="mobile-wrapper">
-				<div class="jumbotron mt-5 text-black">
+				<div class="jumbotron mt-5 text-black border border-dark" style="border-width:3px !important">
 					<h2 class="font-weight-bold text-capitalize" style=" text-align:center; font-size:30px; padding-top: 3%">Find summoner <br>on League of Legends</h2>
 			 		
 			 		<div class="row mt-5 ">
 			 			<div class="col">
 							<form style="text-align:center" action="fetchSummoner.php" method="GET">
-								<input type="text" name="summonerName" id="summonerName" placeholder="Search for summoner..." style="width:11em; height: 2em; font-size: 20px">							  
-								
+								<input type="text" name="summonerName" id="summonerName" placeholder="Search for summoner..." style="width:11em; height: 2.7em; font-size: 20px">	
 								<div class="w-100 mt-2"></div>
+								<label style="color:grey">e.g. Christofferos</label>
+								<div class="w-100 mt-3"></div>
 									<select name="serverName" id="serverName" style="width:11em; height: 3em; font-size: 20px">
 									  <option value="euw1">Europe West</option>
 									  <option value="eun1">Europe Nordic</option>
 									  <option value="na1">North America</option>
 									  <option value="kr">Korea</option>
 									</select>
-								<div class="w-100 mt-2"></div>
+								<label style="color:grey;">e.g. Europe West</label>
 
-								<button class="btn btn-lg btn-primary" type="submit" onClick="fetchSummoner" style="width:11em; height: 3em">Search..</button>
+								<div class="w-100 mt-4"></div>
+
+
+								<button class="btn btn-lg btn-primary" type="submit" onClick="fetchSummoner" style="width:11em; height: 3em"><span class="glyphicon glyphicon-search"></span> Search..</button>
 							</form>
 						</div>
 					</div>

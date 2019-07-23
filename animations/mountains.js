@@ -28,7 +28,7 @@ function preload() {
 /* Position of canvas on the webpage */
 function centerCanvas() {
   var cnvPosX = (windowWidth - width) / 2;
-  var cnvPosY = (windowHeight - height) / 4;
+  var cnvPosY = (windowHeight - height) / 1.8;
   canvas.position(cnvPosX, cnvPosY);
   buttonToggle.position(cnvPosX + 10, cnvPosY + 10);
 }
@@ -40,7 +40,7 @@ function windowResized() {
 
 /* Creates canvas and two dimensional array */
 function setup() {
-  canvas = createCanvas(600, 400, WEBGL);           // For fullscreen make (windowWidth, windowHeight-65)
+  canvas = createCanvas(400, 400, WEBGL);           // For fullscreen make (windowWidth, windowHeight-65)
   //song = loadSound("soundeffects/birdFlyByMountainView.mp3", loaded);
   song.setVolume(0.6);
   buttonToggle = createButton("Unmute");

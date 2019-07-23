@@ -7,35 +7,35 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-			<meta charset="UTF-8" />
-			<meta name="viewport" content="width=\, initial-scale=1.0" />
-			<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=\, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
-		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
-		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script>
-		    <script type="text/javascript" src="iss.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script>
+	    <script type="text/javascript" src="iss.js"></script>
 
-			<link
-		      rel="stylesheet"
-		      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-		      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-		      crossorigin=""
-		    />
-		    <script
-		      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-		      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-		      crossorigin=""
-		    ></script>
-		    <style>
-		      #issMap {
-		        height: 600px;
-		        width: 1000px;
-		        position: relative;
-			    top: 50%;
-			    left: 25%;
-		      }
-		    </style>
+		<link
+	      rel="stylesheet"
+	      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+	      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+	      crossorigin=""
+	    />
+	    <script
+	      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+	      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+	      crossorigin=""
+	    ></script>
+	    <style>
+	      #issMap {
+	        height: 600px;
+	        width: 1000px;
+	        position: relative;
+		    top: 50%;
+		    left: 25%;
+	      }
+	    </style>
 	</head>
 
 
@@ -56,12 +56,13 @@
 
 		<br>
 
-		<div id="issMap"></div>
+		<div  id="issMap"></div>
 
 		<br>
 		<h2 style="color:white; font-size: 20px; text-align: center; padding: 1% 20% 0% 20%">
 		The International Space Station (ISS) is a space station, or a habitable artificial satellite, in low Earth orbit. The ISS programme is a joint project between five participating space agencies: NASA (United States), Roscosmos (Russia), JAXA (Japan), ESA (Europe), and CSA (Canada). The ISS serves as a microgravity and space environment research laboratory in which crew members conduct experiments in biology, human biology, physics, astronomy, meteorology, and other fields.<br> [Wikipedia, "International Space Station"].
 		</h2>
+
 
 		<script>
 			// Making a map and tiles

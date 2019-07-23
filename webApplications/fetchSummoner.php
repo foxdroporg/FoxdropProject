@@ -5,6 +5,7 @@ $dotenv->load();
 $APIKEY = $_ENV['LOL_API_KEY'];
 
 $summonerName = $_GET["summonerName"];
+$summonerName = preg_replace('/\s+/', '%20', $summonerName);
 $serverName = $_GET["serverName"];
 $rawAccountData = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/summoner/v4/summoners/by-name/".$summonerName."?api_key=".$APIKEY); // EDIT THIS TO PERMANENT KEY LATER
 $decodedData = json_decode($rawAccountData, true);
@@ -59,6 +60,7 @@ function getChampionMastery($serverName, $id, $APIKEY) {
 		<meta http-equiv="X-UA-Compatible"
 		content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 		<?php
@@ -91,7 +93,7 @@ function getChampionMastery($serverName, $id, $APIKEY) {
 		<section class="mobile-wrapper">
 			<div class="jumbotron mt-5 text-black">
 				<p>
-				    <button onClick="goBack()" class="btn btn-info">
+				    <button onClick="goBack()" class="btn btn-primary">
 				      <span class="glyphicon glyphicon-search"></span> Search
 				    </button>
 					<script type="text/javascript">

@@ -6,7 +6,7 @@
 
    <head>
     <meta charset="UTF-8">
-     <title>Lava</title>
+     <title>Beach</title>
 
     <div style="width:1000px color:white">
         <img src="../images/beach.png" alt="4thGame" style="width:100%; height:70%; ">
