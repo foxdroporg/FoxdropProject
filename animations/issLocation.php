@@ -29,11 +29,10 @@
 	    ></script>
 	    <style>
 	      #issMap {
-	        height: 600px;
-	        width: 1000px;
+	        height: 400px;
+	        width: 400px;
 	        position: relative;
-		    top: 50%;
-		    left: 25%;
+		    margin: auto;
 	      }
 	    </style>
 	</head>
@@ -44,7 +43,7 @@
 		<h1 style="color:white; font-size: 20px; text-align: center">Where is the International Space Station Right Now?</h1>
 		<br>
 
-		<p style="color:white; font-size: 15px; text-align: center">
+		<p style="color:white; font-size: 25px; text-align: center">
 			Latitude: <span id="lat"></span>° 
 		<br>
 			Longitude: <span id="lon"></span>°

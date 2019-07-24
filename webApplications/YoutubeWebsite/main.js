@@ -9,6 +9,7 @@ const SCOPES = 'https://www.googleapis.com/auth/youtube.readonly';
 const authorizeButton = document.getElementById('authorize-button');
 const signoutButton = document.getElementById('signout-button');
 const content = document.getElementById('content');
+
 const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
 const videoContainer = document.getElementById('video-container');
@@ -31,7 +32,7 @@ function handleClientLoad() {
   gapi.load('client:auth2', initClient);
 }
 
-// Init API lcient library and set up sign in listeners
+// Init API client library and set up sign in listeners
 function initClient() {
   gapi.client.init({
       discoveryDocs: DISCOVERY_DOCS,
@@ -48,7 +49,7 @@ function initClient() {
     });
 }
 
-// Update UO sign in state changes
+// Update UI sign in state changes
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';

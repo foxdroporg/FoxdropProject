@@ -198,7 +198,29 @@
 							});
 					*/
 					</script>
+
+
+
+					<h2 style="color:white;font-size: 35px; padding: 0 0 0.5rem 0">Connect Youtube video to account</h2>
+				    <h6 style="color:grey; text-align: center;padding: 0 0 1rem 0">How to get embeded link:<br> 1. Click "Share" - 2. Press "Copy" - 3. Paste in the box below</h6>
+
+					<form id="channel-form" style="width: 350px; margin: 0 auto;
+				     display: table;">
+				      <div class="input-field col s1"> 
+				        <input type="text" id="channel-input" placeholder="Youtube Embeded Link..." style="margin: 0 auto;
+				     display: table;width: 12rem">
+				        <br>
+				        <input type="submit" value="Save Youtube Video" class="btn grey lighten-2" style="margin: 0 auto;
+				     display: table;">
+				      </div>
+				    </form>
+				    <!--  GET VIDEO VIA INPUT. --->
+				    <div class="row" id="video-container" style="width: 350px;margin: 0 auto;
+				     display: table;"></div>
 				</div>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  				<script language="javascript" type="text/javascript" src="profilePage.js"></script>
+
 			</div>
 		</section>
 	</body>

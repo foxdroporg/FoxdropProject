@@ -18,6 +18,27 @@
   </script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link class="img-test" rel="shortcut icon" type="image/png" href="images/firefoxLogo.png">
+  
+
+	<link
+	  rel="stylesheet"
+	  href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+	  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+	  crossorigin=""
+	/>
+	<script
+	  src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+	  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+	  crossorigin=""
+	></script>
+	<style>
+	  #issMap {
+	    height: 400px;
+	    width: 400px;
+	    position: relative;
+	    margin: auto;
+	  }
+	</style>
 </head>
 
 
@@ -116,6 +137,80 @@
 		  ?>
 			
 		</div>
+
+		<div id="issMap"></div>
+
+
+		<script type="text/javascript">
+			/* Might be good to use Google Maps to spread the rate limit on 
+			function showPosition(position) {
+			  var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+			  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_:KEY";
+
+			  document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+			}
+			*/
+
+			// Making a map and tiles
+			const mymap = L.map('issMap');
+			const attribution =
+			'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+			const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		  	const tiles = L.tileLayer(tileUrl, { attribution });
+		  	tiles.addTo(mymap);
+
+
+		  	// Making a marker with a custom icon
+		    const issIcon = L.icon({
+		        iconUrl: '../images/personIcon.png',
+		        iconSize: [32, 32],
+		        iconAnchor: [25, 16]
+		    });
+		    const marker = L.marker([0, 0], { icon: issIcon }).addTo(mymap);
+		    let firstTime = true;
+
+			async function getISS() {
+				const latitude = lat;
+				const longitude = lon;
+
+				marker.setLatLng([latitude, longitude]);
+		        if (firstTime) {
+		          mymap.setView([latitude, longitude], 13);
+		          firstTime = false;
+		        }
+
+				document.getElementById('lat').textContent = latitude.toFixed(2);
+				document.getElementById('lon').textContent = longitude.toFixed(2);
+			}
+			getISS();
+
+			setInterval(getISS, 1000);
+		</script>
+
+		<div class="row mt-5 ">
+ 			<div class="col">
+				<form style="text-align:center" action="geolocationParams.php" method="GET">
+					<input type="text" name="city" id="city" placeholder="Search for city..." style="width:11em; height: 2.7em; font-size: 20px">	
+					<div class="w-100 mt-2"></div>
+					<label style="color:grey">e.g. Stockholm</label>
+					<div class="w-100 mt-3"></div>
+					<input type="text" name="lat" id="lat" placeholder="Input latitude..." style="width:11em; height: 2.7em; font-size: 20px">
+					<div class="w-100 mt-2"></div>
+					<label style="color:grey;">e.g. 57</label>
+					<div class="w-100 mt-2"></div>
+					<input type="text" name="lon" id="lon" placeholder="Input longitude..." style="width:11em; height: 2.7em; font-size: 20px">
+					<div class="w-100 mt-2"></div>
+					<label style="color:grey;">e.g. 20</label>
+					<div class="w-100 mt-4"></div>
+
+					<button class="btn btn-lg btn-primary" type="submit" onClick="geolocationParams" style="width:11em; height: 3em"><span class="glyphicon glyphicon-search"></span> Search..</button>
+				</form>
+			</div>
+		</div>
+
+
+				
 	</section>
 </body>
 

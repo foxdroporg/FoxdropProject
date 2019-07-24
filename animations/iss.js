@@ -1,3 +1,4 @@
+/* This file exists only for the Song Button*/
 var song;
 var buttonToggle;
 
@@ -13,8 +14,8 @@ function setup() {
 }
 
 function centerCanvas() {
-	var cnvPosX = (windowWidth - width) / 2;
-  	var cnvPosY = (windowHeight - height) / 4;
+	var cnvPosX = (windowWidth - width) / 0.7;
+  	var cnvPosY = (windowHeight - height) / 3;
   	buttonToggle.position(cnvPosX/2 + 25, cnvPosY/1.5);
 }
 

@@ -6,7 +6,8 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "unirest": "^0.6.0"
   },
   "devDependencies": {},
   "scripts": {

@@ -7,10 +7,11 @@ var slider;
 var amp;
 var canvas;
 
+
 function setup() {
   canvas = createCanvas(450, 450);
-  song = loadSound("../soundeffects/song.mp3", loaded);
-  song.setVolume(0.5);
+  song = loadSound('../soundeffects/templeMarch.mp3', loaded);
+  song.setVolume(2);
 
   // hue, saturation, and brightness
   colorMode(HSB, 255);
@@ -31,13 +32,13 @@ function setup() {
 
 function centerCanvas() {
   var cnvPosX = (windowWidth - width) / 2;
-  var cnvPosY = (windowHeight - height) / 4;
+  var cnvPosY = (windowHeight - height) / 1;
   canvas.position(cnvPosX, cnvPosY);
-  buttonToggle.position(cnvPosX + 10, cnvPosY + 10);
-  buttonReset.position(cnvPosX + 380, cnvPosY + 10);
+  buttonToggle.position(cnvPosX + 70, cnvPosY + 10);
+  buttonReset.position(cnvPosX + 350, cnvPosY + 10);
   sliderRate.position(cnvPosX + 20, cnvPosY + 420);
   sliderPan.position(cnvPosX + 140, cnvPosY + 10);
-  slider.position(cnvPosX + 260, cnvPosY + 420);
+  slider.position(cnvPosX + 230, cnvPosY + 420);
 }
 
 /* Makes sure position stays the same regardless of window resizing */
