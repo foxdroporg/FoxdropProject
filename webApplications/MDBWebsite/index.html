@@ -11,14 +11,17 @@
 <body>
   <nav class="navbar navbar-default">
     <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">Movie Database</a>
+      <div class="navbar-header" style="margin: 0 auto">
+        <a href="../../portfolio.php">
+          <img class="img-test" src="../../images/firefoxLogo.png" alt="HTML5 Icon" style="margin: 5px 15px 5px 5px; float:left; width:50px; height:50px;">
+        </a>
       </div>
     </div>
   </nav>
 
   <div class="container">
     <div class="jumbotron">
+
       <h3 class="text-center">Search For Any Movie</h3>
       <br>
       <form id="searchForm">
@@ -30,8 +33,139 @@
   </div>
 
   <div class="container">
-    <div id="movies" class="row"></div>
+    <div id="movies" class="row">
+    </div>
   </div>
+
+<div class="container">
+    <div class="jumbotron">
+    <h3 class="text-center">Upcoming Movies</h3>
+    <div class="w-100 mt-3"></div>
+    <form style="text-align:center" action="index.html" method="GET">
+      <select name="country" id="country" style="width:11rem; height: 3rem; font-size: 20px; text-align: center;">
+        <option selected>Choose Country</option>
+        <option value="SE">Sweden</option>
+        <option value="US">USA</option>
+        <option value="FI">Finland</option>
+        <option value="NO">Norway</option>
+        <option value="CN">China</option>
+        <option value="AU">Australia</option>
+        <option value="DK">Denmark</option>
+      </select>
+      <div class="w-100 mt-1"></div>
+      <button class="btn btn-lg btn-primary" type="submit" onClick="index.html" style="width:11rem; height: 3rem"><span class="glyphicon glyphicon-search"></span> Search..</button>
+    </form>
+    <div class="jumbotron row">
+      <?php 
+        require '../../vendor/autoload.php';
+        $dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
+        $dotenv->load();
+        $APIKEY = $_ENV['THE_MOVIE_DB'];
+        if(isset($_GET['country'])) {
+          $region = $_GET['country'];
+          $rawData = @file_get_contents("https://api.themoviedb.org/3/movie/upcoming?api_key=".$APIKEY."&language=en-US&page=1&region=".$region."");
+        }
+        else {
+          $rawData = @file_get_contents("https://api.themoviedb.org/3/movie/upcoming?api_key=".$APIKEY."&language=en-US&page=1");
+        }https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc
+        $decodedData = json_decode($rawData, true);
+
+        $output = '';
+        $i = 0;
+          foreach ($decodedData['results'] as $value) {
+            $poster = $value['poster_path'];
+            $title = $value['title'];
+            $release = $value['release_date'];
+            $output .= '<div class="col-md-3">
+                          <div class="well text-center">
+                            <img src="https://image.tmdb.org/t/p/w200'.$poster.'">
+                              <h5>'.$title.'</h5>
+                                <h6>Release: '.$release.'</h6>
+                          </div>
+                        </div>';
+            $i++;
+            if($i == 8) {
+              break;
+            }
+          }
+        echo $output;
+      ?>
+    </div>
+  </div>
+
+  
+    <div class="jumbotron">
+    <h3 class="text-center">Best Movies From Certain Year</h3>
+    <div class="w-100 mt-3"></div>
+    <form style="text-align:center" action="index.html" method="GET">
+      <select name="year" id="year" style="width:11rem; height: 3rem; font-size: 20px; text-align: center;">
+        <option selected>Choose Year</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+        <option value="2010">2010</option>
+        <option value="2009">2009</option>
+        <option value="2008">2008</option>
+        <option value="2007">2007</option>
+        <option value="2006">2006</option>
+      </select>
+      <div class="w-100 mt-1"></div>
+      <button class="btn btn-lg btn-primary" type="submit" onClick="index.html" style="width:11rem; height: 3rem"><span class="glyphicon glyphicon-search"></span> Search..</button>
+    </form>
+    <div class="jumbotron row">
+      <?php 
+        /* $randInt = mt_rand(2005, date("Y")); */
+        if(isset($_GET['year'])) {
+          $year = $_GET['year'];
+          $rawData = @file_get_contents("https://api.themoviedb.org/3/discover/movie?api_key=".$APIKEY."&primary_release_year=".$year."&sort_by=popularity.desc&region=".$region);
+
+          /*$rawData = @file_get_contents("https://api.themoviedb.org/3/movie/top_rated?api_key=".$APIKEY."&language=en-US&page=".$randInt."&region=".$region);*/
+        }
+        else {
+          $rawData = @file_get_contents("https://api.themoviedb.org/3/discover/movie?api_key=".$APIKEY."&primary_release_year=".date("Y")."&sort_by=popularity.desc&region=".$region);
+
+          /*$rawData = @file_get_contents("https://api.themoviedb.org/3/movie/top_rated?api_key=".$APIKEY."&language=en-US&page=".$randInt);*/
+        }
+        $decodedData = json_decode($rawData, true);
+
+
+        $output = '';
+        
+        $list = $decodedData['results'];
+        $size = sizeof($list);
+        for ($i = 0; $i < $size; $i++) {
+          $poster = $list[$i]['poster_path'];
+          $title = $list[$i]['title'];
+          $release = $list[$i]['release_date'];
+          $vote = $list[$i]['vote_average'];
+          
+          $output .= '<div class="col-md-3">
+                        <div class="well text-center">
+                          <img src="https://image.tmdb.org/t/p/w200'.$poster.'">
+                            <h5>'.$title.'</h5>
+                              <h6>Released: '.$release.'</h6>
+                                <h6>Vote average: '.$vote.'/10 on MovieDB</h6>
+                        </div>
+                      </div>';
+          if($i == 7) {
+            break;
+          }
+          
+        }
+        echo $output;
+
+       
+      ?>
+      
+    </div>
+  
+
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
   </script>

@@ -32,11 +32,11 @@
 								<div class="w-100 mt-3"></div>
 								<input type="text" name="ingredients" id="ingredients" placeholder="Comma separated ingredients.." style="width:16rem; height: 3rem; font-size: 20px">	
 								<div class="w-100 mt-0"></div>
-								<label>e.g. <b>onion, tomatoe, cheese</b></label>
+								<label>Optional: e.g. <b>onion, tomatoe, cheese</b></label>
 								<div class="w-100 mt-3"></div>
 								<input type="text" name="page" id="page" placeholder="Numeric page in catalog..." style="width:16rem; height: 3rem; font-size: 20px">	
 								<div class="w-100 mt-0"></div>
-								<label>e.g. <b>7</b></label>
+								<label>Optional: e.g. <b>7</b></label>
 								<div class="w-100 mt-3"></div>
 								<button class="btn btn-lg btn-primary" type="submit" onClick="recipeSearch" style="width:16rem; height:4rem;"><span class="glyphicon glyphicon-search"></span>  Search..</button>
 							</form>

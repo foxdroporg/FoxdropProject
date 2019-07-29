@@ -33,12 +33,13 @@
 								<div class="w-100 mt-2"></div>
 								<label style="color:grey">e.g. Christofferos</label>
 								<div class="w-100 mt-3"></div>
-									<select name="serverName" id="serverName" style="width:11em; height: 3em; font-size: 20px">
-									  <option value="euw1">Europe West</option>
+									<select class="browser-default custom-select" name="serverName" id="serverName" style="width:11em; height: 3em; font-size: 20px">
+									  <option selected value="euw1">Europe West</option>
 									  <option value="eun1">Europe Nordic</option>
 									  <option value="na1">North America</option>
 									  <option value="kr">Korea</option>
 									</select>
+								<div class="w-100 mt-0"></div>
 								<label style="color:grey;">e.g. Europe West</label>
 
 								<div class="w-100 mt-4"></div>

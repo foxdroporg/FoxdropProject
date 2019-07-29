@@ -7,7 +7,7 @@ $(document).ready(() => {
 });
 
 function getMovies(searchText){
-  axios.get('http://www.omdbapi.com?apikey=904cd1ff&s='+searchText)
+  axios.get('http://www.omdbapi.com?apikey=904cd1ff&s='+searchText) 
     .then((response) => {
       console.log(response);
       let movies = response.data.Search;
@@ -24,6 +24,9 @@ function getMovies(searchText){
         `;
       });
       $('#movies').html(output);
+      if(output === '') {
+        $('#movies').html('<h4 style="margin: 50px">Sorry, it seems we cannot provide the movie asked for. Continue to <a href="https://www.imdb.com/find?ref_=nv_sr_fn&q='+searchText+'&s=all">IMDB.</a></h4>');
+      }
     })
     .catch((err) => {
       console.log(err);

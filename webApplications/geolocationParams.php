@@ -46,14 +46,7 @@
 <body bgcolor="">
 	<section class="mobile-wrapper">
 		<div style="background:black" class="jumbotron mt-5 text-white border">
-		  <h2 style="text-align:center; font-size:60px; padding-top: 5%">Geolocation<br></h2>
-		  <p style="font-size: 14px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here</a>.</p> 
-
-		  <p style="font-size: 25px; text-align: center">
-					Latitude: <span id="lat"></span>° 
-				<br>
-					Longitude: <span id="lon"></span>°
-			</p>
+		  <h2 style="text-align:center; font-size:40px; padding-top: 5%">Local Weather</h2>
 
 		  <script>
 		  	let lat, lon, lat2, lon2, altitude, heading, speed, weather, air;  
@@ -77,10 +70,19 @@
 
 		  <?php
 			$city = $_GET["city"];
+			if(!isset($city)) {
+				$city = 'stockholm';
+			}
 			$city = preg_replace('/\s+/', '+', $city);
 			$city = strtolower($city);
 			$lat = $_GET["lat"];
+			if(!isset($lat)) {
+				$lat = '?';
+			}
 			$lon = $_GET["lon"];
+			if(!isset($lon)) {
+				$lon = '?';
+			}
 			require '../vendor/autoload.php';
 			$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
 			$dotenv->load();
@@ -106,12 +108,13 @@
 				$rainLast3h = $responseBody->{'list'}[0]->{'rain'}->{'3h'};
 			}
 			$cloudProcentage = $responseBody->{'list'}[0]->{'clouds'}->{'all'};
+			$date = $responseBody->{'list'}[0]->{'dt_txt'};
 
-			echo '<p style="text-align:center; color:white"><span style="text-align:center; font-size:30px">Today in '.$city.' at '.$lat.', '.$lon.' the weather will be: </span></p>
-			<p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px"><br>' . $description . '</p><br><br></span></p>';
-			echo '<img src="http://openweathermap.org/img/wn/'.$icon.'@2x.png" style="width:7em;height:7em;"/>';
+			echo '<p style="text-align:center; color:white"><span style="text-align:center; font-size:29px">Today in '.ucwords($city).' at '.$lat.'°, '.$lon.'° there will be: </span></p>
+			<p style="text-align:center"><img src="http://openweathermap.org/img/wn/'.$icon.'@2x.png" style="width:7em;height:7em;"/><span style="color:gold;text-align:center;font-size:30px"><br>' . $description . '</p><br><br></span></p>';
+
 			
-			echo '<p style="color:white">Temperature is: '.$temp.'° Celcius</p>';
+			echo '<p style="color:white">Temperature is: <nbsp>'.$temp.'°C</p>';
 			
 			echo '<p style="color:white">Humidity is: '.$humidity.'%</p>';
 
@@ -123,6 +126,20 @@
 
 			echo '<p style="color:white">Rain last 3 hours: '.$rainLast3h.'mm</p>';
 
+			$tempDate = $date;
+			$tempHour = substr($tempDate, 10);
+			$tempDate = substr($tempDate, 0, 10);
+			$date = substr($date, -8);
+			$threeHourAdded = intval(substr($date, 0, 1) === '0' ? substr($date, 1, 2) : substr($date, 0, 2)) + 3;
+			$date = substr($date, 2);
+			$newHour = strval($threeHourAdded);
+			$date = $newHour . "" . substr($date, -3);
+			$tempHour = substr($tempHour, 0, -3);
+
+			echo '<br><p style="color:white">Forecast: '.$tempHour.' - '.$date.'   ('.$tempDate.')</p>';
+
+
+
 		?>
 
 		</div>
@@ -132,6 +149,16 @@
 
 
 		<script type="text/javascript">
+			/* Might be good to use Google Maps to spread the rate limit on 
+			function showPosition(position) {
+			  var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+			  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_:KEY";
+
+			  document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+			}
+			*/
+
 			// Making a map and tiles
 			const mymap = L.map('issMap');
 			const attribution =
@@ -160,13 +187,16 @@
 		          firstTime = false;
 		        }
 
+		        /*
 				document.getElementById('lat').textContent = latitude.toFixed(2);
 				document.getElementById('lon').textContent = longitude.toFixed(2);
+				*/
 			}
 			getISS();
 
 			setInterval(getISS, 1000);
 		</script>
+		<br><br>
 
 		
 

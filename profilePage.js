@@ -1,4 +1,3 @@
-
 //  GET USER INPUT VIA JAVASCIPT. IMPORTANT FOR FUTURE PROJECTS.
 var input;
 const channelForm = document.getElementById('channel-form');

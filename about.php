@@ -19,11 +19,7 @@ include_once 'header.php';
 			<br>
 
 			<div class="paragraph">
-				Foxdrop started as a group project between two KTH students, but then transitioned into a fully functional website as a result of our continued development on our spare time. We love to share the things we work with and this is the perfect way to do just that. Hopefully, you find great joy in interacting with our website, and if so, we encourage you to share these experiences with friends and family.
-			</div>
-			<div class="paragraph">
-				Do not hesitate to ask any questions or make requests about functionality that you'd like us to add. Go to 
-				"Contact" for more information about how to get in touch with us.
+				Two KTH students started Foxdrop as a group project. Later, it transitioned into a fun hobby.
 			</div>
 			<div class="paragraph">
 				The site has currently amassed a database of 
@@ -88,16 +84,16 @@ include_once 'header.php';
 						echo '<span style="color:gold;text-align:center;">' . $value[0] . ' </span>';
 					}
 				?>
-				users. We welcome all student web designers and developers to join us in helping grow this site.
+				users. 
 			</div>
 
 
 			<div class="row" style="padding-bottom: 5%; padding-left: 10%; padding-right: 10%;">
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Kristopher Werlinder <p style="color:white">Role: Co-Founder <br>Proficiencies: SQL, MySQL, NodeJS, jQuery, Java, PHP, Python.</p></p>
+					<p style="color:orange">Kristopher Werlinder <p style="color:white">Role: Co-Founder <br><br>Proficiencies: SQL, MySQL, NodeJS, jQuery, Java, PHP, Python.</p></p>
 				</div>
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Erik Henriksson <p style="color:white">Role: Co-Founder <br>Proficiencies: HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>
+					<p style="color:orange">Erik Henriksson <p style="color:white">Role: Co-Founder <br><br>Proficiencies: HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>
 				</div>
 
 			</div>
@@ -105,17 +101,13 @@ include_once 'header.php';
 				<h2 style="color:white; font-size: 25px; padding-top: 2%">Features: </h2>
 				<p class="paragraph" style="color:white; text-align: left; padding-left: 30%">
 				    ✓ Game leaderboards <br>
-				    ✓ Secure database for profiles <br>
+				    ✓ Secure database for user profiles <br>
 				    ✓ Forgotten password service <br>
-				    ✓ Game customisation options <br>
-				    ✓ Facinating web animations <br>
-				    ✓ Relaxing sounds recorded in nature <br>
+				    ✓ Extensive portfolio<br>
+				    ✓ Profile page (by clicking on username) <br>
 				    ✓ Contact form for suggestions and questions <br>
-				    ✓ Github Rest API to see latest changes on site<br>
-				    ✓ OpenSource avaliable on Github<br>
-				    ✓ Profile page with daily information <br>
-				    ✓ Geolocation application for local weather forecasts<br>
-				    ✖ MovieMinded a quiz game on movies of your choice <br>
+				    ✓ Open sourced code<br>
+				    ✖ A quiz game about IMDb movies that of you have seen<br>
 				    ✖ Search bar for finding things fast <br>
 				    ✖ Trivia Game using jService Rest API <br>
 
@@ -125,6 +117,8 @@ include_once 'header.php';
 
 			<div class="header" style="color:white; text-align:center; padding-bottom: 3%;">
 				Want to know more about us? <a style="color:orange; padding-top: 2%" href="https://github.com/foxdroporg/FoxdropProject">https://github.com/foxdroporg/FoxdropProject</a>
+				<br>
+				We welcome all student web designers and developers to join us in helping grow this site.
 			</div>
 		</div>
 	</body>

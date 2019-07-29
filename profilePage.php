@@ -150,24 +150,28 @@
 						//echo '<span style="color:gold;text-align:center;">' . $responseBody2 . '<br><br></span>';
 						echo '<span style="color:gold;text-align:center;">' . $responseBody3 . '<br><br></span>';
 						//echo '<span style="color:gold;text-align:center;">' . $responseBody4 . '<br><br></span>';
+
+						$API_KEY2 = $_ENV['WORDNIK_API_KEY'];
+						$date = date("Y-m-d", time());
+						$rawAccountData = @file_get_contents("https://api.wordnik.com/v4/words.json/wordOfTheDay?date=".$date."&api_key=".$API_KEY2); 
+						$decodedData = json_decode($rawAccountData, true);
 						
-						/*
-						$response5 = Unirest\Request::post("https://NasaAPIdimasV1.p.rapidapi.com/getPictureOfTheDay",
-						  array(
-						    "X-RapidAPI-Host" => "NasaAPIdimasV1.p.rapidapi.com",
-						    "X-RapidAPI-Key" => $API_KEY,
-						    "Content-Type" => "application/x-www-form-urlencoded"
-						  )
-						);
+						$randomWord = $decodedData['word'];
+						$meaning = $decodedData['definitions']['text'];
+
+						$examples = $decodedData['examples'];
+						$randInt = mt_rand(0 , sizeof($examples)-1);
+						$exampleTitle = $examples[$randInt]['title'];
+						$exampleInSentence = $examples[$randInt]['text'];
+
+						$note = $decodedData['note'];
+						echo '<br><div>Learn a new word daily:</div>'; 
+						echo '<span style="color:white;text-align:center;font-size:20px"><span style="color:gold">' . $randomWord . '</span><br><span style="color:white;text-align:center;font-size:20px">'.$meaning.'<br>"'
+						.$exampleTitle.'"<br>'.$exampleInSentence.'<br><br>Origin:<br>'.$note.'</span></span>';
 						
-						$responseBody5 = $response5->body;
-						$responseBody5Res = $responseBody5->{'contextWrites'}->{'to'}->{'explanation'};
-						echo '<span style="color:gold;text-align:center;">' . $responseBody5Res . '<br><br></span>';
-						
-						$image = "https://apod.nasa.gov/apod/image/1906/solargraphBelgrado_1024.jpg";
-						$imageData = base64_encode(file_get_contents("$image"));
-						echo '<img src="data:image/jpeg;base64,'.$imageData.'">';
-						*/
+
+
+
 						?>
 					
 					<p style="text-align: center">
@@ -175,6 +179,8 @@
 
 						<span id="numbers0" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
 					</p>
+
+					
 
 					
 				
@@ -204,9 +210,9 @@
 					<h2 style="color:white;font-size: 35px; padding: 0 0 0.5rem 0">Connect Youtube video to account</h2>
 				    <h6 style="color:grey; text-align: center;padding: 0 0 1rem 0">How to get embeded link:<br> 1. Click "Share" - 2. Press "Copy" - 3. Paste in the box below</h6>
 
-					<form id="channel-form" style="width: 350px; margin: 0 auto;
+					<form id="channel-form" style="width: 250px; margin: 0 auto;
 				     display: table;">
-				      <div class="input-field col s1"> 
+				      <div class="input-field col s1" style="margin: 0 auto;"> 
 				        <input type="text" id="channel-input" placeholder="Youtube Embeded Link..." style="margin: 0 auto;
 				     display: table;width: 12rem">
 				        <br>

@@ -36,13 +36,13 @@
 					<h1 style="color:#FFFFFF; text-align:center">Difficulty</h1>
 					<br>
                     <div style="text-align:center; width: 10em; margin:0px auto;">
-                        <form class="difficulty-form" action="index.html">
+                        <form class="difficulty-form" action="game.html">
                             <button type="submit" class="btn-success btn-lg btn-block" name="difficulty" value="easy">Easy</button>
                         </form>
-                        <form class="difficulty-form" action="index.html">
+                        <form class="difficulty-form" action="game.html">
                             <button type="submit" class="btn-warning btn-lg btn-block" name="difficulty" value="medium" style="color:white">Medium</button>
                         </form>
-                        <form class="difficulty-form" action="index.html">
+                        <form class="difficulty-form" action="game.html">
                             <button type="submit" class="btn-danger btn-lg btn-block" name="difficulty" value="insane">Insane</button>
                         </form>
                     </div>

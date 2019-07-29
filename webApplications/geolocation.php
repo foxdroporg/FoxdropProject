@@ -46,8 +46,8 @@
 <body bgcolor="">
 	<section class="mobile-wrapper">
 		<div style="background:black" class="jumbotron mt-5 text-white border">
-		  <h2 style="text-align:center; font-size:60px; padding-top: 5%">Geolocation<br></h2>
-		  <p style="font-size: 14px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here</a>.</p> 
+		  <h2 style="text-align:center; font-size:40px;">Geolocation<br></h2>
+		  <p style="font-size: 14px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here.</a><br></p> 
 
 		  <p style="font-size: 25px; text-align: center">
 					Latitude: <span id="lat"></span>° 
@@ -59,11 +59,9 @@
 					Heading: <span id="heading"></span>° (0° is north)
 				<br>
 					Speed: <span id="speed"></span>m/s
-				<br><br>
-					Start Google Maps, then Copy and Paste the following output there: <br><br><span style="color:gold" id="lat2"></span>, <span style="color:gold" id="lon2"></span>
+				<br><br><br>
+					Copy latitude and longitude and paste it down below: <br><span style="color:gold" id="lat2"></span>, <span style="color:gold" id="lon2"></span>
 			</p>
-
-			 <h2 style="text-align:center; font-size:60px; padding-top: 4%">Weather Forecast<br></h2>
 
 		  <script>
 		  	let lat, lon, lat2, lon2, altitude, heading, speed, weather, air;  
@@ -81,10 +79,11 @@
 		  			altitude == undefined ? altitude='Mobile Only - ' : '';
 		  			heading == undefined ? heading='Bugged - ' : '';
 		  			speed == undefined ? speed='Bugged - ' : '';
-		  			document.getElementById('lat').textContent = lat;
-		  			document.getElementById('lon').textContent = lon;
-		  			document.getElementById('lat2').textContent = lat2;
-		  			document.getElementById('lon2').textContent = lon2;
+		  			document.getElementById('lat').textContent = lat.toFixed(2);
+		  			document.getElementById('lon').textContent = lon.toFixed(2);
+
+		  			document.getElementById('lat2').textContent = lat2.toFixed(2);
+		  			document.getElementById('lon2').textContent = lon2.toFixed(2);
 
 		  			document.getElementById('altitude').textContent = altitude;
 		  			document.getElementById('heading').textContent = heading;
@@ -96,7 +95,38 @@
 		  		console.log('geolocation IS NOT avaliable');
 		  	}
 		  </script>
+		</div>
+	</section>
 
+	<section class="mobile-wrapper">
+		<div style="background:black" class="jumbotron mt-5 text-white border">
+			<h2 style="text-align:center; font-size:35px;">Local weather</h2>
+			<div class="row mt-5 ">
+				<div class="col">
+					<form style="text-align:center" action="geolocationParams.php" method="GET">
+						<input type="text" name="city" id="city" placeholder="Search for city..." style="width:11em; height: 2.7em; font-size: 20px">	
+						<div class="w-100 mt-2"></div>
+						<label style="color:grey">Required: e.g. Stockholm</label>
+						<div class="w-100 mt-3"></div>
+						<input type="text" name="lat" id="lat" placeholder="Input latitude..." style="width:11em; height: 2.7em; font-size: 20px">
+						<div class="w-100 mt-2"></div>
+						<label style="color:grey;">Optional: e.g. 57.21</label>
+						<div class="w-100 mt-2"></div>
+						<input type="text" name="lon" id="lon" placeholder="Input longitude..." style="width:11em; height: 2.7em; font-size: 20px">
+						<div class="w-100 mt-2"></div>
+						<label style="color:grey;">Optional: e.g. 20.17</label>
+						<div class="w-100 mt-4"></div>
+
+						<button class="btn btn-lg btn-primary" type="submit" onClick="geolocationParams" style="width:11em; height: 3em"><span class="glyphicon glyphicon-search"></span> Search..</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mobile-wrapper">
+		<div style="background:black" class="jumbotron mt-5 text-white border">
+			<h2 style="text-align:center; font-size:35px; padding-bottom: 15%">Weather forecast in Stockholm are:<br></h2>
 		  <?php
 		  	require '../vendor/autoload.php';
 			$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
@@ -109,7 +139,6 @@
 			    "X-RapidAPI-Key" => $API_KEY
 			  )
 			);
-			echo '<p style="text-align: center"><span style="text-align:center;font-size:20px">Weather forecasts in Stockholm are:<br><br></span></p>';
 			$responseBody = $response->body;
 
 			$responseBodyRes1 = $responseBody->{'list'};
@@ -135,82 +164,7 @@
 			echo '<p style="text-align: center"><span style="text-align:center;font-size:30px">In three days: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes3 . '</p><br><br></span></p>';
 
 		  ?>
-			
-		</div>
-
-		<div id="issMap"></div>
-
-
-		<script type="text/javascript">
-			/* Might be good to use Google Maps to spread the rate limit on 
-			function showPosition(position) {
-			  var latlon = position.coords.latitude + "," + position.coords.longitude;
-
-			  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_:KEY";
-
-			  document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-			}
-			*/
-
-			// Making a map and tiles
-			const mymap = L.map('issMap');
-			const attribution =
-			'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-			const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		  	const tiles = L.tileLayer(tileUrl, { attribution });
-		  	tiles.addTo(mymap);
-
-
-		  	// Making a marker with a custom icon
-		    const issIcon = L.icon({
-		        iconUrl: '../images/personIcon.png',
-		        iconSize: [32, 32],
-		        iconAnchor: [25, 16]
-		    });
-		    const marker = L.marker([0, 0], { icon: issIcon }).addTo(mymap);
-		    let firstTime = true;
-
-			async function getISS() {
-				const latitude = lat;
-				const longitude = lon;
-
-				marker.setLatLng([latitude, longitude]);
-		        if (firstTime) {
-		          mymap.setView([latitude, longitude], 13);
-		          firstTime = false;
-		        }
-
-				document.getElementById('lat').textContent = latitude.toFixed(2);
-				document.getElementById('lon').textContent = longitude.toFixed(2);
-			}
-			getISS();
-
-			setInterval(getISS, 1000);
-		</script>
-
-		<div class="row mt-5 ">
- 			<div class="col">
-				<form style="text-align:center" action="geolocationParams.php" method="GET">
-					<input type="text" name="city" id="city" placeholder="Search for city..." style="width:11em; height: 2.7em; font-size: 20px">	
-					<div class="w-100 mt-2"></div>
-					<label style="color:grey">e.g. Stockholm</label>
-					<div class="w-100 mt-3"></div>
-					<input type="text" name="lat" id="lat" placeholder="Input latitude..." style="width:11em; height: 2.7em; font-size: 20px">
-					<div class="w-100 mt-2"></div>
-					<label style="color:grey;">e.g. 57</label>
-					<div class="w-100 mt-2"></div>
-					<input type="text" name="lon" id="lon" placeholder="Input longitude..." style="width:11em; height: 2.7em; font-size: 20px">
-					<div class="w-100 mt-2"></div>
-					<label style="color:grey;">e.g. 20</label>
-					<div class="w-100 mt-4"></div>
-
-					<button class="btn btn-lg btn-primary" type="submit" onClick="geolocationParams" style="width:11em; height: 3em"><span class="glyphicon glyphicon-search"></span> Search..</button>
-				</form>
-			</div>
-		</div>
-
-
-				
+		</div>	
 	</section>
 </body>
 
