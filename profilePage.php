@@ -15,7 +15,11 @@
 	$dbUsername = $_ENV['DB_USERNAME'];
 	$dbPassword = $_ENV['DB_PASSWORD'];
 	$dbName = $_ENV['DB_NAME'];
+	
+	
 	$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+
+	if (isset($_SESSION["u_id"])) {	// Username = $_SESSION["u_uid"], User ID = $_SESSION["u_id"]
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +34,52 @@
 			<div class="main-wrapper">
 				<h2 style="color:#FFFFFF; font-size: 50px">Profile</h2>
 				<div class="paragraph" style="padding-top: 3%">
+
+					<?php
+						$userID = $_SESSION['u_id'];
+						$sql = "SELECT * FROM users WHERE user_id='$userID'";
+						$result = mysqli_query($conn, $sql);
+						if (mysqli_num_rows($result) > 0) {
+							while ($row = mysqli_fetch_assoc($result)) {
+								$user_id = $row['user_id'];
+								$sqlImg = "SELECT * FROM profileimg WHERE userid='$user_id'";
+								$resultImg = mysqli_query($conn, $sqlImg);
+								if(mysqli_num_rows($resultImg) == 0) {
+									$sqlAdd = "INSERT INTO profileimg (userid, status) VALUES ('$user_id', 1)";
+									$resultAdd = mysqli_query($conn, $sqlAdd);
+								}
+								while ($rowImg = mysqli_fetch_assoc($resultImg)) {
+									echo "<div style='text-align:center'>";
+										if($rowImg['status'] == 0) {
+											$filename = "uploads/profile".$userID.".*";
+											$fileinfo = glob($filename);
+											$fileext = explode(".", $fileinfo[0]);
+											$fileactualext = $fileext[1];
+											echo "<img style='width:220px; height:220px' src='uploads/profile".$user_id.".".$fileactualext."?".mt_rand()."''>";
+										}
+										else {
+											echo "<img style='width:220px; height:220px' src='uploads/profiledefault.jpg'>";
+										}
+									echo "</div>";
+								}	
+							}
+						}
+						else {
+							echo "There are no users signed up yet on this website!";
+						}
+
+					?>
+
+					<form action="upload.php" method="POST" enctype="multipart/form-data" style="text-align: center;">
+						<input type="file" name="file">
+						<button type="submit" name="submit">UPLOAD</button>
+					</form>
+
+					<form action="deleteProfileImg.php" method="POST" style="text-align: center;">
+						<button type="submit" name="submit">DELETE</button>
+					</form>
+
+					<br><br>
 					First name: 
 					<?php
 						$userID = $_SESSION['u_id'];
@@ -205,27 +255,77 @@
 					*/
 					</script>
 
+					<?php
+					/* IF USER HAS NEVER added a video then a default video will be displayed*/
+						$userID = $_SESSION['u_id'];
+						$sql = "SELECT * FROM users WHERE user_id='$userID'";
+						$result = mysqli_query($conn, $sql);
+						if (mysqli_num_rows($result) > 0) {
+							while ($row = mysqli_fetch_assoc($result)) {
+								$user_id = $row['user_id'];
+								$sqlVid = "SELECT * FROM profilevideo WHERE userid='$user_id'";
+								$resultVid = mysqli_query($conn, $sqlVid);
+								if(mysqli_num_rows($resultVid) == 0) {
+									// Hard Coded Link To a Video for new users.
+									$sqlAdd = "INSERT INTO profilevideo (userid, embededlink) VALUES ('$user_id', 'YxqkheLDdM4')"; // Removed this part: https://youtu.be/
+									$resultAdd = mysqli_query($conn, $sqlAdd);
+								}
+								if(mysqli_num_rows($resultVid) > 1) {
+									$idRemove = 0;
+									while ($rowVid = mysqli_fetch_assoc($resultVid)) {
+										if($rowVid['id'] > $idRemove) {
+											$idRemove = $rowVid['id'];
+										}
+									}
+									$sqlDel = "DELETE FROM profilevideo WHERE id!='$idRemove' AND userid='$user_id'"; 
+									$resultDel = mysqli_query($conn, $sqlDel);
+									
+									// We need to re-select from table because we now removed a row.
+									$sqlVid = "SELECT * FROM profilevideo WHERE userid='$user_id'";
+									$resultVid = mysqli_query($conn, $sqlVid);
+								}
+								while ($rowVid = mysqli_fetch_assoc($resultVid)) {
+									$embededLink = $rowVid['embededlink'];
+								?>
 
+					<script>
+						var U_ID = "<?php if(isset($_SESSION['u_id'])) echo $_SESSION['u_id']; else echo "false"; ?>";		
+					</script>
 
-					<h2 style="color:white;font-size: 35px; padding: 0 0 0.5rem 0">Connect Youtube video to account</h2>
+					<h2 style="color:white;font-size: 35px; padding: 0 0 0.5rem 0">Connect a youtube video to profile</h2>
+
+				    <!--  GET VIDEO VIA INPUT. --->
+				    <div class="video" id="video-container" style="width: 350px;margin: 0 auto; display: table;">
+				    	<br>
+				    	<div class="video">
+				        <?php 
+				        	echo '<iframe width="100%" height="100%"   src="https://www.youtube.com/embed/'.$embededLink.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+				        ?>
+				        </div>
+				    </div>
+
 				    <h6 style="color:grey; text-align: center;padding: 0 0 1rem 0">How to get embeded link:<br> 1. Click "Share" - 2. Press "Copy" - 3. Paste in the box below</h6>
 
-					<form id="channel-form" style="width: 250px; margin: 0 auto;
-				     display: table;">
-				      <div class="input-field col s1" style="margin: 0 auto;"> 
-				        <input type="text" id="channel-input" placeholder="Youtube Embeded Link..." style="margin: 0 auto;
-				     display: table;width: 12rem">
+					<form id="channel-form" style="width: 220px; margin: 0 auto; display: table;">
+				    	<div class="input-field col s1" style="margin: 0 auto;"> 
+				        <input type="text" id="channel-input" placeholder="Youtube Embeded Link..." style="margin: 0 auto; display: table; font-size: 18px">
 				        <br>
-				        <input type="submit" value="Save Youtube Video" class="btn grey lighten-2" style="margin: 0 auto;
-				     display: table;">
+				        <input type="submit" value="Save Youtube Video" class="btn grey lighten-2" style="margin: 0 auto; display: table; font-size: 18px; width: 196px; background-color: lightblue; cursor: pointer; ">
 				      </div>
 				    </form>
-				    <!--  GET VIDEO VIA INPUT. --->
-				    <div class="row" id="video-container" style="width: 350px;margin: 0 auto;
-				     display: table;"></div>
+
 				</div>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   				<script language="javascript" type="text/javascript" src="profilePage.js"></script>
+
+	  				<?php
+	  							}	
+							}
+						}
+						else {
+							echo "There are no users signed up yet on this website!";
+						}
+	  				?>
 
 			</div>
 		</section>
@@ -233,5 +333,6 @@
 </html>
 
 <?php
+	}
 	include_once 'footer.php';
 ?>

@@ -1,0 +1,11 @@
+CREATE TABLE profileimg (
+	id int(11) not null PRIMARY KEY AUTO_INCREMENT,
+    	userid int(11) not null,
+    	status int(11) not null
+);
+
+CREATE TABLE profilevideo (
+	id int(11) AUTO_INCREMENT PRIMARY KEY not null,
+	userid int(11) not null,
+	embededlink varchar(150) not null    
+);
