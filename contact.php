@@ -3,13 +3,14 @@
   $dotenv = Dotenv\Dotenv::create(__DIR__);
   $dotenv->load();
   // Local
-    /*
+     /*
   $dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
   $dbUsername = $_ENV['DB_LOCAL_USERNAME'];
   $dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
   $dbName = $_ENV['DB_LOCAL_NAME'];
 */
   // Online 
+  
   $dbServername = $_ENV['DB_SERV_NAME']; 
   $dbUsername = $_ENV['DB_USERNAME'];
   $dbPassword = $_ENV['DB_PASSWORD'];
@@ -107,9 +108,14 @@
     <?php
       }
       else {
-        echo '<p style="color:red; font-size:20px; text-align: center; padding-top: 3%">Login is required to post anything on this forum.</p>';
+        echo '<p style="color:red; font-size:25px; text-align: center; padding-top: 3%">Login is required to post anything in this forum.</p>';
       }
     ?>
+
+    <form class="contact-form" action="search.php" method="POST" style="text-align: center">
+      <input type="text" name="search" placeholder="Search for specific post.." style="width: 12rem"><br>
+      <button type="submit" name="submit-search">Search..</button>
+    </form>
 
 
     <div class="posts" style="text-align:center; margin: 2rem;">
@@ -147,7 +153,6 @@
               break;
             }
         }
-
 
       ?>
     </div>

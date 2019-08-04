@@ -105,10 +105,21 @@ include_once 'header.php';
 					</a>
 				</div>
 				<div class="column">
-					<a href="portfolio.php" style="border:5px solid #ccc;">
+					<a href="games/gobblet/index.php" style="border:5px solid #ccc;">
+						<img src="images/gobblet.jpg" alt="2ndSound" style="width:85%; height:100%; ">
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column">
+					<a href="games/simonsays/menu.html" style="border:5px solid #ccc;">
+						<img src="images/simonsays.jpg" alt="2ndGame" style="width:85%; height:100%; ">
+					</a>
+				</div>
+				<div class="column">
+					<a href="#" style="border:5px solid #ccc;">
 						<img src="images/website.jpg" alt="2ndSound" style="width:100%; height:100%; ">
 					</a>
-					<label style="color:grey">Does not work on Mobile</label>
 				</div>
 			</div>
 	</section>

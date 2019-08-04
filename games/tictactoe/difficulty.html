@@ -32,15 +32,26 @@
 							<h1>TicTacToe</h1>
 						</header>
 
-						<h1 style="color:#FFFFFF; text-align:center">Difficulty</h1>
+						<h1 style="color:#FFFFFF; text-align:center">Human vs. AI</h1>
 						<br>
 						<!-- Buttons -->
 						<div style="text-align:center; width: 10em; margin:0px auto;">
 	                        <form class="difficulty-form" action="tictactoeEasy.html">
-	                            <button type="submit" class="btn-success btn-lg btn-block" name="difficulty" value="easy">Easy</button>
+	                            <button type="submit" class="btn-success btn-lg btn-block" name="difficulty" value="easy">Easy,<br>Friendly AI</button>
 	                        </form>
 	                        <form class="difficulty-form" action="tictactoeImpossible.html">
-	                            <button type="submit" class="btn-danger btn-lg btn-block" name="difficulty" value="insane">Impossible, we promise.</button>
+	                            <button type="submit" class="btn-danger btn-lg btn-block" name="difficulty" value="insane">Impossible, Hostile AI</button>
+	                        </form>
+	                    </div>
+
+	                    <h1 style="color:#FFFFFF; text-align:center">Human vs. Human</h1>
+	                    <br>
+	                    <div style="text-align:center; width: 10em; margin:0px auto;">
+	                    	<form class="difficulty-form" action="2players/tictactoeMovable.html">
+	                            <button type="submit" class="btn-info btn-lg btn-block" name="mode" value="movable">Block-Limit-3 TicTacToe</button>
+	                        </form>
+	                        <form class="difficulty-form" action="2players/tictactoe8x8.html">
+	                            <button type="submit" class="btn-info btn-lg btn-block" name="mode" value="movable">8x8 <br>Gomoku</button>
 	                        </form>
 	                    </div>
 

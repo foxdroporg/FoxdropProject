@@ -3,10 +3,10 @@ Link to website:
 https://foxdrop.000webhostapp.com/
 
 ## Project Description
-On Foxdrop there are games to play and animations to watch. A database is used to store user information, highscores and to reset passwords. Users may sign up to get access to game leaderboards and to view a leaderboard accessed from the League of Legends REST API.
+On Foxdrop there are applications (front-end & back-end) to interact with, games to play and animations to watch. A MySQL database is used to store user information, such as: account credentials, scores on games, profile images, profile videos, forum posts, a like-system from posts, and tokens for password resets. Users may sign up to get access to game leaderboards, profile page, ability to recieve highscores and to post in the website forum.
 
 ## Project Goals
-Website should function as a place for people to visit and enjoy some animations and games. If they want, they can attempt to beat their own or other peoples' high scores in the games for fun or competition.
+Website should function as a place for people to visit and enjoy some animations and games. If they want, they can attempt to beat their own or other peoples' high-scores in the games for fun or as a competition.
 
 The website should follow these <b>10 heuristics as specified by Jakob Nielsen:
 

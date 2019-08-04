@@ -1,4 +1,5 @@
 <link rel="shortcut icon" type="image/png" href="../../../images/firefoxLogo.png">
+<?php session_start(); ?>
 <!DOCTYPE html>
 	<html>
 		<head>
@@ -32,7 +33,14 @@
 			   style="position: absolute; left: 25%; right:25%; top:0%; z-index: 0;"></canvas>
 			 <canvas id="pongEventTarget" width="1400" height="600" 
 			   style="position: absolute; left: 0%; right:0%; top: 0%; z-index: 1;"></canvas>
+
+			<script>
+		    	var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
+		    </script>
+
 		    <script src="pongInsane.js"></script>
+
+		    <div style="color:white; text-align: center; padding: 5%; font-size: 25px;" id="highscoreTable"></div>
 		</body>
 
 	</html>

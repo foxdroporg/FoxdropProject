@@ -35,6 +35,7 @@ function startGame() {
 	}
 }
 
+
 /* Turn is done by left clicking on the mouse. */
 function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
@@ -58,11 +59,13 @@ function turn(squareId, player) {
 }
 
 function checkWin(board, player) {
-	let plays = board.reduce((a, e, i) =>
-		(e === player) ? a.concat(i) : a, []);
+	// Way to find every index that the player has played in.
+	let plays = board.reduce((accumulator, element, index) =>
+		(element === player) ? accumulator.concat(index) : accumulator, []);
 
 	let gameWon = null;
 	
+	// Array iterator, "winCombos.entries()"
 	for(let [index, win] of winCombos.entries()) {
 		if(win.every(elem => plays.indexOf(elem) > -1)) {
 			// Player has won
@@ -94,6 +97,10 @@ function declareWinner(who) {
 function emptySquares() {
 	return origBoard.filter(s => typeof s == 'number');
 }
+
+
+
+
 
 function bestSpot() {
 	return minimax(origBoard, aiPlayer).index;

@@ -34,6 +34,10 @@
 			 <canvas id="pongEventTarget" width="1400" height="600" 
 			   style="position: absolute; left: 0%; right:0%; top: 0%; z-index: 1;"></canvas>
 
+			<script>
+		    	var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
+		    </script>
+
 		    
 		    
 		    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>

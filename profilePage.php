@@ -117,6 +117,7 @@
 						$username = $value[4];
 					?>	
 					<br>
+					<hr>
 					<br>
 					You were the 
 					<?php
@@ -158,6 +159,7 @@
 						}
 					?> 
 					<br>
+					<hr>
 					<br>
 					Interesting trivia fact: <br>
 					<?php
@@ -215,9 +217,10 @@
 						$exampleInSentence = $examples[$randInt]['text'];
 
 						$note = $decodedData['note'];
-						echo '<br><div>Learn a new word daily:</div>'; 
-						echo '<span style="color:white;text-align:center;font-size:20px"><span style="color:gold">' . $randomWord . '</span><br><span style="color:white;text-align:center;font-size:20px">'.$meaning.'<br>"'
-						.$exampleTitle.'"<br>'.$exampleInSentence.'<br><br>Origin:<br>'.$note.'</span></span>';
+						echo '<br><div>Unusual words in English:</div>'; 
+						echo '<span style="color:white;text-align:center;font-size:20px"><span style="color:gold">' . $randomWord . '</span><br><span style="color:white;text-align:center;font-size:20px">'.$note.'<br>'
+						.$meaning.'<br>'.$exampleInSentence.'<br><div style="margin:0% 5% 0% 5%">- '.$exampleTitle.'<br></span></span>';
+
 						
 
 
@@ -331,6 +334,8 @@
 		</section>
 	</body>
 </html>
+
+
 
 <?php
 	}

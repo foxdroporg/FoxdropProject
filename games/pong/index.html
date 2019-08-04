@@ -47,7 +47,7 @@
 	                    </div>
 
 	                    <!-- Instructions -->
-	                     <div class="row mt-5">
+	                    <div class="row mt-5">
 	                        <div class="col-md-12">
 	                            <div class="card card-body bg-dark text-white">
 	                            <h5 style="text-align:center"><b>Instructions</b></h5>
@@ -59,6 +59,50 @@
 	                            </div>
 	                        </div>
 	                    </div>
+
+	                    <!-- Highscores -->
+                    <div class="row mt-1">
+                        <div class="col-md-12">
+                            <div class="card card-body bg-dark text-white">
+                            <h5 style="text-align:center"><b>Champions</b></h5>
+	                            <p style="text-align:center"> 
+									<?php
+										echo '<span style="color:#FFF;text-align:center;"><br>Legendary players that have won on Insane: <br><br></span>';
+										/* dbh.inc.php has a path to autoload.php that does not work from this directory... This is why we have re-written the code from (dbh.inc.php) file here. */ 
+										include '../../vendor/autoload.php';
+										$dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
+										$dotenv->load();
+										// Local
+										/*
+										$dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
+										$dbUsername = $_ENV['DB_LOCAL_USERNAME'];
+										$dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
+										$dbName = $_ENV['DB_LOCAL_NAME'];
+										*/
+										// Online 
+										$dbServername = $_ENV['DB_SERV_NAME']; 
+										$dbUsername = $_ENV['DB_USERNAME'];
+										$dbPassword = $_ENV['DB_PASSWORD'];
+										$dbName = $_ENV['DB_NAME'];
+
+										$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+
+										$sql = "SELECT * FROM scores WHERE game = 'pongInsane'";
+										$result = mysqli_query($conn, $sql);
+
+										$data = array();
+										while ($row = mysqli_fetch_row($result)) {
+											$data[] = $row;
+										}
+										foreach ($data as &$value) {
+											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' has won vs. the AI on ' . $value[2] . '</span>';
+											echo "<br>";
+										}
+									?>
+								</p>
+                            </div>
+                        </div>
+                    </div>
 					</body>
 			</html>
 	</div>

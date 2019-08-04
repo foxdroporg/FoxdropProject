@@ -1,0 +1,75 @@
+<link rel="shortcut icon" type="image/png" href="../../images/firefoxLogo.png">
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Simon Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='https://fonts.googleapis.com/css?family=Original+Surfer&effect=emboss' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css">
+
+  <audio id="clip1">
+  	<source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></source>
+  </audio>
+  <audio id="clip2">
+  	<source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></source>
+  </audio>
+  <audio id="clip3">
+  	<source src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></source>
+  </audio>
+  <audio id="clip4">
+  	<source src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></source>
+  </audio>
+  <audio id="clip5">
+    <source src="../../soundeffects/gameOver.mp3"></source>
+  </audio>
+
+	<style>
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #202020;
+		}
+	</style>
+</head>
+
+<body>
+
+  <div id="outer-circle">
+    <div id="topleft"></div>
+    <div id="topright"></div>
+    <div id="bottomleft"></div>
+    <div id="bottomright"></div>
+    <div id="inner-circle">
+      <div id="title" class="font-effect-emboss" style="color:black">SIMON!</div>
+      <div id="switches">
+        <input type="checkbox" class="toggle" id="on">
+        <button class="button" id="start">Start</button>
+        <input type="checkbox" class="toggle" id="strict">
+      </div>
+      <div class="text1">
+        <span>POWER</span><span>INSANE</span>
+      </div>
+      <div id="turn"></div>
+      <div class="text2">
+        COUNT
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
+  </script>
+
+  <script  src="js/index.js"></script>
+
+  <div style="color:white; text-align: center; padding-top: 20%; font-size: 25px;" id="highscoreTable"></div>
+
+  
+
+</body>
+</html>

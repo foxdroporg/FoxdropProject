@@ -1,0 +1,74 @@
+td {
+	border: 3px solid #333;
+	border-color: black;
+	height: 150px;
+	width: 150px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 120px;
+	cursor: pointer;
+}
+
+table {
+	border-collapse: collapse;
+	vertical-align: center;
+}
+
+
+
+table tr {
+	background-color: #8f3e06;
+}
+
+.endgame {
+	display: none;
+	width: 200px;
+	top: 25%;
+	background-color: rgba(205,133,63,0.8);
+	position: absolute;
+	left: 50%;
+	margin-left: -100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	font-size: 20px;
+}
+
+@media only screen and (max-width: 414px) {  
+    td {
+		border: 3px solid #333;
+		border-color: black;
+		height: 80px;
+		width: 80px;
+		text-align: center;
+		vertical-align: middle;
+		font-family: "Comic Sans MS", cursive, sans-serif;
+		font-size: 120px;
+		cursor: pointer;
+	}
+    .endgame {
+		display: none;
+		width: 800px;
+		top: 25%;
+		background-color: rgba(205,133,63,0.8);
+		position: absolute;
+		left: 50%;
+		margin-left: -50px;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		text-align: center;
+		border-radius: 5px;
+		color: white;
+		font-size: 20px;
+	}
+	canvas {
+		width:300px;
+		height:210px;
+		margin-left: auto; 
+		margin-right: auto; 
+		display: block;
+	}
+}

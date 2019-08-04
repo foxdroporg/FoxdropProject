@@ -186,9 +186,9 @@ class Pong {
 
 	start() {
 		if (this.ball.velocity.x === 0 && this.ball.velocity.y === 0) {
-			this.ball.velocity.x = 400 * (Math.random() > .5 ? 1 : -1);
-			this.ball.velocity.y = 400 * (Math.random() * 2 - 1);
-			this.ball.velocity.length = 450;
+			this.ball.velocity.x = 600 * (Math.random() > .5 ? 1 : -1);
+			this.ball.velocity.y = 600 * (Math.random() * 2 - 1);
+			this.ball.velocity.length = 650;
 		}
 	}
 
@@ -215,7 +215,8 @@ class Pong {
 			bounceTimer = false;
 		}
 
-		// AI DIFFICULTY. Math function is used to give randomness.
+		// <<<<<<<< AI DIFFICULTY. >>>>>>>>>>
+
 		// Ball far away from AI puck
 		if (this.ball.position.x > (this._canvas.width/6) && this.ball.position.x < (this._canvas.width*0.583)) {
 
@@ -229,15 +230,26 @@ class Pong {
 		} 
 		// Ball very close to AI puck
 		else if (this.ball.position.x > (this._canvas.width*0.583)) {
-
-			if (this.players[1].position.y < this.ball.position.y - (padelHeight*0.4)) {
-				this.players[1].position.y += (this._canvas.height)*0.03;
-			}
-			else if (this.players[1].position.y > this.ball.position.y + (padelHeight*0.4)) {
-				this.players[1].position.y -= (this._canvas.height)*0.03;
-			}
-			else {
-				this.players[1].position.y += 0.5*(this.ball.position.y - this.players[1].position.y);
+			switch(playerTurn%7) {
+				case 0:
+					if (this.players[1].position.y < this.ball.position.y - (padelHeight*0.4)) {
+						this.players[1].position.y += (this._canvas.height)*0.01;
+					}
+					else if (this.players[1].position.y > this.ball.position.y + (padelHeight*0.4)) {
+						this.players[1].position.y -= (this._canvas.height)*0.01;
+					}
+					break;
+				default:
+					if (this.players[1].position.y < this.ball.position.y - (padelHeight*0.4)) {
+						this.players[1].position.y += (this._canvas.height)*0.03;
+					}
+					else if (this.players[1].position.y > this.ball.position.y + (padelHeight*0.4)) {
+						this.players[1].position.y -= (this._canvas.height)*0.03;
+					}
+					else {
+						this.players[1].position.y += 0.5*(this.ball.position.y - this.players[1].position.y);
+					}
+					break;
 			}
 		}
 
@@ -249,6 +261,7 @@ class Pong {
 			var victorySound = new Audio("../../../soundeffects/victory.mp3");
 			victorySound.play();
 			alert("YOU WON!");
+			highscores();
 		} 
 		else if (this.players[1].score >= 10) {
 			var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
@@ -274,5 +287,26 @@ eventTarget.addEventListener('click', event => {
 
 
 
+function highscores() {
+	// HIGHSCORE TABLE SHOWN
+	console.log("User logged in? " + U_UID);
+	if(U_UID == "false") {
+		document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
+	}
+	else {
+		var highscoreForm = new FormData();
 
+      	highscoreForm.append("username", U_UID);
+	    highscoreForm.append("user_score", 0);
+	    highscoreForm.append("game", "pongInsane");
 
+	    fetch("../../../includes/scores.inc.php", {
+	      method: 'POST',
+	      body: highscoreForm
+	    }).then(function (response) {
+	      return response.json();
+	    }).catch(function(error) {
+	      console.error(error);
+	    });
+	}
+}
