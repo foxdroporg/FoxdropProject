@@ -6,16 +6,17 @@
 	$API_KEY = $_ENV['RAPID_API_KEY'];
 
 	// Default: scones
+	$searchQuery = '';
 	$searchQuery = $_GET["searchQuery"];
-	isset($searchQuery) == true ? $searchQuery = 'scones' : ''; 
+	if ($searchQuery === '') $searchQuery = 'scones'; 
 
 	// Default: none.
+	$ingredients = '';
 	$ingredients = $_GET["ingredients"];
-	isset($ingredients) == true ? $ingredients = '' : ''; 
 
 	// Default : 1
+	$page = 1;
 	$page = $_GET["page"];
-	isset($page) == true ? $page = 1 : '';
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +79,6 @@
 						if(isset($responseBody[$i]->{'href'})) {
 							$href = $responseBody[$i]->{'href'};
 						}
-
 						echo '<br><div class="card card-body bg-light text-white">',
 							$title !== '' ? '<br><br><b><p style="color:black; text-align:center">'.$title.'</p></b>' : '',
 						    $img !== '' ? '<img src="'.$img.'" style="padding:1rem 0rem 1rem 0rem;display:block;margin-left:auto;margin-right: auto;width: 30%;"</p>' : '',

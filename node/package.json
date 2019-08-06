@@ -1,0 +1,18 @@
+{
+  "name": "node_crash_course",
+  "version": "1.0.0",
+  "description": "NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "Kristopher Werlinder",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

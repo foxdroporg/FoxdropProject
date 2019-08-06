@@ -197,7 +197,7 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
     if (playerOrder.length == 20 && good) { // Decide when the player wins the game.
       winGame();
     }
-    else if (playerOrder.length == 20 && good && strict) {
+    else if (playerOrder.length == 10 && good && strict) {
       winGame();
       highscores();
     }
