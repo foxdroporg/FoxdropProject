@@ -1,0 +1,3 @@
+AddType application/x-httpd-php php php4 php3 html htm
+
+ErrorDocument 404 "<style> body { background: url('images/forest.jpg') no-repeat 50% 50%; } .btn { font-size: 150%; font-family:'Poppins', sans-serif;text-decoration: none; color: #098fa8; } .btn:hover { color: #156377; border: 2px solid #156377; }</style> <br><br><h1 style='text-align:center'> Oops!<br> 404, that's an error code.<br>Cause: Deadlinks or mistyped URL.<br><br>Return to Foxdrop:<br><a class='btn' href='./' style='text-decoration:none'>Home</h1>"

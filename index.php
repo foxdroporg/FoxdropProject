@@ -1,202 +1,94 @@
 <?php
-	include_once 'header.php';
+  include_once 'header.php';
 ?>
 
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html> 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Start Page</title>
-	<link rel="stylesheet" href="style.css">
-	<!-- Parallax Scrolling -->
-	<style type="text/css">
-    body, html{
-      height:100%;
-      margin:0;
-      font-size:16px;
-      font-family:"Lato", sans-serif;
-      font-weight:400;
-      line-height:1.8em;
-      color:#666;
-    }
+  <title>Starting Page</title>
+  <link rel="stylesheet" type="text/css" href="landingPage_css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
+  <link href="landingPage_css/animate.css" rel="stylesheet"/>
+  <link href="landingPage_css/waypoints.css" rel="stylesheet"/>
+  <script src="landingPage_js/jquery.waypoints.min.js" type="text/javascript"></script>
+  <script src="landingPage_js/waypoints.js" type="text/javascript"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:500');
 
-    .link
-    {
-       color:white;
-       text-decoration: none; 
-       background-color: none;
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 96%;
+      width: 100%;
     }
-
-    .pimg1, .pimg2, .pimg3, .pimg4{
-      position:relative;
-      opacity:1.00;
-      background-position:center;
-      background-size:cover;
-      background-repeat:no-repeat;
-      /*
-        fixed = parallax
-        scroll = normal
-      */
-      background-attachment:fixed;
+    .intro {
+      height: 100%;
+      width: 100%;  
+      margin: auto;
+      background: url(images/forest.jpg) no-repeat 50% 50%;
+        background-size:cover;
+        display: table;
+        top: 0;
     }
-
-    .pimg1{
-      background-image:url('images/image1.jpg');
-      min-height:100%;
+    .intro .inner {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      padding-bottom: 20%;
     }
-
-    .pimg2{
-      background-image:url('images/image2.jpg');
-      min-height:60%;
+    .content h1 {
+      font-family: 'Open Sans', sans-serif;
+      color: #f9f3f4;
+      font-size: 550%;
+      text-shadow: 3px 3px #098fa8;
     }
-
-    .pimg3{
-      background-image:url('images/image3.jpg');
-      min-height:60%;
+    .btn {
+      font-size: 150%;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+      color: #098fa8;
+      border: 2px solid #098fa8;
+      padding: 10px 20px;
+      border-radius: 5px;
     }
-
-    .pimg4{
-      background-image:url('images/image5.jpg');
-      min-height:100%;
+    .btn:hover {
+      color: #156377;
+      border: 2px solid #156377;
     }
-
-    .section{
-      text-align:center;
-      padding:50px 80px;
-    }
-
-    .section-light{
-      background-color:#01050e;
-      color:#ddd;
-    }
-
-    .section-dark{
-      background-color:#01050e;
-      color:#ddd;
-    }
-
-    .ptext{
-      position:absolute;
-      top:50%;
-      width:100%;
-      text-align:center;
-      color:#000;
-      font-size:27px;
-      letter-spacing:8px;
-      text-transform:uppercase;
-    }
-
-    .ptext .border{
-      color:#fff;
-      padding:20px;
-    }
-
-    .ptext .border.trans{
-      background-color:transparent;
-    }
-
-    @media(max-width:568px){
-      .pimg1, .pimg2, .pimg3, .pimg4{
-        background-attachment:scroll;
+    @media (max-width: 768px) {
+      .content h1 {
+        font-size: 300%;
+      }
+      .btn {
+        font-size: 110%;
+        padding: 7px 15px;
       }
     }
-
-		hr {
-			width: 100%;
-			height: 4px;
-			margin-left: auto;
-			margin-right: auto;
-			background-color: #051125; <!-- #FFFFFF -->
-      color: #26012c;
-      border: 0; border-top: 1px solid #26012c;
-			margin-top: 100px;
-			margin-bottom: 0px;
-		}
-
   </style>
 </head>
-
 <body>
-
-
-<div class="pimg1">
-    <div class="ptext">
-      <span class="border">
-        <a href="https://foxdrop.000webhostapp.com/signup.php">
-          <div class="link">
-            1. Sign Up
-          </div>
-        </a>
-      </span>
+  <section class="intro">
+    <div class="inner">
+      <div class="content">
+        <section class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s">
+          <h1>FOXDROP</h1>
+        </section>  
+        <br><br>
+        <section class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.4s" style="margin: 0 auto; width: 200px">
+          <a class="btn" href="./signup.php">SIGN UP</a>
+        </section>        
+      </div>
     </div>
-  </div>
-
-  <section class="section section-light">
-    <h2>Signing Up Gives You Access To:</h2>
-    <p>
-      A profile page with all your personal information, together with statistics of your best scores on games and best of all, exlusive content on this website.
-    </p>
   </section>
 
-  <div class="pimg2">
-    <div class="ptext">
-      <span class="border trans">
-        <a href="https://foxdrop.000webhostapp.com/portfolio.php">
-          <div class="link">
-            2. Navigate To Portfolio
-          </div>
-      </a>
-      </span>
-    </div>
-  </div>
-
-  <section class="section section-dark">
-    <h2>Portfolio Is Provided With:</h2>
-    <p>
-      Classic games that you know and love, animations that will blow you away, web-applicaitons that you wish you knew about earlier and much more!
-    </p>
-  </section>
-
-  <div class="pimg3">
-    <div class="ptext">
-      <span class="border trans">
-        3. Take Part Of The Games, Animations and Web-Applicaitons
-      </span>
-    </div>
-  </div>
-
-  <section class="section section-dark">
-    <h2>What Else Needs To Be Said:</h2>
-    <p>
-      The three games Snake, Maze and TTS are incorporated with a highscore system that remembers your scores forever. We have come a long way with this website now, go and explore. There is too much material created to see it all in one sitting, so click on what looks exciting and have fun! Like this website on Facebook if you are comfortable with doing so. 
-    </p>
-  </section>
-
-  <div class="pimg4">
-    <div class="ptext">
-      <span class="border">
-        <a href="https://foxdrop.000webhostapp.com/home.php">
-          <div class="link">
-            Foxdrop
-          </div>
-        </a>
-      </span>
-    </div>
-  </div>
 
 
 
-<!-- <hr> -->
 
 </body>
 </html>
 
 
-
-
 <?php
-	include_once 'footer.php';
+  include_once 'footer.php';
 ?>

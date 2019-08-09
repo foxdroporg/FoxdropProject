@@ -217,13 +217,12 @@
 						$exampleInSentence = $examples[$randInt]['text'];
 
 						$note = $decodedData['note'];
+						/*
 						echo '<br><div>Unusual words in English:</div>'; 
+						
 						echo '<span style="color:white;text-align:center;font-size:20px"><span style="color:gold">' . $randomWord . '</span><br><span style="color:white;text-align:center;font-size:20px">'.$note.'<br>'
 						.$meaning.'<br>'.$exampleInSentence.'<br><div style="margin:0% 5% 0% 5%">- '.$exampleTitle.'<br></span></span>';
-
-						
-
-
+						*/
 
 						?>
 					
@@ -235,7 +234,7 @@
 
 					
 
-					
+
 				
 
 					<script type="text/javascript">
@@ -257,6 +256,9 @@
 							});
 					*/
 					</script>
+
+
+
 
 					<?php
 					/* IF USER HAS NEVER added a video then a default video will be displayed*/

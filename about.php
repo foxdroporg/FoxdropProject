@@ -22,7 +22,7 @@ include_once 'header.php';
 				Two KTH students started Foxdrop as a group project. Later, it transitioned into a fun hobby.
 			</div>
 			<div class="paragraph">
-				The site has currently amassed a database of 
+				The site has currently amassed a database of: 
 				<?php
 					/* dbh.inc.php has a path to autoload.php that does not work from this directory... This is why we have re-written the code from (dbh.inc.php) file here. */ 
 						include 'vendor/autoload.php';
@@ -84,13 +84,43 @@ include_once 'header.php';
 						echo '<span style="color:gold;text-align:center;">' . $value[0] . ' </span>';
 					}
 				?>
-				users. 
+				users and 
+				<?php
+					$sql = "SELECT COUNT(*) FROM posts";
+					$result = mysqli_query($conn, $sql);
+					$data = array();
+					while ($row = mysqli_fetch_row($result)) {
+						$data[] = $row;
+					}
+					foreach ($data as &$value) {
+						echo '<span style="color:gold;text-align:center;">' . $value[0] . ' </span>';
+					}
+				?>
+				posts by 
+				<?php
+					$sql = "SELECT username FROM posts";
+					$result = mysqli_query($conn, $sql);
+					$data = array();
+					while ($row = mysqli_fetch_row($result)) {
+						$data[] = $row;
+					}
+					$uniqueUsers = 0;
+					$uniqueArray = array();
+					foreach ($data as &$value) {
+						if(!in_array($value[0], $uniqueArray)) {
+							$uniqueUsers++;
+							$uniqueArray[] = $value[0];
+						}
+					}
+					echo '<span style="color:gold;text-align:center;">' . $uniqueUsers . ' </span>';
+				?>
+				users, in the website-forum.
 			</div>
 
 
 			<div class="row" style="padding-bottom: 5%; padding-left: 10%; padding-right: 10%;">
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Kristopher Werlinder <p style="color:white">Role: Co-Founder <br><br>Proficiencies: SQL, MySQL, NodeJS, jQuery, Java, PHP, Python.</p></p>
+					<p style="color:orange">Kristopher Werlinder <p style="color:white">Role: Co-Founder <br><br>Proficiencies: PHP, MySQL, NodeJS, MongoDB, jQuery, Java, Python.</p></p>
 				</div>
 				<div class="column" style="text-align: center; font-size: 20px">
 					<p style="color:orange">Erik Henriksson <p style="color:white">Role: Co-Founder <br><br>Proficiencies: HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>

@@ -76,12 +76,10 @@ include_once 'header.php';
 						<img src="images/typeToSurvive.jpg" alt="1stSound" style="width:85%; height:85%; ">
 					</a>
 				</div>
-				
 				<div class="column">
-					<a href="games/snake/index.php" style="border:5px solid #ccc;">
-						<img src="images/snake.jpg" alt="3rdGame" style="width:75%; height:75%; ">
+					<a href="games/simonsays/menu.html" style="border:5px solid #ccc;">
+						<img src="images/simonsays.jpg" alt="2ndGame" style="width:85%; height:100%; ">
 					</a>
-					<label style="color:grey">Does not work on Mobile</label>
 				</div>
 			</div>
 			<div class="row">
@@ -112,9 +110,10 @@ include_once 'header.php';
 			</div>
 			<div class="row">
 				<div class="column">
-					<a href="games/simonsays/menu.html" style="border:5px solid #ccc;">
-						<img src="images/simonsays.jpg" alt="2ndGame" style="width:85%; height:100%; ">
+					<a href="games/snake/index.php" style="border:5px solid #ccc;">
+						<img src="images/snake.jpg" alt="3rdGame" style="width:75%; height:75%; ">
 					</a>
+					<label style="color:grey">Does not work on Mobile</label>
 				</div>
 				<div class="column">
 					<a href="#" style="border:5px solid #ccc;">

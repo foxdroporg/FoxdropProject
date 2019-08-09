@@ -124,7 +124,7 @@ include_once 'header.php';
 <div class="pimg1">
     <div class="ptext">
       <span class="border">
-        <a href="https://foxdrop.000webhostapp.com/signup.php">
+        <a href="./signup.php">
           <div class="link">
             1. Sign Up
           </div>
@@ -143,7 +143,7 @@ include_once 'header.php';
   <div class="pimg2">
     <div class="ptext">
       <span class="border trans">
-        <a href="https://foxdrop.000webhostapp.com/portfolio.php">
+        <a href="./portfolio.php">
           <div class="link">
             2. Navigate To Portfolio
           </div>
@@ -177,7 +177,7 @@ include_once 'header.php';
   <div class="pimg4">
     <div class="ptext">
       <span class="border">
-        <a href="https://foxdrop.000webhostapp.com/home.php">
+        <a href="./home.php">
           <div class="link">
             Foxdrop
           </div>

@@ -33,19 +33,22 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
   onButton.addEventListener('click', (event) => {   // Arrow function 
     if (onButton.checked == true) {
       on = true;
-      turnCounter.innerHTML = "-";  
+      turnCounter.innerHTML = "-";
     } 
     else {
       on = false;
       turnCounter.innerHTML = "";
       clearColor();
       clearInterval(intervalId);
+      strictButton.disabled = false;
     }
   });
   
   startButton.addEventListener('click', (event) => {
     if (on || win) {
+      strictButton.disabled = true; 
       play();
+      console.log("Insane Difficulty: " + strict);
     }
   });
   
@@ -63,7 +66,12 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
     }
     compTurn = true;
   
-    intervalId = setInterval(gameTurn, 600);
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+      intervalId = setInterval(gameTurn, 1000);
+    } 
+    else {
+      intervalId = setInterval(gameTurn, 600);
+    }
   }
   
   function gameTurn() {
@@ -191,23 +199,34 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
   })
   
   function check() {
-    if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
+    if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1]) {
       good = false;
+    }
   
     if (playerOrder.length == 20 && good) { // Decide when the player wins the game.
       winGame();
+      strictButton.disabled = false;
     }
     else if (playerOrder.length == 10 && good && strict) {
       winGame();
       highscores();
+      strictButton.disabled = false;
     }
   
     if (good == false) {
       flashColor();
       turnCounter.innerHTML = "NO!";
-      if (noise) {
-        let audio = document.getElementById("clip5");
-        audio.play();
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        document.body.style.backgroundColor = "#ad1515";
+        setTimeout(() => {
+          document.body.style.backgroundColor = "#202020";
+        }, 200);
+      } 
+      else {
+        if (noise) {
+          let audio = document.getElementById("clip5");
+          audio.play();
+        }
       }
       setTimeout(() => {
         turnCounter.innerHTML = turn;
@@ -221,20 +240,33 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
           flash = 0;
           playerOrder = [];
           good = true;
-          intervalId = setInterval(gameTurn, 600);
+          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+            intervalId = setInterval(gameTurn, 1000);
+          } 
+          else {
+            intervalId = setInterval(gameTurn, 600);
+          }
         }
       }, 600);
   
       noise = false;
     }
-  
-    if (turn == playerOrder.length && good && !win && !strict) {
+    else if (turn == playerOrder.length && good && !win && !strict) {
       turn++;
       playerOrder = [];
       compTurn = true;
       flash = 0;
       turnCounter.innerHTML = turn;
-      intervalId = setInterval(gameTurn, 600);
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        document.body.style.backgroundColor = "green";
+        setTimeout(() => {
+          document.body.style.backgroundColor = "#202020";
+        }, 200);
+        intervalId = setInterval(gameTurn, 1000);
+      } 
+      else {
+        intervalId = setInterval(gameTurn, 600);
+      }
     }
     else if (turn == playerOrder.length && good && !win && strict) {
        // Make game harder. New order every time.
@@ -247,7 +279,16 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
       compTurn = true;
       flash = 0;
       turnCounter.innerHTML = turn;
-      intervalId = setInterval(gameTurn, 600);
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        document.body.style.backgroundColor = "green";
+        setTimeout(() => {
+          document.body.style.backgroundColor = "#202020";
+        }, 200);
+        intervalId = setInterval(gameTurn, 1000);
+      } 
+      else {
+        intervalId = setInterval(gameTurn, 600);
+      }
     }
   
   }
@@ -280,6 +321,6 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
       }).catch(function(error) {
         console.error(error);
       });
-      document.getElementById("highscoreTable").innerHTML = "You have recieved an achievement for reaching 20 points on Simon Says, strict level!";
+      document.getElementById("highscoreTable").innerHTML = "You have recieved an achievement for reaching 10 points on Simon Says, insane difficulty!";
   }
 }

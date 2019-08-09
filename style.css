@@ -27,7 +27,9 @@ time, mark, audio, video {
 body {
     line-height:1;
     /*Added for background picture */
-    background: url('images/birdSil.jpg') no-repeat;
+    /* images/birdSil.jpg */
+    background: url('images/forest.jpg') no-repeat 50% 50%;
+    background-size:cover;
     background-attachment: fixed;
     font-family: Serif;
 }
@@ -554,6 +556,10 @@ MEDIA QUERIES
 }
 
 @media only screen and (max-width: 700px) {  
+    
+    header nav {
+        height: 110px; <!-- -->
+    } 
     .main-container {
         padding-top: 5em;
     }
@@ -566,7 +572,7 @@ MEDIA QUERIES
     .header-wrapper {
         margin: 0 auto;
         width: 45rem;
-        height: 6.5rem;
+        height: 110px; /*6.5rem;*/
         background-color: white; /* #fff */
     }
     .paragraph .video {
