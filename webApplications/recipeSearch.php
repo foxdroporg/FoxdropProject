@@ -5,18 +5,21 @@
 	$dotenv->load();
 	$API_KEY = $_ENV['RAPID_API_KEY'];
 
+	$recipeSamples = array('Chilli con carne', 'Lasagne', 'Vegetarian', 'Vegan', 'Chicken curry', 'Budget', 'Salmon', 'Steak', 'Beef', 'Tacos', 'Noodles', 'Pizza', 'Meatballs', 'Pasta');
+	
 	// Default: scones
 	$searchQuery = '';
 	$searchQuery = $_GET["searchQuery"];
-	if ($searchQuery === '') $searchQuery = 'scones'; 
+	if ($searchQuery === '') $searchQuery = $recipeSamples[mt_rand(0, sizeof($recipeSamples))]; 
 
 	// Default: none.
 	$ingredients = '';
 	$ingredients = $_GET["ingredients"];
 
 	// Default : 1
-	$page = 1;
 	$page = $_GET["page"];
+	if ($page === '') $page = 1;
+
 ?>
 
 <!DOCTYPE html>

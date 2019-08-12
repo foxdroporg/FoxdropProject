@@ -28,7 +28,7 @@
 							<form style="text-align:center" action="recipeSearch.php" method="GET">
 								<input type="text" name="searchQuery" id="searchQuery" placeholder="Search for recipe..." style="width:16rem; height: 3rem; font-size: 20px">
 								<div class="w-100 mt-0"></div>
-								<label>e.g. <b>scones</b></label>
+								<label>Optional: e.g. <b>scones</b></label>
 								<div class="w-100 mt-3"></div>
 								<input type="text" name="ingredients" id="ingredients" placeholder="Comma separated ingredients.." style="width:16rem; height: 3rem; font-size: 20px">	
 								<div class="w-100 mt-0"></div>
@@ -40,6 +40,7 @@
 								<div class="w-100 mt-3"></div>
 								<button class="btn btn-lg btn-primary" type="submit" onClick="recipeSearch" style="width:16rem; height:4rem;"><span class="glyphicon glyphicon-search"></span>  Search..</button>
 							</form>
+							<p style=" text-align:center; color:grey; font-size: 15px">(When the search is without conditions <br>Recipe-Suggestion is made)</p>
 						</div>
 					</div>
 			</div>

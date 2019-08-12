@@ -103,7 +103,7 @@ include_once 'header.php';
 					</a>
 				</div>
 				<div class="column">
-					<a href="games/gobblet/index.php" style="border:5px solid #ccc;">
+					<a href="#" style="border:5px solid #ccc;">
 						<img src="images/gobblet.jpg" alt="2ndSound" style="width:85%; height:100%; ">
 					</a>
 				</div>
@@ -130,8 +130,8 @@ include_once 'header.php';
 
 		<div class="row">
 			<div class="column">
-				<a href="animations/mountain.php" style="border:5px solid #ccc;">
-					<img src="images/mountain.png" alt="1stAnimation" style="width:70%; height:65%; ">
+				<a href="animations/foodPoison.php" style="border:5px solid #ccc;">
+					<img src="images/agentsAI.jpg" alt="3rdAnimation" style="width:100%; height:100%; ">
 				</a>
 			</div>
 			<div class="column">
@@ -149,6 +149,18 @@ include_once 'header.php';
 			<div class="column">
 				<a href="animations/issLocation.php" style="border:5px solid #ccc;">
 					<img src="images/ISS.png" alt="4thAnimation" style="width:95%; height:95%; ">
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<a href="animations/mountain.php" style="border:5px solid #ccc;">
+					<img src="images/mountain.png" alt="1stAnimation" style="width:70%; height:65%; ">
+				</a>
+			</div>
+			<div class="column">
+				<a href="#" style="border:5px solid #ccc;">
+					<img src="images/website.jpg" alt="4thAnimation" style="width:100%; height:100%; ">
 				</a>
 			</div>
 		</div>

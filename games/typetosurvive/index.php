@@ -47,6 +47,15 @@
                         </form>
                     </div>
 
+                    <br>
+                    <h1 style="color:#FFFFFF; text-align:center">Words Per Minute</h1>
+                    <br>
+                    <div style="text-align:center; width: 10em; margin:0px auto;">
+                        <form class="difficulty-form" action="wordsPerMin.html">
+                        	<button type="submit" class="btn-info btn-lg btn-block" name="difficulty" value="easy">WPM</button>
+                    	</form>
+                    </div>
+
 					 <!-- Instructions -->
                      <div class="row mt-5">
                         <div class="col-md-12">
@@ -58,6 +67,8 @@
 							<p style="text-align:center"> Easy: 5 sec <br>
 								Medium: 3 sec <br>
 								Insane: 1 sec
+							</p>
+							<p style="text-align:center"> In "Words Per Minute" you are challenged to write a block of text as fast as you can. Your speed is calulated in (words / min).
 							</p>
                             </div>
                         </div>
@@ -80,7 +91,7 @@
 										$dbName = $_ENV['DB_NAME'];
 										$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-										$sql = "SELECT * FROM scores WHERE game = 'typetosurvive' ORDER BY user_score DESC LIMIT 10";
+										$sql = "SELECT * FROM scores WHERE game = 'typetosurviveWPM' ORDER BY user_score DESC LIMIT 10";
 										$result = mysqli_query($conn, $sql);
 										$data = array();
 										while ($row = mysqli_fetch_row($result)) {
