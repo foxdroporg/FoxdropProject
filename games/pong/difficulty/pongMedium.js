@@ -249,12 +249,12 @@ class Pong {
 
 		this.draw();
 
-		if (this.players[0].score >= 10) {
+		if (this.players[0].score >= 5) {
 			var victorySound = new Audio("../../../soundeffects/victory.mp3");
 			victorySound.play();
 			alert("YOU WON!");
 		} 
-		else if (this.players[1].score >= 10) {
+		else if (this.players[1].score >= 5) {
 			var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
 			gameOverSound.play();
 			alert("YOU LOST!");

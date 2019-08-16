@@ -33,7 +33,7 @@
 						<h1>Type To Survive</h1>
 					</header>
 					
-					<h1 style="color:#FFFFFF; text-align:center">Difficulty</h1>
+					<h1 style="color:#FFFFFF; text-align:center">Typing-Survivor</h1>
 					<br>
                     <div style="text-align:center; width: 10em; margin:0px auto;">
                         <form class="difficulty-form" action="game.html">
@@ -78,7 +78,7 @@
                     <div class="row mt-1">
                         <div class="col-md-12">
                             <div class="card card-body bg-dark text-white">
-                            <h5 style="text-align:center">Highscores</h5>
+                            <h5 style="text-align:center">Highscores (WPM)</h5>
 	                            <p style="text-align:center"> 
 		                            <?php
 										include '../../vendor/autoload.php';
@@ -92,6 +92,32 @@
 										$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
 										$sql = "SELECT * FROM scores WHERE game = 'typetosurviveWPM' ORDER BY user_score DESC LIMIT 10";
+										$result = mysqli_query($conn, $sql);
+										$data = array();
+										while ($row = mysqli_fetch_row($result)) {
+											$data[] = $row;
+										}
+										foreach ($data as &$value) {
+											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' words/minute</span>';
+											echo "<br>";
+										}
+									?>
+								</p>
+								<br>
+								<h5 style="text-align:center">Highscores (Typing-Survivor)</h5>
+	                            <p style="text-align:center"> 
+		                            <?php
+										include '../../vendor/autoload.php';
+										$dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
+										$dotenv->load();
+										// Online 
+										$dbServername = $_ENV['DB_SERV_NAME']; 
+										$dbUsername = $_ENV['DB_USERNAME'];
+										$dbPassword = $_ENV['DB_PASSWORD'];
+										$dbName = $_ENV['DB_NAME'];
+										$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+
+										$sql = "SELECT * FROM scores WHERE game = 'typetosurvive' ORDER BY user_score DESC LIMIT 10";
 										$result = mysqli_query($conn, $sql);
 										$data = array();
 										while ($row = mysqli_fetch_row($result)) {

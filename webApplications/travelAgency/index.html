@@ -18,7 +18,7 @@
         <nav class="teal">
           <div class="container">
             <div class="nav-wrapper">
-              <a href="#" class="brand-logo">FoxdropTravel</a>
+              <a href="./../travelAgency/index.html" class="brand-logo">FoxdropTravel</a>
               <a href="#" data-target="mobile-nav" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
               </a>
@@ -39,7 +39,7 @@
                   <a href="#contact">Contact</a>
                 </li>
                 <li>
-                  <a href="./../../portfolio.php">Back To Foxdrop</a>
+                  <a class="btn btn-info" href="./../../portfolio.php">Back To Foxdrop</a>
                 </li>
               </ul>
             </div>
@@ -63,7 +63,7 @@
           <a href="#contact">Contact</a>
         </li>
         <li>
-          <a href="http://foxdrop.000webhostapp.com/portfolio.php">Back To Foxdrop</a>
+          <a href="./../../portfolio.php">Back To Foxdrop</a>
         </li>
       </ul>
 
@@ -75,7 +75,7 @@
               <div class="caption center-align">
                 <h2>Take Your Dream Vacation</h2>
                 <h5 class="light grey-text text-lighten-3 hide-on-small-only">You have been busy with work a long time now, be generous to yourself and take some time off in one of our many tropical locations. </h5>
-                <a href="#" class="btn btn-large">Learn More</a>
+                <a href="search.php?country=Greece" class="btn btn-large">Learn More</a> <!-- dreamVacation.html -->
               </div>
             </li>
             <li>
@@ -83,7 +83,7 @@
               <div class="caption left-align">
                 <h2>We Work With All Budgets</h2>
                 <h5 class="light grey-text text-lighten-3 hide-on-small-only">A tight budget, no worries. We know about the best vacation areas nearby.</h5>
-                <a href="#" class="btn btn-large">Learn More</a>
+                <a href="nearbyTravel.html" class="btn btn-large">Learn More</a>
               </div>
             </li>
             <li>
@@ -91,7 +91,7 @@
               <div class="caption right-align">
                 <h2>Perfect Family Vacation</h2>
                 <h5 class="light grey-text text-lighten-3 hide-on-small-only">We all know that families need to spend time together. Why not explore places that none of you have ever been to before?</h5>
-                <a href="#" class="btn btn-large">Learn More</a>
+                <a href="familyVacation.html" class="btn btn-large">Learn More</a>
               </div>
             </li>
           </ul>
@@ -104,7 +104,9 @@
               <div class="col s12">
                 <h3>Search Destinations</h3>
                   <div class="input-field">
-                    <input type="text" class="white grey-text autocomplete" id="autocomplete-input" placeholder="Norway, Iceland, Greece, etc...">
+                    <form action="search.php" method="GET">
+                      <input type="text" class="white grey-text autocomplete form-control" id="country" name="country" placeholder="Norway, Iceland, Greece, etc...">
+                    </form>
                   </div>    
               </div>
             </div>

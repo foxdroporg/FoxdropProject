@@ -70,7 +70,7 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
       intervalId = setInterval(gameTurn, 1000);
     } 
     else {
-      intervalId = setInterval(gameTurn, 600);
+      intervalId = setInterval(gameTurn, 800);
     }
   }
   
@@ -120,7 +120,7 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
       audio.play();
     }
     noise = true;
-    bottomLeft.style.backgroundColor = "yellow";
+    bottomLeft.style.backgroundColor = "#ffffcc"; // yellow
   }
   
   function four() {
@@ -135,14 +135,14 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
   function clearColor() {
     topLeft.style.backgroundColor = "darkgreen";
     topRight.style.backgroundColor = "darkred";
-    bottomLeft.style.backgroundColor = "goldenrod";
+    bottomLeft.style.backgroundColor = "goldenrod"; //goldenrod
     bottomRight.style.backgroundColor = "darkblue";
   }
   
   function flashColor() {
     topLeft.style.backgroundColor = "lightgreen";
     topRight.style.backgroundColor = "tomato";
-    bottomLeft.style.backgroundColor = "yellow";
+    bottomLeft.style.backgroundColor = "#ffffcc"; // yellow
     bottomRight.style.backgroundColor = "lightskyblue";
   }
   
@@ -207,7 +207,7 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
       winGame();
       strictButton.disabled = false;
     }
-    else if (playerOrder.length == 10 && good && strict) {
+    else if (playerOrder.length == 8 && good && strict) {
       winGame();
       highscores();
       strictButton.disabled = false;
@@ -215,6 +215,7 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
   
     if (good == false) {
       flashColor();
+
       turnCounter.innerHTML = "NO!";
       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
         document.body.style.backgroundColor = "#ad1515";
@@ -244,10 +245,10 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
             intervalId = setInterval(gameTurn, 1000);
           } 
           else {
-            intervalId = setInterval(gameTurn, 600);
+            intervalId = setInterval(gameTurn, 800);
           }
         }
-      }, 600);
+      }, 800);
   
       noise = false;
     }
@@ -265,7 +266,7 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
         intervalId = setInterval(gameTurn, 1000);
       } 
       else {
-        intervalId = setInterval(gameTurn, 600);
+        intervalId = setInterval(gameTurn, 800);
       }
     }
     else if (turn == playerOrder.length && good && !win && strict) {
@@ -287,7 +288,7 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
         intervalId = setInterval(gameTurn, 1000);
       } 
       else {
-        intervalId = setInterval(gameTurn, 600);
+        intervalId = setInterval(gameTurn, 800);
       }
     }
   
@@ -310,7 +311,7 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
     var highscoreForm = new FormData();
 
         highscoreForm.append("username", U_UID);
-      highscoreForm.append("user_score", 20);
+      highscoreForm.append("user_score", 8);
       highscoreForm.append("game", "simonsaysStrict");
 
       fetch("../../../includes/scores.inc.php", {
@@ -321,6 +322,6 @@ strictButton.addEventListener('click', (event) => { // Always pass in the event 
       }).catch(function(error) {
         console.error(error);
       });
-      document.getElementById("highscoreTable").innerHTML = "You have recieved an achievement for reaching 10 points on Simon Says, insane difficulty!";
+      document.getElementById("highscoreTable").innerHTML = "Congratulations, you have recieved an achievement for reaching 8 points on insane difficulty!";
   }
 }

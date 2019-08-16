@@ -51,7 +51,7 @@
 	                        <div class="col-md-12">
 	                            <div class="card card-body bg-dark text-white">
 	                            <h5 style="text-align:center"><b>Instructions</b></h5>
-	                            <p style="text-align:center">First one to reach 10 points wins. Move padel with mouse, left-click when you are ready for the game to start.
+	                            <p style="text-align:center">First one to reach 5 points wins. Move padel with mouse, left-click when you are ready for the game to start.
 								</p>
 								<p style="text-align:center"> 
 									<b>Note:</b> Sound effects are included.
@@ -67,7 +67,7 @@
                             <h5 style="text-align:center"><b>Champions</b></h5>
 	                            <p style="text-align:center"> 
 									<?php
-										echo '<span style="color:#FFF;text-align:center;"><br>Legendary players that have won on Insane: <br><br></span>';
+										/* echo '<span style="color:#FFF;text-align:center;"><br>Legendary players that have won on Insane: <br><br></span>'; */
 										/* dbh.inc.php has a path to autoload.php that does not work from this directory... This is why we have re-written the code from (dbh.inc.php) file here. */ 
 										include '../../vendor/autoload.php';
 										$dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
@@ -87,7 +87,7 @@
 
 										$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-										$sql = "SELECT * FROM scores WHERE game = 'pongInsane'";
+										$sql = "SELECT DISTINCT username FROM scores WHERE game = 'pongInsane'";
 										$result = mysqli_query($conn, $sql);
 
 										$data = array();
@@ -95,7 +95,7 @@
 											$data[] = $row;
 										}
 										foreach ($data as &$value) {
-											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' has won vs. the AI on ' . $value[2] . '</span>';
+											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - has beaten the AI on Insane</span>';
 											echo "<br>";
 										}
 									?>

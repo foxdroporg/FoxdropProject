@@ -154,7 +154,12 @@
 								$data[] = $row;
 							}
 							foreach ($data as &$value) {
-								echo '<span style="color:gold;text-align:center;">' . $value[1] . ' points in ' .$value[2]. ' <br></span>';
+								if ($value[2] === 'typetosurviveWPM') {
+									echo '<span style="color:gold;text-align:center;">' . $value[1] . ' words per minute in ' .$value[2]. ' <br></span>';
+								} 
+								else {
+									echo '<span style="color:gold;text-align:center;">' . $value[1] . ' points in ' .$value[2]. ' <br></span>';
+								}
 							}
 						}
 					?> 

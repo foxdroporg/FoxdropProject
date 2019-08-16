@@ -122,7 +122,7 @@
 
 			echo '<p style="color:white">Sky is filled with: '.$cloudProcentage.'% clouds</p>';
 
-			echo '<p style="color:white">Wind direction is: '.$windDegree.'°<br>(A wind blowing from the north = 0°/360°).</p>';
+			echo '<p style="color:white">Wind direction is: '.$windDegree.'°<br>(0°, is equal to a wind coming from north and heading south).</p>';
 
 			echo '<p style="color:white">Rain last 3 hours: '.$rainLast3h.'mm</p>';
 
@@ -144,7 +144,7 @@
 
 		</div>
 		
-
+		<h2 style="text-align:center; color:white; font-size:40px; padding-top: 3%">You are here</h2>
 		<div id="issMap"></div>
 
 

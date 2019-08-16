@@ -241,13 +241,13 @@ class Pong {
 					break;
 				default:
 					if (this.players[1].position.y < this.ball.position.y - (padelHeight*0.4)) {
-						this.players[1].position.y += (this._canvas.height)*0.03;
+						this.players[1].position.y += (this._canvas.height)*0.025;
 					}
 					else if (this.players[1].position.y > this.ball.position.y + (padelHeight*0.4)) {
-						this.players[1].position.y -= (this._canvas.height)*0.03;
+						this.players[1].position.y -= (this._canvas.height)*0.025;
 					}
 					else {
-						this.players[1].position.y += 0.5*(this.ball.position.y - this.players[1].position.y);
+						this.players[1].position.y += 0.4*(this.ball.position.y - this.players[1].position.y);
 					}
 					break;
 			}
@@ -257,13 +257,13 @@ class Pong {
 
 		this.draw();
 
-		if (this.players[0].score >= 10) {
+		if (this.players[0].score >= 5) {
 			var victorySound = new Audio("../../../soundeffects/victory.mp3");
 			victorySound.play();
 			alert("YOU WON!");
 			highscores();
 		} 
-		else if (this.players[1].score >= 10) {
+		else if (this.players[1].score >= 5) {
 			var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
 			gameOverSound.play();
 			alert("YOU LOST!");

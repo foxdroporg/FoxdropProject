@@ -50,20 +50,21 @@
 		  <p style="font-size: 14px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here.</a><br></p> 
 
 		  <p style="font-size: 25px; text-align: center">
+		  		<br>
 					Latitude: <span id="lat"></span>° 
 				<br>
 					Longitude: <span id="lon"></span>°
 				<br>
 					Altitude: <span id="altitude"></span>m
 				<br>
-					Heading: <span id="heading"></span>° (0° is north)
+					<!-- Heading: <span id="heading"></span>° (0° is north) -->
 				<br>
-					Speed: <span id="speed"></span>m/s
-				<br><br><br>
+					<!-- Speed: <span id="speed"></span>m/s -->
+				<br>
 					Copy latitude and longitude and paste it down below: <br><span style="color:gold" id="lat2"></span>, <span style="color:gold" id="lon2"></span>
 			</p>
 
-		  <script>
+		  <script> // JS
 		  	let lat, lon, lat2, lon2, altitude, heading, speed, weather, air;  
 		  	// Geolocation is avaliable as soon as website is deployed on a (https) hosting service.
 		  	if('geolocation' in navigator) {
@@ -86,9 +87,8 @@
 		  			document.getElementById('lon2').textContent = lon2.toFixed(2);
 
 		  			document.getElementById('altitude').textContent = altitude;
-		  			document.getElementById('heading').textContent = heading;
-		  			document.getElementById('speed').textContent = speed;
-		  			
+		  			//document.getElementById('heading').textContent = heading;
+		  			//document.getElementById('speed').textContent = speed;
 		  		});
 		  	}
 		  	else {
@@ -124,48 +124,51 @@
 		</div>
 	</section>
 
-	<section class="mobile-wrapper">
-		<div style="background:black" class="jumbotron mt-5 text-white border">
-			<h2 style="text-align:center; font-size:35px; padding-bottom: 15%">Weather forecast in Stockholm are:<br></h2>
-		  <?php
-		  	require '../vendor/autoload.php';
-			$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
-			$dotenv->load();
-			$API_KEY = $_ENV['RAPID_API_KEY'];
+	<!--
+		<section class="mobile-wrapper">
+			<div style="background:black" class="jumbotron mt-5 text-white border">
+				<h2 style="text-align:center; font-size:35px; padding-bottom: 15%">Weather forecast in Stockholm are:<br></h2>
+			  <?php
+			  	/*
+			  	require '../vendor/autoload.php';
+				$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
+				$dotenv->load();
+				$API_KEY = $_ENV['RAPID_API_KEY'];
 
-		  	$response = Unirest\Request::get("https://community-open-weather-map.p.rapidapi.com/forecast?q=stockholm",
-			  array(
-			    "X-RapidAPI-Host" => "community-open-weather-map.p.rapidapi.com",
-			    "X-RapidAPI-Key" => $API_KEY
-			  )
-			);
-			$responseBody = $response->body;
+			  	$response = Unirest\Request::get("https://community-open-weather-map.p.rapidapi.com/forecast?q=stockholm",
+				  array(
+				    "X-RapidAPI-Host" => "community-open-weather-map.p.rapidapi.com",
+				    "X-RapidAPI-Key" => $API_KEY
+				  )
+				);
+				$responseBody = $response->body;
 
-			$responseBodyRes1 = $responseBody->{'list'};
-			$responseBodyRes2 = $responseBody->{'list'};
-			$responseBodyRes3 = $responseBody->{'list'};
+				$responseBodyRes1 = $responseBody->{'list'};
+				$responseBodyRes2 = $responseBody->{'list'};
+				$responseBodyRes3 = $responseBody->{'list'};
 
-			$responseBodyRes1 = $responseBodyRes1[0];
-			$responseBodyRes1 = $responseBodyRes1->{'weather'};
-			$responseBodyRes1 = $responseBodyRes1[0];
-			$responseBodyRes1 = $responseBodyRes1->{'description'};
-			echo '<p style="text-align: center"><span style="text-align:center;font-size:30px">Tomorrow: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes1 . '</p><br><br></span></p>';
+				$responseBodyRes1 = $responseBodyRes1[0];
+				$responseBodyRes1 = $responseBodyRes1->{'weather'};
+				$responseBodyRes1 = $responseBodyRes1[0];
+				$responseBodyRes1 = $responseBodyRes1->{'description'};
+				echo '<p style="text-align: center"><span style="text-align:center;font-size:30px">Tomorrow: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes1 . '</p><br><br></span></p>';
 
-			$responseBodyRes2 = $responseBodyRes2[1];
-			$responseBodyRes2 = $responseBodyRes2->{'weather'};
-			$responseBodyRes2 = $responseBodyRes2[0];
-			$responseBodyRes2 = $responseBodyRes2->{'description'};
-			echo '<p style="text-align: center"><span style="text-align:center;font-size:30px">The day after tomorrow: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes2 . '</p><br><br></span></p>';
+				$responseBodyRes2 = $responseBodyRes2[1];
+				$responseBodyRes2 = $responseBodyRes2->{'weather'};
+				$responseBodyRes2 = $responseBodyRes2[0];
+				$responseBodyRes2 = $responseBodyRes2->{'description'};
+				echo '<p style="text-align: center"><span style="text-align:center;font-size:30px">The day after tomorrow: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes2 . '</p><br><br></span></p>';
 
-			$responseBodyRes3 = $responseBodyRes3[2];
-			$responseBodyRes3 = $responseBodyRes3->{'weather'};
-			$responseBodyRes3 = $responseBodyRes3[0];
-			$responseBodyRes3 = $responseBodyRes3->{'description'};
-			echo '<p style="text-align: center"><span style="text-align:center;font-size:30px">In three days: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes3 . '</p><br><br></span></p>';
-
-		  ?>
-		</div>	
-	</section>
+				$responseBodyRes3 = $responseBodyRes3[2];
+				$responseBodyRes3 = $responseBodyRes3->{'weather'};
+				$responseBodyRes3 = $responseBodyRes3[0];
+				$responseBodyRes3 = $responseBodyRes3->{'description'};
+				echo '<p style="text-align: center"><span style="text-align:center;font-size:30px">In three days: </span></p><p style="text-align: center"><span style="color:gold;text-align:center;font-size:30px">' . $responseBodyRes3 . '</p><br><br></span></p>';
+				*/
+			  ?>
+			</div>	
+		</section>
+	-->
 </body>
 
 </html>

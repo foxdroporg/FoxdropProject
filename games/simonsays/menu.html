@@ -45,7 +45,7 @@
 	                        <div class="col-md-12">
 	                            <div class="card card-body bg-dark text-white">
 	                            <h5 style="text-align:center"><b>Instructions</b></h5>
-	                            <p style="text-align:center">The goal with the game is to reach 20 points on normal game mode. <br>"Impossible" mode is the hardest mode that can earn you a spot at the highscore table!
+	                            <p style="text-align:center">The goal with the game is to reach 20 points on normal game mode. <br> Research into short term memory says we can only remember 5 to 9 pieces of information at any given time.
 								</p>
 								<p style="text-align:center"> 
 									<b>Note:</b> Sound effects are included.
@@ -60,7 +60,7 @@
 					          <div class="card card-body bg-dark text-white">
 					            <p style="text-align:center"> 
 					                <?php
-					                  echo '<span style="color:#FFF;text-align:center;"><br>Players that have achieved the impossible: (10 points on insane)<br><br></span>';
+					                  echo '<h5 style="text-align:center"><b>Champions</b></h5><span style="color:#FFF;text-align:center;">(8 points on insane)<br><br></span>';
 					                  include '../../vendor/autoload.php';
 					                  $dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
 					                  $dotenv->load();
@@ -79,7 +79,7 @@
 
 					                  $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-					                  $sql = "SELECT * FROM scores WHERE game = 'simonsaysStrict'";
+					                  $sql = "SELECT DISTINCT username FROM scores WHERE game = 'simonsaysStrict'";
 					                  $result = mysqli_query($conn, $sql);
 
 					                  $data = array();
@@ -87,7 +87,7 @@
 					                    $data[] = $row;
 					                  }
 					                  foreach ($data as &$value) {
-					                    echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' has won on the Strict difficulty for the Simon Says game!!</span>';
+					                    echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - has recieved the Simon Says achievement!!</span>';
 					                    echo "<br>";
 					                  }
 					                ?>

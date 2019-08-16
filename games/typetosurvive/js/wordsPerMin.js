@@ -234,8 +234,6 @@ function checkStatus() {
   if (!isPlaying && time === 0) {
     message.innerHTML = 'Game Over!';
     message.style.color = "red";
-    score = 0;
-    wordcount = 0;
     wordInput.blur();
     wordInput.value = "";
     clearInterval(countdownInterval);
@@ -250,7 +248,6 @@ function checkStatus() {
 function endGame() {
   message.innerHTML = 'Game Over!';
   message.style.color = "red";
-  score = 0;
   wordInput.disabled = true;
   wordInput.placeholder = "Refresh page to play again...";
   wordInput.value = "";
@@ -295,7 +292,7 @@ function highscores() {
       var highscores = '';
       var i = 0;
       scores.forEach(function(score) {
-        highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
+        highscores += score[0] + ' ' + score[1] + ' words per minute on ' + score[2] + '<br>';
         i++;
         if(i > 15) {
           return;
