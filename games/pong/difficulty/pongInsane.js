@@ -1,3 +1,5 @@
+let gameEnded = false;
+
 class Vec {
 	constructor(x = 0, y = 0) {
 		this.x = x;
@@ -80,8 +82,9 @@ class Pong {
 			}
 			lastTime = milliseconds;
 			requestAnimationFrame(callback);
-		};
+		};		
 		callback();
+		
 
 		this.CHAR_PIXEL = 10;
 		this.CHARS = [ 
@@ -257,11 +260,14 @@ class Pong {
 
 		this.draw();
 
-		if (this.players[0].score >= 5) {
+		if (this.players[0].score >= 1) {
 			var victorySound = new Audio("../../../soundeffects/victory.mp3");
 			victorySound.play();
-			alert("YOU WON!");
-			highscores();
+			if(!gameEnded) {
+				highscores();
+			}
+			gameEnded = true;
+			alert("YOU WON!"); //
 		} 
 		else if (this.players[1].score >= 5) {
 			var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
@@ -297,7 +303,7 @@ function highscores() {
 		var highscoreForm = new FormData();
 
       	highscoreForm.append("username", U_UID);
-	    highscoreForm.append("user_score", 0);
+	    highscoreForm.append("user_score", 5);
 	    highscoreForm.append("game", "pongInsane");
 
 	    fetch("../../../includes/scores.inc.php", {

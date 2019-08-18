@@ -17,7 +17,7 @@ include_once 'header.php';
 				<a href="webApplications/travelAgency/index.html" style="border:5px solid #ccc;">
 					<img src="images/travel.jpg" alt="2ndSound" style="width:100%; height:70%; ">
 				</a>
-				<label style="color:grey">Front-End: 5/5. Back-End: 0/5</label>
+				<label style="color:grey">Front-End: 5/5. Back-End: 2/5</label>
 			</div>
 		</div>
 		<div class="row">
@@ -51,15 +51,29 @@ include_once 'header.php';
 		<div class="row">
 			<div class="column">
 				<a href="webApplications/leagueSearch.php" style="border:5px solid #ccc;">
-			    	<img src="images/leagueSearch.png" alt="4th" style="width:150%; height:150%; ">
+			    	<img src="images/leagueSearch.png" alt="4th" style="width:100%; height:100%; ">
 				</a>
 				<label style="color:grey">Front-End: 2/5. Back-End: 5/5</label>
 			</div>
 			<div class="column">
 				<a href="webApplications/musicDJ.php" style="border:5px solid #ccc;">
-					<img src="images/musicRepresentation.jpg" alt="2ndSound" style="width:120%; height:70%; ">
+					<img src="images/musicRepresentation.jpg" alt="2ndSound" style="width:100%; height:70%; ">
 				</a>
 				<label style="color:grey">Front-End: 3/5. Back-End: 1/5</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<a href="webApplications/booklist.php" style="border:5px solid #ccc;">
+			    	<img src="images/bookListing.jpg" alt="4th" style="width:100%; height:100%; ">
+				</a>
+				<label style="color:grey">Front-End: 3/5. Back-End: 1/5</label>
+			</div>
+			<div class="column">
+				<a href="https://ancient-reaches-50207.herokuapp.com/" style="border:5px solid #ccc;">
+					<img src="images/apex.jpg" alt="2ndSound" style="width:100%; height:100%; ">
+				</a>
+				<label style="color:grey">Front-End: 4/5. Back-End: 4/5</label>
 			</div>
 		</div>
 

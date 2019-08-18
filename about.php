@@ -146,7 +146,7 @@ include_once 'header.php';
 			</div>
 
 			<div class="header" style="color:white; text-align:center; padding-bottom: 3%;">
-				Want to know more about us? <a style="color:orange; padding-top: 2%" href="https://github.com/foxdroporg/FoxdropProject">https://github.com/foxdroporg/FoxdropProject</a>
+				Want to know more about us? <a style="color:orange; padding-top: 2%" href="https://github.com/foxdroporg/FoxdropProject" target="_blank">https://github.com/foxdroporg/FoxdropProject</a>
 				<br>
 				We welcome all student web designers and developers to join us in helping grow this site.
 			</div>
