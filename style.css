@@ -629,9 +629,17 @@ MEDIA QUERIES
 }
 
 @media only screen and (max-width: 414px) {  
-    .header-wrapper {
-        width: 28rem;
+    .header-wrapper { 
+        width: 23.8rem; 
+        /* 28 rem */
     }
+    
+    /* Very important for login form to stay in one line */
+    form { 
+        margin-right: 3px !important; 
+        padding-right: 3px !important; 
+    }
+
     header nav ul {
         padding-left: 0.5rem;
     }
@@ -644,7 +652,8 @@ MEDIA QUERIES
 /* Galaxy S9 */
 @media only screen and (max-width: 360px) {  
     .header-wrapper {
-        width: 25.5rem; 
+        width: 22rem; 
+        /* 25.5 rem */
     }
     header nav ul li a img{
         display: none;

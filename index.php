@@ -18,8 +18,45 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 96%;
-      width: 100%;
+      height: 96vh; /* 96% */
+      width: 100%; /* 100% */
+    }
+    .cursor {
+      pointer-events: none;
+      width: 20px;
+      height: 20px;
+      border: 1px solid white;
+      border-radius: 50%;
+      position: absolute;
+      transition-duration: 30ms;
+      transition-timing-function: ease-out;
+    }
+    .cursor::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      border: 8px solid grey;
+      border-radius: 50%;
+      opacity: .5;
+      top: -8px;
+      left: -8px;
+    }
+    @keyframes cursorAnim3 {
+      0% {
+        tranform: scale(1);
+      }
+      50% {
+        transform: scale(3);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+    .expand {
+      animation: cursorAnim3 .5s forwards;
+      border: 1px solid red;
     }
     .intro {
       height: 100%;
@@ -64,21 +101,50 @@
         padding: 7px 15px;
       }
     }
+    canvas {
+      position: absolute;
+      z-index: -1px;
+      left: 0px;
+      /*display: none;*/ 
+    }
+
+    /*  */
   </style>
 </head>
 <body>
-  <section class="intro">
+  <!-- Cursor Particles-->
+  <script src="landingPage_js/sketch.min.js"></script>
+  <script src="landingPage_js/cursorParticles.js"></script>
+  <section class="intro" style="height: 93vh"> <!-- 900px -->
+    <div class="cursor"></div>
     <div class="inner">
       <div class="content">
-        <section class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s">
+        <section class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.3s"> <!-- 0.1 -->
           <h1>FOXDROP</h1>
         </section>  
         <br><br>
-        <section class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.4s" style="margin: 0 auto; width: 200px">
+        <section class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.7s" style="margin: 0 auto; width: 200px"> <!-- 0.4 --> 
           <a class="btn" href="./signup.php">SIGN UP</a>
         </section>        
       </div>
     </div>
+
+    <!-- Custom Cursor -->
+    <script>
+      const cursor = document.querySelector('.cursor');
+      document.addEventListener('mousemove', e => {
+        cursor.setAttribute("style", "top:"+(e.pageY - 10)+"px; left:"+(e.pageX - 10)+"px;")
+      });
+      document.addEventListener('click', () => {
+        cursor.classList.add("expand");
+        setTimeout(() => {
+          cursor.classList.remove("expand");
+        }, 500);
+      });
+    </script>
+
+    
+
   </section>
 
 
