@@ -33,6 +33,7 @@
 	<body>
 		<section class="main-container">
 			<div class="main-wrapper">
+				<div class="background-color">
 				<h2 style="color:#FFFFFF; font-size: 50px">Profile</h2>
 				<div class="paragraph" style="padding-top: 3%">
 
@@ -315,7 +316,7 @@
 				        </div>
 				    </div>
 
-				    <h6 style="color:grey; text-align: center;padding: 0 0 1rem 0">How to get embeded link:<br> 1. Click "Share" - 2. Press "Copy" - 3. Paste in the box below</h6>
+				    <h6 style="color:grey; text-align: center;padding: 0 0 1rem 0">How to get embeded link:<br> 1. Go to a Youtube video - 2. Click "Share" - 3. Press "Copy" - 4. Paste it in the box below</h6>
 
 					<form id="channel-form" style="width: 220px; margin: 0 auto; display: table;">
 				    	<div class="input-field col s1" style="margin: 0 auto;"> 
@@ -337,7 +338,7 @@
 							echo "There are no users signed up yet on this website!";
 						}
 	  				?>
-
+				</div>
 			</div>
 		</section>
 	</body>

@@ -122,6 +122,7 @@ include_once 'header.php';
 
 <section class="main-container">
   <div class="main-wrapper">
+    <div class="background-color">
     <h2 style="color:#FFFFFF; font-size: 50px">Latest News</h2>
 
     <p style="text-align: center">
@@ -130,10 +131,10 @@ include_once 'header.php';
       <span style="color:white; font-size: 20px"><b>1.</b> </span><span id="com0" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
       <span style="color:white; font-size: 20px"><b>2.</b> <span id="com1" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
       <span style="color:white; font-size: 20px"><b>3.</b> <span id="com2" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
-      <span style="color:white; font-size: 20px"><b>4.</b> <span id="com3" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
-      <span style="color:white; font-size: 20px"><b>5.</b> <span id="com4" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
+      <!-- Three News items are enough -->
+      <!-- <span style="color:white; font-size: 20px"><b>4.</b> <span id="com3" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br>
+      <span style="color:white; font-size: 20px"><b>5.</b> <span id="com4" style="color:gold; text-align:center; font-size: 20px"></span> <br><br><br> -->
     </p>
-  </div>
 
   <script type="text/javascript">
     let mobileUser = false;
@@ -147,8 +148,8 @@ include_once 'header.php';
       data[0] !== undefined ? document.getElementById('com0').textContent = data[0].commit.message : document.getElementById('com0').textContent = "";
       data[1] !== undefined ? document.getElementById('com1').textContent = data[1].commit.message : document.getElementById('com1').textContent = "";
       data[2] !== undefined ? document.getElementById('com2').textContent = data[2].commit.message : document.getElementById('com2').textContent = "";
-      data[3] !== undefined ? document.getElementById('com3').textContent = data[3].commit.message : document.getElementById('com3').textContent = "";
-      data[4] !== undefined ? document.getElementById('com4').textContent = data[4].commit.message : document.getElementById('com4').textContent = "";
+      //data[3] !== undefined ? document.getElementById('com3').textContent = data[3].commit.message : document.getElementById('com3').textContent = "";
+      //data[4] !== undefined ? document.getElementById('com4').textContent = data[4].commit.message : document.getElementById('com4').textContent = "";
       
     }
     getGithubCommits()
@@ -159,7 +160,8 @@ include_once 'header.php';
         console.error(error);
       });
   </script>
-
+    </div>
+  </div>
 </section>
 
 <hr>

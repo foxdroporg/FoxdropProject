@@ -20,6 +20,9 @@
 				    		justify-content: center;
 				    		background: #202020;
                         }
+                        img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+						  display: none !important;
+						}
 				    </style>
 
 				    <script
@@ -91,11 +94,16 @@
 										$dbName = $_ENV['DB_NAME'];
 										$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-										$sql = "SELECT * FROM scores WHERE game = 'typetosurviveWPM' ORDER BY user_score DESC LIMIT 10";
+										$sql = "SELECT * FROM scores WHERE game = 'typetosurviveWPM' ORDER BY user_score DESC";
 										$result = mysqli_query($conn, $sql);
+										
 										$data = array();
+										$uniqueUsername = array();
 										while ($row = mysqli_fetch_row($result)) {
-											$data[] = $row;
+											if(!in_array($row[0], $uniqueUsername)) {
+												$uniqueUsername[] = $row[0];
+												$data[] = $row;
+											}
 										}
 										foreach ($data as &$value) {
 											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' words/minute</span>';
@@ -117,11 +125,15 @@
 										$dbName = $_ENV['DB_NAME'];
 										$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-										$sql = "SELECT * FROM scores WHERE game = 'typetosurvive' ORDER BY user_score DESC LIMIT 10";
+										$sql = "SELECT * FROM scores WHERE game = 'typetosurvive' ORDER BY user_score DESC";
 										$result = mysqli_query($conn, $sql);
 										$data = array();
+										$uniqueUsername = array();
 										while ($row = mysqli_fetch_row($result)) {
-											$data[] = $row;
+											if(!in_array($row[0], $uniqueUsername)) {
+												$uniqueUsername[] = $row[0];
+												$data[] = $row;
+											}
 										}
 										foreach ($data as &$value) {
 											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' points</span>';

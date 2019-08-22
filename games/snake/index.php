@@ -88,12 +88,16 @@
 
 												$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-										$sql = "SELECT * FROM scores WHERE game = 'snake' ORDER BY user_score DESC LIMIT 10";
+										$sql = "SELECT * FROM scores WHERE game = 'snake' ORDER BY user_score DESC";
 										$result = mysqli_query($conn, $sql);
 
 										$data = array();
+										$uniqueUsername = array();
 										while ($row = mysqli_fetch_row($result)) {
-											$data[] = $row;
+											if(!in_array($row[0], $uniqueUsername)) {
+												$uniqueUsername[] = $row[0];
+												$data[] = $row;
+											}
 										}
 										foreach ($data as &$value) {
 											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' points</span>';

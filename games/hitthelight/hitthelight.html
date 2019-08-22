@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<?php session_start(); ?>
+<html>
+  <link
+    rel="shortcut icon"
+    type="image/png"
+    href="../../images/firefoxLogo.png"
+  />
+  <section class="main-container">
+    <div class="main-wrapper">
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <style>
+            html,
+            body {
+              overflow: hidden;
+            }
+            img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+              display: none !important;
+            }
+          </style>
+        </head>
+
+        <body bgcolor="#202020">
+          <center><h2 style="color:#FFFFFF;">Hit The Light</h2></center>
+          <form name="status">
+            <center>
+              <table cellspacing="3">
+                <tr>
+                  <td>
+                    <input
+                      type="button"
+                      name="startstop"
+                      value=" Start Game "
+                      onClick="play()"
+                    />
+                  </td>
+                  <td><pre></pre></td>
+                  <td align="right" style="color:white">Time:</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="timeleft"
+                      size="4"
+                      onFocus="this.blur()"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      type="text"
+                      name="state"
+                      size="10"
+                      value="  Press Start"
+                      onFocus="this.blur()"
+                    />
+                  </td>
+                  <td><pre></pre></td>
+                  <td align="right" style="color:white">Score:</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="score"
+                      size="4"
+                      onFocus="this.blur()"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </center>
+          </form>
+
+          <!-- PLAYING FIELD-->
+          <form name="playingField">
+            <center>
+              <table id="playingFieldTable" cellspacing="3">
+                <tr>
+                  <td colspan="10"><hr size="1" /></td>
+                </tr>
+                <tr>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(0)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(1)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(2)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(3)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(4)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(5)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(6)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(7)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(8)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(9)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(10)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(11)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(12)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(13)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(14)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(15)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(16)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(17)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(18)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(19)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(20)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(21)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(22)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(23)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(24)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(25)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(26)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(27)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(28)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(29)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(30)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(31)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(32)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(33)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(34)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(35)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(36)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(37)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(38)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(39)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(40)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(41)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(42)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(43)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(44)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(45)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(46)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(47)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(48)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(49)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(50)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(51)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(52)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(53)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(54)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(55)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(56)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(57)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(58)" />
+                  </td>
+                  <td align="center" valign="center">
+                    <input type="radio" onClick="hitLight(59)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="10"><hr size="1" /></td>
+                </tr>
+              </table>
+            </center>
+          </form>
+
+          <script>
+            var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
+          </script>
+
+          <div
+            style="color:white; text-align: center; padding: 5%; font-size: 25px;"
+            id="highscoreTable"
+          ></div>
+
+          <script>
+            gameLength = 30;
+            timerID = null;
+            var playing = false;
+            var numberOfLights = 6 * 10;
+            var currentPos = -1;
+            let score;
+
+            function clearLights() {
+              for (var k = 0; k < document.playingField.elements.length; k++)
+                document.playingField.elements[k].checked = false;
+            }
+
+            function stopTimer() {
+              if (playing) clearTimeout(timerID);
+            }
+
+            function showTime(remandingTime) {
+              document.status.timeleft.value = remandingTime;
+              if (playing) {
+                if (remandingTime == 0) {
+                  stopGame();
+                  return;
+                } else {
+                  temp = remandingTime - 1;
+                  timerID = setTimeout("showTime(temp)", 1000);
+                }
+              }
+            }
+
+            function stopGame() {
+              stopTimer();
+              playing = false;
+              document.status.timeleft.value = 0;
+              clearLights();
+              display("  Game Over");
+              score = totalHits;
+              if (!playing) {
+                highscores();
+              }
+              alert("Game Over.\nYour score is:  " + totalHits);
+            }
+
+            function play() {
+              stopTimer();
+              playing = true;
+              clearLights();
+              totalHits = 0;
+              document.status.score.value = totalHits;
+              display("  Playing");
+              launch();
+              showTime(gameLength);
+            }
+
+            function display(msg) {
+              document.status.state.value = msg;
+            }
+
+            function launch() {
+              var launched = false;
+              while (!launched) {
+                randNumb = random();
+                if (randNumb != currentPos) {
+                  document.playingField.elements[randNumb].checked = true;
+                  currentPos = randNumb;
+                  launched = true;
+                }
+              }
+            }
+
+            function hitLight(id) {
+              if (playing == false) {
+                clearLights();
+                display("  Press Start");
+                return;
+              }
+              if (currentPos != id) {
+                totalHits += -1;
+                document.status.score.value = totalHits;
+                document.playingField.elements[id].checked = false;
+              } else {
+                totalHits += 1;
+                document.status.score.value = totalHits;
+                launch();
+                document.playingField.elements[id].checked = false;
+              }
+            }
+
+            function random() {
+              return Math.floor((Math.random() * 100) % numberOfLights);
+            }
+
+            function highscores() {
+              console.log("User logged in? " + U_UID);
+              if (U_UID == "false") {
+                document.getElementById("highscoreTable").innerHTML =
+                  "Please sign up and log in on Foxdrop to see the highscores for this game!";
+              } else {
+                var highscoreForm = new FormData();
+
+                highscoreForm.append("username", U_UID);
+                highscoreForm.append("user_score", score);
+                highscoreForm.append("game", "hitthelight");
+
+                fetch("../../includes/scores.inc.php", {
+                  method: "POST",
+                  body: highscoreForm
+                })
+                  .then(function(response) {
+                    return response.json();
+                  })
+                  .catch(function(error) {
+                    console.error(error);
+                  });
+              }
+            }
+          </script>
+        </body>
+      </html>
+    </div>
+  </section>
+</html>

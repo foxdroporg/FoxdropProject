@@ -14,6 +14,7 @@ include_once 'header.php';
 
 	<body>
 		<div class="main-wrapper">
+		<div class="background-color">
 			<h2 style="color:#FFFFFF; font-size: 50px">About</h2>
 			<br>
 			<br>
@@ -151,11 +152,12 @@ include_once 'header.php';
 				We welcome all student web designers and developers to join us in helping grow this site.
 			</div>
 		</div>
-	</body>
+	</div>
 </section>
 
 <section class="main-container">
 	<div class="main-wrapper">
+	<div class="background-color">
 		<h2 style="color:#FFFFFF; padding-bottom: 2%;">FAQ/Instructions</h2>
 		
 		<div class="paragraph">
@@ -198,8 +200,10 @@ include_once 'header.php';
 			<p style="color:orange">Instruction: </p> If you have any further questions please go to "Contact" and send your questions to us via e-mail.
 		</div>
 	</div>
+	</div>
 </section>
 
+</body>
 </html>
 
 

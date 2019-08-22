@@ -4,6 +4,7 @@
 
 <section class="main-container">
 	<div class="main-wrapper">
+	<div class="background-color">
 			<h2 style="color:#FFFFFF">Sign up</h2>
 			<form class="signup-form" action="includes/signup.inc.php" method="POST">
 				<input type="text" name="first" placeholder="First name">
@@ -34,7 +35,7 @@
 			}
 			?>
 			
-
+		</div>
 	</div>
 </section>
 

@@ -12,13 +12,19 @@
         body {
           background: #ff9e19;
         }
+        canvas {
+          cursor: pointer;
+        }
+        img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+          display: none !important;
+        }
       </style>
     <link rel="stylesheet" href="style.css">
   </head>
 
   <body bgcolor="#ff9e19">
     
-    <table align="center" style="margin-top: 3%">
+    <table id="table" align="center" style="margin-top: 3%">
       <tr>
         <td class="cell" id="0"></td>
         <td class="cell" id="1"></td>
@@ -45,23 +51,23 @@
       </tr>
     </table>
 
-      <canvas id="big" width="500" height="350" style="margin-left: auto; margin-right: auto; display: block;"></canvas>
+      <canvas id="canvas" width="500" height="350" style="margin-left: auto; margin-right: auto; display: block;"></canvas>
     
       <script>
-        var c = document.getElementById("big");
+        var c = document.getElementById("canvas");
         var width = c.width;
         var height = c.height;
         var ctx = c.getContext("2d");
         var cty = c.getContext("2d");
         var ctz = c.getContext("2d");
         ctx.beginPath();        
-        ctx.arc(width/2, height/5, width/8, 0, 2 * Math.PI);
-        cty.arc(width/1.2, height/5, width/8, 0, 2 * Math.PI);
-        ctz.arc(width/6, height/5, width/8, 0, 2 * Math.PI);
+        ctx.arc(width/2, height/5, width/8, 0, 2 * Math.PI); // 2nd
+        cty.arc(width/1.2, height/5, width/8, 0, 2 * Math.PI); //3rd
+        ctz.arc(width/6, height/5, width/8, 0, 2 * Math.PI);  // 1st
         ctx.fillStyle = "white";
         ctx.fill();
 
-        var c = document.getElementById("big");
+        var c = document.getElementById("canvas");
         var width = c.width;
         var height = c.height;
         var ctx = c.getContext("2d");
@@ -75,11 +81,15 @@
         ctx.fill();
       </script> 
 
+    <div class="playerTurn">
+      <div class="textTurn">
+      </div>
+    </div>
 
     <div class="endgame">
       <div class="text">
       </div>
-      <button onClick="startGame()">Play Again</button>
+      <button onClick="reloadPage()">Play Again</button>
     </div>
 
     <script src="js/main.js">

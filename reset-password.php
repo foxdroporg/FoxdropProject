@@ -8,6 +8,7 @@
 	<body>
 		<section class="main-container">
 			<div class="main-wrapper">
+			<div class="background-color">
 				
 					<h2 style="color:#FFFFFF">Reset your password</h2>
 					<p align="center" style="color:#FFFFFF; font-size: 20px; padding-top: 1%">An e-mail will be sent to you with instructions on how to reset your password. <br> (Works for gmail. Other emails may not be supported).</p>
@@ -22,7 +23,7 @@
 							}
 						}
 					?>
-					
+					</div>
 			</div>
 		</section>
 	</body>

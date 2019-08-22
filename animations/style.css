@@ -3,68 +3,136 @@ html5doctor.com Reset Stylesheet
 Inspired by Richard Clark - http://richclarkdesign.com 
 */
 
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
-    margin:0;
-    padding:0;
-    border:0;
-    outline:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
 body {
-    line-height:1;
-    /*Added for background picture */
-    background: url('../images/birdSil.jpg') no-repeat;
-    background-attachment: fixed;
-    font-family: Serif;
+  line-height: 1;
+  /*Added for background picture */
+  background: url("../images/birdSil.jpg") no-repeat;
+  background-attachment: fixed;
+  font-family: Serif;
 }
 
-img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
-    display: none!important;
+img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+  display: none !important;
 }
 
-
-article,aside,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section { 
-    display:block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 
 nav ul {
-    list-style:none;
+  list-style: none;
 }
 
-blockquote, q {
-    quotes:none;
+blockquote,
+q {
+  quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content:'';
-    content:none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 
 a {
-    margin:0;
-    padding:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a:hover {
@@ -74,231 +142,225 @@ a:hover {
 
 /* change colours to suit your needs */
 ins {
-    background-color:#ff9;
-    color:#000;
-    text-decoration:none;
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
 }
 
 /* change colours to suit your needs */
 mark {
-    background-color:#ff9;
-    color:#000; 
-    font-style:italic;
-    font-weight:bold;
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
 }
 
 del {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
-abbr[title], dfn[title] {
-    border-bottom:1px dotted;
-    cursor:help;
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
 }
 
 table {
-    border-collapse:collapse;
-    border-spacing:0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* change border colour to suit your needs */
 hr {
-    display:block;
-    height:1px;
-    border:0;   
-    border-top:1px solid #cccccc;
-    margin:1em 0;
-    padding:0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
-input, select {
-    vertical-align:middle;
+input,
+select {
+  vertical-align: middle;
 }
 
 #serverName select {
-    width: 20px;
+  width: 20px;
 }
-
 
 /* My code */
 
 .header-wrapper {
-    margin: 0 auto;
-    width: 1000px;
-    background-color: #fff;
+  margin: 0 auto;
+  width: 1000px;
+  background-color: #fff;
 }
 
 .main-container {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 .main-container h2 {
-    font-family: Serif;
-    font-size: 40px;
-    color: #111;
-    line-height: 50px;
-    text-align: center;
+  font-family: Serif;
+  font-size: 40px;
+  color: #111;
+  line-height: 50px;
+  text-align: center;
 }
 
 .main-wrapper {
-    margin: 0 auto;
-    width: 1000px;
-    background-color: #000;
-    border: 30px solid transparent;
-    padding: 15px;
-    border-image: url(../images/border.png) 50 round;
+  margin: 0 auto;
+  width: 1000px;
+  background-color: #000;
+  border: 30px solid transparent;
+  padding: 15px;
+  border-image: url(../images/border.png) 50 round;
 }
 
 .main-wrapper h2 {
-    font-family: Serif;
-    font-size: 40px;
-    line-height: 50px;
-    text-align: center;
+  font-family: Serif;
+  font-size: 40px;
+  line-height: 50px;
+  text-align: center;
 }
 
 .mobile-wrapper {
-    margin: 0 auto;
-    width: 400px;
+  margin: 0 auto;
+  width: 400px;
 }
 
-#borderimg { 
-    border: 10px solid transparent;
-    padding: 15px;
-    border-image: url(../images/border.png) 30 round; /* vh */
+#borderimg {
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(../images/border.png) 30 round; /* vh */
 }
-
-
-
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 body {
-    background-color: #000;
+  background-color: #000;
 }
 
 header nav {
-    width: 100%;
-    height: 60px;
-    background-color: #fff;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
 }
 
 header nav ul {
-    float: left;
+  float: left;
 }
 
 header nav ul li {
-    float: left;
-    list-style: none;
-    padding-right: 20px;
+  float: left;
+  list-style: none;
+  padding-right: 20px;
 }
 
 header nav ul li a {
-    font-family: Serif;
-    font-size: 16px;
-    color: #111;
-    line-height: 63px;
+  font-family: Serif;
+  font-size: 16px;
+  color: #111;
+  line-height: 63px;
 }
 
-
-
 header .nav-login {
-    float: right;
+  float: right;
 }
 
 header .nav-login form {
-    float: left;
-    padding-top: 15px;
+  float: left;
+  padding-top: 15px;
 }
 
-
 header .nav-login form input {
-    float: left;
-    width: 140px;
-    height: 30px;
-    padding: 0px 10px;
-    margin-right: 10px;
-    border: none;
-    background-color: #ccc;
-    font-family: Serif;
-    font-size: 14px;
-    color: #111;
-    line-height: 30px;
+  float: left;
+  width: 140px;
+  height: 30px;
+  padding: 0px 10px;
+  margin-right: 10px;
+  border: none;
+  background-color: #ccc;
+  font-family: Serif;
+  font-size: 14px;
+  color: #111;
+  line-height: 30px;
 }
 
 header .nav-login form button {
-    float: left;
-    width: 60px;
-    height: 30px;
-    padding: 0px 10px;
-    margin-right: 10px;
-    border: none;
-    background-color: white; /* #f3f3f3 */
-    font-family: Serif;
-    font-size: 14px;
-    color: #111;
-    cursor: pointer;
+  float: left;
+  width: 60px;
+  height: 30px;
+  padding: 0px 10px;
+  margin-right: 10px;
+  border: none;
+  background-color: white; /* #f3f3f3 */
+  font-family: Serif;
+  font-size: 14px;
+  color: #111;
+  cursor: pointer;
 }
 
-header .nav-login form button: hover {
-    background-color: #ccc;
+header.nav-loginform button: hover {
+  background-color: #ccc;
 }
 
 header .nav-login a {
-    display: block;
-    width: 60px;
-    height: 60px;
-    border: none;
-    background-color: #fff;
-    float: left;
-    font-family: Serif;
-    font-size: 16px;
-    color: #111;
-    line-height: 63px;
-    cursor: pointer;
+  display: block;
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: #fff;
+  float: left;
+  font-family: Serif;
+  font-size: 16px;
+  color: #111;
+  line-height: 63px;
+  cursor: pointer;
 }
 
 .img-test {
-    /*
+  /*
     transition: all 1.5s ease-in 0.5s;
     -webkit-transition: all 1.5s ease-in 0.5s;
     -moz-transition: all 1.5s ease-in 0.5s;
     -o-transition: all 1.5s ease-in 0.5s;
     */
-    background-position: 2px 2px;
+  background-position: 2px 2px;
 }
 
 .img-test:hover {
-    background-image: url("../images/firefoxLogoHover.png");
-    background-size: 55px 55px;
-    background-repeat: no-repeat;
+  background-image: url("../images/firefoxLogoHover.png");
+  background-size: 55px 55px;
+  background-repeat: no-repeat;
 }
 
 .button-test {
-    transition: all 0.1s ease-in 0.1s;
-    -webkit-transition: all 0.1s ease-in 0.1s;
-    -moz-transition: all 0.1s ease-in 0.1s;
-    -o-transition: all 0.1s ease-in 0.1s;
-    background-size: 55px 55px;
-    background-position: 2px 2px;
+  transition: all 0.1s ease-in 0.1s;
+  -webkit-transition: all 0.1s ease-in 0.1s;
+  -moz-transition: all 0.1s ease-in 0.1s;
+  -o-transition: all 0.1s ease-in 0.1s;
+  background-size: 55px 55px;
+  background-position: 2px 2px;
 }
 
 .button-test:hover {
-    background-color: #e2e2e2;
-    background-repeat: no-repeat;
-    font-weight: bold;
+  background-color: #e2e2e2;
+  background-repeat: no-repeat;
+  font-weight: bold;
 }
 
 /*portfolio.php*/
 .portfolio-collection {
-    width: 800px;
-    margin: 0 auto;
-    padding-left: 30px;
+  width: 800px;
+  margin: 0 auto;
+  padding-left: 30px;
 }
 
-
- /* Three image containers (use 25% for four, and 50% for two, etc) */
+/* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
   float: left;
   width: 40%;
@@ -312,167 +374,165 @@ header .nav-login a {
   content: "";
   clear: both;
   display: table;
-} 
-
+}
 
 /*signup.php*/
 
 .signup-form {
-    width: 400px;
-    margin: 0 auto;
-    padding-top: 30px;
+  width: 400px;
+  margin: 0 auto;
+  padding-top: 30px;
 }
-
 
 .signup-form input {
-    width: 90%;
-    height: 40px;
-    padding: 0px 5%;
-    margin-bottom: 4px;
-    border: none;
-    background-color: #fff;
-    font-family: Serif;
-    font-size: 16px;
-    color: #111;
-    line-height: 40px;
+  width: 90%;
+  height: 40px;
+  padding: 0px 5%;
+  margin-bottom: 4px;
+  border: none;
+  background-color: #fff;
+  font-family: Serif;
+  font-size: 16px;
+  color: #111;
+  line-height: 40px;
 }
-
 
 .signup-form button {
-    display: block;
-    margin: 0 auto;
-    width: 30%;
-    height: 40px;
-    border: none;
-    background-color: #222;
-    font-family: Serif;
-    font-size: 16px;
-    color: #fff;
-    cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  height: 40px;
+  border: none;
+  background-color: #222;
+  font-family: Serif;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
 }
 
-.signup-form button: hover {
-    background-color: #111;
+.signup-formbutton: hover {
+  background-color: #111;
 }
 
 /* Contact */
 .form-wrapperContact {
-  background-image:  url("../images/cartoonish.jpg");
+  background-image: url("../images/cartoonish.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position:fixed
+  background-position: fixed;
 }
 
 .fatnicetext {
-    font-size: 32px;
-    font-weight: bold;
-    font-family: Serif;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: Serif;
 }
 
 /* About */
 
 .paragraph {
-    grid-area: header;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Serif;
-    display:block;
-    justify-self: center;
-    color:white; 
-    padding-left: 10%; 
-    padding-right: 10%;
-    padding-bottom: 3%;
+  grid-area: header;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Serif;
+  display: block;
+  justify-self: center;
+  color: white;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 3%;
 }
 
 /* White box class for box */
 .whitebox {
-    height: 500px;
-    width: 1000px;
-    background-color: white;
-    padding: 10px;
+  height: 500px;
+  width: 1000px;
+  background-color: white;
+  padding: 10px;
 }
 
-.grid { 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-areas: 
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
     "title title"
     "header header"
     "sidebar content"
     "footer footer";
-    grid-gap: 10px;
+  grid-gap: 10px;
 }
 
 .grid div:nth-child(even) {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 .grid div:nth-child(odd) {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 .title {
-    grid-area: title;
-    font-size: 32px;
-    font-weight: bold;
-    font-family: Serif;
-    justify-self: center;
+  grid-area: title;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: Serif;
+  justify-self: center;
 }
 
 .header {
-    grid-area: header;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Serif;
-    display:block;
-    justify-self: center;
+  grid-area: header;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Serif;
+  display: block;
+  justify-self: center;
 }
 
 .sidebar {
-    grid-area: sidebar;
-    justify-self: center;
+  grid-area: sidebar;
+  justify-self: center;
 }
 
 .content {
-    grid-area: content;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Serif;
-    display:block;
-    justify-self: center;
+  grid-area: content;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Serif;
+  display: block;
+  justify-self: center;
 }
 
 .footer {
-    grid-area: footer;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Serif;
-    display:block;
-    justify-self: center;
+  grid-area: footer;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Serif;
+  display: block;
+  justify-self: center;
 }
-
 
 /* For videos in the future */
 video {
-    width: 100%;
+  width: 100%;
 }
 
-/* CONTACT FORM */ 
-    /* Style inputs with type="text", select elements and textareas */
-.contact-form input[type=text], select, textarea {
+/* CONTACT FORM */
+/* Style inputs with type="text", select elements and textareas */
+.contact-form input[type="text"],
+select,
+textarea {
   width: 100%; /* Full width */
-  padding: 12px; /* Some padding */ 
+  padding: 12px; /* Some padding */
   border: 1px solid #ccc; /* Gray border */
   border-radius: 4px; /* Rounded borders */
   box-sizing: border-box; /* Make sure that padding and width stays in place */
   margin-top: 6px; /* Add a top margin */
   margin-bottom: 16px; /* Bottom margin */
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
 /* Style the submit button with a specific background color etc */
-.contact-form button[type=submit] {
+.contact-form button[type="submit"] {
   background-color: #ff6600;
   color: white;
   padding: 12px 20px;
@@ -482,7 +542,7 @@ video {
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
-.contact-form button[type=submit]:hover {
+.contact-form button[type="submit"]:hover {
   background-color: #ff3300;
 }
 
@@ -492,8 +552,6 @@ video {
   display: block;
 }
 
-
-
 /* 
 !
 !
@@ -502,128 +560,128 @@ MEDIA QUERIES
 !
 */
 
-
-
-
 /* Order: Large to smaller. Required tag: max-width AND NOT min-width.*/
 
-
-@media only screen and (max-width: 1000px) {  
-    .header-wrapper {
-        margin: 0 auto;
-        background-color: yellow; /* #fff */
-    }
-    .main-wrapper {
-        width: 600px;
-    }
-    .main-wrapper form {
-        width: 600px;
-    }
-    header .nav-login {
-        float: left;
-        margin: 0rem 2rem 0rem 1rem;
-    }
-    header nav ul li {
-        float: left;
-        list-style: none;
-        padding-right: 12px;
-    }
-    header .nav-login form input {
-        float: left;
-        width: 5rem;
-        height: 2rem;
-        border: none;
-        background-color: #ccc;
-        font-family: Serif;
-        font-size: 0.9rem;
-        color: #111;
-    }
+@media only screen and (max-width: 1000px) {
+  .header-wrapper {
+    margin: 0 auto;
+    background-color: yellow; /* #fff */
+  }
+  .main-wrapper {
+    width: 600px;
+  }
+  .main-wrapper form {
+    width: 600px;
+  }
+  header .nav-login {
+    float: left;
+    margin: 0rem 2rem 0rem 1rem;
+  }
+  header nav ul li {
+    float: left;
+    list-style: none;
+    padding-right: 12px;
+  }
+  header .nav-login form input {
+    float: left;
+    width: 5rem;
+    height: 2rem;
+    border: none;
+    background-color: #ccc;
+    font-family: Serif;
+    font-size: 0.9rem;
+    color: #111;
+  }
 }
 
-@media only screen and (max-width: 700px) {  
-    .main-container {
-        padding-top: 5em;
-    }
-    .main-wrapper {
-        width: 275px;
-    }
-    .main-wrapper form {
-        width: 275px;
-    }
-    .header-wrapper {
-        margin: 0 auto;
-        width: 45rem;
-        height: 6.5rem;
-        background-color: white; /* #fff */
-    }
-    header nav ul {
-        float: left;
-        list-style: none;
-        padding-left: 0.8rem;
-        margin: 0 auto;
-    }
-    header nav ul li a img{
-        display: block;
-    }
-    header nav ul li {
-        float: left;
-        list-style: none;
-        padding-right: 0.6rem;
-        margin: 0 auto;
-    }
-    header .nav-login {
-        float: left;
-        margin: 0rem 2rem 0rem 1rem;
-    }
-    header .nav-login form {
-        float: left;
-        padding: 0rem 0rem 0rem 0.3rem;
-        margin: 0rem 2rem 0rem 0.1rem;
-    }
-    header .nav-login form input {
-        float: left;
-        width: 5rem;
-        height: 2rem;
-        border: none;
-        background-color: #ccc;
-        font-family: Serif;
-        font-size: 0.9rem;
-        color: #111;
-        line-height: 30px;
-    }
-    header .nav-login form button {
-        float: left;
-        width: 50px;
-        height: 2rem;
-        margin: 0rem 0rem 0rem 0rem;
-        border: none;
-        background-color: white;
-        font-family: Serif;
-        font-size: 14px;
-        color: #111;
-        cursor: pointer;
-    }
+@media only screen and (max-width: 700px) {
+  body,
+  html {
+    overflow-x: hidden; /* <<<<< To prevent horizontal scroll on smaller devices*/
+  }
+  .main-container {
+    padding-top: 5em;
+  }
+  .main-wrapper {
+    width: 275px;
+  }
+  .main-wrapper form {
+    width: 275px;
+  }
+  .header-wrapper {
+    margin: 0 auto;
+    width: 45rem;
+    height: 6.5rem;
+    background-color: white; /* #fff */
+  }
+  header nav ul {
+    float: left;
+    list-style: none;
+    padding-left: 0.8rem;
+    margin: 0 auto;
+  }
+  header nav ul li a img {
+    display: block;
+  }
+  header nav ul li {
+    float: left;
+    list-style: none;
+    padding-right: 0.6rem;
+    margin: 0 auto;
+  }
+  header .nav-login {
+    float: left;
+    margin: 0rem 2rem 0rem 1rem;
+  }
+  header .nav-login form {
+    float: left;
+    padding: 0rem 0rem 0rem 0.3rem;
+    margin: 0rem 2rem 0rem 0.1rem;
+  }
+  header .nav-login form input {
+    float: left;
+    width: 5rem;
+    height: 2rem;
+    border: none;
+    background-color: #ccc;
+    font-family: Serif;
+    font-size: 0.9rem;
+    color: #111;
+    line-height: 30px;
+  }
+  header .nav-login form button {
+    float: left;
+    width: 50px;
+    height: 2rem;
+    margin: 0rem 0rem 0rem 0rem;
+    border: none;
+    background-color: white;
+    font-family: Serif;
+    font-size: 14px;
+    color: #111;
+    cursor: pointer;
+  }
 }
 
-@media only screen and (max-width: 414px) {  
-    .header-wrapper {
-        width: 28rem;
-    }
-    header nav ul {
-        padding-left: 0.5rem;
-    }
-    header .nav-login {
-        float: left;
-        margin: 0rem 0rem 0rem 0.3rem;
-    }
+@media only screen and (max-width: 414px) {
+  .header-wrapper {
+    width: 28rem;
+  }
+  header nav ul {
+    padding-left: 0.5rem;
+  }
+  header .nav-login {
+    float: left;
+    margin: 0rem 0rem 0rem 0.3rem;
+  }
 }
 
 /* Galaxy S9 */
-@media only screen and (max-width: 360px) {  
-    .header-wrapper {
-        width: 25.5rem; 
-    }
-    header nav ul li a img{
-        display: none;
-    }
+@media only screen and (max-width: 360px) {
+  .header-wrapper {
+    width: 25.5rem;
+  }
+  header nav ul li a img {
+    display: none;
+  }
 }

@@ -5,6 +5,7 @@
 <!DOCTYPE html> 
 <head>
   <title>Starting Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="stylesheet" type="text/css" href="landingPage_css/style.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">

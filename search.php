@@ -38,6 +38,7 @@
 		
 		<section class="main-container">
   			<div class="main-wrapper">
+			  <div class="background-color">
   				<p>
 				    <button onClick="goBack()" class="btn btn-primary">
 				      <span class="glyphicon glyphicon-search"></span> Search
@@ -49,7 +50,7 @@
 					</script> 
 				</p>
   				<h2 style="color:#FFFFFF; font-size: 50px">Forum Search Query</h2>
-  				<div class="posts" style="text-align:center; margin: 2rem;">
+  				<div class="posts" style="text-align:center; margin-top: 2rem;">
   				<?php
   					if (isset($_POST['submit-search'])) {
   						$search = mysqli_real_escape_string($conn, $_POST['search']);
@@ -71,7 +72,8 @@
   					}
   				?>
   				</div>
-  			</div>
+			  </div>
+				</div>
   		</section>
 		
 	</body>

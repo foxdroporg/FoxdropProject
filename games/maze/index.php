@@ -80,17 +80,24 @@
 											$dbName = $_ENV['DB_LOCAL_NAME'];
 											*/
 											// Online 
+											
 											$dbServername = $_ENV['DB_SERV_NAME']; 
 											$dbUsername = $_ENV['DB_USERNAME'];
 											$dbPassword = $_ENV['DB_PASSWORD'];
 											$dbName = $_ENV['DB_NAME'];
+											
 											$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-											$sql = "SELECT * FROM scores WHERE game = 'maze' ORDER BY user_score DESC LIMIT 10";
+											$sql = "SELECT * FROM scores WHERE game = 'maze' ORDER BY user_score DESC"; 
 											$result = mysqli_query($conn, $sql);
 											$data = array();
+											$uniqueUsername = array();
+											
 											while ($row = mysqli_fetch_row($result)) {
-												$data[] = $row;
+												if(!in_array($row[0], $uniqueUsername)) {
+													$uniqueUsername[] = $row[0];
+													$data[] = $row;
+												}
 											}
 											foreach ($data as &$value) {
 													echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' points</span>';

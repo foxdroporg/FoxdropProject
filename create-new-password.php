@@ -5,6 +5,7 @@
 <main>
 	<section class="main-container">
 		<div class="main-wrapper">
+		<div class="background-color">
 
 			<h2 style="color:#FFFFFF">Last step for reseting your password</h2>
 			<p align="center" style="color:#FFFFFF; font-size: 20px; padding-top: 1%">Input your new password twice.</p>
@@ -30,6 +31,7 @@
 						}
 					}
 				?>
+				</div>
 		</div>
 	</section>
 </main>
