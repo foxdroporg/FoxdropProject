@@ -22,6 +22,7 @@
       height: 96vh; /* 96% */
       width: 100%; /* 100% */
     }
+    /*
     .cursor {
       pointer-events: none;
       width: 20px;
@@ -59,6 +60,7 @@
       animation: cursorAnim3 .5s forwards;
       border: 1px solid red;
     }
+    */
     .intro {
       height: 100%;
       width: 100%;  
@@ -131,6 +133,7 @@
     </div>
 
     <!-- Custom Cursor -->
+    <!--
     <script>
       const cursor = document.querySelector('.cursor');
       document.addEventListener('mousemove', e => {
@@ -143,7 +146,7 @@
         }, 500);
       });
     </script>
-
+    -->
     
 
   </section>

@@ -38,15 +38,9 @@
     <?php
       }
       else {
-        echo '<p style="color:red; font-size:25px; text-align: center; padding-top: 3%; padding-bottom: 3%">Login is required to post anything in this forum.</p>';
+        echo '<p style="color:red; font-size:25px; text-align: center; padding-top: 3%; padding-bottom: 3%">Login is required to post messages in this feedback forum.</p>';
       }
     ?>
-
-    <form class="contact-form" action="search.php" method="POST" style="text-align: center">
-      <input type="text" name="search" placeholder="Search for specific post.." style="width: 12rem"><br>
-      <button type="submit" name="submit-search">Search..</button>
-    </form>
-
 
     <div class="posts" style="text-align:center; margin-top: 2rem;">
       <?php
@@ -82,8 +76,12 @@
               break;
             }
         }
-
       ?>
+      <br><br><br>
+      <form class="contact-form" action="search.php" method="POST" style="text-align: center">
+        <input type="text" name="search" placeholder="Search for specific post.." style="width: 12rem"><br>
+        <button type="submit" name="submit-search">Search..</button>
+      </form>
     </div>
     </div>
   </div>

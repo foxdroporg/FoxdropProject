@@ -5,19 +5,29 @@
 <section class="main-container">
 	<div class="main-wrapper">
   <div class="background-color">
-			<h2 style="color:#FFFFFF">Welcome to Foxdrop</h2>
 			<?php
 				if (isset($_SESSION['u_id'])) {
+          echo '<h2 id="welcome" style="color:#FFFFFF">Welcome to Foxdrop</h2>';
 					echo '<br><div style="text-align:center"><span style="color:green; font-size:25px">You are logged in!</span></div>';
 				}
-				else {
-					echo '<br><div style="text-align:center"><span style="color:red; font-size:25px">Login failed.</span></div>';
-				}
+				else if (isset($_GET['status'])){
+          if($_GET['status'] === 'loggedout') {
+            echo '<h2 id="welcome" style="color:#FFFFFF">We hope you´ll visit us again soon</h2>';
+            echo '<br><div style="text-align:center"><span style="color:red; font-size:25px">You are logged out.</span></div>';
+				  }
+        }
+        else {
+          echo '<h2 id="welcome" style="color:#FFFFFF">Looks like there has been a typo!</h2>';
+          echo '<br><div style="text-align:center"><span style="color:red; font-size:25px">Login failed.</span></div>';
+        }
 			?>
   </div>
   </div>
 </section>
 
+<?php 
+  if (isset($_SESSION['u_id'])) { // Could add this to show highscore tables at log out as well>>>     || isset($_GET['status'])
+?>
   <section class="main-container">
   <div class="main-wrapper">
     <div class="background-color">
@@ -116,5 +126,6 @@
 
 
 <?php
+  }
 	include_once 'footer.php';
 ?>

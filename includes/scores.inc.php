@@ -13,12 +13,16 @@ $game = mysqli_real_escape_string($conn, $_POST['game']);
 	$sql = "INSERT INTO scores (username, user_score, game) VALUES ('$username', '$user_score', '$game');";
 	mysqli_query($conn, $sql);
 
-	$sql = "SELECT * FROM scores WHERE game = '$game' ORDER BY user_score DESC LIMIT 10";
+	$sql = "SELECT * FROM scores WHERE game = '$game' ORDER BY user_score DESC"; // SELECT * FROM scores WHERE game = '$game' ORDER BY user_score DESC LIMIT 10
 	$result = mysqli_query($conn, $sql);
 
+	$uniqueUsername = array();
 	$data = array();
 	while ($row = mysqli_fetch_row($result)) {
-		$data[] = $row;
+		if(!in_array($row[0], $uniqueUsername)) {
+			$uniqueUsername[] = $row[0];
+			$data[] = $row;
+		}
 	}
 
 	echo json_encode($data, JSON_NUMERIC_CHECK);

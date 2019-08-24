@@ -46,7 +46,7 @@
 <body bgcolor="">
 	<section class="mobile-wrapper">
 		<div style="background:black" class="jumbotron mt-5 text-white border">
-		  <h2 style="text-align:center; font-size:40px; padding-top: 5%">Local Weather</h2>
+		  <h2 style="text-align:center; font-size:40px; padding-top: 5%">3-Hour-Forecast</h2>
 
 		  <script>
 		  	let lat, lon, lat2, lon2, altitude, heading, speed, weather, air;  
@@ -103,6 +103,29 @@
 			$humidity = $responseBody->{'list'}[0]->{'main'}->{'humidity'};
 			$windSpeed = $responseBody->{'list'}[0]->{'wind'}->{'speed'};
 			$windDegree = $responseBody->{'list'}[0]->{'wind'}->{'deg'};
+			$windDegree = round($windDegree/45);
+			$windDir;
+			switch($windDegree) {
+				case 0: $windDir = "S";
+				break;
+				case 1: $windDir = "SW";
+				break;
+				case 2: $windDir = "W";
+				break;
+				case 3: $windDir = "NW";
+				break;
+				case 4: $windDir = "N";
+				break;
+				case 5: $windDir = "NE";
+				break;
+				case 6: $windDir = "E";
+				break;
+				case 7: $windDir = "SE";
+				break;
+				default: $windDir = "S";
+				break;
+			}
+			
 			$rainLast3h = '0';
 			if(isset($responseBody->{'list'}[0]->{'rain'}->{'3h'})) {
 				$rainLast3h = $responseBody->{'list'}[0]->{'rain'}->{'3h'};
@@ -110,21 +133,21 @@
 			$cloudProcentage = $responseBody->{'list'}[0]->{'clouds'}->{'all'};
 			$date = $responseBody->{'list'}[0]->{'dt_txt'};
 
-			echo '<p style="text-align:center; color:white"><span style="text-align:center; font-size:29px">Today in '.ucwords($city).' at '.$lat.'°, '.$lon.'° there will be: </span></p>
-			<p style="text-align:center"><img src="http://openweathermap.org/img/wn/'.$icon.'@2x.png" style="width:7em;height:7em;"/><span style="color:gold;text-align:center;font-size:30px"><br>' . $description . '</p><br><br></span></p>';
+			echo '<p style="text-align:center"><img src="http://openweathermap.org/img/wn/'.$icon.'@2x.png" style="width:7em;height:7em;"/><span style="color:gold;text-align:center;font-size:30px"><br>' . $description . '</p><br><br></span></p>';
 
+			echo '<center>';
+			echo '<p style="color:white">Temperature: </p> <p style="color:gold">'.$temp.'°C</p>';
 			
-			echo '<p style="color:white">Temperature is: <nbsp>'.$temp.'°C</p>';
+			echo '<br><p style="color:white">Humidity: </p> <p style="color:gold">'.$humidity.'%</p>';
+
+			echo '<br><p style="color:white">Rain: </p> <p style="color:gold">'.$rainLast3h.'mm</p>';
+
+			echo '<br><p style="color:white">Wind direction: </p> <p style="color:gold">'.$windDir.'</p>';
+
+			echo '<br><p style="color:white">Wind speed: </p> <p style="color:gold">'.$windSpeed.' m/s</p>';
+
+			echo '<br><p style="color:white">Sky is filled with: </p> <p style="color:gold">'.$cloudProcentage.'% clouds</p>';
 			
-			echo '<p style="color:white">Humidity is: '.$humidity.'%</p>';
-
-			echo '<p style="color:white">Wind speeds are up to: '.$windSpeed.' m/s</p>';
-
-			echo '<p style="color:white">Sky is filled with: '.$cloudProcentage.'% clouds</p>';
-
-			echo '<p style="color:white">Wind direction is: '.$windDegree.'°<br>(0°, is equal to a wind coming from north and heading south).</p>';
-
-			echo '<p style="color:white">Rain last 3 hours: '.$rainLast3h.'mm</p>';
 
 			$tempDate = $date;
 			$tempHour = substr($tempDate, 10);
@@ -136,14 +159,31 @@
 			$date = $newHour . "" . substr($date, -3);
 			$tempHour = substr($tempHour, 0, -3);
 
-			echo '<br><p style="color:white">Forecast: '.$tempHour.' - '.$date.'   ('.$tempDate.')</p>';
+			echo '<br><p style="color:white">Forecast: </p> <p style="color:gold">'.$tempHour.' - '.$date.'   ('.$tempDate.')</p>';
+
+			echo '<br>
+			<p style="color:white">Location: </p> <p style="color:gold">' .ucwords($city).' '.$lat.'°, '.$lon.'°</p>';
+			echo '</center>';
 
 
 
 		?>
 
+		<center>
+		<button onClick="goBack()" class="btn btn-lg btn-primary mt-5">
+			<span class="glyphicon glyphicon-search"></span> Go Back..
+		</button>
+		<script type="text/javascript">
+			function goBack() {
+				window.history.back();
+			}
+		</script> 
+		</center>
 		</div>
 		
+
+
+		<!--  
 		<h2 style="text-align:center; color:white; font-size:40px; padding-top: 3%">You are here</h2>
 		<div id="issMap"></div>
 
@@ -183,7 +223,7 @@
 
 				marker.setLatLng([latitude, longitude]);
 		        if (firstTime) {
-		          mymap.setView([latitude, longitude], 13);
+		          mymap.setView([latitude, longitude], 13); 
 		          firstTime = false;
 		        }
 
@@ -197,6 +237,7 @@
 			setInterval(getISS, 1000);
 		</script>
 		<br><br>
+		-->
 
 		
 

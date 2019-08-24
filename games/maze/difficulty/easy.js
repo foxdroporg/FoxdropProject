@@ -43,6 +43,7 @@ function setup() {
     // Game over - Time ran out.
     if (timeleft - counter <= 0) {
 
+      // >>> Highscore Section <<<
       console.log("User logged in? " + U_UID);
       if(U_UID == "false") {
         document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
@@ -64,13 +65,12 @@ function setup() {
           console.log(scores)
 
           var highscores = '';
-          //var distinctUsernameArr = [];
           var i = 0;
           scores.forEach(function(score) {
-          //  if(!distinctUsernameArr.includes(score[0])) {
+            if(i == 10) {
+              return;
+            }
               highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
-          //  }
-          //  distinctUsernameArr[i] = score[0];
             i++;
           })
 
@@ -79,6 +79,7 @@ function setup() {
           console.error(error);
         });
       }
+      // >>> <<<
 
 
       var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");

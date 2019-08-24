@@ -422,19 +422,20 @@ $(document).ready(function(){
 		      return response.json();
 		    })
 		    .then(function(scores) {
-		      //console.log(scores)
-
 		      var highscores = '';
-			//	var distinctUsernameArr = [];
+				var distinctUsernameArr = [];
 				var i = 0;
+				//console.log(scores);
+				//scores.sort(function(a, b){return b-a}); // Sorting function descending in JS
 		      scores.forEach(function(score) {
-			//		if(!distinctUsernameArr.includes(score[0])) {
+			      	if(i == 10) {
+						return;
+					}
+					if(!distinctUsernameArr.includes(score[0])) {
+						distinctUsernameArr[i] = score[0];
 						highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
-						//console.log(distinctUsernameArr);
-			//		}
-
-			//		distinctUsernameArr[i] = score[0];
-						i++;
+					}
+					i++;
 				})
 
 		      document.getElementById("highscoreTable").innerHTML = "Highscores: <br>" + highscores;

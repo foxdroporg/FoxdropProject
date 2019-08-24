@@ -3,12 +3,18 @@ var playerX = 'X';
 var playerO = 'O';
 var scaleFactor; 
 var mobile;
+var ipad = false;
 
 //console.log(window.innerWidth);
-if(window.innerWidth < 800) {
+if(window.innerWidth < 768) {
  scaleFactor = 1.0;
  mobile = true;
-} else {
+} 
+else if(window.innerWidth >= 768 && window.innerWidth < 1000) {
+ ipad = true;
+ scaleFactor = 2.2;
+}
+else {
  scaleFactor = 2.2;
  mobile = false;
 }
@@ -125,7 +131,7 @@ function startGame() {
 		if(mobile === false) {
 			cells[i].addEventListener('click', turnClick, false);
 		}
-		else {
+		else if (mobile === true || ipad === true){
 			cells[i].addEventListener('touchstart', (event) => {
 				event.preventDefault();
 				turnClick(event);
@@ -136,7 +142,7 @@ function startGame() {
 	if(mobile === false) {
 		canvas.addEventListener('click', turnClickCanvas, false); 
 	}
-	else {
+	else if (mobile === true || ipad === true){
 		canvas.addEventListener('touchstart', (event) => { 
 			event.preventDefault();
 			turnClickCanvas(event);
@@ -150,7 +156,7 @@ function turnClickCanvas(square) {
 	if(mobile === false) {
 		x = (square.clientX - square.explicitOriginalTarget.offsetLeft);
 		y = (square.clientY - square.explicitOriginalTarget.offsetTop);
-	} else {
+	} else if (mobile === true || ipad === true){
 		//console.log(square);
 		x = (square.touches[0].clientX - square.touches[0].target.offsetLeft);
 		y = (square.touches[0].clientY - square.touches[0].target.offsetTop);
@@ -187,6 +193,7 @@ let gameWon = checkWin(origBoard, player);
 if(gameWon) gameOver(gameWon);
 */
 function turnClick(square) {
+	//console.log(square);
 	let radius; 
 	if(square.target.id === forceToMovePiece) {
 		return;
@@ -591,7 +598,7 @@ function removeCircle(x, y, radius) {
 	var ctx = c.getContext("2d");
 	ctx.beginPath();        
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
-    ctx.fillStyle = "orange";
+    ctx.fillStyle = "rgb(75,109,22)";
     ctx.fill();
 }
 

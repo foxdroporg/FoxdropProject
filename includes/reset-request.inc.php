@@ -11,11 +11,29 @@ if (isset($_POST["reset-request-submit"])) {
 
 	//Online Server address: (Check Suspected Spam filter when email is sent)
 	//$url = "www.foxdrop.000webhostapp.com/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
-	$url = "http://foxdrop.000webhostapp.com/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+	$url = "https://foxdrop.000webhostapp.com/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 	
 	$expires = date("U") + 1800;
 
-	require 'dbh.inc.php'; 
+	// require 'dbh.inc.php';		Should work instead of inserting code duplication.
+
+	require '../vendor/autoload.php';
+	$dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
+	$dotenv->load();
+	// Local
+	/*
+	$dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
+	$dbUsername = $_ENV['DB_LOCAL_USERNAME'];
+	$dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
+	$dbName = $_ENV['DB_LOCAL_NAME'];
+	*/
+	// Public
+	$dbServername = $_ENV['DB_SERV_NAME']; 
+	$dbUsername = $_ENV['DB_USERNAME'];
+	$dbPassword = $_ENV['DB_PASSWORD'];
+	$dbName = $_ENV['DB_NAME'];
+	
+	$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
 	$userEmail = $_POST["email"];
 

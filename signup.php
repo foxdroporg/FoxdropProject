@@ -12,7 +12,7 @@
 				<input type="text" name="email" placeholder="E-mail">
 				<input type="text" name="uid" placeholder="Username">
 				<input type="password" name="pwd" placeholder="Password">
-				<br>
+				<br><center><label style="color:grey">Save your username & password somewhere, so you don't forget them.</label></center><br>
 				<button type="submit" name="submit">Sign up</button>
 			</form>
 			<form class="signup-form" action="reset-password.php">

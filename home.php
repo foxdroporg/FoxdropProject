@@ -79,7 +79,7 @@ include_once 'header.php';
 
     .ptext{
       position:absolute;
-      top:50%;
+      top:45%; /* 50%*/
       width:100%;
       text-align:center;
       color:#000;
@@ -182,13 +182,13 @@ include_once 'header.php';
   <section class="section section-light">
     <h2>Signing Up Gives You Access To:</h2>
     <p>
-      A profile page with all your personal information, statistics of your high-scores in games and the website's forum to post in.
+      A profile page with all of your information, statistics on your high scores from games and the ability to post in the website's forum.
     </p>
   </section>
 
   <div class="pimg2">
     <div class="ptext">
-      <span class="border trans">
+      <span class="border"> <!-- border trans --> 
         <a href="./portfolio.php">
           <div class="link">
             2. Navigate To Portfolio
@@ -201,14 +201,14 @@ include_once 'header.php';
   <section class="section section-dark">
     <h2>Portfolio Is Provided With:</h2>
     <p>
-      Classic games that you know and love, animations that will blow you away and web-applicaitons you wish you would have known about earlier!
+      Classic games that you know and love, animations that will blow you away and web-applicaitons that can come in handy!
     </p>
   </section>
 
   <div class="pimg3">
     <div class="ptext">
-      <span class="border trans">
-        3. Take Part Of The Games, Animations and Web-Applicaitons
+      <span class="border"> <!-- border trans --> 
+        3. Take Part In The Games, Animations and Web-Applicaitons
       </span>
     </div>
   </div>
@@ -216,7 +216,7 @@ include_once 'header.php';
   <section class="section section-dark">
     <h2>What Else Needs To Be Said:</h2>
     <p>
-      Enough with the reading, go and explore. Click on what looks exciting and have fun! 
+      The most useful piece of information for a designer or developer, is you. Your thoughts and opinions matter. With your feedback we know where to put our time and energy. So, feel free to talk to us directly or post your feedback on our forum.  
     </p>
     <!-- The three games Snake, Maze and TTS are incorporated with a highscore system that remembers your scores forever. We have come a long way with this website now, go and explore. There is too much material created to see it all in one sitting, so click on what looks exciting and have fun! Like this website on Facebook if you are comfortable with doing so.   -->
   </section>

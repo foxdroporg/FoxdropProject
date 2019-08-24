@@ -349,7 +349,7 @@ $(document).ready(function(){
 				if (playerIsDead == false) {
 					var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
 	      			gameOverSound.play();
-					highscores();
+					// highscores();
 				}
 				playerIsDead = true;
 			}
@@ -361,7 +361,7 @@ $(document).ready(function(){
 			if (!playerIsDead) {
 				var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
 	      		gameOverSound.play();
-						highscores();
+						//highscores();
 			}
 			playerIsDead = true;
 		}
@@ -371,7 +371,7 @@ $(document).ready(function(){
 			if (!playerIsDead) {
 				var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
 	      		gameOverSound.play();
-						highscores();
+						//highscores();
 			}
 			playerIsDead = true;
 		}

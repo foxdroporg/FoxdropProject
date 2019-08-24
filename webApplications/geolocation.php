@@ -47,72 +47,40 @@
 	<section class="mobile-wrapper">
 		<div style="background:black" class="jumbotron mt-5 text-white border">
 		  <h2 style="text-align:center; font-size:40px;">Geolocation<br></h2>
-		  <p style="font-size: 14px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here.</a><br></p> 
+		  <p style="font-size: 16px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here.</a><br></p> 
 
-		  <p style="font-size: 25px; text-align: center">
-		  		<br>
-					Latitude: <span id="lat"></span>° 
+		    <p style="font-size: 25px; text-align: center">
+					<span id="lat"></span>° (latitude)
 				<br>
-					Longitude: <span id="lon"></span>°
+					<span id="lon"></span>° (longitude)
 				<br>
-					Altitude: <span id="altitude"></span>m
+					<span id="altitude"></span>m (altitude)
+	  				<!--
 				<br>
-					<!-- Heading: <span id="heading"></span>° (0° is north) -->
+					Heading: <span id="heading"></span>° (0° is north) 
 				<br>
-					<!-- Speed: <span id="speed"></span>m/s -->
-				<br>
-					Copy latitude and longitude and paste it down below: <br><span style="color:gold" id="lat2"></span>, <span style="color:gold" id="lon2"></span>
+					Speed: <span id="speed"></span>m/s -->
 			</p>
-
-		  <script> // JS
-		  	let lat, lon, lat2, lon2, altitude, heading, speed, weather, air;  
-		  	// Geolocation is avaliable as soon as website is deployed on a (https) hosting service.
-		  	if('geolocation' in navigator) {
-		  		console.log('geolocation avaliable');
-		  		navigator.geolocation.getCurrentPosition(async position => {
-		  			lat = position.coords.latitude;
-		  			lon = position.coords.longitude;
-		  			lat2 = position.coords.latitude;
-		  			lon2 = position.coords.longitude;
-		  			altitude = position.coords.altitude;
-		  			heading = position.coords.heading;
-		  			speed = position.coords.speed;
-		  			altitude == undefined ? altitude='Mobile Only - ' : '';
-		  			heading == undefined ? heading='Bugged - ' : '';
-		  			speed == undefined ? speed='Bugged - ' : '';
-		  			document.getElementById('lat').textContent = lat.toFixed(2);
-		  			document.getElementById('lon').textContent = lon.toFixed(2);
-
-		  			document.getElementById('lat2').textContent = lat2.toFixed(2);
-		  			document.getElementById('lon2').textContent = lon2.toFixed(2);
-
-		  			document.getElementById('altitude').textContent = altitude;
-		  			//document.getElementById('heading').textContent = heading;
-		  			//document.getElementById('speed').textContent = speed;
-		  		});
-		  	}
-		  	else {
-		  		console.log('geolocation IS NOT avaliable');
-		  	}
-		  </script>
 		</div>
 	</section>
 
 	<section class="mobile-wrapper">
 		<div style="background:black" class="jumbotron mt-5 text-white border">
-			<h2 style="text-align:center; font-size:35px;">Local weather</h2>
+			<h2 style="text-align:center; font-size:40px;">Weather Forecast</h2>
 			<div class="row mt-5 ">
 				<div class="col">
 					<form style="text-align:center" action="geolocationParams.php" method="GET">
 						<input type="text" name="city" id="city" placeholder="Search for city..." style="width:11em; height: 2.7em; font-size: 20px">	
 						<div class="w-100 mt-2"></div>
-						<label style="color:grey">Required: e.g. Stockholm</label>
+						<label style="color:red">Required: </label> <label style="color:grey"> e.g. Stockholm</label>
 						<div class="w-100 mt-3"></div>
-						<input type="text" name="lat" id="lat" placeholder="Input latitude..." style="width:11em; height: 2.7em; font-size: 20px">
+						
+						<input type="text" name="lat" id="latInput" placeholder="Input latitude..." style="width:11em; height: 2.7em; font-size: 20px">
 						<div class="w-100 mt-2"></div>
 						<label style="color:grey;">Optional: e.g. 57.21</label>
 						<div class="w-100 mt-2"></div>
-						<input type="text" name="lon" id="lon" placeholder="Input longitude..." style="width:11em; height: 2.7em; font-size: 20px">
+						
+						<input type="text" name="lon" id="lonInput" placeholder="Input longitude..." style="width:11em; height: 2.7em; font-size: 20px">
 						<div class="w-100 mt-2"></div>
 						<label style="color:grey;">Optional: e.g. 20.17</label>
 						<div class="w-100 mt-4"></div>
@@ -123,6 +91,39 @@
 			</div>
 		</div>
 	</section>
+
+
+	<script> // JS
+		let lat, lon, lat2, lon2, altitude, heading, speed, weather, air;  
+		// Geolocation is avaliable as soon as website is deployed on a (https) hosting service.
+		if('geolocation' in navigator) {
+			console.log('geolocation avaliable');
+			navigator.geolocation.getCurrentPosition(async position => {
+				lat = position.coords.latitude;
+				lon = position.coords.longitude;
+				lat2 = position.coords.latitude;
+				lon2 = position.coords.longitude;
+				altitude = position.coords.altitude;
+				heading = position.coords.heading;
+				speed = position.coords.speed;
+				altitude == undefined ? altitude='Mobile Only - ' : '';
+				heading == undefined ? heading='Bugged - ' : '';
+				speed == undefined ? speed='Bugged - ' : '';
+				document.getElementById('lat').textContent = lat.toFixed(2);
+				document.getElementById('lon').textContent = lon.toFixed(2);
+
+				document.getElementById('latInput').value = lat2.toFixed(2);
+				document.getElementById('lonInput').value = lon2.toFixed(2);
+
+				document.getElementById('altitude').textContent = altitude;
+				//document.getElementById('heading').textContent = heading;
+				//document.getElementById('speed').textContent = speed;
+			});
+		}
+		else {
+			console.log('geolocation IS NOT avaliable');
+		}
+	</script>
 
 	<!--
 		<section class="mobile-wrapper">
@@ -169,6 +170,43 @@
 			</div>	
 		</section>
 	-->
+
+	<h2 style="text-align:center; color:white; font-size:40px;">You are here</h2>
+		<div id="issMap"></div>
+
+		<script type="text/javascript">
+			// Making a map and tiles
+			const mymap = L.map('issMap');
+			const attribution =
+			'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+			const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		  	const tiles = L.tileLayer(tileUrl, { attribution });
+		  	tiles.addTo(mymap);
+
+		  	// Making a marker with a custom icon
+		    const issIcon = L.icon({
+		        iconUrl: '../images/personIcon.png',
+		        iconSize: [32, 32],
+		        iconAnchor: [25, 16]
+		    });
+		    const marker = L.marker([0, 0], { icon: issIcon }).addTo(mymap);
+		    let firstTime = true;
+
+			async function getISS() {
+				const latitude = lat;
+				const longitude = lon;
+
+				marker.setLatLng([latitude, longitude]);
+		        if (firstTime) {
+		          mymap.setView([latitude, longitude], 13); 
+		          firstTime = false;
+		        }
+			}
+			getISS();
+			setInterval(getISS, 1000);
+		</script>
+		<h2 style="text-align:center; color:white; font-size:20px;">This information is used to give you accurate weather forecasts</h2>
+		<br><br>
 </body>
 
 </html>

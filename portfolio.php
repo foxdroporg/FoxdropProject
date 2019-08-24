@@ -33,18 +33,18 @@ include_once 'header.php';
 						<label style="color:grey">A game for those who can type fast on a keyboard</label>
 					</div>
 					<div class="column">
-						<a href="games/simonsays/menu.html" style="border:5px solid #ccc;">
-							<img src="images/simonsays.jpg" alt="2ndGame" style="width:85%; height:100%; ">
+						<a href="games/snake/index.php" style="border:5px solid #ccc;">
+							<img src="images/snake.jpg" alt="3rdGame" style="width:100%; height:100%; ">
 						</a>
-						<label style="color:grey">A game for those who have a good memory</label>
+						<label style="color:grey">A game for people with fast reactions. (Does not work on Mobile)</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="column">
-						<a href="games/pong/index.html" style="border:5px solid #ccc;">
-							<img src="images/pong.png" alt="1stGame" style="width:95%; height:95%; ">
+						<a href="games/hitthelight/index.html" style="border:5px solid #ccc;">
+								<img src="images/hitTheLight.png" alt="2ndSound" style="width:100%; height:100%; ">
 						</a>
-						<label style="color:grey">A game for people that are fast with the mouse. (Does not work on Mobile)</label>
+						<label style="color:grey">A game for people with good vision</label>
 					</div>
 					<div class="column">
 						<a href="games/maze/index.php" style="border:5px solid #ccc;">
@@ -69,16 +69,16 @@ include_once 'header.php';
 				</div>
 				<div class="row">
 					<div class="column">
-						<a href="games/snake/index.php" style="border:5px solid #ccc;">
-							<img src="images/snake.jpg" alt="3rdGame" style="width:100%; height:100%; ">
+						<a href="games/simonsays/menu.html" style="border:5px solid #ccc;">
+							<img src="images/simonsays.jpg" alt="2ndGame" style="width:85%; height:100%; ">
 						</a>
-						<label style="color:grey">A game for people with fast reactions. (Does not work on Mobile)</label>
+						<label style="color:grey">A game for those who have a good memory</label>
 					</div>
 					<div class="column">
-						<a href="games/hitthelight/index.html" style="border:5px solid #ccc;">
-							<img src="images/hitTheLight.png" alt="2ndSound" style="width:100%; height:100%; ">
+						<a href="games/pong/index.html" style="border:5px solid #ccc;">
+								<img src="images/pong.png" alt="1stGame" style="width:95%; height:95%; ">
 						</a>
-						<label style="color:grey">A game for people with good vision</label>
+						<label style="color:grey">A game for people that are fast with the mouse. (Does not work on Mobile)</label>
 					</div>
 				</div>
 			</div>

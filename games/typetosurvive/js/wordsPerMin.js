@@ -170,14 +170,24 @@ function matchWords() {
       if (i < userInput.length) {
         element === userInputArray[i] ? color='#42f55a' : color='#f54e42'; 
       }
-      actualArray[i] = "<span key="+i+" style=color:"+color+">"+element+"</span>";
+      actualArray[i] = "<span key="+i+" style='color:"+color+"'>"+element+"</span>";
 
-      nextWordDisplay.innerHTML = actualArray;
-      nextWordDisplay.innerHTML = nextWordDisplay.innerHTML.replace(/,/g, "");
-      nextWordDisplay.innerHTML = nextWordDisplay.innerHTML+" ";
+      if(element === ' ' && userInputArray[i] !== ' ' && actualArray.length === userInputArray.length) {
+        actualArray[i] = "<span key="+i+" style='background-color:"+color+"'>"+element+"</span>";
+        wordInput.style.backgroundColor = '#f54e42';
+        wordInput.setAttribute('maxlength', actualArray.length);
+      }
+      else {
+        wordInput.style.backgroundColor = '#ffffff';
+        wordInput.setAttribute('maxlength', 524288); // Default limit
+      }
+    });
+    // These three lines used to be in the map function.
+    nextWordDisplay.innerHTML = actualArray;
+    nextWordDisplay.innerHTML = nextWordDisplay.innerHTML.replace(/,/g, "");
+    nextWordDisplay.innerHTML = nextWordDisplay.innerHTML+" ";
 
-      wordArray.splice(wordIndex, 1, nextWordDisplay.innerHTML);
-    })
+    wordArray.splice(wordIndex, 1, nextWordDisplay.innerHTML);
 
     boolean = false;
     // Wordarray is messed up after first word
@@ -306,19 +316,19 @@ function highscores() {
 }
 
 const words = [
-"Having spent most of her life exploring the jungle with her parents nothing could prepare Dora for her most dangerous adventure ever: high school. Always the explorer Dora quickly finds herself leading Boots Diego a mysterious jungle inhabitant and a ragtag group.",
-"A kind-hearted street urchin Aladdin vies for the love of the beautiful princess Jasmine the princess of Agrabah. When he finds a magic lamp he uses a genie's magic power to make himself a prince in order to marry her. He is also on a mission to stop the powerful Jafar.",
-"A frustrated musician whose musical career is going nowhere despite the faith that his manager Ellie Appleton has in him. However on the night Jack decides to give up the whole world is momentarily hit with a massive blackout during which Jack.",
-"Chronicles the experiences of a formerly successful banker as a prisoner in the gloomy jailhouse of Shawshank after being found guilty of a crime he did not commit. The film portrays a man who befriends a number of fellow prisoners most notably a wise long-term inmate named Red.",
-"The Godfather is the head of the Corleone mafia family in New York. He is at the event of his daughter's wedding. Michael Vito's youngest son and a decorated Marine is also present at the wedding.",
-"The continuing saga of the Corleone crime family tells the story of a young Vito Corleone growing up in Sicily and in New York. And follows Michael Corleone in the 1950s as he attempts to expand the family business into Las Vegas Hollywood and Cuba.",
-"Set within a year after the events of Batman Begins Batman Lieutenant James Gordon and new District Attorney Harvey Dent successfully begin to round up the criminals that plague Gotham City until a mysterious and sadistic criminal mastermind known only as The Joker.",
-"The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young man is guilty or innocent of murdering his father. What begins as an open-and-shut case of murder.",
-"The final confrontation between the forces of good and evil fighting for control of the future of Middle-earth. Frodo and Sam reach Mordor in their quest to destroy the One Ring while Aragorn leads the forces of good against Sauron's evil army at the stone city of Minas Tirith.",
-"Forrest Gump is a simple man with a low IQ but good intentions. He is running through childhood with his best and only friend Jenny. His mama teaches him the ways of life and leaves him to choose his destiny.",
-"The future of earth has been riddled by disasters famines and droughts. There is only one way to ensure mankind's survival interstellar travel. A newly discovered wormhole in the far reaches of our solar system allows a team of astronauts to go where no man has gone before.",
-"A typical American teenager of the eighties is accidentally sent back to in a plutonium-powered DeLorean time machine invented by a slightly mad scientist. During his often hysterical always amazing trip back in time.",
-"In Paris the aristocratic and intellectual Philippe is a millionaire who is interviewing candidates for the position of his carer with his red-haired secretary Magalie. Out of the blue Driss cuts the line of candidates and brings a document from the Social Security.",
-"Maximus is a powerful roman general loved by the people and the aging emperor Marcus Aurelius. Before his death the emperor chooses Maximus to be his heir over his own son Commodus and a power struggle leaves Maximus and his family condemned to death.",
-"Miles is a New York teen struggling with school friends and on top of that being the new Spider-Man. When he comes across Peter Parker the erstwhile saviour of New York in the multiverse Miles must train to become the new protector of his city."
+"Having spent most of her life exploring the jungle with her parents nothing could prepare her for the most dangerous adventure ever that is high school.",
+"A kind hearted street seller vies for the love of the beautiful princess jasmine the princess of the counry. When he finds a magic lamp he uses a genie magic power.",
+"A frustrated man whose musical career is going nowhere even though the faith that his manager has in him. However on the night he decides to give up the whole world.",
+"The formerly successful banker as a prisoner in the gloomy jailhouse after being found guilty of a crime he did not commit. Murdering his father he did not.",
+"The father is the head of the mafia family in the city. He is at the event of his daughters wedding. The youngest son and a decorated her is also present at the wedding.",
+"The continuing saga of the crime family tells the story of a young Vito growing up in the city. And follows him as he attempts to expand the family business into the hood.",
+"Set within a year after the events of batman begins him and a new area lawyer manage has started to round up the criminals that are no good for the future of the city.",
+"The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young man is guilty or innocent of murdering his father.",
+"The final battle between the forces of good and evil fighting for control of the future of earth. Frodo reach the land of evil in his quest to destroy the one ring.",
+"He is a simple man with a low iq but good intentions. He is running through time with his best and only friend. His mama teaches him the ways of life and leaves him to choose his ways.",
+"Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back home the destruction of his homeworld and the end of the mankind.",
+"An american teenager from the past is by accident sent back in time by a time machine invented by a very mad scientist. During his often fun and always great trip back in time.",
+"In the warm country the charming and smart millionaire who is currently doing interviews for possible employe to the position of his carer with his red haired friend.",
+"He is a high general loved by the people but is aging fast. Before his death he chooses another one to be his heir over his own son and a power struggle.",
+"He is a city teen struggling with school friends and on top of that being the new spider man. When he comes across Parker the saviour of the city in the multiverse."
 ]

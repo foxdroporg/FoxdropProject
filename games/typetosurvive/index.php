@@ -81,7 +81,7 @@
                     <div class="row mt-1">
                         <div class="col-md-12">
                             <div class="card card-body bg-dark text-white">
-                            <h5 style="text-align:center">Highscores (WPM)</h5>
+                            <h5 style="text-align:center;">Highscores (WPM)</h5>
 	                            <p style="text-align:center"> 
 		                            <?php
 										include '../../vendor/autoload.php';
@@ -105,14 +105,25 @@
 												$data[] = $row;
 											}
 										}
+										$iterations = 0;
+										$color = array("#ffd600", "#C0C0C0", "#cd7f32");
 										foreach ($data as &$value) {
-											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' words/minute</span>';
-											echo "<br>";
+											if($iterations == 15) {
+												return;
+											}
+											if($iterations < 3) {
+												echo '<span style="color:'.$color[$iterations].';text-align:center;">'.($iterations+1).'. ' . $value[0] . ' - ' . $value[1] . ' points</span>';
+												echo "<br>";
+											} else {
+												echo '<span style="color:#FFF;text-align:center;">'.($iterations+1).'. ' . $value[0] . ' - ' . $value[1] . ' points</span>';
+												echo "<br>";
+											}
+											$iterations++;
 										}
 									?>
 								</p>
 								<br>
-								<h5 style="text-align:center">Highscores (Typing-Survivor)</h5>
+								<h5 style="text-align:center;">Highscores On Easy (Typing-Survivor)</h5>
 	                            <p style="text-align:center"> 
 		                            <?php
 										include '../../vendor/autoload.php';
@@ -135,9 +146,20 @@
 												$data[] = $row;
 											}
 										}
+										$iterations = 0;
+										$color = array("#ffd600", "#C0C0C0", "#cd7f32");
 										foreach ($data as &$value) {
-											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' points</span>';
-											echo "<br>";
+											if($iterations == 15) {
+												return;
+											}
+											if($iterations < 3) {
+												echo '<span style="color:'.$color[$iterations].';text-align:center;">'.($iterations+1).'. ' . $value[0] . ' - ' . $value[1] . ' points</span>';
+												echo "<br>";
+											} else {
+												echo '<span style="color:#FFF;text-align:center;">'.($iterations+1).'. ' . $value[0] . ' - ' . $value[1] . ' points</span>';
+												echo "<br>";
+											}
+											$iterations++;
 										}
 									?>
 								</p>

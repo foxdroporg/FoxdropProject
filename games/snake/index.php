@@ -65,10 +65,10 @@
                     <div class="row mt-1">
                         <div class="col-md-12">
                             <div class="card card-body bg-dark text-white">
-                            <h5 style="text-align:center"><b>Highscores</b></h5>
+                            <h5 style="text-align:center;"><b>Highscores (On Easy)</b></h5>
 	                            <p style="text-align:center"> 
 									<?php
-										echo '<span style="color:#FFF;text-align:center;"><br>LEADERBOARD for Snake: <br><br></span>';
+										//echo '<span style="color:#FFF;text-align:center;"><br>LEADERBOARD for Snake: <br><br></span>';
 										/* dbh.inc.php has a path to autoload.php that does not work from this directory... This is why we have re-written the code from (dbh.inc.php) file here. */ 
 												include '../../vendor/autoload.php';
 												$dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
@@ -99,9 +99,20 @@
 												$data[] = $row;
 											}
 										}
+										$iterations = 0;
+										$color = array("#ffd600", "#C0C0C0", "#cd7f32");
 										foreach ($data as &$value) {
-											echo '<span style="color:#FFF;text-align:center;">' . $value[0] . ' - ' . $value[1] . ' points</span>';
-											echo "<br>";
+											if($iterations == 15) {
+												return;
+											}
+											if($iterations < 3) {
+												echo '<span style="color:'.$color[$iterations].';text-align:center;">'.($iterations+1).'. ' . $value[0] . ' - ' . $value[1] . ' points</span>';
+												echo "<br>";
+											} else {
+												echo '<span style="color:#FFF;text-align:center;">'.($iterations+1).'. ' . $value[0] . ' - ' . $value[1] . ' points</span>';
+												echo "<br>";
+											}
+											$iterations++;
 										}
 									?>
 								</p>
