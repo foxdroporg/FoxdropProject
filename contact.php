@@ -10,16 +10,45 @@
   $dbName = $_ENV['DB_LOCAL_NAME'];
 */
   // Online 
-  
   $dbServername = $_ENV['DB_SERV_NAME']; 
   $dbUsername = $_ENV['DB_USERNAME'];
   $dbPassword = $_ENV['DB_PASSWORD'];
   $dbName = $_ENV['DB_NAME'];
   
-  $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+  $conn = @mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
   include_once 'header.php';
 ?>
+
+<head>
+  <meta charset="utf-8">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700">
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/dd01eeee16.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+    #navButton4 {
+      font-weight: bold;
+    }
+     /* Style buttons */
+    .btn {
+      background-color: black; /* Blue background */
+      border: none; /* Remove borders */
+      color: white; /* White text */
+      cursor: pointer; /* Mouse pointer on hover */
+    }
+
+    /* Darker background on mouse-over */
+    .btn:hover {
+      background-color: white;
+    } 
+  </style>
+</head>
 
 <section class="main-container">
   <div class="main-wrapper">
@@ -90,33 +119,6 @@
 <section class="main-container">
   <div class="main-wrapper">
   <div class="background-color">
-
-    <head>
-      <meta charset="utf-8">
-      <meta name=viewport content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700">
-      
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <script src="https://kit.fontawesome.com/dd01eeee16.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-      <link rel="stylesheet" type="text/css" href="style.css">
-
-      <style>
-         /* Style buttons */
-        .btn {
-          background-color: black; /* Blue background */
-          border: none; /* Remove borders */
-          color: white; /* White text */
-          cursor: pointer; /* Mouse pointer on hover */
-        }
-
-        /* Darker background on mouse-over */
-        .btn:hover {
-          background-color: white;
-        } 
-      </style>
-    </head>
 
     <body>
       <h2 style="color:#FFFFFF; font-size: 50px">Contact</h2>

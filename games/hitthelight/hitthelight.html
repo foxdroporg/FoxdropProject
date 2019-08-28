@@ -21,6 +21,7 @@
             html,
             body {
               overflow: hidden;
+              background: url("../../images/forrest2.png");
             }
             img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
               display: none !important;
@@ -370,10 +371,16 @@
                 return;
               }
               if (currentPos != id) {
+                let audioMinus = new Audio("../../soundeffects/loseOnPong.mp3");
+                audioMinus.play();
                 totalHits += -1;
                 document.status.score.value = totalHits;
                 document.playingField.elements[id].checked = false;
               } else {
+                let audioPlus = new Audio(
+                  "../../soundeffects/hitthelightClick.mp3"
+                );
+                audioPlus.play();
                 totalHits += 1;
                 document.status.score.value = totalHits;
                 launch();

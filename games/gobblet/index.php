@@ -50,16 +50,18 @@
                             <div class="card card-body bg-dark text-white">
 	                            <h5 style="text-align:center">Gobblet Rules:</h5>
 	                            <br>
-	                            <p style="text-align:center">Playing pieces (Gobblets) are of four sizes: <br>3 big, 3 medium, 3 small and 3 mini. <br><br>
+	                            <p style="text-align:center">
+	                            	Goal of the Game: <br>The first player to build a <b>horizontal</b>, <b>vertical</b> or <b>diagonal</b> line of 4 pieces is the winner!
+	                            	<br>
+	                            	<br>
+	                            	Playing pieces (Gobblets) in sizes of four: <br>3 big, 3 medium, 3 small and 3 mini. 
+	                            	<br><br>
 	                            	In turns, players can either: <br>
 	                            	1. Put a new Gobblet on an empty square.<br>
 	                            	2. Pick up a Gobblet (of your color) already on the playing field and place it over a smaller Gobblet.
 	                            	<br>
 	                            	<br> 
 	                            	Clarification/Exceptions: <br> 1. If your opponent already has 3 in a row, you may take a Gobblet <b>from an external stack and place it over 1 of the 3 pieces in the line</b>.<br> 2. If you uncover one of your opponent’s pieces, and this move reveals a line of 4 of your opponent’s pieces, <br>you lose unless you can place your gobblet over a different piece in this same line of 4.
-	                            	<br>
-	                            	<br>
-	                            	Goal of the Game: <br>The first player to build a <b>horizontal</b>, <b>vertical</b> or <b>diagonal</b> line of 4 pieces is the winner!
 	                            	<br>
 	                            	<br>
 	                            	Link to rules: <br>(If you want to have it on a seperate tab while playing)<br>

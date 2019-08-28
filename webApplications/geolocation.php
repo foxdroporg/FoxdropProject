@@ -115,7 +115,7 @@
 				document.getElementById('latInput').value = lat2.toFixed(2);
 				document.getElementById('lonInput').value = lon2.toFixed(2);
 
-				document.getElementById('altitude').textContent = altitude;
+				document.getElementById('altitude').textContent = altitude.toFixed(2);
 				//document.getElementById('heading').textContent = heading;
 				//document.getElementById('speed').textContent = speed;
 			});

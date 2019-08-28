@@ -16,6 +16,10 @@ include_once 'header.php';
 			filter: saturate(250%);
 			/* opacity: 0.5; */
 		}
+
+		#navButton2 {
+	      font-weight: bold;
+	    }
 	</style>
 
 </head>

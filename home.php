@@ -22,6 +22,10 @@ include_once 'header.php';
       color:#666;
     }
 
+    #navButton1 {
+      font-weight: bold;
+    }
+
     .link
     {
        color:white;

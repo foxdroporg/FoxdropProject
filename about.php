@@ -10,6 +10,11 @@ include_once 'header.php';
 		<meta charset="utf-8">
 		<meta name=viewport content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<style type="text/css">
+			#navButton3 {
+		      font-weight: bold;
+		    }
+		</style>
 	</head>
 
 	<body>
@@ -121,10 +126,10 @@ include_once 'header.php';
 
 			<div class="row" style="padding-bottom: 5%; padding-left: 10%; padding-right: 10%;">
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Kristopher Werlinder <p style="color:white">Role: Co-Founder <br><br>Proficiencies: PHP, MySQL, NodeJS, MongoDB, jQuery, Java, Python.</p></p>
+					<p style="color:orange">Kristopher Werlinder <p style="color:white">Role: <br>Co-Founder <br><br>Proficiencies: <br>PHP, MySQL, NodeJS, MongoDB, jQuery, Java, Python.<br><br>Portfolio:<a href="https://christofferos.github.io/interactive-portfolio/index.html" style="text-decoration: none; color:white;">Click Here...</a></p></p>
 				</div>
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Erik Henriksson <p style="color:white">Role: Co-Founder <br><br>Proficiencies: HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>
+					<p style="color:orange">Erik Henriksson <p style="color:white">Role: <br>Co-Founder <br><br>Proficiencies: <br>HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>
 				</div>
 
 			</div>
@@ -148,6 +153,7 @@ include_once 'header.php';
 
 			<div class="header" style="color:white; text-align:center; padding-bottom: 3%;">
 				Want to know more about us? <a style="color:orange; padding-top: 2%" href="https://github.com/foxdroporg/FoxdropProject" target="_blank">https://github.com/foxdroporg/FoxdropProject</a>
+				<!-- <a style="color:orange; padding-top: 2%" href="https://novaheadphones.netlify.com/" target="_blank">Another website we are currently working on</a> -->
 				<br>
 				We welcome all student web designers and developers to join us in helping grow this site.
 			</div>

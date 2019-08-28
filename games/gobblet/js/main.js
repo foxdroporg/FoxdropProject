@@ -151,6 +151,8 @@ function startGame() {
 }
 
 function turnClickCanvas(square) {
+	let select = new Audio("../../soundeffects/gobbletSelect.mp3");
+	select.play();
 	let x;
 	let y;
 	if(mobile === false) {
@@ -196,6 +198,8 @@ function turnClick(square) {
 	//console.log(square);
 	let radius; 
 	if(square.target.id === forceToMovePiece) {
+		let denied = new Audio("../../soundeffects/gobbletDenied.mp3");
+	    denied.play();
 		return;
 	}
 
@@ -242,6 +246,10 @@ function turnClick(square) {
 					turnPickedUpGobblet(square.target.id, radiusAndPlayer[1], radiusAndPlayer[0]*scaleFactor); 
 					if(radiusAndPlayer[1] === 'O') playerTurn--;
 				}
+
+				let pickUpPiece = new Audio("../../soundeffects/gobbletPickedup2.mp3");
+			    pickUpPiece.play();
+
 				forceToMovePiece = square.target.id;
 				removedPiece = true;
 				turnMessage("WHITE");
@@ -260,6 +268,10 @@ function turnClick(square) {
 					gameWon = checkWin(origBoard, playerO);
 					if(gameWon) gameOver(gameWon);
 				}
+				else {
+					let denied = new Audio("../../soundeffects/gobbletDenied.mp3");
+			    	denied.play();
+				}
 			}
 			else if(checkThreeInARow(origBoard, playerO) && origBoard[square.target.id] == 'O' && !removedPiece) {
 				radius = determineCircleRadius("WHITE");
@@ -274,6 +286,10 @@ function turnClick(square) {
 					gameWon = checkWin(origBoard, playerO);
 					if(gameWon) gameOver(gameWon);
 				}
+			}
+			else {
+				let denied = new Audio("../../soundeffects/gobbletDenied.mp3");
+			    denied.play();
 			}
 		break;
 
@@ -319,6 +335,8 @@ function turnClick(square) {
 					turnPickedUpGobblet(square.target.id, radiusAndPlayer[1], radiusAndPlayer[0]*scaleFactor); 
 					if(radiusAndPlayer[1] === 'X') playerTurn--;
 				}
+				let pickUpPiece = new Audio("../../soundeffects/gobbletPickedup2.mp3");
+			    pickUpPiece.play();
 				forceToMovePiece = square.target.id;
 				removedPiece = true;
 				turnMessage("BLACK");
@@ -337,6 +355,10 @@ function turnClick(square) {
 					gameWon = checkWin(origBoard, playerX);
 					if(gameWon) gameOver(gameWon);
 				}
+				else {
+					let denied = new Audio("../../soundeffects/gobbletDenied.mp3");
+			    	denied.play();
+				}
 			}
 			else if(checkThreeInARow(origBoard, playerX) && origBoard[square.target.id] == 'X' && !removedPiece) {
 				radius = determineCircleRadius("BLACK");
@@ -351,6 +373,10 @@ function turnClick(square) {
 					gameWon = checkWin(origBoard, playerX);
 					if(gameWon) gameOver(gameWon);
 				}
+			}
+			else {
+				let denied = new Audio("../../soundeffects/gobbletDenied.mp3");
+			    denied.play();
 			}
 		break;
 	}
@@ -643,9 +669,13 @@ function turn(squareId, player, size) {
 	origBoard[squareId] = player;
 	switch(playerTurn%2) {
 		case 0:
+			let movePiece = new Audio("../../soundeffects/gobbletMoved.mp3");
+		    movePiece.play();
 			document.getElementById(squareId).innerHTML = '<img style="width:'+size+'; height:'+size+';" src="../../images/whiteCircle.png">';
 		break;
 		case 1:
+			let movePiece2 = new Audio("../../soundeffects/gobbletMoved2.mp3");
+		    movePiece2.play();
 			document.getElementById(squareId).innerHTML = '<img style="width:'+size+'; height:'+size+';" src="../../images/blackCircle.png">';
 		break;
 	}

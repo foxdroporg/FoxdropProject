@@ -1,3 +1,24 @@
+<?php
+	include '../../vendor/autoload.php';
+	$dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
+	$dotenv->load();
+	// Local
+	/*
+	$dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
+	$dbUsername = $_ENV['DB_LOCAL_USERNAME'];
+	$dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
+	$dbName = $_ENV['DB_LOCAL_NAME'];
+	*/
+	// Online 
+	$dbServername = $_ENV['DB_SERV_NAME']; 
+	$dbUsername = $_ENV['DB_USERNAME'];
+	$dbPassword = $_ENV['DB_PASSWORD'];
+	$dbName = $_ENV['DB_NAME'];
+	
+
+	$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+?>
+
 <link rel="shortcut icon" type="image/png" href="../../images/firefoxLogo.png">
 <section class="main-container">
 	<div class="main-wrapper">
@@ -9,7 +30,8 @@
 					content="IE=edge">
 					<meta name="viewport" content="width=device-width, initial-scale=1.0">
 					<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
+	crossorigin="anonymous">
+					<script src="https://kit.fontawesome.com/dd01eeee16.js"></script>
 				    <title>Snake</title>
 				    
 				    <style>
@@ -19,6 +41,10 @@
 				    		justify-content: center;
 				    		background: #202020;
 				    	}
+						button {
+							cursor: pointer;
+							/*cursor: not-allowed */
+						}
 				    </style>
 
 				    <script
@@ -44,8 +70,36 @@
                         </form>
                         <form class="difficulty-form" action="difficulty/insane.php">
                             <button type="submit" class="btn-danger btn-lg btn-block" name="difficulty" value="insane">Insane</button>
-                        </form>
-                    </div>
+						</form>
+						<!-- Last form done in PHP -->
+						<?php 
+							session_start();
+							if(isset($_SESSION['u_uid'])) {
+								$username = $_SESSION['u_uid'];
+								$sql = "SELECT * FROM scores WHERE game = 'snake' AND username = '$username' ORDER BY user_score DESC";
+								$result = mysqli_query($conn, $sql);
+								$data = array();
+								while ($row = mysqli_fetch_row($result)) {
+									$data[] = $row;
+								}
+								if($data[0][1] >= 40) { // TESTING: || $username === "Christofferos"
+									echo '<form class="difficulty-form" action="difficulty/locked.php">
+											<button id="limitedContent" type="submit" class="btn-info btn-lg btn-block" name="difficulty" value="locked"><i class="fas fa-lock"></i> 40 points</button>
+										</form>';
+									echo '<span style="color:green">Unlocked</span>';
+								}
+								else {
+									echo '<button id="limitedContent" style="cursor: not-allowed" type="submit" class="btn-info btn-lg btn-block" name="difficulty" value="locked"><i class="fas fa-lock"></i> 40 points</button>';
+									echo '<span style="color:red">Locked</span>';
+								}
+							}
+							else {
+								echo '<button id="limitedContent" style="cursor: not-allowed" type="submit" class="btn-info btn-lg btn-block" name="difficulty" value="locked"><i class="fas fa-lock"></i> 40 points</button>';
+								echo '<span style="color:red">Login Required</span>';
+							}
+						?>
+					</div>
+					
 
                     <!-- Instructions -->
                      <div class="row mt-5">
@@ -68,26 +122,6 @@
                             <h5 style="text-align:center;"><b>Highscores (On Easy)</b></h5>
 	                            <p style="text-align:center"> 
 									<?php
-										//echo '<span style="color:#FFF;text-align:center;"><br>LEADERBOARD for Snake: <br><br></span>';
-										/* dbh.inc.php has a path to autoload.php that does not work from this directory... This is why we have re-written the code from (dbh.inc.php) file here. */ 
-												include '../../vendor/autoload.php';
-												$dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
-												$dotenv->load();
-												// Local
-												/*
-												$dbServername = $_ENV['DB_LOCAL_SERV_NAME']; 
-												$dbUsername = $_ENV['DB_LOCAL_USERNAME'];
-												$dbPassword = $_ENV['DB_LOCAL_PASSWORD'];
-												$dbName = $_ENV['DB_LOCAL_NAME'];
-												*/
-												// Online 
-												$dbServername = $_ENV['DB_SERV_NAME']; 
-												$dbUsername = $_ENV['DB_USERNAME'];
-												$dbPassword = $_ENV['DB_PASSWORD'];
-												$dbName = $_ENV['DB_NAME'];
-
-												$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
-
 										$sql = "SELECT * FROM scores WHERE game = 'snake' ORDER BY user_score DESC";
 										$result = mysqli_query($conn, $sql);
 

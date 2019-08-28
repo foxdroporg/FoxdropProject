@@ -692,6 +692,10 @@ MEDIA QUERIES
     /* 28 rem */
   }
 
+  header nav ul li a {
+    font-size: 15px;
+  }
+
   /* Very important for login form to stay in one line */
   form {
     margin-right: 3px !important;
