@@ -1,442 +1,601 @@
-$(document).ready(function(){
+$(document).ready(function() {
+  /* class Rectangle is used to create walls that spawn onto the snake-map. CollisionDetection returns true if collision between wall and snake is detected*/
+  class Rectangle {
+    constructor(x1, x2, y1, y2) {
+      this.x1 = x1;
+      this.x2 = x2;
+      this.y1 = y1;
+      this.y2 = y2;
+    }
+    collisionDetection(checkx, checky) {
+      if (
+        checkx >= this.x1 &&
+        checkx <= this.x2 &&
+        checky >= this.y1 &&
+        checky <= this.y2
+      )
+        return true;
+      else return false;
+    }
+  }
 
-/* class Rectangle is used to create walls that spawn onto the snake-map. CollisionDetection returns true if collision between wall and snake is detected*/
-	class Rectangle {
-		constructor(x1, x2, y1, y2) {
-			this.x1 = x1;
-			this.x2 = x2;
-			this.y1 = y1;
-			this.y2 = y2;
-		}
-		collisionDetection(checkx, checky) {
-			if(checkx >= this.x1 && checkx <= this.x2 && checky >= this.y1 && checky <= this.y2)
-				return true;
-			else
-				return false;
-		}
-	}
+  let gameArea = $("#game-area");
+  let maxGameArea = 20;
+  var hasPressed = false;
 
-	let gameArea = $("#game-area");
-	let maxGameArea = 20;
-	var hasPressed = false;
+  /* Controls the amount of points needed before walls will spawn onto the map */
+  var easyDifficulty = 10;
+  var mediumDifficulty = 20;
+  var hardDifficulty = 30;
+  var maxedDifficulty = 40;
 
-	/* Controls the amount of points needed before walls will spawn onto the map */
-	var easyDifficulty = 10;
-	var mediumDifficulty = 20;
-	var hardDifficulty = 30;
-	var maxedDifficulty = 40;
+  /* Array stores all the rectangles that have been spawned */
+  var rectangleList = [];
 
-	/* Array stores all the rectangles that have been spawned */
-	var rectangleList = [];
+  /* Sets the player to length 4, position at 18rows down and 0columns to the right, sets the direction of the snake to the right*/
+  let playerLength = 4;
+  let playerPos = {
+    tr: 18,
+    td: 0
+  };
+  let playerDir = {
+    up: 1,
+    right: 2,
+    down: 3,
+    left: 4
+  };
+  let currentPlayerDir = playerDir["right"];
 
-	/* Sets the player to length 4, position at 18rows down and 0columns to the right, sets the direction of the snake to the right*/
-	let playerLength = 4;
-	let playerPos = {
-		"tr": 18,
-		"td": 0
-	};
-	let playerDir = {
-		"up": 1,
-		"right": 2,
-		"down": 3,
-		"left": 4
-	};
-	let currentPlayerDir = playerDir["right"];
+  /* First point is spawned randomly accross the whole playfield */
+  let pointPosX = Math.floor(Math.random() * 19) + 0;
+  let pointPosY = Math.floor(Math.random() * 19) + 0;
+  let pointPos = {
+    posX: pointPosX,
+    posY: pointPosY
+  };
 
-	/* First point is spawned randomly accross the whole playfield */
-	let pointPosX = Math.floor(Math.random() * 19) + 0;
-	let pointPosY = Math.floor(Math.random() * 19) + 0;
-	let pointPos = {
-		"posX": pointPosX,
-		"posY": pointPosY
-	};
+  let frameCount = 0;
 
-	let frameCount = 0;
+  let gameScore = 0;
 
-	let gameScore = 0;
+  let playerIsDead = false;
 
-	let playerIsDead = false;
+  function drawGameArea() {
+    for (let index = 0; index < maxGameArea; index++) {
+      gameArea.append("<tr class='tr" + index + "'></tr>");
 
-	function drawGameArea() {
-		for (let index = 0; index < maxGameArea; index++) {
-			gameArea.append("<tr class='tr" + index + "'></tr>");
+      let thisTr = $(".tr" + index);
 
-			let thisTr = $(".tr" + index);
+      for (let indexTd = 0; indexTd < maxGameArea; indexTd++) {
+        thisTr.append("<td class='tr" + index + "td" + indexTd + "'></td>");
+      }
+    }
+  }
 
-			for(let indexTd = 0; indexTd < maxGameArea; indexTd++) {
-				thisTr.append("<td class='tr" + index + "td" + indexTd + "'></td>");
-			}
-		}
-	}
+  drawGameArea();
 
-	drawGameArea();
+  function drawPoint() {
+    let setPointPos = $(".tr" + pointPos["posY"] + "td" + pointPos["posX"]);
 
+    setPointPos.addClass("draw-point");
+  }
 
-	function drawPoint() {
-		let setPointPos = $(".tr" + pointPos["posY"] + "td" + pointPos["posX"]);
+  drawPoint();
 
-		setPointPos.addClass("draw-point");
-	}
+  /* Removes eaten point and respawns a new point on the playfield with regards to available positions (eg. walls are not available) */
+  function playerEatsPoint() {
+    let setPointPos = $(".tr" + pointPos["posY"] + "td" + pointPos["posX"]);
 
-	drawPoint();
+    //Remove point that was eaten.
+    setPointPos.removeClass("draw-point");
 
-	/* Removes eaten point and respawns a new point on the playfield with regards to available positions (eg. walls are not available) */
-	function playerEatsPoint() {
-		let setPointPos = $(".tr" + pointPos["posY"] + "td" + pointPos["posX"]);
+    gameScore += 1;
 
-		//Remove point that was eaten.
-		setPointPos.removeClass("draw-point");
+    var eatPointSound = new Audio("../../../soundeffects/eatPoint.mp3");
+    eatPointSound.play();
 
-		gameScore += 1;
+    checkForWallSpawn();
 
-		var eatPointSound = new Audio("../../../soundeffects/eatPoint.mp3");
-      	eatPointSound.play();
+    // Add a point on a free spot!
+    let newSpawn = false;
+    do {
+      newSpawn = false;
+      pointPosX = Math.floor(Math.random() * 19) + 0;
+      pointPosY = Math.floor(Math.random() * 17) + 0;
+      for (let i = 0; i < rectangleList.length; i++) {
+        if (rectangleList[i].collisionDetection(pointPosX, pointPosY)) {
+          newSpawn = true;
+        }
+      }
+    } while (newSpawn);
 
-		checkForWallSpawn();
+    pointPos = {
+      posX: pointPosX,
+      posY: pointPosY
+    };
 
-		// Add a point on a free spot!
-		let newSpawn = false;
-		do {
-			newSpawn = false;
-			pointPosX = Math.floor(Math.random() * 19) + 0;
-			pointPosY = Math.floor(Math.random() * 17) + 0;
-			for(let i = 0; i < rectangleList.length; i++) {
-				if(rectangleList[i].collisionDetection(pointPosX, pointPosY)) {
-					newSpawn = true;
-				}
-			}
-		}
-		while (newSpawn)
+    setPointPos = $(".tr" + pointPos["posY"] + "td" + pointPos["posX"]);
 
-		pointPos = {
-			"posX": pointPosX,
-			"posY": pointPosY
-		};
+    setPointPos.addClass("draw-point");
 
-		setPointPos = $(".tr" + pointPos["posY"] + "td" + pointPos["posX"]);
+    playerLength += 1;
+  }
 
-		setPointPos.addClass("draw-point");
+  const timeout = 750;
+  /* Spawns walls onto playfield when certain gameScore is reached. Respawns worm to bottom left corner */
+  function checkForWallSpawn() {
+    // Add walls for each difficulty level.
+    if (gameScore == easyDifficulty) {
+      //10
+      var levelCompleteSound = new Audio(
+        "../../../soundeffects/snakeLevelComplete.mp3"
+      );
+      levelCompleteSound.play();
+      erasePlayer();
+      clearInterval(startUpdate);
+      setTimeout(continueUpdate, timeout);
 
-		playerLength += 1;
-	}
+      playerPos = {
+        tr: 18,
+        td: 0
+      };
+      currentPlayerDir = playerDir["right"];
+      document.getElementById("game-status").innerHTML = "";
+      document.getElementById("game-status").innerHTML =
+        "<span class='color-class2'>" + "Easy...";
 
-	const timeout = 750;
-	/* Spawns walls onto playfield when certain gameScore is reached. Respawns worm to bottom left corner */
-	function checkForWallSpawn () {
-	// Add walls for each difficulty level.
-		if (gameScore == easyDifficulty) {	//10
-			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
-      		levelCompleteSound.play();
-      		erasePlayer();
-      		clearInterval(startUpdate);
-      		setTimeout(continueUpdate,timeout);
+      rectangleList.push(
+        new Rectangle(5, 9, 5, 6),
+        new Rectangle(15, 16, 10, 14)
+      );
 
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class2'>" + "Easy...";
+      for (let i = 0; i < rectangleList.length; i++) {
+        for (let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+          for (let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+            document.getElementById("game-area").rows[k].cells[
+              j
+            ].style.backgroundColor = "#ff6600";
+          }
+        }
+      }
+    }
+    if (gameScore == mediumDifficulty) {
+      var levelCompleteSound = new Audio(
+        "../../../soundeffects/snakeLevelComplete.mp3"
+      );
+      levelCompleteSound.play();
+      erasePlayer();
+      clearInterval(startUpdate);
+      setTimeout(continueUpdate, timeout);
 
-			rectangleList.push(new Rectangle(5, 9, 5, 6), new Rectangle(15, 16, 10, 14));
+      playerPos = {
+        tr: 18,
+        td: 0
+      };
+      currentPlayerDir = playerDir["right"];
+      document.getElementById("game-status").innerHTML = "";
+      document.getElementById("game-status").innerHTML =
+        "<span class='color-class3'>" + "Not bad. <br>Difficulty: Medium";
 
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";
-					}
-				}
-			}
-		}
-		if (gameScore == mediumDifficulty) {
-			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
-      		levelCompleteSound.play();
-      		erasePlayer();
-      		clearInterval(startUpdate);
-      		setTimeout(continueUpdate,timeout);
+      rectangleList.push(
+        new Rectangle(2, 8, 11, 11),
+        new Rectangle(4, 11, 16, 16),
+        new Rectangle(14, 16, 3, 5)
+      );
 
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class3'>" + "Not bad. <br>Difficulty: Medium";
+      for (let i = 0; i < rectangleList.length; i++) {
+        for (let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+          for (let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+            document.getElementById("game-area").rows[k].cells[
+              j
+            ].style.backgroundColor = "#ff6600";
+          }
+        }
+      }
+    }
+    if (gameScore == hardDifficulty) {
+      var levelCompleteSound = new Audio(
+        "../../../soundeffects/snakeLevelComplete.mp3"
+      );
+      levelCompleteSound.play();
+      erasePlayer();
+      clearInterval(startUpdate);
+      setTimeout(continueUpdate, timeout);
 
-			rectangleList.push(new Rectangle(2, 8, 11, 11), new Rectangle(4, 11, 16, 16), new Rectangle(14, 16, 3, 5));
+      playerPos = {
+        tr: 18,
+        td: 0
+      };
+      currentPlayerDir = playerDir["right"];
+      document.getElementById("game-status").innerHTML = "";
+      document.getElementById("game-status").innerHTML =
+        "<span class='color-class4'>" + "Impressive! <br>Difficulty: Hard";
 
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";
-					}
-				}
-			}
-		}
-		if (gameScore == hardDifficulty) {
-			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
-      		levelCompleteSound.play();
-      		erasePlayer();
-      		clearInterval(startUpdate);
-      		setTimeout(continueUpdate,timeout);
+      rectangleList.push(
+        new Rectangle(5, 5, 0, 0),
+        new Rectangle(5, 5, 3, 5),
+        new Rectangle(0, 0, 6, 6),
+        new Rectangle(3, 4, 6, 6)
+      );
 
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class4'>" + "Impressive! <br>Difficulty: Hard";
+      for (let i = 0; i < rectangleList.length; i++) {
+        for (let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+          for (let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+            document.getElementById("game-area").rows[k].cells[
+              j
+            ].style.backgroundColor = "#ff6600";
+          }
+        }
+      }
+    }
+    if (gameScore == maxedDifficulty) {
+      var levelCompleteSound = new Audio(
+        "../../../soundeffects/snakeLevelComplete.mp3"
+      );
+      levelCompleteSound.play();
+      erasePlayer();
+      clearInterval(startUpdate);
+      setTimeout(continueUpdate, timeout);
 
-			rectangleList.push(new Rectangle(5, 5, 0, 0), new Rectangle(5, 5, 3, 5), new Rectangle(0, 0, 6, 6), new Rectangle(3, 4, 6, 6));
+      playerPos = {
+        tr: 18,
+        td: 0
+      };
+      currentPlayerDir = playerDir["right"];
+      document.getElementById("game-status").innerHTML = "";
+      document.getElementById("game-status").innerHTML =
+        "<span class='color-class5'>" + "Legendary!! <br>Difficulty: Maxed Out";
 
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";
-					}
-				}
-			}
-		}
-		if (gameScore == maxedDifficulty) {
-			var levelCompleteSound = new Audio("../../../soundeffects/snakeLevelComplete.mp3");
-      		levelCompleteSound.play();
-      		erasePlayer();
-      		clearInterval(startUpdate);
-      		setTimeout(continueUpdate,timeout);
+      rectangleList.push(
+        new Rectangle(6, 6, 9, 10),
+        new Rectangle(3, 3, 12, 13),
+        new Rectangle(16, 16, 17, 17),
+        new Rectangle(12, 12, 8, 8),
+        new Rectangle(18, 18, 1, 1),
+        new Rectangle(17, 17, 13, 13)
+      );
 
-			playerPos = {
-				"tr": 18,
-				"td": 0
-			};
-			currentPlayerDir = playerDir["right"];
-			document.getElementById("game-status").innerHTML = "";
-			document.getElementById("game-status").innerHTML = "<span class='color-class5'>" + "Legendary!! <br>Difficulty: Maxed Out";
+      for (let i = 0; i < rectangleList.length; i++) {
+        for (let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
+          for (let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
+            document.getElementById("game-area").rows[k].cells[
+              j
+            ].style.backgroundColor = "#ff6600";
+          }
+        }
+      }
+    }
+  }
 
-			rectangleList.push(new Rectangle(6, 6, 9, 10), new Rectangle(3, 3, 12, 13), new Rectangle(16, 16, 17, 17), new Rectangle(12, 12, 8, 8), new Rectangle(18, 18, 1, 1), new Rectangle(17, 17, 13, 13));
+  /* Listens in real time to keypads being pressed or not. */
+  document.addEventListener("keydown", function(event) {
+    //console.log(event);
+    if (
+      (event.which == 38 || event.which == 87) &&
+      currentPlayerDir != playerDir["down"] &&
+      !hasPressed
+    ) {
+      currentPlayerDir = playerDir["up"];
+      hasPressed = true;
+    } else if (
+      (event.which == 39 || event.which == 68) &&
+      currentPlayerDir != playerDir["left"] &&
+      !hasPressed
+    ) {
+      currentPlayerDir = playerDir["right"];
+      hasPressed = true;
+    } else if (
+      (event.which == 40 || event.which == 83) &&
+      currentPlayerDir != playerDir["up"] &&
+      !hasPressed
+    ) {
+      currentPlayerDir = playerDir["down"];
+      hasPressed = true;
+    } else if (
+      (event.which == 37 || event.which == 65) &&
+      currentPlayerDir != playerDir["right"] &&
+      !hasPressed
+    ) {
+      currentPlayerDir = playerDir["left"];
+      hasPressed = true;
+    }
+  });
 
-			for(let i = 0; i < rectangleList.length; i++) {
-				for(let j = rectangleList[i].x1; j <= rectangleList[i].x2; j++) {
-					for(let k = rectangleList[i].y1; k <= rectangleList[i].y2; k++) {
-						document.getElementById("game-area").rows[k].cells[j].style.backgroundColor = "#ff6600";
-					}
-				}
-			}
-		}
-	}
+  /* MOBILE eventListener */
+  var swipedir,
+    startX,
+    startY,
+    distX,
+    distY,
+    threshold = 25, //required min distance traveled to be considered swipe
+    restraint = 100, // maximum distance allowed at the same time in perpendicular direction
+    allowedTime = 300, // maximum time allowed to travel that distance
+    elapsedTime,
+    startTime,
+    handleswipe =
+      (swipedir => {
+        console.log(swipedir);
+        if (swipedir == "up" && currentPlayerDir != playerDir["down"]) {
+          currentPlayerDir = playerDir["up"];
+          hasPressed = true;
+        } else if (
+          swipedir == "right" &&
+          currentPlayerDir != playerDir["left"]
+        ) {
+          currentPlayerDir = playerDir["right"];
+          hasPressed = true;
+        } else if (swipedir == "down" && currentPlayerDir != playerDir["up"]) {
+          currentPlayerDir = playerDir["down"];
+          hasPressed = true;
+        } else if (
+          swipedir == "left" &&
+          currentPlayerDir != playerDir["right"]
+        ) {
+          currentPlayerDir = playerDir["left"];
+          hasPressed = true;
+        }
+      }) || function(swipedir) {};
 
-	/* Listens in real time to keypads being pressed or not. */
-	document.addEventListener("keydown", function(event) {
-		//console.log(event);
-		if ((event.which == 38 || event.which == 87) && currentPlayerDir != playerDir["down"] && !hasPressed) {
-			currentPlayerDir = playerDir["up"];
-			hasPressed = true;
-		}
-		else if ((event.which == 39 || event.which == 68) && currentPlayerDir != playerDir["left"] && !hasPressed) {
-			currentPlayerDir = playerDir["right"];
-			hasPressed = true;
-		}
-		else if ((event.which == 40 || event.which == 83) && currentPlayerDir != playerDir["up"] && !hasPressed) {
-			currentPlayerDir = playerDir["down"];
-			hasPressed = true;
-		}
-		else if ((event.which == 37 || event.which == 65) && currentPlayerDir != playerDir["right"] && !hasPressed) {
-			currentPlayerDir = playerDir["left"];
-			hasPressed = true;
-		}
-	});
+  document.addEventListener(
+    "touchstart",
+    e => {
+      var touchobj = e.changedTouches[0];
+      swipedir = "none";
+      dist = 0;
+      startX = touchobj.pageX;
+      startY = touchobj.pageY;
+      startTime = new Date().getTime(); // record time when finger first makes contact with surface
+      e.preventDefault();
+    },
+    false
+  );
 
-	/* Draws player with regards to the snakes current direction */
-	function drawPlayer() {
-		frameCount += 1;
-		let getPlayerPos;
+  document.addEventListener(
+    "touchmove",
+    event => {
+      event.preventDefault();
+      //console.log(event);
+    },
+    false
+  );
 
-		switch (currentPlayerDir) {
-			case 1:
-				playerPos["tr"] -= 1;
-				getPlayerPos = $(".tr" + playerPos["tr"] + "td" + playerPos["td"]);
-				getPlayerPos.addClass("draw-player framecount" + frameCount);
-				break;
-			case 2:
-				playerPos["td"] += 1;
-				getPlayerPos = $(".tr" + playerPos["tr"] + "td" + playerPos["td"]);
-				getPlayerPos.addClass("draw-player framecount" + frameCount);
-				break;
-			case 3:
-				playerPos["tr"] += 1;
-				getPlayerPos = $(".tr" + playerPos["tr"] + "td" + playerPos["td"]);
-				getPlayerPos.addClass("draw-player framecount" + frameCount);
-				break;
-			case 4:
-				playerPos["td"] -= 1;
-				getPlayerPos = $(".tr" + playerPos["tr"] + "td" + playerPos["td"]);
-				getPlayerPos.addClass("draw-player framecount" + frameCount);
-				break;
-			default:
-				alert("Error drawing player!");
-				break;
-		}
-		let calcPlayerTailPos = frameCount - playerLength;
-		let getPlayerTailPos = $(".framecount" + calcPlayerTailPos);
-		getPlayerTailPos.removeClass("draw-player framecount" + calcPlayerTailPos);
-	}
+  document.addEventListener(
+    "touchend",
+    e => {
+      var touchobj = e.changedTouches[0];
+      distX = touchobj.pageX - startX; // get horizontal dist traveled by finger while in contact with surface
+      distY = touchobj.pageY - startY; // get vertical dist traveled by finger while in contact with surface
+      elapsedTime = new Date().getTime() - startTime; // get time elapsed
+      if (elapsedTime <= allowedTime) {
+        // first condition for awipe met
+        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+          // 2nd condition for horizontal swipe met
+          swipedir = distX < 0 ? "left" : "right"; // if dist traveled is negative, it indicates left swipe
+        } else if (
+          Math.abs(distY) >= threshold &&
+          Math.abs(distX) <= restraint
+        ) {
+          // 2nd condition for vertical swipe met
+          swipedir = distY < 0 ? "up" : "down"; // if dist traveled is negative, it indicates up swipe
+        }
+      }
+      handleswipe(swipedir);
+      e.preventDefault();
+    },
+    false
+  );
 
-	function erasePlayer() {
-		let calcPlayerTailPos = frameCount - playerLength;
-		for (var i=0; i<=playerLength; i++) {
-			let getPlayerTailPos = $(".framecount" + (calcPlayerTailPos+i));
-			getPlayerTailPos.removeClass("draw-player framecount" + (calcPlayerTailPos+i));
-		}
-	}
+  /* Draws player with regards to the snakes current direction */
+  function drawPlayer() {
+    frameCount += 1;
+    let getPlayerPos;
 
-	function scoreHandler() {
-		document.getElementById("game-score").innerHTML = gameScore;
-	}
+    switch (currentPlayerDir) {
+      case 1:
+        playerPos["tr"] -= 1;
+        getPlayerPos = $(".tr" + playerPos["tr"] + "td" + playerPos["td"]);
+        getPlayerPos.addClass("draw-player framecount" + frameCount);
+        break;
+      case 2:
+        playerPos["td"] += 1;
+        getPlayerPos = $(".tr" + playerPos["tr"] + "td" + playerPos["td"]);
+        getPlayerPos.addClass("draw-player framecount" + frameCount);
+        break;
+      case 3:
+        playerPos["tr"] += 1;
+        getPlayerPos = $(".tr" + playerPos["tr"] + "td" + playerPos["td"]);
+        getPlayerPos.addClass("draw-player framecount" + frameCount);
+        break;
+      case 4:
+        playerPos["td"] -= 1;
+        getPlayerPos = $(".tr" + playerPos["tr"] + "td" + playerPos["td"]);
+        getPlayerPos.addClass("draw-player framecount" + frameCount);
+        break;
+      default:
+        alert("Error drawing player!");
+        break;
+    }
+    let calcPlayerTailPos = frameCount - playerLength;
+    let getPlayerTailPos = $(".framecount" + calcPlayerTailPos);
+    getPlayerTailPos.removeClass("draw-player framecount" + calcPlayerTailPos);
+  }
 
-	scoreHandler();
+  function erasePlayer() {
+    let calcPlayerTailPos = frameCount - playerLength;
+    for (var i = 0; i <= playerLength; i++) {
+      let getPlayerTailPos = $(".framecount" + (calcPlayerTailPos + i));
+      getPlayerTailPos.removeClass(
+        "draw-player framecount" + (calcPlayerTailPos + i)
+      );
+    }
+  }
 
-	var hasBeenPrinted = false;
+  function scoreHandler() {
+    document.getElementById("game-score").innerHTML = gameScore;
+  }
 
-	function deathHandler() {
-		var i = 0;
-		var txt = "GAME OVER! Refresh page to play again.";
-		if (hasBeenPrinted == false) {
-			document.getElementById("game-status").innerHTML = "";
-			setInterval(typeWriter, 100);
-			typeWriter();
-		}
+  scoreHandler();
 
-		/* Writes endgame message successively */
-		function typeWriter() {
-			if (i < txt.length) {
-				document.getElementById("game-status").innerHTML += "<span class='color-class'>" + txt.charAt(i);
-				if (i == 9) {
-					document.getElementById("game-status").innerHTML += "<br>";
-				}
-				i++;
-			}
-		}
-		hasBeenPrinted = true;
-	}
+  var hasBeenPrinted = false;
 
-	function update() {
-		let checkNextPlayerPosX = playerPos["tr"];
-		let checkNextPlayerPosY = playerPos["td"];
+  function deathHandler() {
+    var i = 0;
+    var txt = "GAME OVER! Refresh page to play again.";
+    if (hasBeenPrinted == false) {
+      document.getElementById("game-status").innerHTML = "";
+      setInterval(typeWriter, 100);
+      typeWriter();
+    }
 
-		switch (currentPlayerDir) {
-			case 1:
-				checkNextPlayerPosX -= 1;
-				break;
-			case 2:
-				checkNextPlayerPosY += 1;
-				break;
-			case 3:
-				checkNextPlayerPosX += 1;
-				break;
-			case 4:
-				checkNextPlayerPosY -= 1;
-				break;
-			default:
-				alert("Error checking player collision!");
-				break;
-		}
+    /* Writes endgame message successively */
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("game-status").innerHTML +=
+          "<span class='color-class'>" + txt.charAt(i);
+        if (i == 9) {
+          document.getElementById("game-status").innerHTML += "<br>";
+        }
+        i++;
+      }
+    }
+    hasBeenPrinted = true;
+  }
 
-		//Check worm collision against spawned obstacles
-		for(let i = 0; i < rectangleList.length; i++) {
-			if(rectangleList[i].collisionDetection(playerPos["td"], playerPos["tr"])) {
-				deathHandler();
-				if (playerIsDead == false) {
-					var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
-	      			gameOverSound.play();
-					// highscores();
-				}
-				playerIsDead = true;
-			}
-		}
+  function update() {
+    let checkNextPlayerPosX = playerPos["tr"];
+    let checkNextPlayerPosY = playerPos["td"];
 
-		// Death by wall touch
-		if (playerPos["tr"] == 20 || playerPos["td"] == 20 || playerPos["tr"] == -1 || playerPos["td"] == -1) {
-			deathHandler();
-			if (!playerIsDead) {
-				var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
-	      		gameOverSound.play();
-						//highscores();
-			}
-			playerIsDead = true;
-		}
-		// Death by eating self
-		else if ($(".tr" + checkNextPlayerPosX + "td" + checkNextPlayerPosY).hasClass("draw-player")) {
-			deathHandler();
-			if (!playerIsDead) {
-				var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
-	      		gameOverSound.play();
-						//highscores();
-			}
-			playerIsDead = true;
-		}
-		//Gain point
-		else if (playerPos["tr"] == pointPos["posY"] && playerPos["td"] == pointPos["posX"] && playerIsDead == false) {
-			playerEatsPoint();
-			// Let the player do input again.
-			hasPressed = false;
-			drawPlayer();
-			scoreHandler();
-		}
-		//Draw player
-		else if (playerIsDead == false) {
-			// Let the player do input again.
-			hasPressed = false;
-			drawPlayer();
-		}
-	}
-	var startUpdate = setInterval(update, 80);
+    switch (currentPlayerDir) {
+      case 1:
+        checkNextPlayerPosX -= 1;
+        break;
+      case 2:
+        checkNextPlayerPosY += 1;
+        break;
+      case 3:
+        checkNextPlayerPosX += 1;
+        break;
+      case 4:
+        checkNextPlayerPosY -= 1;
+        break;
+      default:
+        alert("Error checking player collision!");
+        break;
+    }
 
-	function continueUpdate() {
-		currentPlayerDir = playerDir["right"];
-		startUpdate = setInterval(update, 80);
-	}
+    //Check worm collision against spawned obstacles
+    for (let i = 0; i < rectangleList.length; i++) {
+      if (
+        rectangleList[i].collisionDetection(playerPos["td"], playerPos["tr"])
+      ) {
+        deathHandler();
+        if (playerIsDead == false) {
+          var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
+          gameOverSound.play();
+          // highscores();
+        }
+        playerIsDead = true;
+      }
+    }
 
-	function highscores() {
-		// HIGHSCORE TABLE SHOWN
-		console.log("User logged in? " + U_UID);
-		if(U_UID == "false") {
-			document.getElementById("highscoreTable").innerHTML = "Please sign up and log in on Foxdrop to see the highscores for this game!";
-		}
-		else {
-			var highscoreForm = new FormData();
+    // Death by wall touch
+    if (
+      playerPos["tr"] == 20 ||
+      playerPos["td"] == 20 ||
+      playerPos["tr"] == -1 ||
+      playerPos["td"] == -1
+    ) {
+      deathHandler();
+      if (!playerIsDead) {
+        var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
+        gameOverSound.play();
+        //highscores();
+      }
+      playerIsDead = true;
+    }
+    // Death by eating self
+    else if (
+      $(".tr" + checkNextPlayerPosX + "td" + checkNextPlayerPosY).hasClass(
+        "draw-player"
+      )
+    ) {
+      deathHandler();
+      if (!playerIsDead) {
+        var gameOverSound = new Audio("../../../soundeffects/gameOver.mp3");
+        gameOverSound.play();
+        //highscores();
+      }
+      playerIsDead = true;
+    }
+    //Gain point
+    else if (
+      playerPos["tr"] == pointPos["posY"] &&
+      playerPos["td"] == pointPos["posX"] &&
+      playerIsDead == false
+    ) {
+      playerEatsPoint();
+      // Let the player do input again.
+      hasPressed = false;
+      drawPlayer();
+      scoreHandler();
+    }
+    //Draw player
+    else if (playerIsDead == false) {
+      // Let the player do input again.
+      hasPressed = false;
+      drawPlayer();
+    }
+  }
+  var startUpdate = setInterval(update, 80);
 
-	      	highscoreForm.append("username", U_UID);
-		    highscoreForm.append("user_score", gameScore);
-		    highscoreForm.append("game", "snake");
+  function continueUpdate() {
+    currentPlayerDir = playerDir["right"];
+    startUpdate = setInterval(update, 80);
+  }
 
-		    fetch("../../../includes/scores.inc.php", {
-		      method: 'POST',
-		      body: highscoreForm
-		    }).then(function (response) {
-		      return response.json();
-		    })
-		    .then(function(scores) {
-		      //console.log(scores)
+  function highscores() {
+    // HIGHSCORE TABLE SHOWN
+    console.log("User logged in? " + U_UID);
+    if (U_UID == "false") {
+      document.getElementById("highscoreTable").innerHTML =
+        "Please sign up and log in on Foxdrop to see the highscores for this game!";
+    } else {
+      var highscoreForm = new FormData();
 
-		      var highscores = '';
-		//		var distinctUsernameArr = [];
-				var i = 0;
-		      scores.forEach(function(score) {
-		//			if(!distinctUsernameArr.includes(score[0])) {
-						highscores += score[0] + ' ' + score[1] + ' points on ' + score[2] + '<br>';
-						//console.log(distinctUsernameArr);
-			//		}
+      highscoreForm.append("username", U_UID);
+      highscoreForm.append("user_score", gameScore);
+      highscoreForm.append("game", "snake");
 
-			//		distinctUsernameArr[i] = score[0];
-						i++;
-				})
+      fetch("../../../includes/scores.inc.php", {
+        method: "POST",
+        body: highscoreForm
+      })
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(scores) {
+          //console.log(scores)
 
-		      document.getElementById("highscoreTable").innerHTML = "Highscores: <br>" + highscores;
-		    }).catch(function(error) {
-		      console.error(error);
-		    });
-		}
-	}
+          var highscores = "";
+          //		var distinctUsernameArr = [];
+          var i = 0;
+          scores.forEach(function(score) {
+            //			if(!distinctUsernameArr.includes(score[0])) {
+            highscores +=
+              score[0] + " " + score[1] + " points on " + score[2] + "<br>";
+            //console.log(distinctUsernameArr);
+            //		}
 
+            //		distinctUsernameArr[i] = score[0];
+            i++;
+          });
+
+          document.getElementById("highscoreTable").innerHTML =
+            "Highscores: <br>" + highscores;
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    }
+  }
 });

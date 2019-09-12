@@ -27,7 +27,7 @@
 					<li><a id="navButton1" class="button-test" href="home.php">HOME</a></li>
 					<li><a id="navButton2" class="button-test" href="portfolio.php">PORTFOLIO</a></li>
 					<li><a id="navButton3" class="button-test" href="about.php">ABOUT</a></li>
-					<li><a id="navButton4" class="button-test" href="contact.php">CONTACT</a></li>
+					<li><a id="navButton4" class="button-test" href="contact.php">FORUM</a></li>
 				</ul>
 
 				<div class="nav-login">

@@ -40,7 +40,7 @@ include_once 'header.php';
 						<a href="games/snake/index.php" style="border:5px solid #ccc;">
 							<img src="images/snake.jpg" alt="3rdGame" style="width:100%; height:100%; ">
 						</a>
-						<label style="color:grey">A game for people with fast reactions. (Does not work on Mobile)</label>
+						<label style="color:grey">A game for people with fast reactions.</label>
 					</div>
 				</div>
 				<div class="row">
@@ -82,7 +82,7 @@ include_once 'header.php';
 						<a href="games/pong/index.html" style="border:5px solid #ccc;">
 								<img src="images/pong.png" alt="1stGame" style="width:95%; height:95%; ">
 						</a>
-						<label style="color:grey">A game for people that are fast with the mouse. (Does not work on Mobile)</label>
+						<label style="color:grey">A game for people that are fast with the mouse.</label>
 					</div>
 				</div>
 			</div>

@@ -1,46 +1,71 @@
-<link rel="shortcut icon" type="image/png" href="../../../images/firefoxLogo.png">
+<link
+  rel="shortcut icon"
+  type="image/png"
+  href="../../../images/firefoxLogo.png"
+/>
 <?php session_start(); ?>
 <!DOCTYPE html>
-	<html>
-		<head>
-			<meta charset="utf-8" />
-			<meta http-equiv="X-UA-Compatible"
-			content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		    <title>Pong</title>
-		    
-		    <style>
-		    	body {
-		    		align-content: center;
-		    		background: #202020;
-		    		display: flex;
-		    		margin: 0;
-		    	}
-		    	canvas {
-		    		border: solid 1px #fff;
-		    		border-left: none;
-		    		border-right: none;
-		    		image-rendering: pixelated;
-		    		height: 100%;
-		    		margin: 0 auto;
-		    	}
-		    </style>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pong</title>
 
-		</head>
+    <style>
+      body {
+        align-content: center;
+        background: #202020;
+        display: flex;
+        margin: 0;
+      }
+      canvas {
+        border: solid 1px #fff;
+        border-left: none;
+        border-right: none;
+        image-rendering: pixelated;
+        height: 100%;
+        margin: 0 auto;
+      }
+      @media only screen and (max-width: 750px) {
+        body,
+        html {
+          overflow: hidden;
+        }
+        canvas {
+          width: 300;
+          height: 300;
+        }
+        img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
 
-		<body>
-		    <canvas id="pong" width="950" height="950" 
-			   style="position: absolute; left: 25%; right:25%; top:0%; z-index: 0;"></canvas>
-			 <canvas id="pongEventTarget" width="1400" height="600" 
-			   style="position: absolute; left: 0%; right:0%; top: 0%; z-index: 1;"></canvas>
+  <body>
+    <canvas
+      id="pong"
+      width="950"
+      height="950"
+      style="position: absolute; left: 25%; right:25%; top:0%; z-index: 0;"
+    ></canvas>
+    <canvas
+      id="pongEventTarget"
+      width="1400"
+      height="600"
+      style="position: absolute; left: 0%; right:0%; top: 0%; z-index: 1;"
+    ></canvas>
 
-			<script>
-		    	var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
-		    </script>
+    <script>
+      var U_UID = "<?php if(isset($_SESSION['u_uid'])) echo $_SESSION['u_uid']; else echo "false"; ?>";
+    </script>
 
-		    <script src="pongInsane.js"></script>
+    <script src="pongInsane.js"></script>
 
-		    <div style="color:white; text-align: center; padding: 5%; font-size: 25px;" id="highscoreTable"></div>
-		</body>
-
-	</html>
+    <div
+      style="color:white; text-align: center; padding: 5%; font-size: 25px;"
+      id="highscoreTable"
+    ></div>
+  </body>
+</html>

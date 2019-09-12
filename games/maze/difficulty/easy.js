@@ -165,7 +165,6 @@ removeLine = function(a, b) {
 
 
   document.addEventListener("keydown", function(event) {
-    //console.log(event);
     if (event.which == 38 && !player.walls[0] || event.which == 87 && !player.walls[0]) {
       player = grid[index(player.i, player.j-1)];
     }

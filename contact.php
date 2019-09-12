@@ -16,7 +16,6 @@
   $dbName = $_ENV['DB_NAME'];
   
   $conn = @mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
-
   include_once 'header.php';
 ?>
 
@@ -42,7 +41,6 @@
       color: white; /* White text */
       cursor: pointer; /* Mouse pointer on hover */
     }
-
     /* Darker background on mouse-over */
     .btn:hover {
       background-color: white;
@@ -80,7 +78,6 @@
         while ($row = mysqli_fetch_row($posts)) {
           $data[] = $row;
         }
-
         $i=1;
         foreach (array_reverse($data) as &$value) {
             echo '<br><hr><span style="color:#FFF;text-align:center;">' . htmlspecialchars($value[1]) . ' <br>- ' . $value[3] . ' '.$value[2].' (ID '.$value[0].') - <span style="color:red">'.$value[4].' HEARTS.</span></span>';
