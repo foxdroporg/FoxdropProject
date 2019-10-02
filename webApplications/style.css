@@ -185,6 +185,15 @@ select {
   vertical-align: middle;
 }
 
+/* Get round edges around input fields */
+input {
+  border: none;
+  outline: none;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px; /* 15px for full round input box */
+}
+
 #serverName select {
   width: 20px;
 }
@@ -304,7 +313,7 @@ header .nav-login form button {
   cursor: pointer;
 }
 
-header.nav-loginform button: hover {
+header.nav-loginformbutton: hover {
   background-color: #ccc;
 }
 

@@ -43,8 +43,8 @@
 
 						} else {
 							echo '<form action="../includes/login.inc.php" method="POST">
-							<input type="text" name="uid" placeholder="Username/e-mail">
-							<input type="password" name="pwd" placeholder="Password">
+							<input required type="text" name="uid" placeholder="Username/e-mail">
+							<input required type="password" name="pwd" placeholder="Password">
 							<button class="button-test" type="submit" name="submit">Login</button>
 							</form>
 							<form action="../signup.php" method="POST"> <button class="button-test">Sign up</button> </form>';

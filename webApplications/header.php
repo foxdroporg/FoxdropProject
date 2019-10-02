@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="description" content="This is an example of a meta description">
+		<meta name="description" content="Foxdrop"> <!-- This is an example of a meta description -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link class="img-test" rel="shortcut icon" type="image/png" href="../images/firefoxLogo.png">
@@ -41,8 +41,8 @@
 
 						} else {
 							echo '<form action="../includes/login.inc.php" method="POST">
-							<input type="text" name="uid" placeholder="Username/e-mail">
-							<input type="password" name="pwd" placeholder="Password">
+							<input required type="text" name="uid" placeholder="Username/e-mail">
+							<input required type="password" name="pwd" placeholder="Password">
 							<button class="button-test" type="submit" name="submit">Login</button>
 							</form>
 							<form action="../signup.php" method="POST"> <button class="button-test">Sign up</button> </form>';

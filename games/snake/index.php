@@ -84,9 +84,9 @@
 								}
 								if($data[0][1] >= 40) { // TESTING: || $username === "Christofferos"
 									echo '<form class="difficulty-form" action="difficulty/locked.php">
-											<button id="limitedContent" type="submit" class="btn-info btn-lg btn-block" name="difficulty" value="locked"><i class="fas fa-lock"></i> 40 points</button>
+											<button id="limitedContent" type="submit" class="btn-info btn-lg btn-block" name="difficulty" value="locked"><i class="fas fa-unlock"></i> 40 points</button>
 										</form>';
-									echo '<span style="color:green">Unlocked</span>';
+									echo '<span style="color:green">You unlocked a special game mode!</span>';
 								}
 								else {
 									echo '<button id="limitedContent" style="cursor: not-allowed" type="submit" class="btn-info btn-lg btn-block" name="difficulty" value="locked"><i class="fas fa-lock"></i> 40 points</button>';

@@ -24,7 +24,7 @@
 						<img class="img-test" src="images/firefoxLogo.png" alt="HTML5 Icon" style="padding: 5px; float:left; width:50px; height:50px;">
 						</a>
 					</li>
-					<li><a id="navButton1" class="button-test" href="home.php">HOME</a></li>
+					<li><a id="navButton1" class="button-test" href="home.php">HOME</a></li> 
 					<li><a id="navButton2" class="button-test" href="portfolio.php">PORTFOLIO</a></li>
 					<li><a id="navButton3" class="button-test" href="about.php">ABOUT</a></li>
 					<li><a id="navButton4" class="button-test" href="contact.php">FORUM</a></li>
@@ -43,8 +43,8 @@
 
 						} else {
 							echo '<form action="includes/login.inc.php" method="POST">
-							<input type="text" name="uid" placeholder="Username/e-mail">
-							<input type="password" name="pwd" placeholder="Password">
+							<input required type="text" name="uid" placeholder="Username/e-mail">
+							<input required type="password" name="pwd" placeholder="Password">
 							<button id="loginButton" class="button-test" type="submit" name="submit">Login</button>
 							</form>
 							<form action="signup.php" method="POST"> <button id="signupButton" class="button-test" style="">Sign up</button> </form>';

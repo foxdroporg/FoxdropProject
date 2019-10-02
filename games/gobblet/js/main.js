@@ -1,23 +1,54 @@
 var origBoard;
-var playerX = 'X';
-var playerO = 'O';
+var playerX = 'X'; // Player white
+var playerO = 'O'; // Player black
 var scaleFactor; 
-var mobile;
+var mobile = false;
 var ipad = false;
+var laptop = false;
+var laptopResize = false;
+
+// Check for Firefox browser. (Reason: different browsers use different click events).
+var firefox = false;
+window.onload = function() {
+	//  alert(navigator.userAgent);
+	if (navigator.userAgent.indexOf("Firefox") > 0) {
+		//alert("firefox");
+		firefox = true;
+	}
+}
 
 //console.log(window.innerWidth);
 if(window.innerWidth < 768) {
  scaleFactor = 1.0;
  mobile = true;
 } 
-else if(window.innerWidth >= 768 && window.innerWidth < 1000) {
+else if(window.innerWidth >= 768 && window.innerWidth < 1000) { 
  ipad = true;
  scaleFactor = 2.2;
 }
+else if (window.innerHeight < 950) {
+ scaleFactor = 1.46; //1.46
+ laptop = true;
+ laptopResize = true;
+}
 else {
  scaleFactor = 2.2;
- mobile = false;
 }
+
+/* IMPORTANT to support Mobile Devices*/
+let widthCanvas;
+let heightCanvas;
+if(!mobile) {
+	widthCanvas = 500;
+	heightCanvas = 350;
+} else {
+	widthCanvas = 272;
+	heightCanvas = 190;
+}
+let large = width/8; 
+let medium = width/10;
+let small = width/15;
+let mini = width/30;
 
 const winCombos = [
 	[0,1,2, 3],
@@ -96,23 +127,6 @@ var threeInARowArr = [
 
 var gameWon = false;
 
-/* IMPORTANT to support Mobile Devices*/
-let widthCanvas;
-let heightCanvas;
-if(!mobile) {
-	widthCanvas = 500;
-	heightCanvas = 350;
-} else {
-	widthCanvas = 272;
-	heightCanvas = 190;
-}
-
-let large = width/8; 
-let medium = width/10;
-let small = width/15;
-let mini = width/30;
-
-
 const cells = document.querySelectorAll('.cell');
 startGame();
 
@@ -153,23 +167,40 @@ function startGame() {
 function turnClickCanvas(square) {
 	let select = new Audio("../../soundeffects/gobbletSelect.mp3");
 	select.play();
-	let x;
+	var x;
 	let y;
-	if(mobile === false) {
-		x = (square.clientX - square.explicitOriginalTarget.offsetLeft);
-		y = (square.clientY - square.explicitOriginalTarget.offsetTop);
-	} else if (mobile === true || ipad === true){
-		//console.log(square);
+
+	//console.log(square);
+
+	if (mobile === true || ipad === true){
 		x = (square.touches[0].clientX - square.touches[0].target.offsetLeft);
 		y = (square.touches[0].clientY - square.touches[0].target.offsetTop);
 		//window.alert("Touched Canvas " + x + " " + y);
 	}
-	// width & height is for canvas does not work if 
+	else if(firefox == true) {
+		x = (square.clientX - square.explicitOriginalTarget.offsetLeft);
+		y = (square.clientY - square.explicitOriginalTarget.offsetTop);
+	}
+	else {
+		var rect = square.target.getBoundingClientRect();
+		x = square.clientX - rect.left; // - square.offsetX
+		y = square.clientY - rect.top; // - square.offsetY
+		//console.log(x, y, rect);
+	}
+	
+
+	// Set the right scale for width and height of canvas when using laptop
+	if(laptopResize) {
+		widthCanvas = widthCanvas*0.66;
+		heightCanvas = heightCanvas*0.66;
+		laptopResize = false;
+	}
+
 	const points = [
-		[widthCanvas/6, heightCanvas/5],	// 1st Circle White
+		[widthCanvas/6, heightCanvas/5],	// 1st Circle White (From left)
 		[widthCanvas/2, heightCanvas/5],
 		[widthCanvas/1.2, heightCanvas/5],
-		[widthCanvas/6, heightCanvas/1.5],	// 1st Circle Black
+		[widthCanvas/6, heightCanvas/1.5],	// 1st Circle Black (From left)
 		[widthCanvas/2, heightCanvas/1.5],
 		[widthCanvas/1.2, heightCanvas/1.5]
 	];
@@ -177,17 +208,21 @@ function turnClickCanvas(square) {
 	var placeholder;
 	var circleIndex = 0;
 	points.forEach((element, i) => {
+		
 		if(i==0) {
 			minDist = Math.sqrt(Math.pow(element[0]-x, 2)+Math.pow(element[1]-y, 2));
 			return;
 		}
 		placeholder = Math.sqrt(Math.pow(element[0]-x, 2)+Math.pow(element[1]-y, 2));
+		
 		if(placeholder < minDist) {
 			minDist = placeholder;
 			circleIndex = i;
 		}
 	});
+	//console.log(minDist);
 	selectedCircle = circleIndex;
+	console.log(selectedCircle);
 }
 
 /*
@@ -205,7 +240,8 @@ function turnClick(square) {
 
 	switch(playerTurn%2) {
 		case 0:
-			// PlayerX
+			// PlayerX = Player with white pieces
+			// Action 1: Put out piece on empty square
 			if ( typeof origBoard[square.target.id] == 'number' ) {
 				if(removedPiece) { 
 					radius = parseFloat(radiusString.substring(radiusString.lastIndexOf(":") + 1, radiusString.lastIndexOf(";"))); 
@@ -232,6 +268,7 @@ function turnClick(square) {
 				gameWon = checkWin(origBoard, playerO);
 				if(gameWon) gameOver(gameWon);
 			}
+			// Action 2: Pick up a white piece.
 			else if (origBoard[square.target.id] == 'X' && !removedPiece && selectedCircle === -1) {
 				origBoard[square.target.id] = parseInt(square.target.id, 10); 
 
@@ -254,6 +291,7 @@ function turnClick(square) {
 				removedPiece = true;
 				turnMessage("WHITE");
 			}
+			// Action 3: Put a white piece that has been taken off the board and put it on another piece on the board.
 			else if ((origBoard[square.target.id] == 'X' || origBoard[square.target.id] == 'O') && removedPiece) {	// Gobblet over own OR enemy
 				radius = parseFloat(radiusString.substring(radiusString.lastIndexOf(":") + 1, radiusString.lastIndexOf(";"))); 
 				if(checkCellAvailablilty(radius/scaleFactor, square.target.id)) {
@@ -273,6 +311,7 @@ function turnClick(square) {
 			    	denied.play();
 				}
 			}
+			// Action 4: Put a white piece over a black piece IF black has three pieces in a row.
 			else if(checkThreeInARow(origBoard, playerO) && origBoard[square.target.id] == 'O' && !removedPiece) {
 				radius = determineCircleRadius("WHITE");
 				if(radius !== 0 && checkCellAvailablilty(radius, square.target.id)) { 
@@ -287,6 +326,7 @@ function turnClick(square) {
 					if(gameWon) gameOver(gameWon);
 				}
 			}
+			// Action 5: Play disallow soundeffect, move is not accepted by the rules of the game.
 			else {
 				let denied = new Audio("../../soundeffects/gobbletDenied.mp3");
 			    denied.play();
@@ -294,7 +334,7 @@ function turnClick(square) {
 		break;
 
 		case 1:
-			// PlayerO
+			// PlayerO = Player with black pieces
 			if ( typeof origBoard[square.target.id] == 'number' ) {
 				if(removedPiece) {
 					radius = parseFloat(radiusString.substring(radiusString.lastIndexOf(":") + 1, radiusString.lastIndexOf(";"))); 

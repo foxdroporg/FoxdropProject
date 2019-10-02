@@ -25,10 +25,10 @@ include_once 'header.php';
 			<br>
 
 			<div class="paragraph">
-				Two KTH students started Foxdrop as a group project. Later, it transitioned into a fun hobby.
+				Two KTH students started Foxdrop as a group project. Later, it transitioned into a fun hobby. Now we are looking for people who would like to join us, in the development of this website.
 			</div>
 			<div class="paragraph">
-				The site has currently amassed a database of: 
+				The site has currently amassed a database of: <br>
 				<?php
 					/* dbh.inc.php has a path to autoload.php that does not work from this directory... This is why we have re-written the code from (dbh.inc.php) file here. */ 
 						include 'vendor/autoload.php';
@@ -102,7 +102,7 @@ include_once 'header.php';
 						echo '<span style="color:gold;text-align:center;">' . $value[0] . ' </span>';
 					}
 				?>
-				posts by 
+				posts in the forum by
 				<?php
 					$sql = "SELECT username FROM posts";
 					$result = mysqli_query($conn, $sql);
@@ -120,19 +120,24 @@ include_once 'header.php';
 					}
 					echo '<span style="color:gold;text-align:center;">' . $uniqueUsers . ' </span>';
 				?>
-				users, in the website-forum.
+				users.
 			</div>
 
 
+			<!-- USE Boxes here --> 
+			
 			<div class="row" style="padding-bottom: 5%; padding-left: 10%; padding-right: 10%;">
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Kristopher Werlinder <p style="color:white">Role: <br>Co-Founder <br><br>Proficiencies: <br>PHP, MySQL, NodeJS, MongoDB, jQuery, Java, Python.<br><br>Portfolio:<a href="https://christofferos.github.io/interactive-portfolio/index.html" style="text-decoration: none; color:white;">Click Here...</a></p></p>
+				<a href="https://christofferos.github.io/interactive-portfolio/index.html" target="_blank" style="text-decoration: none; color:white;"><img id="profilePics" style='width:100px; height:100px' src='images/portrait_small.png'></a>
+					<p style="color:orange">Kristopher Werlinder <p style="color:white; font-size:18px">Role: <br>Co-Founder <br><br>Proficiencies: <br>Javascript, Node.js, PHP, MySQL, postgreSQL, MongoDB, SASS, HTML, Java, C, Git.<br><br> Familiar with: <br>React, Vue.js, Laravel, Python, Go, Agile Development, Redux, Linux. <br><br><a target="none" href="https://christofferos.github.io/interactive-portfolio/index.html" style="text-decoration: none; color:white;">Portfolio<br>Click Here...</a></p></p>
 				</div>
 				<div class="column" style="text-align: center; font-size: 20px">
-					<p style="color:orange">Erik Henriksson <p style="color:white">Role: <br>Co-Founder <br><br>Proficiencies: <br>HTML, Javascript, jQuery, CSS, React, Redux, Go. </p></p>
+				<img id="profilePics" style='width:100px; height:100px' src='images/portrait_small2.png'>
+					<p style="color:orange">Erik Henriksson <p style="color:white; font-size:18px">Role: <br>Co-Founder <br><br>Proficiencies: <br>HTML, Javascript, jQuery, CSS, React, Redux, Go, Java, C, Git, postgreSQL. <br><br> 
+					Familiar with: <br> <br><br><a target="_blank" href="" style="text-decoration: none; color:white;">Portfolio<br>Click Here...</a></p></p></p></p>
 				</div>
-
 			</div>
+
 			<div class="row" style="padding-bottom: 5%; padding-left: 10%; padding-right: 10%; ">
 				<h2 style="color:white; font-size: 25px; padding-top: 2%">Features: </h2>
 				<p class="paragraph" style="color:white; text-align: left; padding-left: 30%">
@@ -167,7 +172,7 @@ include_once 'header.php';
 		<h2 style="color:#FFFFFF; padding-bottom: 2%;">FAQ/Instructions</h2>
 		
 		<div class="paragraph">
-			<p style="color:orange">Question:</p> Do you save my login password after I sign up on your website?
+			<p style="color:orange">Question 1:</p> Do you save my login password after I sign up on your website?
 			<br>
 			- Jacob
 		</div>
@@ -176,7 +181,7 @@ include_once 'header.php';
 		</div>
 
 		<div class="paragraph">
-			<p style="color:orange">Question:</p> How do I remove my account?
+			<p style="color:orange">Question 2:</p> How do I remove my account?
 			<br>
 			- Gustaf
 		</div>
@@ -185,7 +190,7 @@ include_once 'header.php';
 		</div>
 
 		<div class="paragraph">
-			<p style="color:orange">Question:</p> When can I expect to see new updates for the website?
+			<p style="color:orange">Question 3:</p> When can I expect to see new updates for the website?
 			<br>
 			- Mikael
 		</div>
@@ -194,7 +199,7 @@ include_once 'header.php';
 		</div>
 
 		<div class="paragraph">
-			<p style="color:orange">Question:</p> How can I get my name up on the highscore tables?
+			<p style="color:orange">Question 4:</p> How can I get my name up on the highscore tables?
 			<br>
 			- Marcus
 		</div>

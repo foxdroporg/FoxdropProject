@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 		crossorigin="anonymous">
-	    <title>Summoner Search</title>
+	    <title>Recipe Search</title>
 	    <script
 		  src="https://code.jquery.com/jquery-3.3.1.slim.js"
 		  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
@@ -40,7 +40,7 @@
 								<div class="w-100 mt-3"></div>
 								<button class="btn btn-lg btn-primary" type="submit" onClick="recipeSearch" style="width:16rem; height:4rem;"><span class="glyphicon glyphicon-search"></span>  Search..</button>
 							</form>
-							<p style=" text-align:center; color:grey; font-size: 15px">(When the search is without conditions <br>Recipe-Suggestion is made)</p>
+							<br><p style=" text-align:center; color:green; font-size: 15px">Generate a random recipe <br> by leaving the fields empty.</p>
 						</div>
 					</div>
 			</div>
