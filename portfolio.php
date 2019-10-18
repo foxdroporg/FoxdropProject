@@ -164,6 +164,19 @@ include_once 'header.php';
 					<label style="color:grey">Front-End: 4/5. Back-End: 4/5 <br> (Node.js, Vue.js, Fullstack)</label>
 				</div>
 			</div>
+			<div class="row">
+				<div class="column">
+					<a href="https://movieminded.netlify.com" style="border:5px solid #ccc;">
+						<img src="images/movieminded.png" alt="4th" style="width:100%; height:100%; ">
+					</a>
+					<label style="color:grey">Front-End: 4/5. Back-End: 0/5 <br>(React)</label>
+				</div>
+				<div class="column">
+					<a href="#" style="border:5px solid #ccc;">
+						<img src="images/website.jpg" alt="2ndSound" style="width:100%; height:100%; ">
+					</a>
+				</div>
+			</div>
 			</div>
 		</section>
 	</section>
@@ -215,7 +228,7 @@ include_once 'header.php';
 					<label style="color:grey">This is how a rotating 4D hypercube looks like when we project it into 3D</label>
 				</div>
 			</div>
-			</div>
+		</div>
 		</section>
 	</section>
 

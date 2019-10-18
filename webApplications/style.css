@@ -342,7 +342,8 @@ header .nav-login a {
 }
 
 .img-test:hover {
-  background-image: url("../images/firefoxLogoHover.png");
+  background-color: #332f2f5b;
+  /*background-image: url("../images/firefoxLogoHover.png");*/
   background-size: 55px 55px;
   background-repeat: no-repeat;
 }
@@ -357,9 +358,9 @@ header .nav-login a {
 }
 
 .button-test:hover {
-  background-color: #e2e2e2;
+  background-color: #332f2f5b; /*#e2e2e2 */
   background-repeat: no-repeat;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 /*portfolio.php*/

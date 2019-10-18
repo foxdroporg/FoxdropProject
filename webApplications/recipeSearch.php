@@ -19,6 +19,7 @@
 	// Default : 1
 	$page = $_GET["page"];
 	if ($page === '') $page = 1;
+	//var_dump($);
 
 ?>
 
@@ -53,7 +54,7 @@
 						</script> 
 					</p>
 					<h2 class="font-weight-bold text-capitalize mb-3" style="text-align:center; font-size:50px;">Find recipe</h2>
-					<p style="text-align:center; color:darkred">Note: Links are retrived from external sources. Proceed with caution.</p>
+					<p style="text-align:center; color:darkred">Note: <p style="text-align:center; color:black">Links are retrived from external sources. Proceed with caution.</p></p>
 				
 				<?php
 					$response = Unirest\Request::get("https://recipe-puppy.p.rapidapi.com/?p=".$page."&i=".$ingredients."&q=".$searchQuery,

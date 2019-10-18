@@ -16,7 +16,7 @@ $puuid = $decodedData['puuid'];
 $summonerLevel = $decodedData['summonerLevel'];
 $revisionDate = $decodedData['revisionDate'];
 $id = $decodedData['id'];	// EncryptedSummonerId (is used for bascially everything)
-$accountId = $decodedData['accountId'];
+$accountId = $decodedData['accountId']; // EncryptedAccountId
 
 $seconds = ($revisionDate/1000);	// seconds
 
@@ -49,6 +49,11 @@ function getChampionData() {
 function getChampionMastery($serverName, $id, $APIKEY) {
 	$rawChampionMasteryData = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/".$id."?api_key=".$APIKEY);
 	$decodedData = json_decode($rawChampionMasteryData, true);
+	return $decodedData;
+}
+function getFullMatchList($serverName, $accountId, $APIKEY) {
+	$rawMatchList = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matchlists/by-account/".$accountId."?endIndex=100&beginIndex=0&queue=420&api_key=".$APIKEY);
+	$decodedData = json_decode($rawMatchList, true);
 	return $decodedData;
 }
 ?>
@@ -115,13 +120,13 @@ function getChampionMastery($serverName, $id, $APIKEY) {
 		 			<div class="col">
 						<div class="w-100 mt-2"></div>
 							<?php
-								echo "<p style=color:black;text-align:center><br>Last seen online: ", date("d-m-Y", $seconds), ".</p>";
-								echo "<p style=color:black;text-align:center><br>Account level: ", $summonerLevel, ".</p>";
+								
 								//echo $id;
 								
 								$matchlistObject = getMatchlistData($serverName, $accountId, $APIKEY);
 								$totalGames = $matchlistObject['totalGames'];
 								$latestGame = $matchlistObject['matches'][0];
+
 								
 								$mode = '';
 								if($latestGame['queue'] == 420) {
@@ -150,9 +155,6 @@ function getChampionMastery($serverName, $id, $APIKEY) {
 								    }
 								}
 
-								echo "<p style=color:black;text-align:center><br>Has played a total of: ".$totalGames." games.(Bugged)<br><br><b>Most recent game played</b><br>Date: ".date("d-m-Y", ($latestGame['timestamp']/1000))."<br>Mode: ".$mode."<br>Champion ID: ".$latestGame['champion'].", ".$nameOfChampion.".</p>";
-
-
 								$championListMasteryObject = getChampionMastery($serverName, $id, $APIKEY);
 								$firstScore = 0;
 								$firstChampionId = 0;
@@ -173,6 +175,74 @@ function getChampionMastery($serverName, $id, $APIKEY) {
 									$thirdChampionId = $championListMasteryObject[2]['championId'];
 								}
 
+								// Get win rates
+								$fullMatchlistObject = getFullMatchList($serverName, $accountId, $APIKEY);
+								$topThreeChampionsPlayedArray = array();
+								$amountOfTimesPlayed = array();
+								$gameID = array();
+								$i = 0;
+
+								foreach($fullMatchlistObject['matches'] as $match) {
+									if(!in_array($match['champion'], $topThreeChampionsPlayedArray)) {
+										array_push($topThreeChampionsPlayedArray, $match['champion']);
+										array_push($amountOfTimesPlayed, 1);
+									}
+									else {
+										$champIndex = array_search($match['champion'], $topThreeChampionsPlayedArray);
+										$amountOfTimesPlayed[$champIndex]++;
+									}
+
+									// Try to get each WIN or LOSE for each game.
+									/*
+									$gameID[$i][0] = $match['champion'];
+									$gameID[$i][1] = $match['gameId'];
+									$i++;
+									*/
+								}
+
+								function maxNitems($array, $n = 3){
+									asort($array);
+									return array_slice(array_reverse($array, true),0,$n, true);
+								}
+
+								$mostPlayed = array();
+								$mostPlayed = array_keys(maxNitems($amountOfTimesPlayed));
+
+								// Try to get each WIN or LOSE for each game.
+								/*
+								foreach($gameID as $gameIDFind) {
+									$rawMatchList = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matches/".$gameIDFind[1]."?api_key=".$APIKEY);
+									$decodedData = json_decode($rawMatchList, true);
+									if($decodedData['teams'][0]['win'] === 'Win') {
+										echo '<br><br>WIN<br><br>';
+									}
+									else if($decodedData['teams'][0]['win'] === 'Fail'){
+										echo '<br><br>FAIL<br><br>';
+									}
+								}
+								*/
+
+								echo "<hr>";
+								echo "<p style=color:black;text-align:center>Ranked Solo (Past 100 Games):<br> </p>";
+								foreach($mostPlayed as $nr) {
+									$games = $amountOfTimesPlayed[$nr];
+									foreach($listOfChampions as $row) {
+										if ($row['key'] == $topThreeChampionsPlayedArray[$nr]) {
+											echo "<p style=color:black;text-align:center>" .$row['name']." (".$games. " played) - </p>";
+										} 
+									}
+								}
+								echo "<hr>";
+
+								echo "<p style=color:black;text-align:center><br>Last seen online: ", date("d-m-Y", $seconds), ".</p>";
+								echo "<p style=color:black;text-align:center><br>Account level: ", $summonerLevel, ".</p>";
+
+								// Top one is with totalGames but it is currently bugged (as of: 2019-10-18)
+								// echo "<p style=color:black;text-align:center><br>Has played a total of: ".$totalGames." games.(Bugged)<br><br><b>Most recent game played</b><br>Date: ".date("d-m-Y", ($latestGame['timestamp']/1000))."<br>Mode: ".$mode."<br>Champion ID: ".$latestGame['champion'].", ".$nameOfChampion.".</p>";
+								echo "<p style=color:black;text-align:center><br><b>Most recent game played</b><br>Date: ".date("d-m-Y", ($latestGame['timestamp']/1000))."<br>Mode: ".$mode."<br>Champion ID: ".$latestGame['champion'].", ".$nameOfChampion.".</p>";
+
+
+								// Get mastery points champs
 								$firstChampion = '';
 								$secondChampion = '';
 								$thirdChampion = '';
@@ -185,11 +255,11 @@ function getChampionMastery($serverName, $id, $APIKEY) {
 								    } 
 								    else if ($row['key'] == $thirdChampionId) {
 								    	$thirdChampion = $row['name'];
-								    } 
+									}
 								}
 					
 								echo "<p style=color:black;text-align:center><br><b>Champion Mastery</b><br>".$firstChampion." - ".$firstScore." points<br>".$secondChampion." - ".$secondScore." points<br>".$thirdChampion." - ".$thirdScore." points</p>";
-
+								echo "<hr>";
 
 							?>
 						<div class="w-100 mt-2"></div>
@@ -219,6 +289,8 @@ function getChampionMastery($serverName, $id, $APIKEY) {
 										}
 									}
 								}
+
+								echo "<hr>";
 
 								// /* MAKE SURE TO HIDE ERROR MESSAGES 
 								if(@getSpectatorGame($id, $APIKEY)) {

@@ -110,6 +110,13 @@
       left: 0px;
       /*display: none;*/ 
     }
+    section {
+      display: table;
+      margin: 0 auto;
+    }
+    #foxdrop {
+      pointer-events: none;
+    }
 
     /*  */
   </style>
@@ -122,7 +129,7 @@
     <div class="cursor"></div>
     <div class="inner">
       <div class="content">
-        <section class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.3s"> <!-- 0.1 -->
+        <section id="foxdrop" class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.3s"> <!-- 0.1 -->
           <h1>FOXDROP</h1>
         </section>  
         <br><br>
