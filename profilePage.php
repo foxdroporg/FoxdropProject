@@ -216,7 +216,7 @@
 						$decodedData = json_decode($rawAccountData, true);
 						
 						$randomWord = $decodedData['word'];
-						$meaning = $decodedData['definitions']['text'];
+						// $meaning = $decodedData['definitions']['text'];
 
 						$examples = $decodedData['examples'];
 						$randInt = mt_rand(0 , sizeof($examples)-1);

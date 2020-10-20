@@ -54,7 +54,7 @@
 						</script> 
 					</p>
 					<h2 class="font-weight-bold text-capitalize mb-3" style="text-align:center; font-size:50px;">Find recipe</h2>
-					<p style="text-align:center; color:darkred">Note: <p style="text-align:center; color:black">Links are retrived from external sources. Proceed with caution.</p></p>
+					<p style="text-align:center; color:darkred">Note: <p style="text-align:center; color:black">Links are retrived from external sources.</p></p>
 				
 				<?php
 					$response = Unirest\Request::get("https://recipe-puppy.p.rapidapi.com/?p=".$page."&i=".$ingredients."&q=".$searchQuery,
@@ -87,7 +87,7 @@
 							$title !== '' ? '<br><br><b><p style="color:black; text-align:center">'.$title.'</p></b>' : '',
 						    $img !== '' ? '<img src="'.$img.'" style="padding:1rem 0rem 1rem 0rem;display:block;margin-left:auto;margin-right: auto;width: 30%;"</p>' : '',
 							$ingredients !== '' ? '<p style="color:black; text-align:center"><b>Ingredients:</b><br>'.$ingredients.'<br></p>' : '',
-							$href !== '' ? '<p style="color:black; text-align:center"><br><b>How to cook it:</b><br> <a href='.$href.'>'.$href.'</a><br></p>' : '',
+							$href !== '' ? '<p style="color:black; text-align:center"><br><b>How to cook it:</b><br> <a target="_blank" href='.$href.'>Click here</a><br></p>' : '',
 						'</div>';
 					}
 					

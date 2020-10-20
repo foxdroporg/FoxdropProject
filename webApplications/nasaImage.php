@@ -29,6 +29,19 @@
 
 		<h2 style="color:#FFFFFF">NASA - Image of the day<br><br></h2>
 		<?php
+			$NASA_WEBSITE_APIKEY = $_ENV['NASA_WEBSITE_APIKEY'];
+			$rawNasaData = @file_get_contents("https://api.nasa.gov/planetary/apod?api_key=".$NASA_WEBSITE_APIKEY);
+			$decodedData = json_decode($rawNasaData, true);
+
+			$title = $decodedData['title'];
+			$date = $decodedData['date'];
+			echo '<div style="margin:0% 5% 0% 5%"><span style="color:white;text-align:center;font-size:20px;margin:0% 0% 0% 5%">' . $title . ', ' .$date.'.<br><br></span></div>';
+			$imageNASA = $decodedData['url'];
+			echo '<img src="'.$imageNASA.'" style="height:100%;width:100%"><br><br>';
+			$explanation = $decodedData['explanation'];
+			echo '<div style="margin:0% 5% 0% 5%"><span style="color:white;text-align:center;font-size:20px;margin:0% 0% 0% 5%">"' . $explanation . '"<br><br></span></div>';
+
+			/*
 			$API_KEY = $_ENV['RAPID_API_KEY'];
 			$NASA_API_KEY = $_ENV['NASA_API_KEY'];
 			$response = Unirest\Request::post("https://NasaAPIdimasV1.p.rapidapi.com/getPictureOfTheDay",
@@ -45,6 +58,7 @@
 			$imageData = base64_encode(file_get_contents("$image"));
 			echo '<img src="data:image/jpeg;base64,'.$imageData.'" style="height:100%;width:100%"><br><br>';
 			echo '<div style="margin:0% 5% 0% 5%"><span style="color:white;text-align:center;font-size:20px;margin:0% 0% 0% 5%">"' . $explanation . '"<br><br></span></div>';
+			*/
 		?>
 		</div>
 

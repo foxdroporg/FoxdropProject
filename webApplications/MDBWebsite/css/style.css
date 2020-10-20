@@ -16,6 +16,7 @@ img{
   width:75%;
 }
 
+
 @media(min-width:960px){
 	.col-md-3 .well{
     height: 390px;

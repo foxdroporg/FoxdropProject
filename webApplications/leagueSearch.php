@@ -17,6 +17,7 @@
 			  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
 			  crossorigin="anonymous"></script>
 			<link rel="stylesheet" type="text/css" href="style.css">
+			
 		</head>
 
 		<body bgcolor="">
@@ -24,7 +25,7 @@
 
 			<section class="mobile-wrapper">
 				<div class="jumbotron mt-5 text-black border border-dark" style="border-width:3px !important">
-					<h2 class="font-weight-bold text-capitalize" style=" text-align:center; font-size:30px; padding-top: 3%">Find summoner <br>on League of Legends</h2>
+					<h2 class="font-weight-bold" style=" text-align:center; font-size:30px; padding-top: 3%">Search for summoner <br>in League of Legends</h2> <!--text-capitalize-->
 			 		
 			 		<div class="row mt-5 ">
 			 			<div class="col">

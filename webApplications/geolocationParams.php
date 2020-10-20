@@ -96,6 +96,12 @@
 			);
 			$responseBody = $response->body;
 
+			// var_dump($responseBody);
+
+			if ($responseBody->{'message'} !== null) {
+				echo '<p style="color:white">'.$responseBody->{'message'}.'</p>';
+			}
+			else {
 			$description = $responseBody->{'list'}[0]->{'weather'}[0]->{'description'};
 			$icon = $responseBody->{'list'}[0]->{'weather'}[0]->{'icon'};
 			$temp = $responseBody->{'list'}[0]->{'main'}->{'temp'};
@@ -164,6 +170,8 @@
 			echo '<br>
 			<p style="color:white">Location: </p> <p style="color:gold">' .ucwords($city).' '.$lat.'°, '.$lon.'°</p>';
 			echo '</center>';
+
+		}
 
 
 

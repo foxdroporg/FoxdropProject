@@ -1,6 +1,48 @@
 <?php
   include_once 'header.php';
+
+  $codeFound = (isset($_GET["code"]));
+  $code;
+  if (isset($_GET['code'])) {
+      $code = trim($_GET["code"]);
+  }
 ?>
+
+<script type="text/javascript">
+    let codePresent = "<?php echo $codeFound; ?>";
+    let code = "<?php echo $code; ?>";
+    let codeCopied = false;
+    window.onload = function() {
+    if (codePresent) {
+      // console.log(code);
+      document.getElementById("code-input").textContent = code;
+      document.getElementById('code').style.display = ""
+      document.getElementById('code-msg').textContent = "Copy code.."
+    }
+    else {
+      document.getElementById('code').style.display = "none"
+    } 
+    }
+    function copy() {
+      const el = document.createElement('textarea');
+      el.value = document.getElementById("code-input").textContent;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      alert("Copied the code: \n" + code);
+    }
+    function codeCopiedFunc() {
+      window.onclick = function() { // Look for ...
+        document.getElementById('code-msg').textContent = "Code copied!"
+        document.getElementById('code-msg').style.color = "green"
+      }
+    }
+    
+</script>
 
 <!DOCTYPE html> 
 <head>
@@ -13,6 +55,25 @@
   <link href="landingPage_css/waypoints.css" rel="stylesheet"/>
   <script src="landingPage_js/jquery.waypoints.min.js" type="text/javascript"></script>
   <script src="landingPage_js/waypoints.js" type="text/javascript"></script>
+
+    <!-- If code param is present in URL -->
+  <a id="code" onclick="{ copy(); codeCopiedFunc(); }" style="position: absolute; cursor:pointer;
+    left: 50%;
+    margin-left: -20%;
+    top: 25%;
+    margin-top: -7.5%; 
+    width: 40%; height: 25%; 
+    display: none; 
+    background: #1D2937; 
+    border: 2px solid black; 
+    vertical-align: middle;
+    text-align: center; 
+    border-radius:10px; 
+    z-index: 2; 
+    font-size: 50px;
+    font-family: Impact;
+    color: #F8B83F"><span id="code-msg"></span><input id="code-input" type="hidden"></input></a>
+
   <style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:500');
 

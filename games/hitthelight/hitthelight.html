@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
 <html>
-  <link
-    rel="shortcut icon"
-    type="image/png"
-    href="../../images/firefoxLogo.png"
-  />
+  <link rel="shortcut icon" type="image/png" href="../../images/firefoxLogo.png" />
   <section class="main-container">
     <div class="main-wrapper">
       <!DOCTYPE html>
@@ -13,24 +9,22 @@
         <head>
           <meta charset="utf-8" />
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <style>
             html,
             body {
               overflow: hidden;
               background: url("../../images/forrest2.png");
             }
-            img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+            img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]
+            {
               display: none !important;
             }
           </style>
         </head>
 
         <body bgcolor="#202020">
-          <center><h2 style="color:#FFFFFF;">Hit The Light</h2></center>
+          <center><h2 style="color: #ffffff;">Hit The Light</h2></center>
           <form name="status">
             <center>
               <table cellspacing="3">
@@ -44,14 +38,9 @@
                     />
                   </td>
                   <td><pre></pre></td>
-                  <td align="right" style="color:white">Time:</td>
+                  <td align="right" style="color: white;">Time:</td>
                   <td>
-                    <input
-                      type="text"
-                      name="timeleft"
-                      size="4"
-                      onFocus="this.blur()"
-                    />
+                    <input type="text" name="timeleft" size="4" onFocus="this.blur()" />
                   </td>
                 </tr>
                 <tr>
@@ -65,14 +54,9 @@
                     />
                   </td>
                   <td><pre></pre></td>
-                  <td align="right" style="color:white">Score:</td>
+                  <td align="right" style="color: white;">Score:</td>
                   <td>
-                    <input
-                      type="text"
-                      name="score"
-                      size="4"
-                      onFocus="this.blur()"
-                    />
+                    <input type="text" name="score" size="4" onFocus="this.blur()" />
                   </td>
                 </tr>
               </table>
@@ -290,7 +274,7 @@
           </script>
 
           <div
-            style="color:white; text-align: center; padding: 5%; font-size: 25px;"
+            style="color: white; text-align: center; padding: 5%; font-size: 25px;"
             id="highscoreTable"
           ></div>
 
@@ -377,9 +361,7 @@
                 document.status.score.value = totalHits;
                 document.playingField.elements[id].checked = false;
               } else {
-                let audioPlus = new Audio(
-                  "../../soundeffects/hitthelightClick.mp3"
-                );
+                let audioPlus = new Audio("../../soundeffects/hitthelightClick.mp3");
                 audioPlus.play();
                 totalHits += 1;
                 document.status.score.value = totalHits;
@@ -406,12 +388,12 @@
 
                 fetch("../../includes/scores.inc.php", {
                   method: "POST",
-                  body: highscoreForm
+                  body: highscoreForm,
                 })
-                  .then(function(response) {
+                  .then(function (response) {
                     return response.json();
                   })
-                  .catch(function(error) {
+                  .catch(function (error) {
                     console.error(error);
                   });
               }

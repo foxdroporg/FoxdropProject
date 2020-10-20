@@ -25,6 +25,24 @@ include_once 'header.php';
 </head>
 <body>
 	<section class="main-container">
+
+		<!-- Steam Game -->
+		<section class="main-wrapper">
+			<div class="background-color">
+			<h2 style="color:#FFFFFF; font-size: 50px">Game on Steam</h2>
+				<div class="row">
+					<div style="margin: auto; display: flex; justify-content: center; padding-top: 2rem">
+						<iframe src="https://store.steampowered.com/widget/1385690/" frameborder="0" width="646" height="190"></iframe>
+					</div>
+					<label style="color:grey; display: flex; justify-content: center;">Give the game a review on the Steam platform. That'd make my day! Thank you so much for your time.</label>
+				</div>
+			</div>
+		</section>
+	</section>
+
+
+	<section class="main-container">
+		<!-- Web based games -->
 		<section class="main-wrapper">
 			<div class="background-color">
 				<h2 style="color:#FFFFFF; font-size: 50px">Games</h2>
@@ -172,8 +190,8 @@ include_once 'header.php';
 					<label style="color:grey">Front-End: 4/5. Back-End: 0/5 <br>(React)</label>
 				</div>
 				<div class="column">
-					<a href="#" style="border:5px solid #ccc;">
-						<img src="images/website.jpg" alt="2ndSound" style="width:100%; height:100%; ">
+					<a href="webApplications/passwordGenerator" style="border:5px solid #ccc;">
+						<img src="images/passwordGenerator.png" alt="" style="width:100%; height:100%; ">
 					</a>
 				</div>
 			</div>
@@ -240,10 +258,10 @@ include_once 'header.php';
 
 			<div class="row">
 				<div class="column">
-					<a href="relax/lava.php" style="border:5px solid #ccc;">
-						<img src="images/lavaFlow.png" alt="1stSound" style="width:80%; height:85%; ">
+					<a href="relax/relaxer.php" style="border:5px solid #ccc;">
+						<img src="images/relaxer.png" alt="1stSound" style="width:100%; height:100%; ">
 					</a>
-					<label style="color:grey">Relax to the natural and mellow sound of bubbling lava</label>
+					<label style="color:grey">Take a few deep breaths with this intuitive tool</label>
 				</div>
 				<div class="column">
 					<a href="relax/cave.php" style="border:5px solid #ccc;">
@@ -265,6 +283,14 @@ include_once 'header.php';
 					</a>
 					<label style="color:grey">Listen to the staccato sound of waves crashing into the beach sand</label>
 					
+				</div>
+			</div>
+			<div class="row">
+				<div class="column">
+					<a href="relax/lava.php" style="border:5px solid #ccc;">
+						<img src="images/lavaFlow.png" alt="1stSound" style="width:80%; height:85%; ">
+					</a>
+					<label style="color:grey">Relax to the natural and mellow sound of bubbling lava</label>
 				</div>
 			</div>
 			</div>

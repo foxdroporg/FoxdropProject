@@ -23,13 +23,13 @@
   <div class="container">
     <div class="jumbotron">
 
-      <h3 class="text-center">Search For Any Movie</h3>
+      <h3 class="text-center">Search for movie</h3>
       <br>
       <form id="searchForm">
-        <input type="text" class="form-control" id="searchText" placeholder="Search Movie...">
+        <input type="text" class="form-control btn-lg" id="searchText" placeholder="Search Movie...">
       </form>
       <br>
-      <h6 class="text-center">If nothing happens when you search, click <a href="http://foxdrop.000webhostapp.com/webApplications/MDBWebsite/index.html">here</a>.</h6>
+      <h6 class="text-center"><span style="color:red">If nothing happens when you search,</span> <a href="http://foxdropweb.000webhostapp.com/webApplications/MDBWebsite/index.html">click here</a>.</h6>
     </div>
   </div>
 
@@ -39,68 +39,78 @@
   </div>
 
 <div class="container">
-    <div class="jumbotron">
-    <h3 class="text-center">Upcoming Movies</h3>
-    <div class="w-100 mt-3"></div>
-    <form style="text-align:center" action="index.html" method="GET">
-      <select name="country" id="country" style="width:11rem; height: 3rem; font-size: 20px; text-align: center;">
-        <option selected>Choose Country</option>
-        <option value="SE">Sweden</option>
-        <option value="US">USA</option>
-        <option value="FI">Finland</option>
-        <option value="NO">Norway</option>
-        <option value="CN">China</option>
-        <option value="AU">Australia</option>
-        <option value="DK">Denmark</option>
-      </select>
-      <div class="w-100 mt-1"></div>
-      <button class="btn btn-lg btn-primary" type="submit" onClick="index.html" style="width:11rem; height: 3rem"><span class="glyphicon glyphicon-search"></span> Search..</button>
-    </form>
-    <div id="movies" class="row">
-      <?php 
-        require '../../vendor/autoload.php';
-        $dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
-        $dotenv->load();
-        $APIKEY = $_ENV['THE_MOVIE_DB'];
-        if(isset($_GET['country'])) {
-          $region = $_GET['country'];
-          $rawData = @file_get_contents("https://api.themoviedb.org/3/movie/upcoming?api_key=".$APIKEY."&language=en-US&page=1&region=".$region."");
-        }
-        else {
-          $rawData = @file_get_contents("https://api.themoviedb.org/3/movie/upcoming?api_key=".$APIKEY."&language=en-US&page=1");
-        }https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc
-        $decodedData = json_decode($rawData, true);
 
-        $output = '';
-        $i = 0;
-          foreach ($decodedData['results'] as $value) {
-            $poster = $value['poster_path'];
-            $title = $value['title'];
-            $release = $value['release_date'];
-            $output .= '<div class="col-md-3">
-                          <div class="well text-center">
-                            <img src="https://image.tmdb.org/t/p/w200'.$poster.'">
-                              <h5>'.$title.'</h5>
-                                <h6>Release: '.$release.'</h6>
-                          </div>
-                        </div>';
-            $i++;
-            if($i == 8) {
-              break;
-            }
+    <div class="jumbotron">
+      <h3 class="text-center">Upcoming movies</h3>
+      <div class="w-100 mt-3"></div>
+      <form style="text-align:center" action="index.html" method="GET">
+        <select name="country" id="country" style="width:11rem; height: 3rem; font-size: 20px; text-align: center;">
+          <option selected>Choose Country</option>
+          <option value="SE">Sweden</option>
+          <option value="US">USA</option>
+          <option value="FI">Finland</option>
+          <option value="NO">Norway</option>
+          <option value="CN">China</option>
+          <option value="AU">Australia</option>
+          <option value="DK">Denmark</option>
+        </select>
+        <div class="w-100 mt-1"></div>
+        <button class="btn btn-lg btn-primary" type="submit" onClick="index.html" style="width:11rem; height: 3rem"><span class="glyphicon glyphicon-search"></span> Search..</button>
+      </form>
+      <br>
+      <div id="movies" class="row">
+        <?php 
+          require '../../vendor/autoload.php';
+          $dotenv = Dotenv\Dotenv::create(dirname(dirname(__DIR__)));
+          $dotenv->load();
+          $APIKEY = $_ENV['THE_MOVIE_DB'];
+          if(isset($_GET['country'])) {
+            $region = $_GET['country'];
+            $rawData = @file_get_contents("https://api.themoviedb.org/3/movie/upcoming?api_key=".$APIKEY."&language=en-US&page=1&region=".$region."");
           }
-        echo $output;
-      ?>
+          else {
+            $rawData = @file_get_contents("https://api.themoviedb.org/3/movie/upcoming?api_key=".$APIKEY."&language=en-US&page=1&region=US");
+          }https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc
+          $decodedData = json_decode($rawData, true);
+
+          $output = '';
+          $i = 0;
+            foreach ($decodedData['results'] as $value) {
+              $poster = $value['poster_path'];
+              $title = $value['title'];
+              $release = $value['release_date'];
+              if (date("Y-m-d") > $release)
+                continue;
+              $output .= '<div class="col-md-3">
+                            <div class="well text-center">
+                              <img src="https://image.tmdb.org/t/p/w200'.$poster.'">
+                                <h5>'.$title.'</h5>
+                                  <h6>Release: '.$release.'</h6>
+                            </div>
+                          </div>';
+                          $i++;
+                          if($i == 8) {
+                            break;
+                          }
+            }
+          echo $output;
+        ?>
+      </div>
     </div>
-  </div>
 
   
     <div class="jumbotron">
-    <h3 class="text-center">Best Movies From Certain Year</h3>
+    <h3 class="text-center">Highest rated movies</h3>
     <div class="w-100 mt-3"></div>
     <form style="text-align:center" action="index.html" method="GET">
       <select name="year" id="year" style="width:11rem; height: 3rem; font-size: 20px; text-align: center;">
         <option selected>Choose Year</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
         <option value="2019">2019</option>
         <option value="2018">2018</option>
         <option value="2017">2017</option>
@@ -119,6 +129,7 @@
       <div class="w-100 mt-1"></div>
       <button class="btn btn-lg btn-primary" type="submit" onClick="index.html" style="width:11rem; height: 3rem"><span class="glyphicon glyphicon-search"></span> Search..</button>
     </form>
+    <br>
     <div id="movies" class="row">
       <?php 
         /* $randInt = mt_rand(2005, date("Y")); */

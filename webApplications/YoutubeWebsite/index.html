@@ -1,67 +1,98 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link
+      class="img-test"
+      rel="shortcut icon"
+      type="image/png"
+      href="../../images/firefoxLogo.png"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <title>Youtube Channel Data</title>
 
-<head>
-	<link class="img-test" rel="shortcut icon" type="image/png" href="../../images/firefoxLogo.png">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<title>Youtube Channel Data</title>
+    <style>
+      img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]
+      {
+        display: none !important;
+      }
+      #content,
+      #authorize-button,
+      #signout-button {
+        display: none;
+      }
+    </style>
+  </head>
 
-	<style>
-		img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
-		    display: none!important;
-		}
-		#content,
-		#authorize-button,
-		#signout-button {
-			display: none
-		}
-	</style>
-</head>
+  <body>
+    <nav class="black">
+      <div class="nav-wrapper">
+        <div class="container">
+          <a href="#!" class="brand-logo">Youtube Channel Data</a>
+          <a href="../../portfolio.php">
+            <img
+              class="img-test"
+              src="../../images/firefoxLogo.png"
+              alt="HTML5 Icon"
+              style="margin: 5px 15px 5px 5px; float: right; width: 50px; height: 50px;"
+            />
+          </a>
+        </div>
+      </div>
+    </nav>
+    <br />
+    <section>
+      <div class="container">
+        <p style="color: rgb(0, 0, 0); font-size: 14px;">
+          If nothing happens, click
+          <a
+            href="https://foxdropweb.000webhostapp.com/webApplications/YoutubeWebsite/index.html"
+            >here</a
+          >.
+        </p>
+        <p>Log In With Google</p>
+        <button class="btn red" id="authorize-button">Log In</button>
+        <button class="btn red" id="signout-button">Log Out</button>
+        <br />
+        <div id="content">
+          <div class="row">
+            <div class="col s6">
+              <form id="channel-form">
+                <div class="input-field col s6">
+                  <input
+                    type="text"
+                    id="channel-input"
+                    placeholder="Enter Channel Name"
+                  />
+                  <input
+                    type="submit"
+                    value="Get Channel Data"
+                    class="btn grey lighten-2"
+                  />
+                  <h6 style="color: grey;">e.g. pewdiepie, tyler1 or Macke Man.</h6>
+                </div>
+              </form>
+            </div>
+            <div id="channel-data" class="col s6"></div>
+          </div>
+          <div class="row" id="video-container"></div>
+        </div>
+      </div>
+    </section>
 
-<body>
-	<nav class="black">
-		<div class="nav-wrapper">
-			<div class="container">
-				<a href="#!" class="brand-logo">Youtube Channel Data</a>
-				<a href="../../portfolio.php">
-					<img class="img-test" src="../../images/firefoxLogo.png" alt="HTML5 Icon" style="margin: 5px 15px 5px 5px; float:right; width:50px; height:50px;">
-				</a>
-			</div>
-		</div>
-	</nav>
-	<br>
-	<section>
-		<div class="container">
-			<p style="color:rgb(0, 0, 0); font-size: 14px">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/YoutubeWebsite/index.html">here</a>.</p> 
-			<p>Log In With Google</p>
-			<button class="btn red" id="authorize-button">Log In</button>
-			<button class="btn red" id="signout-button">Log Out</button>
-			<br>
-			<div id="content">
-				<div class="row">
-					<div class="col s6">
-						<form id="channel-form">
-							<div class="input-field col s6">
-								<input type="text" id="channel-input" placeholder="Enter Channel Name">
-								<input type="submit" value="Get Channel Data" class="btn grey lighten-2">
-								<h6 style="color:grey">e.g. pewdiepie, tyler1 or Macke Man.</h6>
-							</div>
-						</form>
-					</div>
-					<div id="channel-data" class="col s6"></div>
-				</div>
-				<div class="row" id="video-container"></div>
-			</div>
-		</div>
-	</section>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="main.js"></script>
-	<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
-	</script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="main.js"></script>
+    <script
+      async
+      defer
+      src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()"
+    ></script>
+  </body>
 </html>

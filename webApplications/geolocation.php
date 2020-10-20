@@ -47,7 +47,7 @@
 	<section class="mobile-wrapper">
 		<div style="background:black" class="jumbotron mt-5 text-white border">
 		  <h2 style="text-align:center; font-size:40px;">Geolocation<br></h2>
-		  <p style="font-size: 16px; text-align: center">If nothing happens, click <a href="https://foxdrop.000webhostapp.com/webApplications/geolocation.php">here.</a><br></p> 
+		  <h6 style="font-size: 16px; text-align: center"><span style="color:red">If nothing happens,<span> <a href="https://foxdropweb.000webhostapp.com/webApplications/geolocation.php">click here.</a><br></h6> 
 
 		    <p style="font-size: 25px; text-align: center">
 					<span id="lat"></span>° (latitude)

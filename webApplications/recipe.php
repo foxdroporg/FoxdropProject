@@ -21,7 +21,7 @@
 	<body>
 		<section class="mobile-wrapper">
 				<div class="jumbotron mt-5 text-black">
-					<h2 class="font-weight-bold text-capitalize" style=" text-align:center; font-size:50px;">Find recipe</h2>
+					<h2 class="font-weight-bold" style=" text-align:center; font-size:50px;">Find recipes</h2><!--text-capitalize-->
 
 					<div class="row mt-5 ">
 			 			<div class="col">
@@ -32,7 +32,7 @@
 								<div class="w-100 mt-3"></div>
 								<input type="text" name="ingredients" id="ingredients" placeholder="Comma separated ingredients.." style="width:16rem; height: 3rem; font-size: 20px">	
 								<div class="w-100 mt-0"></div>
-								<label>Optional: e.g. <b>onion, tomatoe, cheese</b></label>
+								<label>Optional: e.g. <b>onion, tomato, cheese</b></label>
 								<div class="w-100 mt-3"></div>
 								<input type="text" name="page" id="page" placeholder="Numeric page in catalog..." style="width:16rem; height: 3rem; font-size: 20px">	
 								<div class="w-100 mt-0"></div>
@@ -40,7 +40,7 @@
 								<div class="w-100 mt-3"></div>
 								<button class="btn btn-lg btn-primary" type="submit" onClick="recipeSearch" style="width:16rem; height:4rem;"><span class="glyphicon glyphicon-search"></span>  Search..</button>
 							</form>
-							<br><p style=" text-align:center; color:green; font-size: 15px">Generate a random recipe <br> by leaving the fields empty.</p>
+							<br><p style=" text-align:center; color:green; font-size: 15px">Generate a recipe by <br>leaving the fields empty.</p>
 						</div>
 					</div>
 			</div>

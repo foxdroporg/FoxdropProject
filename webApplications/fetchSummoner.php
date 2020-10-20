@@ -1,3 +1,4 @@
+
 <?php 
 require '../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create(dirname(__DIR__));
@@ -52,7 +53,8 @@ function getChampionMastery($serverName, $id, $APIKEY) {
 	return $decodedData;
 }
 function getFullMatchList($serverName, $accountId, $APIKEY) {
-	$rawMatchList = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matchlists/by-account/".$accountId."?endIndex=100&beginIndex=0&queue=420&api_key=".$APIKEY);
+	// 100 games is too much, preformance issues again! Restrict to 50 games.
+	$rawMatchList = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matchlists/by-account/".$accountId."?endIndex=50&beginIndex=0&queue=420&api_key=".$APIKEY);
 	$decodedData = json_decode($rawMatchList, true);
 	return $decodedData;
 }
@@ -110,10 +112,10 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 				<h2 class="font-weight-bold text-capitalize" style="text-align:center; font-size:30px;"> 
 					<?php 
 						$image = "http://ddragon.leagueoflegends.com/cdn/9.14.1/img/profileicon/".$profileIconId.".png";
-						echo '<img src="'.$image.'" style="width:7em;height:7em;"/>';
+						echo '<img src="'.$image.'" style="width:6em;height:6em;"/>';
 					?>
 					<?php 
-						echo "<p style=color:black;text-align:center>", $name; 
+						echo "<p style=color:black;text-align:center>".$name."</p>"; 
 					?> 
 				</h2>
 		 		<div class="row mt-1 ">
@@ -126,6 +128,11 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 								$matchlistObject = getMatchlistData($serverName, $accountId, $APIKEY);
 								$totalGames = $matchlistObject['totalGames'];
 								$latestGame = $matchlistObject['matches'][0];
+								// Get game duration
+								$rawData = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matches/".$latestGame['gameId']."?api_key=".$APIKEY);  
+								$decodedData = json_decode($rawData, true);
+								$gameDuration = $decodedData;
+
 
 								
 								$mode = '';
@@ -193,14 +200,12 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 									}
 
 									// Try to get each WIN or LOSE for each game.
-									/*
 									$gameID[$i][0] = $match['champion'];
 									$gameID[$i][1] = $match['gameId'];
 									$i++;
-									*/
 								}
 
-								function maxNitems($array, $n = 3){
+								function maxNitems($array, $n = 5){
 									asort($array);
 									return array_slice(array_reverse($array, true),0,$n, true);
 								}
@@ -208,39 +213,68 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 								$mostPlayed = array();
 								$mostPlayed = array_keys(maxNitems($amountOfTimesPlayed));
 
-								// Try to get each WIN or LOSE for each game.
-								/*
-								foreach($gameID as $gameIDFind) {
-									$rawMatchList = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matches/".$gameIDFind[1]."?api_key=".$APIKEY);
-									$decodedData = json_decode($rawMatchList, true);
-									if($decodedData['teams'][0]['win'] === 'Win') {
-										echo '<br><br>WIN<br><br>';
+								/* PREFORMANCE ISSUES - takes too long to load the win rates
+								function printTheWins($champion, $gameID, $serverName, $APIKEY) {
+									// Try to get each WIN or LOSE for each game.
+									$totalGames = 0.0;
+									$wins = 0.0;
+									$losses = 0.0;
+									$i = 0;
+									foreach($gameID as $gameIDFind) {
+										if($gameIDFind[0] === $champion) {
+											$rawMatchList = @file_get_contents("https://".$serverName.".api.riotgames.com/lol/match/v4/matches/".$gameIDFind[1]."?api_key=".$APIKEY);
+											$decodedData = json_decode($rawMatchList, true);
+											foreach($decodedData['participants'] as $player) {
+												if($player['championId'] === $gameIDFind[0]) {
+													$teamIndex = 1;
+													if($player['teamId'] === 100) { // 100 = blue side, 200 = red side
+														$teamIndex = 0;
+													}
+													if($decodedData['teams'][$teamIndex]['win'] === 'Win') {
+														$wins++;
+														$totalGames++;
+														//echo 'LAST GAME ON THIS CHAMP WAS A - WIN<br><br>';
+													}
+													else if($decodedData['teams'][$teamIndex]['win'] === 'Fail'){
+														$losses++;
+														$totalGames++;
+														//echo 'LAST GAME ON THIS CHAMP WAS A - FAIL<br><br>';
+													}
+													break; // Break foreach loop if the correct player was found (out of the 10 players)
+												}
+											}
+											//var_dump($decodedData['participants']);
+											if($i == 9) break; // 10 games win ratio
+											$i++;
+										}
 									}
-									else if($decodedData['teams'][0]['win'] === 'Fail'){
-										echo '<br><br>FAIL<br><br>';
-									}
+									$winratio = round(100*($wins/$totalGames), 0);
+									echo ''.$winratio.'%</p>';
 								}
 								*/
+								
 
 								echo "<hr>";
-								echo "<p style=color:black;text-align:center>Ranked Solo (Past 100 Games):<br> </p>";
+								echo "<p style=color:#007bff;text-align:center>Ranked Solo (Past 50 Games):<br> </p>";
 								foreach($mostPlayed as $nr) {
 									$games = $amountOfTimesPlayed[$nr];
 									foreach($listOfChampions as $row) {
 										if ($row['key'] == $topThreeChampionsPlayedArray[$nr]) {
-											echo "<p style=color:black;text-align:center>" .$row['name']." (".$games. " played) - </p>";
+											echo "<p style=color:black;text-align:center;margin-bottom: 0px>" .$row['name']." (".$games. " played)</p>";
+											//printTheWins($topThreeChampionsPlayedArray[$nr], $gameID, $serverName, $APIKEY); // Preformance issues
 										} 
 									}
 								}
-								echo "<hr>";
 
-								echo "<p style=color:black;text-align:center><br>Last seen online: ", date("d-m-Y", $seconds), ".</p>";
-								echo "<p style=color:black;text-align:center><br>Account level: ", $summonerLevel, ".</p>";
-
-								// Top one is with totalGames but it is currently bugged (as of: 2019-10-18)
-								// echo "<p style=color:black;text-align:center><br>Has played a total of: ".$totalGames." games.(Bugged)<br><br><b>Most recent game played</b><br>Date: ".date("d-m-Y", ($latestGame['timestamp']/1000))."<br>Mode: ".$mode."<br>Champion ID: ".$latestGame['champion'].", ".$nameOfChampion.".</p>";
-								echo "<p style=color:black;text-align:center><br><b>Most recent game played</b><br>Date: ".date("d-m-Y", ($latestGame['timestamp']/1000))."<br>Mode: ".$mode."<br>Champion ID: ".$latestGame['champion'].", ".$nameOfChampion.".</p>";
-
+								$timeStr = date('Gi.s', $latestGame['timestamp']/1000); // Add two hours for online website
+								if(strlen($timeStr) === 6) {
+									$timeStr = substr_replace($timeStr, ':', 1, 0);
+								}
+								else {
+									$timeStr = substr_replace($timeStr, ':', 2, 0);
+								}
+								$timeStr = str_replace('.', ':', $timeStr);
+								$gameDuration = round(($gameDuration['gameDuration']/60), 0);
 
 								// Get mastery points champs
 								$firstChampion = '';
@@ -258,7 +292,6 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 									}
 								}
 					
-								echo "<p style=color:black;text-align:center><br><b>Champion Mastery</b><br>".$firstChampion." - ".$firstScore." points<br>".$secondChampion." - ".$secondScore." points<br>".$thirdChampion." - ".$thirdScore." points</p>";
 								echo "<hr>";
 
 							?>
@@ -273,19 +306,19 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 									for($k=0; $k < sizeof($leagueObject); $k++) {
 										if($leagueObject[$k]['queueType'] == 'RANKED_SOLO_5x5') {
 											$soloQueue5v5 = $leagueObject[$k];
-											echo "<p style=color:black;text-align:center><br><b>".$soloQueue5v5['queueType']."</b> <br> ".$soloQueue5v5['tier']." ".$soloQueue5v5['rank']." - ".$soloQueue5v5['leaguePoints']." LP <br> Wins ".$soloQueue5v5['wins']." <br> Losses ".$soloQueue5v5['losses']." <br>Winrate: ", 100*number_format($soloQueue5v5['wins']/($soloQueue5v5['wins']+$soloQueue5v5['losses']), 3),"% </p>";
+											echo "<p style=color:black;text-align:center><b><span style=color:#007bff>".$soloQueue5v5['queueType']."</span></b> <br> ".$soloQueue5v5['tier']." ".$soloQueue5v5['rank']." - ".$soloQueue5v5['leaguePoints']." LP <br> Wins ".$soloQueue5v5['wins']." <br> Losses ".$soloQueue5v5['losses']." <br>Winrate: ", 100*number_format($soloQueue5v5['wins']/($soloQueue5v5['wins']+$soloQueue5v5['losses']), 3),"% </p>";
 										} 
 										else if($leagueObject[$k]['queueType'] == 'RANKED_TFT') {
 											$rankedTFT = $leagueObject[$k];
-											echo "<p style=color:black;text-align:center><br><b>".$rankedTFT['queueType']."</b> <br> ".$rankedTFT['tier']." ".$rankedTFT['rank']." - ".$rankedTFT['leaguePoints']." LP <br> Wins ".$rankedTFT['wins']." <br> Losses ".$rankedTFT['losses']." <br>Winrate: ", 100*number_format($rankedTFT['wins']/($rankedTFT['wins']+$rankedTFT['losses']), 3),"% </p>";
+											echo "<p style=color:black;text-align:center><b><span style=color:#007bff>".$rankedTFT['queueType']."</span></b> <br> ".$rankedTFT['tier']." ".$rankedTFT['rank']." - ".$rankedTFT['leaguePoints']." LP <br> Wins ".$rankedTFT['wins']." <br> Losses ".$rankedTFT['losses']." <br>Winrate: ", 100*number_format($rankedTFT['wins']/($rankedTFT['wins']+$rankedTFT['losses']), 3),"% </p>";
 										}
 										else if($leagueObject[$k]['queueType'] == 'RANKED_FLEX_TT') {
 											$flexQueue3v3 = $leagueObject[$k];
-											echo "<p style=color:black;text-align:center><br><b>".$flexQueue3v3['queueType']."</b> <br> ".$flexQueue3v3['tier']." ".$flexQueue3v3['rank']." - ".$flexQueue3v3['leaguePoints']." LP <br> Wins ".$flexQueue3v3['wins']." <br> Losses ".$flexQueue3v3['losses']." <br>Winrate: ", 100*number_format($flexQueue3v3['wins']/($flexQueue3v3['wins']+$flexQueue3v3['losses']), 3),"% </p>";
+											echo "<p style=color:black;text-align:center><b><span style=color:#007bff>".$flexQueue3v3['queueType']."</span></b> <br> ".$flexQueue3v3['tier']." ".$flexQueue3v3['rank']." - ".$flexQueue3v3['leaguePoints']." LP <br> Wins ".$flexQueue3v3['wins']." <br> Losses ".$flexQueue3v3['losses']." <br>Winrate: ", 100*number_format($flexQueue3v3['wins']/($flexQueue3v3['wins']+$flexQueue3v3['losses']), 3),"% </p>";
 										}
 										else if($leagueObject[$k]['queueType'] == 'RANKED_FLEX_SR') {
 											$flexQueue5v5 = $leagueObject[$k];
-											echo "<p style=color:black;text-align:center><br><b>".$flexQueue5v5['queueType']."</b> <br> ".$flexQueue5v5['tier']." ".$flexQueue5v5['rank']." - ".$flexQueue5v5['leaguePoints']." LP <br> Wins ".$flexQueue5v5['wins']." <br> Losses ".$flexQueue5v5['losses']." <br>Winrate: ", 100*number_format($flexQueue5v5['wins']/($flexQueue5v5['wins']+$flexQueue5v5['losses']), 3),"% </p>";
+											echo "<p style=color:black;text-align:center><b><span style=color:#007bff>".$flexQueue5v5['queueType']."</span></b> <br> ".$flexQueue5v5['tier']." ".$flexQueue5v5['rank']." - ".$flexQueue5v5['leaguePoints']." LP <br> Wins ".$flexQueue5v5['wins']." <br> Losses ".$flexQueue5v5['losses']." <br>Winrate: ", 100*number_format($flexQueue5v5['wins']/($flexQueue5v5['wins']+$flexQueue5v5['losses']), 3),"% </p>";
 										}
 									}
 								}
@@ -295,7 +328,7 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 								// /* MAKE SURE TO HIDE ERROR MESSAGES 
 								if(@getSpectatorGame($id, $APIKEY)) {
 									// Success
-									echo "<p style=color:black;text-align:center><br><br><b>LIVE GAME:</b></p>";
+									echo "<p style=color:black;text-align:center><br><span style='color:green'><b>LIVE GAME:</b></span></p>";
 									$spectatorGameObject = getSpectatorGame($id, $APIKEY);
 									$gameLengthMin = number_format($spectatorGameObject['gameLength']/60, 3);
 
@@ -325,12 +358,14 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 										$i++;
 									}
 
-									echo "<p style=color:black;text-align:center>Game length: ".$gameLengthMin." min.<br>Game Mode: ".$mode."<br><br><b>Teams:</b><br></p>";
+									echo "<p style=color:black;text-align:center>Game length: ".$gameLengthMin." min.<br>".$mode."<br><br><span style='color:#007bff'><b>Teams:</b></span><br></p>";
 									$k=0;
 									foreach($listParticipants as $summoner) {
-										echo "<p style=color:black;text-align:center>".$summoner."<br></p>";
+										$tempSummoner = $summoner;
+										$tempSummoner = preg_replace('/\s+/', '%20', $tempSummoner);
+										echo "<a href='http://foxdrop.000webhostapp.com/webApplications/fetchSummoner.php?summonerName=".$tempSummoner."&serverName=".$serverName."'><p style=color:black;text-align:center>".$summoner."<br></p></a>";
 										if($k == 4) {
-											echo "<br><p style=color:black;text-align:center>VS.</p><br>";
+											echo "<br><p style=color:black;text-align:center><span style='color:#007bff'>VS.</span></p><br>";
 										}
 										$k++;
 									}
@@ -338,6 +373,17 @@ function getFullMatchList($serverName, $accountId, $APIKEY) {
 									// Faliure
 									echo "<p style=color:black;text-align:center><br><br><b>Is not in-game right now.</b></p>";
 								}
+								echo "<br><hr>";
+								
+								echo "<p style=color:black;text-align:center><br>Last seen online: ", date("d-m-Y", $seconds), ".</p>";
+
+								// Top one is with totalGames but it is currently bugged (as of: 2019-10-18)
+								// echo "<p style=color:black;text-align:center><br>Has played a total of: ".$totalGames." games.(Bugged)<br><br><b>Most recent game played</b><br>Date: ".date("d-m-Y", ($latestGame['timestamp']/1000))."<br>Mode: ".$mode."<br>Champion ID: ".$latestGame['champion'].", ".$nameOfChampion.".</p>";
+								echo "<p style=color:black;text-align:center><br><b><span style=color:#007bff>Most recent game played:</span></b><br>".$mode."<br>".$nameOfChampion." - (ID: ".$latestGame['champion'].")<br>Match started: ".date("d-m-Y", ($latestGame['timestamp']/1000)).", ".$timeStr." GMT<br>Game length: ".$gameDuration." min.</p>";
+								
+								echo "<p style=color:black;text-align:center><b><span style=color:#007bff>Champion Mastery:</b></span><br>".$firstChampion." - ".$firstScore." points<br>".$secondChampion." - ".$secondScore." points<br>".$thirdChampion." - ".$thirdScore." points</p>";
+								
+								echo "<p style=color:black;text-align:center><br>Account level: ", $summonerLevel, ".</p>";
 							?>
 					</div>
 				</div>

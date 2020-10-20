@@ -73,7 +73,7 @@
 						</form>
 						<!-- Last form done in PHP -->
 						<?php 
-							session_start();
+							# session_start();
 							if(isset($_SESSION['u_uid'])) {
 								$username = $_SESSION['u_uid'];
 								$sql = "SELECT * FROM scores WHERE game = 'snake' AND username = '$username' ORDER BY user_score DESC";
